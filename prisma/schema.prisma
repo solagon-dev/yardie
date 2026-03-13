@@ -1,0 +1,90 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── Admin Users ──────────────────────────────────────────────────────────────
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  role         String   @default("admin")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("admin_users")
+}
+
+// ─── Portfolio Projects ───────────────────────────────────────────────────────
+
+model Project {
+  id                 String   @id @default(cuid())
+  title              String
+  slug               String   @unique
+  summary            String?
+  description        String?
+  featuredImage      String?
+  galleryImages      String[] @default([])
+  projectLocation    String?
+  serviceCategories  String[] @default([])
+  tags               String[] @default([])
+  completionDate     String?
+  beforeImages       String[] @default([])
+  afterImages        String[] @default([])
+  threeDRenderImages String[] @default([])
+  challenge          String?
+  approach           String?
+  materials          String[] @default([])
+  featured           Boolean  @default(false)
+  publishStatus      String   @default("draft")
+  sortOrder          Int      @default(0)
+  seoTitle           String?
+  seoDescription     String?
+  ogImage            String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@map("projects")
+}
+
+// ─── Blog Posts ───────────────────────────────────────────────────────────────
+
+model Post {
+  id             String    @id @default(cuid())
+  title          String
+  slug           String    @unique
+  excerpt        String?
+  content        String?
+  featuredImage  String?
+  category       String?
+  tags           String[]  @default([])
+  author         String?   @default("Yardie Design")
+  publishDate    DateTime?
+  publishStatus  String    @default("draft")
+  readTime       String?
+  seoTitle       String?
+  seoDescription String?
+  ogImage        String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@map("posts")
+}
+
+// ─── Hero Slides ──────────────────────────────────────────────────────────────
+
+model HeroSlide {
+  id        String   @id @default(cuid())
+  imageUrl  String
+  altText   String   @default("")
+  sortOrder Int      @default(0)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("hero_slides")
+}

@@ -1,5 +1,5 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
+Disallow: /legal/
 
-Sitemap: https://yardiedesign.com/sitemap.xml
+Sitemap: https://www.yardiedesign.com/sitemap.xml

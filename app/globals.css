@@ -1,138 +1,410 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Design System Tokens ──────────────────────────────────────── */
+/* Font variables are injected by next/font in layout.tsx */
 :root {
-  --font-display: 'Playfair Display', serif;
-  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:    'DM Sans', system-ui, sans-serif;
+
+  /* Backgrounds */
+  --color-cream:       #F8F4EE;
+  --color-cream-alt:   #F0EBE2;
+  --color-warm-stone:  #E4DDD4;
+
+  /* Text */
+  --color-bark:        #1A1814;
+  --color-earth:       #3D3830;
+  --color-clay:        #6B5D50;
+
+  /* Accent */
+  --color-moss:        #6B7A5C;
+  --color-moss-light:  #8A9B7A;
+  --color-moss-dark:   #556249;
+
+  /* Borders */
+  --color-border-warm: #C8BEB0;
+  --color-border-light: #E4DDD4;
+
+  /* Accent warm */
+  --color-terracotta:  #C17F5A;
+
+  /* Transitions */
+  --ease-smooth-out:   cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-smooth:       cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast:     0.2s;
+  --duration-base:     0.4s;
+  --duration-slow:     0.6s;
 }
 
-* {
+/* ─── Base Reset & Defaults ─────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  font-size: 16px;
 }
 
 body {
   font-family: var(--font-sans);
-  background: #fafaf9;
-  color: #1c1917;
+  background-color: var(--color-cream);
+  color: var(--color-earth);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+img,
+video {
+  max-width: 100%;
+  display: block;
 }
 
-/* Custom scrollbar */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* ─── Typography Utilities ──────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Section label — DM Sans small caps overline */
+.label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-clay);
+}
+
+.label-light {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(248, 244, 238, 0.5);
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #e7e5e4;
+  background: var(--color-cream);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #78716c;
-  border-radius: 5px;
+  background: var(--color-border-warm);
+  border-radius: 3px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #57534e;
+  background: var(--color-clay);
 }
 
-/* Smooth animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+/* ─── Focus Styles ──────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-moss);
+  outline-offset: 3px;
+}
+
+/* ─── Selection ─────────────────────────────────────────────────── */
+::selection {
+  background: var(--color-moss);
+  color: var(--color-cream);
+}
+
+/* ─── Prose / Editorial Body Copy ───────────────────────────────── */
+.prose-yardie {
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--color-earth);
+}
+
+.prose-yardie p + p {
+  margin-top: 1.25em;
+}
+
+/* ─── Image Hover Scale ─────────────────────────────────────────── */
+.img-hover-scale {
+  overflow: hidden;
+}
+.img-hover-scale img {
+  transition: transform 0.7s var(--ease-smooth-out);
+  will-change: transform;
+}
+.img-hover-scale:hover img {
+  transform: scale(1.05);
+}
+
+/* ─── Card Hover Border ─────────────────────────────────────────── */
+.card-border-hover {
+  border: 1px solid var(--color-border-warm);
+  transition: border-color 0.3s var(--ease-smooth);
+}
+.card-border-hover:hover {
+  border-color: var(--color-moss);
+}
+
+/* ─── Divider Thin ───────────────────────────────────────────────── */
+.divider {
+  width: 48px;
+  height: 1px;
+  background: var(--color-border-warm);
+  margin: 0 auto;
+}
+
+/* ─── Parallax Container ────────────────────────────────────────── */
+.parallax-container {
+  overflow: hidden;
+}
+.parallax-inner {
+  will-change: transform;
+}
+
+/* ─── Scroll Reveal Defaults ─────────────────────────────────────── */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(28px);
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s var(--ease-smooth-out),
+              transform 0.7s var(--ease-smooth-out);
+}
+
+/* ─── Accordion ─────────────────────────────────────────────────── */
+.accordion-content {
+  overflow: hidden;
+  transition: height 0.35s var(--ease-smooth-out);
+}
+
+/* ─── Form Fields ────────────────────────────────────────────────── */
+.field-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border-warm);
+  padding: 12px 0;
+  font-family: var(--font-sans);
+  font-size: 1rem; /* 16px — prevents iOS Safari auto-zoom on focus */
+  color: var(--color-bark);
+  transition: border-color 0.2s ease;
+  outline: none;
+}
+.field-input::placeholder {
+  color: var(--color-clay);
+  font-weight: 300;
+}
+.field-input:focus {
+  border-bottom-color: var(--color-bark);
+}
+.field-label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-clay);
+  margin-bottom: 8px;
+}
+
+/* ─── Gradient Scrim Helpers ─────────────────────────────────────── */
+.scrim-bottom {
+  background: linear-gradient(to top, rgba(26,24,20,0.78) 0%, rgba(26,24,20,0.2) 50%, transparent 80%);
+}
+
+.scrim-full {
+  background: linear-gradient(
+    to bottom,
+    rgba(26,24,20,0.42) 0%,
+    rgba(26,24,20,0.1) 40%,
+    rgba(26,24,20,0.1) 55%,
+    rgba(26,24,20,0.65) 100%
+  );
+}
+
+/* ─── Partners Carousel ─────────────────────────────────────────── */
+@keyframes carousel-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.carousel-track {
+  animation: carousel-scroll 36s linear infinite;
+  will-change: transform;
+}
+
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track {
+    animation: none;
   }
-  to {
+}
+
+/* ─── Ken Burns Hero Animations ─────────────────────────────────── */
+@keyframes kenburns-a {
+  0%   { transform: scale(1.0) translate(0, 0); }
+  100% { transform: scale(1.1) translate(-1.5%, 0.8%); }
+}
+@keyframes kenburns-b {
+  0%   { transform: scale(1.0) translate(0, 0); }
+  100% { transform: scale(1.1) translate(1.5%, -0.8%); }
+}
+@keyframes kenburns-c {
+  0%   { transform: scale(1.0) translate(0, 0); }
+  100% { transform: scale(1.1) translate(1%, 0.8%); }
+}
+@keyframes kenburns-d {
+  0%   { transform: scale(1.0) translate(0, 0); }
+  100% { transform: scale(1.1) translate(-0.8%, -1%); }
+}
+
+.ken-burns-a { animation: kenburns-a 9s ease-in-out forwards; }
+.ken-burns-b { animation: kenburns-b 9s ease-in-out forwards; }
+.ken-burns-c { animation: kenburns-c 9s ease-in-out forwards; }
+.ken-burns-d { animation: kenburns-d 9s ease-in-out forwards; }
+
+/* ─── Hero Slide Transition ─────────────────────────────────────── */
+.hero-slide-enter {
+  opacity: 0;
+  transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hero-slide-active {
+  opacity: 1;
+}
+
+/* ─── Service Card Micro-interactions ──────────────────────────── */
+.service-card-meta {
+  transform: translateY(6px);
+  transition: transform 0.5s var(--ease-smooth-out);
+}
+.group:hover .service-card-meta {
+  transform: translateY(0);
+}
+
+.service-card-desc {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s ease, transform 0.4s var(--ease-smooth-out);
+  transition-delay: 0.06s;
+}
+.group:hover .service-card-desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Project Card Reveal ────────────────────────────────────────── */
+.project-card-reveal {
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.35s ease, transform 0.4s var(--ease-smooth-out);
+  transition-delay: 0.05s;
+}
+.group:hover .project-card-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Underline Slide Animation ─────────────────────────────────── */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s var(--ease-smooth-out);
+}
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* ─── Mobile: Increase Display Font Weight for Legibility ───────── */
+/* Cormorant Garamond weight 300 renders too thin on small screens.  */
+/* Bump to 400 on mobile — still elegant, much more readable.        */
+@media (max-width: 767px) {
+  .font-display {
+    font-weight: 400 !important;
+  }
+}
+
+/* ─── Touch Device: show hover-only card content immediately ────── */
+/* On touch devices, :hover never reliably fires. Make all hover-gated
+   card content visible so mobile users see complete information.     */
+@media (hover: none) {
+  .service-card-meta {
+    transform: translateY(0);
+  }
+  .service-card-desc {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .project-card-reveal {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
+/* ─── No-JS Fallback for Reveal ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-hidden {
     opacity: 1;
+    transform: none;
   }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
+  .reveal-visible {
+    transition: none;
   }
-  to {
+  .img-hover-scale img {
+    transition: none;
+  }
+  .ken-burns-a,
+  .ken-burns-b,
+  .ken-burns-c,
+  .ken-burns-d {
+    animation: none;
+  }
+  .service-card-meta,
+  .service-card-desc,
+  .project-card-reveal {
+    transform: none;
     opacity: 1;
-    transform: translateX(0);
+    transition: none;
   }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.8s ease-out forwards;
-}
-
-.animate-fade-in {
-  animation: fadeIn 1s ease-out forwards;
-}
-
-.animate-slide-in-left {
-  animation: slideInLeft 0.8s ease-out forwards;
-}
-
-/* Stagger delays */
-.delay-100 {
-  animation-delay: 0.1s;
-}
-
-.delay-200 {
-  animation-delay: 0.2s;
-}
-
-.delay-300 {
-  animation-delay: 0.3s;
-}
-
-.delay-400 {
-  animation-delay: 0.4s;
-}
-
-.delay-500 {
-  animation-delay: 0.5s;
-}
-
-/* Image overlay effect */
-.image-overlay {
-  position: relative;
-  overflow: hidden;
-}
-
-.image-overlay::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%);
-  z-index: 1;
-  transition: opacity 0.3s ease;
-}
-
-.image-overlay:hover::before {
-  opacity: 0.8;
 }
