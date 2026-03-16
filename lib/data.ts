@@ -477,6 +477,12 @@ export const projects: ProjectRef[] = [];
 
 export interface PostRef {
   slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  heroImage: string;
+  date: string;
+  readTime: string;
 }
 
 export const posts: PostRef[] = [];

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const categories = ['Masonry', 'Landscapes', 'Hardscapes', 'Lighting', 'Irrigation'] as const;
 
 export default function JournalPage() {
-  const featured = posts[0];
+  const featured = posts[0] ?? null;
   const remaining = posts.slice(1);
 
   return (
@@ -49,6 +49,7 @@ export default function JournalPage() {
       </section>
 
       {/* ── FEATURED POST ── */}
+      {featured && (
       <section className="bg-cream py-14 lg:py-20 px-6 lg:px-[clamp(24px,5vw,80px)]">
         <div className="max-w-[1320px] mx-auto">
           <RevealOnScroll>
@@ -87,8 +88,10 @@ export default function JournalPage() {
           </RevealOnScroll>
         </div>
       </section>
+      )}
 
       {/* ── ARTICLE GRID ── */}
+      {remaining.length > 0 && (
       <section className="bg-cream-alt py-16 lg:py-24 px-6 lg:px-[clamp(24px,5vw,80px)]">
         <div className="max-w-[1320px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
@@ -126,6 +129,7 @@ export default function JournalPage() {
           </div>
         </div>
       </section>
+      )}
     </>
   );
 }
