@@ -42,7 +42,7 @@ export default async function WorkPage() {
               style={{
                 fontSize: 'clamp(3rem,7vw,6.5rem)',
                 lineHeight: '0.96',
-                fontWeight: 300,
+                fontWeight: 500,
                 animationDelay: '0.1s',
                 animationFillMode: 'forwards',
                 letterSpacing: '-0.01em',
@@ -155,7 +155,7 @@ export default async function WorkPage() {
               <SectionLabel className="mb-4">Start Your Project</SectionLabel>
               <h2
                 className="font-display text-bark text-balance"
-                style={{ fontSize: 'clamp(1.6rem,2.8vw,2.4rem)', lineHeight: '1.1', fontWeight: 300, maxWidth: '480px' }}
+                style={{ fontSize: 'clamp(1.6rem,2.8vw,2.4rem)', lineHeight: '1.1', fontWeight: 500, maxWidth: '480px' }}
               >
                 Every project on this page began with a single conversation.
               </h2>

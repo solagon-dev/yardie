@@ -155,7 +155,7 @@ export default function ConversionPopup() {
                 style={{
                   fontSize: 'clamp(1.6rem,2.2vw,2.1rem)',
                   lineHeight: '1.12',
-                  fontWeight: 300,
+                  fontWeight: 500,
                 }}
               >
                 Every extraordinary yard begins with one conversation.

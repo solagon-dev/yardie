@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { resend, FROM, NOTIFY_TO } from '@/lib/resend';
+import { getResend, FROM, NOTIFY_TO } from '@/lib/resend';
 
 export async function POST(req: Request) {
   try {
@@ -11,7 +11,7 @@ export async function POST(req: Request) {
     }
 
     // Notify Yardie team
-    await resend.emails.send({
+    await getResend().emails.send({
       from: FROM,
       to: NOTIFY_TO,
       replyTo: email,
@@ -49,7 +49,7 @@ export async function POST(req: Request) {
     });
 
     // Auto-reply to submitter
-    await resend.emails.send({
+    await getResend().emails.send({
       from: FROM,
       to: email,
       subject: `Message received — Yardie Design`,

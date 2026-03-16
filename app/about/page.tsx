@@ -54,7 +54,7 @@ export default function AboutPage() {
             <SectionLabel light className="mb-8">Greenville, NC — Est. by Scott Baldwin</SectionLabel>
             <h1
               className="font-display text-cream text-balance"
-              style={{ fontSize: 'clamp(2.4rem,5vw,4.5rem)', lineHeight: '1.02', fontWeight: 300 }}
+              style={{ fontSize: 'clamp(2.4rem,5vw,4.5rem)', lineHeight: '1.02', fontWeight: 500 }}
             >
               Rooted in Greenville.<br /><em>Designed for Life Outside.</em>
             </h1>
@@ -85,7 +85,7 @@ export default function AboutPage() {
               <RevealOnScroll key={s.label} delay={i * 0.08} className="text-center px-4">
                 <p
                   className="font-display text-bark"
-                  style={{ fontSize: 'clamp(2.2rem,4vw,4rem)', fontWeight: 300, lineHeight: '1' }}
+                  style={{ fontSize: 'clamp(2.2rem,4vw,4rem)', fontWeight: 500, lineHeight: '1' }}
                 >
                   {s.num}
                 </p>
@@ -159,7 +159,7 @@ export default function AboutPage() {
                   <div className="lg:col-span-1 hidden lg:block">
                     <span
                       className="font-display text-warm-stone select-none"
-                      style={{ fontSize: 'clamp(3rem,5vw,5rem)', lineHeight: '1', fontWeight: 300 }}
+                      style={{ fontSize: 'clamp(3rem,5vw,5rem)', lineHeight: '1', fontWeight: 500 }}
                       aria-hidden="true"
                     >
                       {p.num}
@@ -196,7 +196,7 @@ export default function AboutPage() {
                 <h2
                   id="leadership-heading"
                   className="font-display text-cream"
-                  style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 300 }}
+                  style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 500 }}
                 >
                   The people behind the work
                 </h2>
@@ -264,7 +264,7 @@ export default function AboutPage() {
                             className="font-display select-none leading-none"
                             style={{
                               fontSize: 'clamp(4.5rem,7vw,6.5rem)',
-                              fontWeight: 300,
+                              fontWeight: 500,
                               letterSpacing: '-0.03em',
                               color: 'rgba(248,244,238,0.09)',
                             }}

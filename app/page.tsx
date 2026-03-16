@@ -7,6 +7,7 @@ import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
 import BeforeAfterSlider from '@/components/ui/BeforeAfterSlider';
 import PartnersCarousel from '@/components/sections/PartnersCarousel';
+import ReviewsCarousel from '@/components/sections/ReviewsCarousel';
 import ConversionPopup from '@/components/ui/ConversionPopup';
 import FAQAccordion from '@/components/ui/FAQAccordion';
 import { db } from '@/lib/db';
@@ -73,7 +74,7 @@ export default async function HomePage() {
               <SectionLabel className="mb-10">Yardie Design — Est. Greenville, NC</SectionLabel>
               <p
                 className="font-display text-bark text-balance"
-                style={{ fontSize: 'clamp(2rem,3.8vw,3.25rem)', lineHeight: '1.18', fontWeight: 300, maxWidth: '840px' }}
+                style={{ fontSize: 'clamp(2rem,3.8vw,3.25rem)', lineHeight: '1.18', fontWeight: 500, maxWidth: '840px' }}
               >
                 We don&apos;t just design yards. We create the places{' '}
                 <em>where your life happens outside.</em>
@@ -95,7 +96,7 @@ export default async function HomePage() {
               <h2
                 id="services-heading"
                 className="font-display text-cream text-balance"
-                style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 300 }}
+                style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 500 }}
               >
                 Five disciplines.<br /><em>One unified vision.</em>
               </h2>
@@ -178,7 +179,7 @@ export default async function HomePage() {
               <h2
                 id="work-heading"
                 className="font-display text-bark"
-                style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 300 }}
+                style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 500 }}
               >
                 Selected Projects
               </h2>
@@ -293,7 +294,7 @@ export default async function HomePage() {
               <h2
                 id="visualization-heading"
                 className="font-display text-cream text-balance"
-                style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 300 }}
+                style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 500 }}
               >
                 You&apos;ll see it clearly<br /><em>before we build it.</em>
               </h2>
@@ -399,7 +400,7 @@ export default async function HomePage() {
               <div key={label}>
                 <p
                   className="font-display text-cream"
-                  style={{ fontSize: 'clamp(2rem,5.5vw,5.5rem)', fontWeight: 300, lineHeight: '1', letterSpacing: '-0.03em' }}
+                  style={{ fontSize: 'clamp(2rem,5.5vw,5.5rem)', fontWeight: 500, lineHeight: '1', letterSpacing: '-0.03em' }}
                 >
                   {num}
                 </p>
@@ -422,7 +423,7 @@ export default async function HomePage() {
                 <h2
                   id="process-heading"
                   className="font-display text-bark"
-                  style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 300 }}
+                  style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 500 }}
                 >
                   How we work<br /><em>together</em>
                 </h2>
@@ -442,14 +443,14 @@ export default async function HomePage() {
                   <div className="lg:col-span-1">
                     <span
                       className="font-display text-border-warm select-none block"
-                      style={{ fontSize: 'clamp(2.5rem,5vw,5rem)', lineHeight: '1', fontWeight: 300 }}
+                      style={{ fontSize: 'clamp(2.5rem,5vw,5rem)', lineHeight: '1', fontWeight: 500 }}
                       aria-hidden="true"
                     >
                       {step.num}
                     </span>
                   </div>
                   <div className="lg:col-span-4">
-                    <h3 className="font-display text-bark" style={{ fontSize: 'clamp(1.5rem,2.4vw,2.1rem)', fontWeight: 300, lineHeight: '1.1' }}>
+                    <h3 className="font-display text-bark" style={{ fontSize: 'clamp(1.5rem,2.4vw,2.1rem)', fontWeight: 500, lineHeight: '1.1' }}>
                       {step.title}
                     </h3>
                   </div>
@@ -470,68 +471,44 @@ export default async function HomePage() {
       {/* ── REVIEWS ───────────────────────────────────────────────────── */}
       <section className="bg-bark py-24 lg:py-40 px-6 lg:px-[clamp(24px,5vw,80px)]" aria-label="Client reviews">
         <div className="max-w-[1320px] mx-auto">
-          <RevealOnScroll className="mb-16">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+
+          {/* Section header */}
+          <RevealOnScroll className="mb-14">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
               <div>
                 <SectionLabel className="mb-5" light>Client Reviews</SectionLabel>
                 <h2
                   className="font-display text-cream"
-                  style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 300 }}
+                  style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 500 }}
                 >
                   What our clients say
                 </h2>
-              </div>
-            </div>
-          </RevealOnScroll>
-
-          {reviews.length > 0 ? (
-            <div className={`flex overflow-x-auto snap-x snap-mandatory gap-px lg:grid lg:overflow-visible bg-[rgba(248,244,238,0.06)] ${reviews.length === 1 ? 'lg:max-w-[680px]' : reviews.length === 2 ? 'lg:grid-cols-2' : 'lg:grid-cols-3'}`} style={{ scrollbarWidth: 'none' }}>
-              {reviews.map((review, i) => (
-                <RevealOnScroll key={i} delay={i * 0.12} className="flex-none w-[88vw] lg:w-auto snap-start">
-                  <div className="relative bg-bark p-10 lg:p-14 flex flex-col h-full overflow-hidden">
-                    {/* Moss accent line at top */}
-                    <div className="absolute top-0 left-10 lg:left-14 w-8 h-[2px] bg-moss" />
-                    {/* Large decorative quotation mark — background art */}
-                    <div
-                      className="absolute top-6 right-8 font-display text-[rgba(248,244,238,0.04)] select-none pointer-events-none"
-                      aria-hidden="true"
-                      style={{ fontSize: '9rem', lineHeight: 1, fontWeight: 300 }}
-                    >
-                      &ldquo;
-                    </div>
-                    {/* Five stars */}
-                    <div className="flex gap-1 mb-8 flex-shrink-0">
+                {/* Rating badge */}
+                {rating > 0 && (
+                  <div className="flex items-center gap-3 mt-5">
+                    <div className="flex gap-[3px]" aria-label={`${rating} out of 5 stars`}>
                       {[1,2,3,4,5].map((s) => (
-                        <svg key={s} width="11" height="11" viewBox="0 0 16 16" fill="currentColor" className="text-moss" aria-hidden="true">
+                        <svg key={s} width="13" height="13" viewBox="0 0 16 16" fill="currentColor" className="text-moss" aria-hidden="true">
                           <path d="M8 1l1.85 3.75L14 5.5l-3 2.92.71 4.12L8 10.5l-3.71 1.95.71-4.12L2 5.5l4.15-.75L8 1z"/>
                         </svg>
                       ))}
                     </div>
-                    {/* Quote text */}
-                    <p
-                      className="font-display text-cream font-[300] italic flex-1 leading-[1.65] relative z-10"
-                      style={{ fontSize: 'clamp(1rem,1.35vw,1.15rem)' }}
-                    >
-                      &ldquo;{review.text}&rdquo;
-                    </p>
-                    {/* Author */}
-                    <cite className="block mt-10 not-italic" style={{ borderTop: '1px solid rgba(248,244,238,0.07)', paddingTop: '1.5rem' }}>
-                      <div className="flex items-center gap-4">
-                        <div className="w-8 h-8 rounded-full bg-[rgba(248,244,238,0.08)] flex items-center justify-center flex-shrink-0">
-                          <span className="text-[rgba(248,244,238,0.4)] text-[11px] font-[500]">
-                            {review.author.charAt(0)}
-                          </span>
-                        </div>
-                        <div>
-                          <span className="block text-[11px] text-cream tracking-[0.1em] uppercase font-[500]">{review.author}</span>
-                          <span className="block text-[10px] text-[rgba(248,244,238,0.3)] tracking-[0.06em] mt-0.5">{review.relativeTime} · Google</span>
-                        </div>
-                      </div>
-                    </cite>
+                    <span className="text-cream text-[14px] font-[500]">{rating.toFixed(1)}</span>
+                    <span className="text-[rgba(248,244,238,0.35)] text-[13px]">
+                      · {totalReviews} reviews on Google
+                    </span>
                   </div>
-                </RevealOnScroll>
-              ))}
+                )}
+              </div>
+              <Button href="/work" variant="ghost" size="sm">See Our Work</Button>
             </div>
+          </RevealOnScroll>
+
+          {/* Carousel or fallback */}
+          {reviews.length > 0 ? (
+            <RevealOnScroll>
+              <ReviewsCarousel reviews={reviews} />
+            </RevealOnScroll>
           ) : (
             <RevealOnScroll className="max-w-[820px]">
               <div className="relative overflow-hidden" style={{ borderLeft: '2px solid var(--color-moss)', paddingLeft: '2rem' }}>
@@ -543,9 +520,6 @@ export default async function HomePage() {
             </RevealOnScroll>
           )}
 
-          <RevealOnScroll className="mt-16">
-            <Button href="/work" variant="ghost" size="md">See Our Work</Button>
-          </RevealOnScroll>
         </div>
       </section>
 
@@ -564,7 +538,7 @@ export default async function HomePage() {
             <SectionLabel className="mb-7">About Yardie</SectionLabel>
             <h2
               className="font-display text-bark mb-9 text-balance"
-              style={{ fontSize: 'clamp(2rem,3.4vw,3rem)', lineHeight: '1.1', fontWeight: 300 }}
+              style={{ fontSize: 'clamp(2rem,3.4vw,3rem)', lineHeight: '1.1', fontWeight: 500 }}
             >
               Founded in Greenville.<br />
               <em>Rooted in craftsmanship.</em>
@@ -578,7 +552,7 @@ export default async function HomePage() {
             <div className="grid grid-cols-3 gap-8 mb-12 pt-10" style={{ borderTop: '1px solid var(--color-border-light)' }}>
               {([['100+', 'Clients Served'], ['20+', 'Years Experience'], ['30+', 'Team Members']] as const).map(([num, label]) => (
                 <div key={label}>
-                  <p className="font-display text-bark" style={{ fontSize: 'clamp(1.8rem,2.8vw,2.75rem)', fontWeight: 300, lineHeight: '1' }}>{num}</p>
+                  <p className="font-display text-bark" style={{ fontSize: 'clamp(1.8rem,2.8vw,2.75rem)', fontWeight: 500, lineHeight: '1' }}>{num}</p>
                   <p className="label mt-2">{label}</p>
                 </div>
               ))}
@@ -619,7 +593,7 @@ export default async function HomePage() {
               <h2
                 id="perspectives-heading"
                 className="font-display text-cream"
-                style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 300 }}
+                style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 500 }}
               >
                 Ideas from the studio
               </h2>
@@ -736,7 +710,7 @@ export default async function HomePage() {
               <h2
                 id="instagram-heading"
                 className="font-display text-bark"
-                style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 300 }}
+                style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 500 }}
               >
                 @yardiedesign
               </h2>
@@ -798,7 +772,7 @@ export default async function HomePage() {
           >
             <div className="lg:col-span-7">
               <SectionLabel className="mb-4">Service Area</SectionLabel>
-              <p className="font-display text-bark" style={{ fontSize: 'clamp(1.2rem,2vw,1.6rem)', fontWeight: 300, lineHeight: '1.45' }}>
+              <p className="font-display text-bark" style={{ fontSize: 'clamp(1.2rem,2vw,1.6rem)', fontWeight: 500, lineHeight: '1.45' }}>
                 Proudly serving Greenville, Winterville, Farmville,<br className="hidden lg:block" /> Ayden, and the greater Pitt County region.
               </p>
             </div>
@@ -825,7 +799,7 @@ export default async function HomePage() {
               <h2
                 id="areas-heading"
                 className="font-display text-bark"
-                style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 300 }}
+                style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 500 }}
               >
                 Serving Eastern<br /><em>North Carolina</em>
               </h2>
@@ -890,7 +864,7 @@ export default async function HomePage() {
               <h2
                 id="faq-heading"
                 className="font-display text-bark text-balance"
-                style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', lineHeight: '1.08', fontWeight: 300 }}
+                style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', lineHeight: '1.08', fontWeight: 500 }}
               >
                 Everything you&apos;d want to know before we begin
               </h2>

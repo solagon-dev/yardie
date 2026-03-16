@@ -115,7 +115,7 @@ export default function LocationPage({ location }: Props) {
               style={{
                 fontSize: 'clamp(1.9rem,6.5vw,6rem)',
                 lineHeight: '1.02',
-                fontWeight: 300,
+                fontWeight: 500,
                 maxWidth: '820px',
                 animationDelay: '0.1s',
                 animationFillMode: 'forwards',
@@ -211,7 +211,7 @@ export default function LocationPage({ location }: Props) {
               <div key={label}>
                 <p
                   className="font-display text-bark leading-none"
-                  style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 300 }}
+                  style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 500 }}
                 >
                   {val}
                 </p>
@@ -251,7 +251,7 @@ export default function LocationPage({ location }: Props) {
                   <div className="lg:col-span-1 hidden lg:flex items-center">
                     <span
                       className="font-display text-warm-stone select-none"
-                      style={{ fontSize: '2.2rem', fontWeight: 300, lineHeight: 1 }}
+                      style={{ fontSize: '2.2rem', fontWeight: 500, lineHeight: 1 }}
                       aria-hidden="true"
                     >
                       {s.num}
@@ -298,7 +298,7 @@ export default function LocationPage({ location }: Props) {
         <div className="absolute inset-0 flex items-center justify-center px-8">
           <p
             className="font-display text-cream text-center italic text-balance"
-            style={{ fontSize: 'clamp(1.25rem,2.5vw,2rem)', fontWeight: 300, maxWidth: '740px', lineHeight: '1.45' }}
+            style={{ fontSize: 'clamp(1.25rem,2.5vw,2rem)', fontWeight: 500, maxWidth: '740px', lineHeight: '1.45' }}
           >
             &ldquo;{location.localStatement}&rdquo;
           </p>
@@ -380,7 +380,7 @@ export default function LocationPage({ location }: Props) {
                     <div key={title} className="flex gap-5">
                       <span
                         className="font-display text-warm-stone select-none flex-shrink-0"
-                        style={{ fontSize: '1.8rem', fontWeight: 300, lineHeight: 1, marginTop: '2px' }}
+                        style={{ fontSize: '1.8rem', fontWeight: 500, lineHeight: 1, marginTop: '2px' }}
                         aria-hidden="true"
                       >
                         {String(i + 1).padStart(2, '0')}
@@ -408,7 +408,7 @@ export default function LocationPage({ location }: Props) {
             <SectionLabel light className="mb-5">Design Visualization</SectionLabel>
             <h2
               className="font-display text-cream mb-7 text-balance"
-              style={{ fontSize: 'clamp(1.8rem,3vw,2.8rem)', lineHeight: '1.1', fontWeight: 300 }}
+              style={{ fontSize: 'clamp(1.8rem,3vw,2.8rem)', lineHeight: '1.1', fontWeight: 500 }}
             >
               You&apos;ll see your {location.name} space before we build it.
             </h2>
@@ -508,7 +508,7 @@ export default function LocationPage({ location }: Props) {
           <SectionLabel light className="mb-6">Get Started in {location.name}</SectionLabel>
           <h2
             className="font-display text-cream text-balance mx-auto mb-8"
-            style={{ fontSize: 'clamp(2rem,4vw,3.5rem)', lineHeight: '1.1', fontWeight: 300, maxWidth: '680px' }}
+            style={{ fontSize: 'clamp(2rem,4vw,3.5rem)', lineHeight: '1.1', fontWeight: 500, maxWidth: '680px' }}
           >
             Ready to transform your {location.name} property?
           </h2>

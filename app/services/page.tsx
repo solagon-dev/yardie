@@ -34,7 +34,7 @@ export default function ServicesPage() {
             style={{
               fontSize: 'clamp(2.8rem,6vw,5.5rem)',
               lineHeight: '1.02',
-              fontWeight: 300,
+              fontWeight: 500,
               maxWidth: '700px',
               animationDelay: '0.1s',
               animationFillMode: 'forwards',
@@ -64,7 +64,7 @@ export default function ServicesPage() {
               >
                 {/* Number */}
                 <div className="lg:col-span-1 hidden lg:block">
-                  <span className="font-display text-warm-stone group-hover:text-moss transition-colors duration-300" style={{ fontSize: '2.5rem', fontWeight: 300, lineHeight: '1' }} aria-hidden="true">
+                  <span className="font-display text-warm-stone group-hover:text-moss transition-colors duration-300" style={{ fontSize: '2.5rem', fontWeight: 500, lineHeight: '1' }} aria-hidden="true">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                 </div>

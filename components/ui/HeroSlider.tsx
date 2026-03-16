@@ -77,7 +77,7 @@ export default function HeroSlider({ slides }: Props) {
         className="absolute inset-0 z-10 pointer-events-none"
         style={{
           background:
-            'linear-gradient(to top, rgba(26,24,20,0.80) 0%, rgba(26,24,20,0.28) 35%, rgba(26,24,20,0.22) 60%, rgba(26,24,20,0.65) 100%)',
+            'linear-gradient(to top, rgba(26,24,20,0.85) 0%, rgba(26,24,20,0.52) 35%, rgba(26,24,20,0.48) 60%, rgba(26,24,20,0.70) 100%)',
         }}
       />
       {/* ── Top Nav Protection Gradient (mobile) ── */}
@@ -97,68 +97,85 @@ export default function HeroSlider({ slides }: Props) {
           paddingBottom: 'clamp(4.5rem,7vw,6rem)',
         }}
       >
-        {/* Top anchor — brand / location label */}
-        <div className="max-w-[1320px] mx-auto w-full">
-          <p
-            className="label-light animate-fade-up opacity-0"
-            style={{ animationFillMode: 'forwards' }}
-          >
-            Yardie Design — Est. Greenville, NC
-          </p>
-        </div>
+        {/* Top spacer — pushes content to bottom */}
+        <div className="flex-1" />
 
-        {/* Center — headline, the visual centerpiece */}
-        <div className="max-w-[1320px] mx-auto w-full flex-1 flex items-center">
-          <h1
-            className="font-display text-cream animate-fade-up opacity-0"
-            style={{
-              fontSize: 'clamp(3rem,6.5vw,6.5rem)',
-              lineHeight: '0.95',
-              fontWeight: 300,
-              letterSpacing: '-0.02em',
-              maxWidth: '760px',
-              animationDelay: '0.12s',
-              animationFillMode: 'forwards',
-            }}
-          >
-            Transforming Outdoor
-            <br />
-            <em>Living Spaces</em>
-          </h1>
-        </div>
+        {/* Bottom — headline + CTAs anchored bottom-left, descriptor bottom-right */}
+        <div className="max-w-[1320px] mx-auto w-full flex flex-col sm:flex-row sm:items-end justify-between gap-8 sm:gap-12">
 
-        {/* Bottom row — CTAs left, descriptor right */}
-        <div className="max-w-[1320px] mx-auto w-full flex flex-col sm:flex-row sm:items-end justify-between gap-8">
-          <div
-            className="flex flex-wrap gap-3 animate-fade-up opacity-0"
-            style={{ animationDelay: '0.28s', animationFillMode: 'forwards' }}
-          >
-            <Link
-              href="/consultation"
-              className="block sm:inline-block text-center w-full sm:w-auto bg-cream text-bark text-[10px] tracking-[0.18em] uppercase font-[500] px-9 py-[15px] transition-all duration-300 hover:bg-warm-stone"
-              style={{ borderRadius: '2px' }}
+          {/* Left column — label → headline → rule → CTAs */}
+          <div className="flex flex-col">
+            {/* Overline label */}
+            <p
+              className="label-light animate-fade-up opacity-0"
+              style={{ animationFillMode: 'forwards', marginBottom: 'clamp(1rem,2vw,1.5rem)' }}
             >
-              Schedule Consultation
-            </Link>
-            <Link
-              href="/work"
-              className="block sm:inline-block text-center w-full sm:w-auto border border-[rgba(248,244,238,0.38)] text-cream text-[10px] tracking-[0.18em] uppercase font-[500] px-9 py-[15px] transition-all duration-300 hover:border-[rgba(248,244,238,0.8)] hover:bg-[rgba(248,244,238,0.06)]"
-              style={{ borderRadius: '2px' }}
+              Yardie Design — Est. Greenville, NC
+            </p>
+
+            {/* Headline */}
+            <h1
+              className="font-display text-cream animate-fade-up opacity-0"
+              style={{
+                fontSize: 'clamp(2.75rem,5.5vw,5.75rem)',
+                lineHeight: '1.06',
+                fontWeight: 500,
+                letterSpacing: '-0.025em',
+                maxWidth: '680px',
+                animationDelay: '0.1s',
+                animationFillMode: 'forwards',
+              }}
             >
-              View Our Work
-            </Link>
+              Transforming Outdoor
+              <br />
+              <em>Living Spaces</em>
+            </h1>
+
+            {/* Thin rule separator */}
+            <div
+              className="animate-fade-up opacity-0"
+              style={{
+                width: '40px',
+                height: '1px',
+                background: 'rgba(248,244,238,0.3)',
+                margin: 'clamp(1.25rem,2.5vw,2rem) 0',
+                animationDelay: '0.22s',
+                animationFillMode: 'forwards',
+              }}
+            />
+
+            {/* CTAs */}
+            <div
+              className="flex flex-wrap gap-3 animate-fade-up opacity-0"
+              style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}
+            >
+              <Link
+                href="/consultation"
+                className="block sm:inline-block text-center w-full sm:w-auto bg-cream text-bark text-[10px] tracking-[0.18em] uppercase font-[500] px-9 py-[15px] transition-all duration-300 hover:bg-warm-stone"
+                style={{ borderRadius: '2px' }}
+              >
+                Schedule Consultation
+              </Link>
+              <Link
+                href="/work"
+                className="block sm:inline-block text-center w-full sm:w-auto border border-[rgba(248,244,238,0.38)] text-cream text-[10px] tracking-[0.18em] uppercase font-[500] px-9 py-[15px] transition-all duration-300 hover:border-[rgba(248,244,238,0.8)] hover:bg-[rgba(248,244,238,0.06)]"
+                style={{ borderRadius: '2px' }}
+              >
+                View Our Work
+              </Link>
+            </div>
           </div>
 
-          {/* Descriptor — secondary, right-aligned, desktop only */}
+          {/* Right column — descriptor, desktop only, vertically aligns to bottom of CTA row */}
           <p
-            className="hidden lg:block text-right animate-fade-up opacity-0"
+            className="hidden lg:block text-right animate-fade-up opacity-0 flex-shrink-0"
             style={{
               fontSize: '12px',
-              color: 'rgba(248,244,238,0.38)',
-              lineHeight: '1.85',
-              maxWidth: '260px',
+              color: 'rgba(248,244,238,0.35)',
+              lineHeight: '1.9',
+              maxWidth: '240px',
               letterSpacing: '0.01em',
-              animationDelay: '0.4s',
+              animationDelay: '0.42s',
               animationFillMode: 'forwards',
             }}
           >

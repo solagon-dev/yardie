@@ -37,7 +37,7 @@ export default function Footer() {
             <p className="label-light mb-8">Greenville, NC &amp; Surrounding Areas</p>
             <h2
               className="font-display text-cream text-balance"
-              style={{ fontSize: 'clamp(2.2rem,4.5vw,4rem)', lineHeight: '1.04', fontWeight: 300 }}
+              style={{ fontSize: 'clamp(2.2rem,4.5vw,4rem)', lineHeight: '1.04', fontWeight: 500 }}
             >
               Ready to Transform<br /><em>Your Outdoor Space?</em>
             </h2>

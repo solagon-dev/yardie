@@ -11,7 +11,7 @@ export default function PrivacyPolicyPage() {
     <div className="bg-cream pt-[72px] min-h-screen">
       <div className="max-w-[720px] mx-auto px-6 py-20 lg:py-28">
         <SectionLabel className="mb-6">Legal</SectionLabel>
-        <h1 className="font-display text-bark mb-12" style={{ fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 300 }}>
+        <h1 className="font-display text-bark mb-12" style={{ fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 500 }}>
           Privacy Policy
         </h1>
         <div className="space-y-8 text-clay text-[14px] leading-[1.8]">

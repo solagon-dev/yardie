@@ -12,7 +12,7 @@ export default function NotFound() {
       <div className="text-center max-w-[480px]">
         <p
           className="font-display text-warm-stone select-none mb-6"
-          style={{ fontSize: 'clamp(6rem,14vw,12rem)', lineHeight: '1', fontWeight: 300 }}
+          style={{ fontSize: 'clamp(6rem,14vw,12rem)', lineHeight: '1', fontWeight: 500 }}
           aria-hidden="true"
         >
           404

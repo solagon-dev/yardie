@@ -61,7 +61,7 @@ export default function ConsultationContent() {
             style={{
               fontSize: 'clamp(2rem,5.5vw,5rem)',
               lineHeight: '1.02',
-              fontWeight: 300,
+              fontWeight: 500,
               maxWidth: '660px',
               animationDelay: '0.1s',
               animationFillMode: 'forwards',

@@ -202,7 +202,7 @@ export default function ProjectForm({ initial }: { initial?: Partial<ProjectData
               ? 'border-b-2 border-[#DC5050]'
               : 'border-b border-[#E8E4DC] focus:border-[#9AA880]'
           }`}
-          style={{ fontFamily: 'var(--font-display, Georgia), serif', fontSize: 'clamp(1.5rem,2.2vw,1.9rem)', fontWeight: 300 }}
+          style={{ fontFamily: 'var(--font-display, Georgia), serif', fontSize: 'clamp(1.5rem,2.2vw,1.9rem)', fontWeight: 500 }}
         />
         {titleError && <p className="text-[#DC5050] text-[11px] mt-1.5">A project title is required before saving.</p>}
       </div>

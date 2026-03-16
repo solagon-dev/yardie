@@ -30,7 +30,7 @@ export default function FAQAccordion({ items }: { items: AccordionItem[] }) {
                 </span>
                 <h3
                   className="font-display text-bark text-balance group-hover:text-moss transition-colors duration-300"
-                  style={{ fontSize: 'clamp(1.05rem,1.5vw,1.25rem)', fontWeight: 300, lineHeight: '1.25' }}
+                  style={{ fontSize: 'clamp(1.05rem,1.5vw,1.25rem)', fontWeight: 500, lineHeight: '1.25' }}
                 >
                   {item.question}
                 </h3>

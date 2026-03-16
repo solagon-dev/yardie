@@ -33,7 +33,7 @@ export default function FAQPage() {
             style={{
               fontSize: 'clamp(2.5rem,5.5vw,5rem)',
               lineHeight: '1.02',
-              fontWeight: 300,
+              fontWeight: 500,
               maxWidth: '620px',
               animationDelay: '0.1s',
               animationFillMode: 'forwards',

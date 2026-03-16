@@ -47,7 +47,7 @@ export default async function InsightsPage() {
               style={{
                 fontSize: 'clamp(3rem,8vw,8rem)',
                 lineHeight: '0.95',
-                fontWeight: 300,
+                fontWeight: 500,
                 animationDelay: '0.08s',
                 animationFillMode: 'forwards',
               }}

@@ -65,7 +65,7 @@ export default function ServiceAreasPage() {
               style={{
                 fontSize: 'clamp(3rem,8vw,8rem)',
                 lineHeight: '0.95',
-                fontWeight: 300,
+                fontWeight: 500,
                 maxWidth: '900px',
                 animationDelay: '0.08s',
                 animationFillMode: 'forwards',
@@ -101,7 +101,7 @@ export default function ServiceAreasPage() {
             >
               <div className="lg:col-span-6">
                 <SectionLabel className="mb-4">Our Base</SectionLabel>
-                <p className="font-display text-bark" style={{ fontSize: 'clamp(1.3rem,2.2vw,1.9rem)', fontWeight: 300, lineHeight: '1.45' }}>
+                <p className="font-display text-bark" style={{ fontSize: 'clamp(1.3rem,2.2vw,1.9rem)', fontWeight: 500, lineHeight: '1.45' }}>
                   Headquartered at 5036 Winterville Parkway, Winterville — serving Greenville, Pitt County, and communities throughout Eastern North Carolina.
                 </p>
               </div>
@@ -174,7 +174,7 @@ export default function ServiceAreasPage() {
                     </p>
                     <h3
                       className="font-display text-cream transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1"
-                      style={{ fontSize: 'clamp(1.3rem,1.8vw,1.65rem)', fontWeight: 300, lineHeight: '1.1' }}
+                      style={{ fontSize: 'clamp(1.3rem,1.8vw,1.65rem)', fontWeight: 500, lineHeight: '1.1' }}
                     >
                       {loc.fullName}
                     </h3>
@@ -199,7 +199,7 @@ export default function ServiceAreasPage() {
             <SectionLabel light className="mb-5">What We Offer</SectionLabel>
             <h2
               className="font-display text-cream mb-8"
-              style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', lineHeight: '1.1', fontWeight: 300 }}
+              style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', lineHeight: '1.1', fontWeight: 500 }}
             >
               Five design disciplines. One cohesive outdoor environment.
             </h2>
@@ -239,7 +239,7 @@ export default function ServiceAreasPage() {
           <SectionLabel className="mb-6">Start the Conversation</SectionLabel>
           <h2
             className="font-display text-bark text-balance mx-auto mb-8"
-            style={{ fontSize: 'clamp(2rem,4vw,3.5rem)', lineHeight: '1.1', fontWeight: 300, maxWidth: '660px' }}
+            style={{ fontSize: 'clamp(2rem,4vw,3.5rem)', lineHeight: '1.1', fontWeight: 500, maxWidth: '660px' }}
           >
             Ready to begin your project, wherever you are?
           </h2>

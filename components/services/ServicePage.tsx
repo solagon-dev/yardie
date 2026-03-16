@@ -44,7 +44,7 @@ export default function ServicePage({ service, faqs }: ServicePageProps) {
               style={{
                 fontSize: 'clamp(1.9rem,6.5vw,6rem)',
                 lineHeight: '1.02',
-                fontWeight: 300,
+                fontWeight: 500,
                 maxWidth: '760px',
                 animationDelay: '0.1s',
                 animationFillMode: 'forwards',
@@ -123,7 +123,7 @@ export default function ServicePage({ service, faqs }: ServicePageProps) {
               <RevealOnScroll key={spec.title} delay={i * 0.07}>
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 py-8 lg:py-10 items-baseline">
                   <div className="lg:col-span-1 hidden lg:block">
-                    <span className="font-display text-warm-stone select-none" style={{ fontSize: '2.5rem', fontWeight: 300, lineHeight: '1' }} aria-hidden="true">
+                    <span className="font-display text-warm-stone select-none" style={{ fontSize: '2.5rem', fontWeight: 500, lineHeight: '1' }} aria-hidden="true">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                   </div>
@@ -210,7 +210,7 @@ export default function ServicePage({ service, faqs }: ServicePageProps) {
         <div className="absolute inset-0 flex items-center justify-center">
           <p
             className="font-display text-cream text-center italic text-balance px-8"
-            style={{ fontSize: 'clamp(1.3rem,2.5vw,2rem)', fontWeight: 300, maxWidth: '680px' }}
+            style={{ fontSize: 'clamp(1.3rem,2.5vw,2rem)', fontWeight: 500, maxWidth: '680px' }}
           >
             &ldquo;{service.tagline}&rdquo;
           </p>
@@ -298,7 +298,7 @@ export default function ServicePage({ service, faqs }: ServicePageProps) {
           <SectionLabel light className="mb-6">Get Started</SectionLabel>
           <h2
             className="font-display text-cream text-balance mx-auto mb-8"
-            style={{ fontSize: 'clamp(2rem,4vw,3.5rem)', lineHeight: '1.1', fontWeight: 300, maxWidth: '640px' }}
+            style={{ fontSize: 'clamp(2rem,4vw,3.5rem)', lineHeight: '1.1', fontWeight: 500, maxWidth: '640px' }}
           >
             Ready to start your {service.name.toLowerCase()} project?
           </h2>
