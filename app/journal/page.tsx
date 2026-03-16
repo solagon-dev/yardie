@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import RevealOnScroll from '@/components/ui/RevealOnScroll';
 import SectionLabel from '@/components/ui/SectionLabel';
-import { posts, type ServiceTag } from '@/lib/data';
+import { posts } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Journal — Exterior Design Insights | Yardie Design',
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     'Design insights, project stories, and outdoor living ideas from the Yardie Design team in Greenville, NC.',
 };
 
-const categories: ServiceTag[] = ['Masonry', 'Landscapes', 'Hardscapes', 'Lighting', 'Irrigation'];
+const categories = ['Masonry', 'Landscapes', 'Hardscapes', 'Lighting', 'Irrigation'] as const;
 
 export default function JournalPage() {
   const featured = posts[0];
