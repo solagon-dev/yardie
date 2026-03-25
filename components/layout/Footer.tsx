@@ -213,7 +213,7 @@ export default function Footer() {
           <p className="text-dark-muted text-xs tracking-[0.06em]">
             © {new Date().getFullYear()} Yardie Design. All rights reserved.
           </p>
-          <div className="flex gap-6">
+          <div className="flex items-center gap-6">
             <Link
               href="/legal/privacy-policy"
               className="text-dark-muted text-xs tracking-[0.06em] hover:text-cream transition-colors"
@@ -226,6 +226,17 @@ export default function Footer() {
             >
               Terms of Service
             </Link>
+            <span className="text-dark-muted text-xs tracking-[0.06em]">
+              Site by{' '}
+              <a
+                href="https://www.solagon.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-cream transition-colors"
+              >
+                Solagon
+              </a>
+            </span>
           </div>
         </div>
       </div>
