@@ -1,18 +1,4 @@
-import { PrismaPg } from '@prisma/adapter-pg';
-import { PrismaClient } from '@prisma/client';
-
-const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
-
-function createClient() {
-  const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
-  return new PrismaClient({
-    adapter,
-    log: process.env.NODE_ENV === 'development' ? ['error', 'warn'] : ['error'],
-  });
-}
-
-export const db = globalForPrisma.prisma ?? createClient();
-
-if (process.env.NODE_ENV !== 'production') {
-  globalForPrisma.prisma = db;
-}
+// Database integration is not enabled on this build. Stub kept so that
+// any legacy code path that imports `prisma` still type-checks. To wire
+// up Neon/Postgres later, drop a real Prisma client here.
+export const prisma = null as unknown as never;

@@ -1,63 +1,109 @@
-import Link from 'next/link';
+import Link from "next/link";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
-interface ButtonProps {
-  href?: string;
-  onClick?: () => void;
-  children: React.ReactNode;
-  variant?: 'primary' | 'outline' | 'ghost';
-  size?: 'sm' | 'md' | 'lg';
-  className?: string;
-  type?: 'button' | 'submit' | 'reset';
-  external?: boolean;
-  'aria-label'?: string;
-}
+type Variant = "primary" | "secondary" | "ghost-light" | "ghost-dark";
+type Size = "md" | "lg";
+
+const variants: Record<Variant, string> = {
+  primary:
+    "bg-bark text-cream hover:bg-earth border border-bark hover:border-earth",
+  secondary:
+    "bg-transparent text-bark border border-bark hover:bg-bark hover:text-cream",
+  "ghost-light":
+    "bg-cream/95 text-bark border border-bark/15 hover:bg-stone hover:border-bark/25",
+  "ghost-dark":
+    "bg-transparent text-cream border border-cream/30 hover:bg-cream/10 hover:border-cream/55",
+};
+
+const sizes: Record<Size, string> = {
+  md: "px-7 py-3.5 text-[12px]",
+  lg: "px-9 py-4 text-[13px]",
+};
 
 const base =
-  'inline-block font-sans font-[500] tracking-[0.16em] uppercase text-[10px] transition-all duration-300';
+  "group inline-flex items-center justify-center gap-2.5 font-medium tracking-[0.2em] uppercase transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moss focus-visible:ring-offset-2 focus-visible:ring-offset-cream";
 
-const variants = {
-  primary: 'bg-bark text-cream hover:bg-earth',
-  outline: 'border border-bark text-bark hover:bg-bark hover:text-cream',
-  ghost: 'border border-[rgba(248,244,238,0.35)] text-cream hover:border-[rgba(248,244,238,0.75)] hover:bg-[rgba(248,244,238,0.06)]',
+function Arrow() {
+  return (
+    <svg
+      className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
+      fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+    </svg>
+  );
+}
+
+type CommonProps = {
+  variant?: Variant;
+  size?: Size;
+  arrow?: boolean;
+  className?: string;
+  children: ReactNode;
 };
 
-const sizes = {
-  sm: 'px-5 py-[10px]',
-  md: 'px-8 py-[14px]',
-  lg: 'px-10 py-[18px]',
-};
+type LinkButtonProps = CommonProps & { href: string; external?: boolean } & Omit<
+  ComponentPropsWithoutRef<"a">, "href" | "className" | "children"
+>;
 
-export default function Button({
+export function Button({
+  variant = "primary",
+  size = "lg",
+  arrow = false,
   href,
-  onClick,
+  external,
+  className = "",
   children,
-  variant = 'primary',
-  size = 'md',
-  className = '',
-  type = 'button',
-  external = false,
-  'aria-label': ariaLabel,
-}: ButtonProps) {
-  const classes = `${base} ${variants[variant]} ${sizes[size]} ${className}`;
+  ...rest
+}: LinkButtonProps) {
+  const cls = `${base} ${sizes[size]} ${variants[variant]} ${className}`.trim();
 
-  if (href) {
-    if (external) {
-      return (
-        <a href={href} className={classes} target="_blank" rel="noopener noreferrer" aria-label={ariaLabel}>
-          {children}
-        </a>
-      );
-    }
+  if (external || /^(https?:|tel:|mailto:)/.test(href)) {
     return (
-      <Link href={href} className={classes} aria-label={ariaLabel}>
-        {children}
-      </Link>
+      <a href={href} className={cls} {...rest}>
+        {children}{arrow && <Arrow />}
+      </a>
     );
   }
 
   return (
-    <button type={type} onClick={onClick} className={classes} aria-label={ariaLabel}>
-      {children}
-    </button>
+    <Link href={href} className={cls} {...rest}>
+      {children}{arrow && <Arrow />}
+    </Link>
   );
 }
+
+export function TextLink({
+  href,
+  children,
+  tone = "dark",
+  arrow = true,
+  className = "",
+}: {
+  href: string;
+  children: ReactNode;
+  tone?: "dark" | "light";
+  arrow?: boolean;
+  className?: string;
+}) {
+  const toneCls =
+    tone === "dark"
+      ? "text-bark hover:text-moss"
+      : "text-cream hover:text-stone";
+  const ruleCls =
+    tone === "dark"
+      ? "bg-bark group-hover:bg-moss"
+      : "bg-cream/70 group-hover:bg-stone";
+  return (
+    <Link
+      href={href}
+      className={`group inline-flex items-center justify-center gap-3 text-[11px] tracking-[0.22em] uppercase font-medium transition-colors duration-300 ${toneCls} ${className}`}
+    >
+      <span aria-hidden className={`block h-px w-6 transition-all duration-500 ease-out group-hover:w-10 ${ruleCls}`} />
+      {children}
+      {arrow && <Arrow />}
+    </Link>
+  );
+}
+
+export default Button;

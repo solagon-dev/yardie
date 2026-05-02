@@ -136,8 +136,8 @@ export default function LocationPage({ location }: Props) {
               {location.heroSubline}
             </p>
             <div className="animate-fade-up opacity-0 flex flex-wrap gap-3" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
-              <Button href="/consultation" variant="primary" size="md">Schedule Consultation</Button>
-              <Button href="/work" variant="ghost" size="md">View Our Work</Button>
+              <Button href="/quote" variant="primary" size="md">Start a project</Button>
+              <Button href="/gallery" variant="ghost" size="md">View Our Work</Button>
             </div>
           </div>
         </div>
@@ -179,7 +179,7 @@ export default function LocationPage({ location }: Props) {
               </p>
             ))}
             <div className="mt-10">
-              <Button href="/consultation" variant="outline" size="md">Begin Your Project</Button>
+              <Button href="/quote" variant="outline" size="md">Begin Your Project</Button>
             </div>
           </RevealOnScroll>
 
@@ -393,7 +393,7 @@ export default function LocationPage({ location }: Props) {
                   ))}
                 </div>
                 <div className="mt-8">
-                  <Button href="/consultation" variant="outline" size="md">Schedule Your Consultation</Button>
+                  <Button href="/quote" variant="outline" size="md">Schedule Your Consultation</Button>
                 </div>
               </div>
             </div>
@@ -415,12 +415,12 @@ export default function LocationPage({ location }: Props) {
             <p className="text-[rgba(248,244,238,0.62)] text-[15px] leading-[1.8] mb-10 max-w-[480px]">
               Every Yardie project includes a complete visual presentation of your outdoor space — accurate to the site, detailed enough to make real decisions. You approve the design before a stone is placed or a plant is selected.
             </p>
-            <Button href="/consultation" variant="primary" size="md">Begin Your Design</Button>
+            <Button href="/quote" variant="primary" size="md">Begin Your Design</Button>
           </RevealOnScroll>
           <RevealOnScroll delay={0.15}>
             <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
               <Image
-                src="/minshew-2(3D).png"
+                src="/renderings/minshew-rendering-02.png"
                 alt="Yardie Design 3D visualization example"
                 fill
                 className="object-cover"
@@ -516,8 +516,8 @@ export default function LocationPage({ location }: Props) {
             Initial consultations are complimentary — no cost, no obligation. We&apos;ll visit your {location.name} property, listen to your vision, and develop a plan tailored specifically to your space and goals.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button href="/consultation" variant="primary" size="lg">Schedule a Consultation</Button>
-            <Button href="/work" variant="ghost" size="lg">View Our Portfolio</Button>
+            <Button href="/quote" variant="primary" size="lg">Schedule a Consultation</Button>
+            <Button href="/gallery" variant="ghost" size="lg">View Our Portfolio</Button>
           </div>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
             <a href="tel:+12527567788" className="text-[rgba(248,244,238,0.45)] text-[13px] hover:text-cream transition-colors tracking-[0.04em]">

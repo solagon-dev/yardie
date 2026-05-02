@@ -128,7 +128,7 @@ export default function HeroSlider({ slides }: Props) {
             >
               Transforming Outdoor
               <br />
-              <em>Living Spaces</em>
+              Living spaces
             </h1>
 
             {/* Thin rule separator */}
@@ -150,14 +150,14 @@ export default function HeroSlider({ slides }: Props) {
               style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}
             >
               <Link
-                href="/consultation"
+                href="/quote"
                 className="block sm:inline-block text-center w-full sm:w-auto bg-cream text-bark text-[10px] tracking-[0.18em] uppercase font-[500] px-9 py-[15px] transition-all duration-300 hover:bg-warm-stone"
                 style={{ borderRadius: '2px' }}
               >
-                Schedule Consultation
+                Start a project
               </Link>
               <Link
-                href="/work"
+                href="/gallery"
                 className="block sm:inline-block text-center w-full sm:w-auto border border-[rgba(248,244,238,0.38)] text-cream text-[10px] tracking-[0.18em] uppercase font-[500] px-9 py-[15px] transition-all duration-300 hover:border-[rgba(248,244,238,0.8)] hover:bg-[rgba(248,244,238,0.06)]"
                 style={{ borderRadius: '2px' }}
               >

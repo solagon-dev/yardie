@@ -1,23 +1,19 @@
-import type { Metadata } from 'next';
-import ServicePage from '@/components/services/ServicePage';
-import { getServiceBySlug, faqs } from '@/lib/data';
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import ServicePage from "@/components/services/ServicePage";
+import { services } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: 'Irrigation Systems in Greenville, NC — Smart, Efficient Landscape Watering',
-  description:
-    'Custom irrigation system design, installation, and maintenance in Greenville, NC. Smart, efficient solutions that keep your landscape healthy year-round.',
-  alternates: {
-    canonical: 'https://www.yardiedesign.com/services/irrigation',
-  },
-  openGraph: {
-    title: 'Irrigation Systems — Yardie Design, Greenville NC',
-    description: 'Custom irrigation design, installation, and maintenance in Greenville, NC. Efficient systems that keep your landscape healthy year-round.',
-    images: [{ url: '/DSC04294.jpg', alt: 'Irrigation system installation by Yardie Design in Greenville NC' }],
-  },
-};
+const service = services.find((s) => s.slug === "irrigation")!;
 
-export default function IrrigationPage() {
-  const service = getServiceBySlug('irrigation')!;
-  const serviceFaqs = faqs.find((f) => f.category === 'Irrigation')!;
-  return <ServicePage service={service} faqs={serviceFaqs} />;
+export const metadata: Metadata = buildMetadata({
+  title: service.seoTitle,
+  description: service.seoDescription,
+  path: `/services/${service.slug}`,
+  keywords: ["irrigation Greenville NC", "smart irrigation Eastern NC", "drip irrigation Pitt County"],
+});
+
+export default function Page() {
+  if (!service) return notFound();
+  return <ServicePage service={service} />;
 }

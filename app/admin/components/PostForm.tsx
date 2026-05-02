@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ImageUpload from './ImageUpload';
 
-const CATEGORIES = ['Landscapes', 'Hardscapes', 'Masonry', 'Lighting', 'Irrigation', 'Design'];
+const CATEGORIES = ['Landscapes', 'Pavers & Hardscapes', 'Outdoor Kitchens', 'Masonry', 'Lighting', 'Irrigation', 'Design'];
 
 interface PostData {
   id?: string;
@@ -133,7 +133,7 @@ export default function PostForm({ initial }: { initial?: Partial<PostData> }) {
             type="button"
             onClick={() => handleSave('draft')}
             disabled={saving}
-            className="bg-white border border-[#D0C8BC] text-[#5C5548] text-[11px] tracking-[0.1em] uppercase font-[500] px-4 py-2 hover:border-[#8C8478] hover:text-[#1A1814] transition-colors disabled:opacity-50"
+            className="bg-limestone border border-[#D0C8BC] text-[#5C5548] text-[11px] tracking-[0.1em] uppercase font-[500] px-4 py-2 hover:border-[#8C8478] hover:text-[#1A1814] transition-colors disabled:opacity-50"
             style={{ borderRadius: '3px' }}
           >
             {isPublished ? 'Unpublish' : 'Save Draft'}
@@ -252,7 +252,7 @@ export default function PostForm({ initial }: { initial?: Partial<PostData> }) {
         {/* Sidebar */}
         <div className="space-y-4 lg:sticky lg:top-6 self-start">
 
-          <div className="bg-white border border-[#E8E4DC] overflow-hidden" style={{ borderRadius: '6px' }}>
+          <div className="bg-limestone border border-[#E8E4DC] overflow-hidden" style={{ borderRadius: '6px' }}>
             <div className="px-5 py-4 border-b border-[#F0ECE4] flex items-center justify-between">
               <h3 className="text-[11px] text-[#8C8478] tracking-[0.12em] uppercase font-[600]">Publishing</h3>
               <span
@@ -289,7 +289,7 @@ export default function PostForm({ initial }: { initial?: Partial<PostData> }) {
                 type="button"
                 onClick={() => handleSave('draft')}
                 disabled={saving}
-                className="w-full bg-white border border-[#D8D0C4] text-[#5C5548] text-[11px] tracking-[0.1em] uppercase font-[500] py-2 hover:border-[#8C8478] hover:text-[#1A1814] transition-colors disabled:opacity-50"
+                className="w-full bg-limestone border border-[#D8D0C4] text-[#5C5548] text-[11px] tracking-[0.1em] uppercase font-[500] py-2 hover:border-[#8C8478] hover:text-[#1A1814] transition-colors disabled:opacity-50"
                 style={{ borderRadius: '4px' }}
               >
                 {isPublished ? 'Revert to Draft' : 'Save as Draft'}
@@ -311,7 +311,7 @@ export default function PostForm({ initial }: { initial?: Partial<PostData> }) {
             </div>
           </div>
 
-          <div className="bg-white border border-[#E8E4DC] overflow-hidden" style={{ borderRadius: '6px' }}>
+          <div className="bg-limestone border border-[#E8E4DC] overflow-hidden" style={{ borderRadius: '6px' }}>
             <div className="px-5 py-4 border-b border-[#F0ECE4]">
               <h3 className="text-[11px] text-[#8C8478] tracking-[0.12em] uppercase font-[600]">Category</h3>
               <p className="text-[11px] text-[#C0B8B0] mt-1">Choose the best fit</p>
@@ -324,7 +324,7 @@ export default function PostForm({ initial }: { initial?: Partial<PostData> }) {
                       data.category === cat ? 'border-[#7A8C5A] bg-[#7A8C5A]' : 'border-[#D0C8BC] group-hover:border-[#9AA880]'
                     }`}
                   >
-                    {data.category === cat && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                    {data.category === cat && <div className="w-1.5 h-1.5 rounded-full bg-limestone" />}
                   </div>
                   <input type="radio" name="category" value={cat} checked={data.category === cat}
                     onChange={() => set('category', cat)} className="sr-only" />
@@ -335,7 +335,7 @@ export default function PostForm({ initial }: { initial?: Partial<PostData> }) {
           </div>
 
           {data.id && (
-            <div className="bg-white border border-[#EDE8E0]" style={{ borderRadius: '6px' }}>
+            <div className="bg-limestone border border-[#EDE8E0]" style={{ borderRadius: '6px' }}>
               <div className="px-5 py-3.5">
                 <button type="button" onClick={() => setShowDelete(true)}
                   className="text-[11px] text-[#C8A8A0] hover:text-[#DC5050] tracking-[0.03em] transition-colors flex items-center gap-2">
@@ -354,7 +354,7 @@ export default function PostForm({ initial }: { initial?: Partial<PostData> }) {
       {/* Delete modal */}
       {showDelete && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-6" style={{ background: 'rgba(26,24,20,0.65)', backdropFilter: 'blur(4px)' }}>
-          <div className="bg-white max-w-[400px] w-full p-8 shadow-2xl" style={{ borderRadius: '10px' }}>
+          <div className="bg-limestone max-w-[400px] w-full p-8 shadow-2xl" style={{ borderRadius: '10px' }}>
             <div className="w-11 h-11 bg-[rgba(220,80,80,0.09)] rounded-full flex items-center justify-center mb-5">
               <svg width="18" height="18" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path d="M7 4v3.5M7 10h.01" stroke="#DC5050" strokeWidth="1.4" strokeLinecap="round"/>
@@ -386,7 +386,7 @@ export default function PostForm({ initial }: { initial?: Partial<PostData> }) {
 
 // ── Sub-components ─────────────────────────────────────────────────────────────
 
-const inputClass = 'w-full bg-[#FDFCFB] border border-[#E0D8CC] text-[#1A1814] text-[13px] px-3.5 py-2.5 outline-none focus:border-[#9AA880] focus:bg-white transition-colors placeholder-[#C8C0B0]' as const;
+const inputClass = 'w-full bg-[#FDFCFB] border border-[#E0D8CC] text-[#1A1814] text-[13px] px-3.5 py-2.5 outline-none focus:border-[#9AA880] focus:bg-limestone transition-colors placeholder-[#C8C0B0]' as const;
 
 function Section({
   title,
@@ -401,7 +401,7 @@ function Section({
 }) {
   const [open, setOpen] = useState(defaultOpen);
   return (
-    <div className="bg-white border border-[#E8E4DC] overflow-hidden" style={{ borderRadius: '6px' }}>
+    <div className="bg-limestone border border-[#E8E4DC] overflow-hidden" style={{ borderRadius: '6px' }}>
       <button
         type="button"
         onClick={() => collapsible && setOpen(!open)}

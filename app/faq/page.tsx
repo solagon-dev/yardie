@@ -1,108 +1,70 @@
-import type { Metadata } from 'next';
-import RevealOnScroll from '@/components/ui/RevealOnScroll';
-import SectionLabel from '@/components/ui/SectionLabel';
-import Button from '@/components/ui/Button';
-import FAQAccordion from '@/components/ui/FAQAccordion';
-import { faqs } from '@/lib/data';
+import type { Metadata } from "next";
+import Link from "next/link";
+import Script from "next/script";
+import PageHero from "@/components/ui/PageHero";
+import FAQAccordion from "@/components/ui/FAQAccordion";
+import { faqsByCategory, company } from "@/lib/content";
+import { photos } from "@/lib/media";
+import { buildMetadata, faqSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: 'Frequently Asked Questions — Yardie Design, Greenville NC',
+export const metadata: Metadata = buildMetadata({
+  title: "FAQ — Yardie",
   description:
-    "Answers to common questions about exterior design, landscaping, hardscaping, masonry, lighting, and irrigation services from Yardie Design in Greenville, NC.",
-  alternates: {
-    canonical: 'https://www.yardiedesign.com/faq',
-  },
-  openGraph: {
-    title: 'FAQ — Yardie Design, Greenville NC',
-    description: 'Answers to common questions about exterior design and landscaping services in Greenville, NC.',
-    images: [{ url: '/DSC03551.jpg', alt: 'Yardie Design exterior design — Greenville NC' }],
-  },
-};
+    "Common questions about Yardie's services, process, materials, and how a project gets started. If your question isn't here, send us a message.",
+  path: "/faq",
+});
 
 export default function FAQPage() {
+  // Flatten all FAQ items for the schema.
+  const allFaqs = faqsByCategory.flatMap((c) => c.items);
+
   return (
     <>
-      {/* ── HERO ── */}
-      <section className="bg-cream-alt pt-[72px]" aria-label="FAQ hero">
-        <div className="max-w-[1320px] mx-auto px-6 lg:px-[clamp(24px,5vw,80px)] pt-20 pb-16 lg:pt-28 lg:pb-20">
-          <SectionLabel className="mb-8 animate-fade-up opacity-0" style={{ animationFillMode: 'forwards' }}>
-            Frequently Asked Questions
-          </SectionLabel>
-          <h1
-            className="font-display text-bark text-balance animate-fade-up opacity-0"
-            style={{
-              fontSize: 'clamp(2.5rem,5.5vw,5rem)',
-              lineHeight: '1.02',
-              fontWeight: 500,
-              maxWidth: '620px',
-              animationDelay: '0.1s',
-              animationFillMode: 'forwards',
-            }}
-          >
-            Common questions,<br /><em>clear answers.</em>
-          </h1>
-          <p
-            className="text-clay text-[15px] leading-[1.75] mt-8 max-w-[440px] animate-fade-up opacity-0"
-            style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}
-          >
-            We&apos;ve answered the questions we hear most often. Can&apos;t find what you&apos;re looking for?{' '}
-            <a href="mailto:hello@yardiedesign.com" className="text-bark hover:text-moss transition-colors underline underline-offset-2">
-              Email us directly.
-            </a>
-          </p>
-        </div>
-      </section>
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(allFaqs)) }}
+      />
 
-      {/* ── FAQ SECTIONS ── */}
-      <section className="bg-cream py-16 lg:py-24 px-6 lg:px-[clamp(24px,5vw,80px)]">
-        <div className="max-w-[1320px] mx-auto space-y-16 lg:space-y-24">
-          {faqs.map((category, i) => (
-            <RevealOnScroll key={category.category} delay={i * 0.05}>
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
-                <div className="lg:col-span-3">
-                  <SectionLabel className="mb-2">Service</SectionLabel>
-                  <h2
-                    className="font-display text-bark"
-                    style={{ fontSize: 'clamp(1.3rem,2vw,1.75rem)', fontWeight: 400, lineHeight: '1.2' }}
-                  >
-                    {category.category}
-                  </h2>
-                  <div className="mt-4">
-                    <Button
-                      href={`/services/${category.category.toLowerCase()}`}
-                      variant="outline"
-                      size="sm"
-                    >
-                      Learn More
-                    </Button>
-                  </div>
-                </div>
-                <div className="lg:col-span-9 border-t border-border-light">
-                  <FAQAccordion items={category.items} />
-                </div>
+      <PageHero
+        label="Frequently Asked"
+        headline="The questions we&rsquo;re asked"
+        italicTail="most often."
+        intro={`Plain answers to the questions that come up before, during, and after a project. If yours isn't here, write to us at ${company.email}.`}
+        image={photos.heroFlagstone}
+      />
+
+      <section className="bg-cream text-bark">
+        <div className="mx-auto max-w-[1100px] px-5 sm:px-8 lg:px-12 py-section">
+          {faqsByCategory.map((cat, i) => (
+            <div key={cat.category} className={i > 0 ? "mt-20 lg:mt-28" : ""}>
+              <h2 className="font-display text-4xl sm:text-5xl lg:text-[52px] leading-[1.04] tracking-tight font-light max-w-[14ch]">
+                {cat.category}
+              </h2>
+              <div className="mt-10">
+                <FAQAccordion items={cat.items} />
               </div>
-            </RevealOnScroll>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="bg-cream-alt py-20 lg:py-28 px-6 lg:px-[clamp(24px,5vw,80px)]">
-        <RevealOnScroll className="max-w-[1320px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-10 border border-border-light p-10 lg:p-14">
-          <div>
-            <SectionLabel className="mb-4">Still Have Questions?</SectionLabel>
-            <h2
-              className="font-display text-bark text-balance"
-              style={{ fontSize: 'clamp(1.4rem,2.2vw,2rem)', lineHeight: '1.2', fontWeight: 400, maxWidth: '460px' }}
-            >
-              The best way to understand what&apos;s possible for your property is a conversation.
-            </h2>
+      <section className="bg-cream-alt text-bark">
+        <div className="mx-auto max-w-[1100px] px-5 sm:px-8 lg:px-12 py-section text-center">
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-[60px] leading-[1.04] tracking-tight font-light max-w-[22ch] mx-auto">
+            Have a question
+            <span className="italic text-moss"> not answered here?</span>
+          </h2>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <Link href="/contact" className="inline-flex items-center justify-center px-9 py-4 bg-bark text-cream text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-earth transition-colors">
+              Send us a Message
+            </Link>
+            <a href={company.phoneTel} className="inline-flex items-center justify-center px-9 py-4 border border-bark text-bark text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-bark hover:text-cream transition-colors">
+              Call {company.phone}
+            </a>
           </div>
-          <div className="flex flex-wrap gap-4 flex-shrink-0">
-            <Button href="/consultation" variant="primary" size="md">Schedule a Consultation</Button>
-            <Button href="/contact" variant="outline" size="md">Send a Message</Button>
-          </div>
-        </RevealOnScroll>
+        </div>
       </section>
     </>
   );

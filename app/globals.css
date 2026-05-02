@@ -2,415 +2,264 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Design System Tokens ──────────────────────────────────────── */
-/* Font variables are injected by next/font in layout.tsx */
-:root {
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-sans:    'DM Sans', system-ui, sans-serif;
+/* ──────────────────────────────────────────────────────────
+   Yardie Design — Design System
+   Editorial. Architectural. Warm. Restrained.
+   ────────────────────────────────────────────────────────── */
 
+:root {
   /* Backgrounds */
-  --color-cream:       #F8F4EE;
-  --color-cream-alt:   #F0EBE2;
-  --color-warm-stone:  #E4DDD4;
+  --color-cream:        #F8F4EE;
+  --color-cream-alt:    #F0EBE2;
+  --color-stone:        #E4DDD4;
 
   /* Text */
-  --color-bark:        #1A1814;
-  --color-earth:       #3D3830;
-  --color-clay:        #6B5D50;
+  --color-bark:         #1A1814;
+  --color-earth:        #3D3830;
+  --color-clay:         #6B5D50;
 
-  /* Accent */
-  --color-moss:        #6B7A5C;
-  --color-moss-light:  #8A9B7A;
-  --color-moss-dark:   #556249;
+  /* Brand accent */
+  --color-moss:         #6B7A5C;
+  --color-moss-light:   #8A9B7A;
 
   /* Borders */
-  --color-border-warm: #C8BEB0;
+  --color-border:       #C8BEB0;
   --color-border-light: #E4DDD4;
 
-  /* Accent warm */
-  --color-terracotta:  #C17F5A;
+  /* Dark sections */
+  --color-dark-bg:      #1A1814;
+  --color-dark-surface: #252118;
+  --color-dark-text:    #F8F4EE;
+  --color-dark-muted:   #9E9488;
 
-  /* Transitions */
-  --ease-smooth-out:   cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-smooth:       cubic-bezier(0.4, 0, 0.2, 1);
-  --duration-fast:     0.2s;
-  --duration-base:     0.4s;
-  --duration-slow:     0.6s;
-}
+  /* Accent */
+  --color-terracotta:   #C17F5A;
 
-/* ─── Base Reset & Defaults ─────────────────────────────────────── */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  /* Motion */
+  --ease-smooth:        cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out:        cubic-bezier(0.4, 0, 0.2, 1);
+
+  --background: #F8F4EE;
+  --foreground: #3D3830;
 }
 
 html {
   scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: var(--font-sans);
-  background-color: var(--color-cream);
-  color: var(--color-earth);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.005em;
 }
 
-img,
-video {
-  max-width: 100%;
-  display: block;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-  background: none;
-  font-family: inherit;
-}
-
-/* ─── Typography Utilities ──────────────────────────────────────── */
+/* Editorial display — Cormorant Garamond */
 .font-display {
-  font-family: var(--font-display);
-}
-
-.font-sans {
-  font-family: var(--font-sans);
-}
-
-.text-balance {
-  text-wrap: balance;
-}
-
-/* Section label — DM Sans small caps overline */
-.label {
-  font-family: var(--font-sans);
-  font-size: 10px;
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
   font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--color-clay);
+  letter-spacing: -0.012em;
+}
+/* Override Tailwind's font-light on display type — keeps headings readable
+   instead of going wispy at 300. */
+.font-display.font-light { font-weight: 500; }
+.font-display.font-normal { font-weight: 600; }
+.font-display em,
+.font-display .italic {
+  font-style: italic;
 }
 
-.label-light {
-  font-family: var(--font-sans);
-  font-size: 10px;
+/* Section labels — small, tracked, uppercase */
+.label,
+.footer-label {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(248, 244, 238, 0.5);
 }
 
-/* ─── Scrollbar ─────────────────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-cream);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--color-border-warm);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-clay);
-}
-
-/* ─── Focus Styles ──────────────────────────────────────────────── */
-:focus-visible {
-  outline: 2px solid var(--color-moss);
-  outline-offset: 3px;
-}
-
-/* ─── Selection ─────────────────────────────────────────────────── */
-::selection {
-  background: var(--color-moss);
-  color: var(--color-cream);
-}
-
-/* ─── Prose / Editorial Body Copy ───────────────────────────────── */
-.prose-yardie {
-  font-family: var(--font-sans);
-  font-size: 1.0625rem;
-  line-height: 1.75;
-  color: var(--color-earth);
-}
-
-.prose-yardie p + p {
-  margin-top: 1.25em;
-}
-
-/* ─── Image Hover Scale ─────────────────────────────────────────── */
-.img-hover-scale {
-  overflow: hidden;
-}
-.img-hover-scale img {
-  transition: transform 0.7s var(--ease-smooth-out);
-  will-change: transform;
-}
-.img-hover-scale:hover img {
-  transform: scale(1.05);
-}
-
-/* ─── Card Hover Border ─────────────────────────────────────────── */
-.card-border-hover {
-  border: 1px solid var(--color-border-warm);
-  transition: border-color 0.3s var(--ease-smooth);
-}
-.card-border-hover:hover {
-  border-color: var(--color-moss);
-}
-
-/* ─── Divider Thin ───────────────────────────────────────────────── */
-.divider {
-  width: 48px;
-  height: 1px;
-  background: var(--color-border-warm);
-  margin: 0 auto;
-}
-
-/* ─── Parallax Container ────────────────────────────────────────── */
-.parallax-container {
-  overflow: hidden;
-}
-.parallax-inner {
-  will-change: transform;
-}
-
-/* ─── Scroll Reveal Defaults ─────────────────────────────────────── */
-.reveal-hidden {
-  opacity: 0;
-  transform: translateY(28px);
-}
-.reveal-visible {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.7s var(--ease-smooth-out),
-              transform 0.7s var(--ease-smooth-out);
-}
-
-/* ─── Accordion ─────────────────────────────────────────────────── */
-.accordion-content {
-  overflow: hidden;
-  transition: height 0.35s var(--ease-smooth-out);
-}
-
-/* ─── Form Fields ────────────────────────────────────────────────── */
-.field-input {
-  width: 100%;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid var(--color-border-warm);
-  padding: 12px 0;
-  font-family: var(--font-sans);
-  font-size: 1rem; /* 16px — prevents iOS Safari auto-zoom on focus */
-  color: var(--color-bark);
-  transition: border-color 0.2s ease;
-  outline: none;
-}
-.field-input::placeholder {
-  color: var(--color-clay);
+/* Decorative section number — large, faint Cormorant numerals */
+.section-number {
+  font-family: var(--font-display), Georgia, serif;
   font-weight: 300;
-}
-.field-input:focus {
-  border-bottom-color: var(--color-bark);
-}
-.field-label {
-  display: block;
-  font-family: var(--font-sans);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-clay);
-  margin-bottom: 8px;
+  color: var(--color-stone);
+  line-height: 1;
 }
 
-/* ─── Gradient Scrim Helpers ─────────────────────────────────────── */
-.scrim-bottom {
-  background: linear-gradient(to top, rgba(26,24,20,0.78) 0%, rgba(26,24,20,0.2) 50%, transparent 80%);
+/* Hide-scrollbar utility (used by horizontal-scroll filter rails) */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
-.scrim-full {
-  background: linear-gradient(
-    to bottom,
-    rgba(26,24,20,0.42) 0%,
-    rgba(26,24,20,0.1) 40%,
-    rgba(26,24,20,0.1) 55%,
-    rgba(26,24,20,0.65) 100%
-  );
+/* Safe-bottom for mobile sticky CTA */
+.safe-bottom {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
 }
 
-/* ─── Reviews Carousel Progress Bar ────────────────────────────── */
-@keyframes review-progress {
-  from { width: 0%; }
-  to   { width: 100%; }
+/* Motion utilities */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fadeUp 0.7s var(--ease-smooth) both;
 }
 
-/* ─── Partners Carousel ─────────────────────────────────────────── */
-@keyframes carousel-scroll {
+/* Marquee — left-scrolling infinite trust bar / partner logos */
+@keyframes scrollX {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-
-.carousel-track {
-  animation: carousel-scroll 36s linear infinite;
-  will-change: transform;
+.animate-scroll-x {
+  animation: scrollX 40s linear infinite;
 }
 
-.carousel-track:hover {
-  animation-play-state: paused;
+/* Drifting Instagram photos — slow right-to-left with subtle vertical sway */
+@keyframes drift {
+  0%   { transform: translate3d(110vw, 0, 0); opacity: 0; }
+  6%   { opacity: 0.55; }
+  50%  { transform: translate3d(50vw, -12px, 0); opacity: 0.55; }
+  94%  { opacity: 0.55; }
+  100% { transform: translate3d(-30vw, 6px, 0); opacity: 0; }
 }
-
+.drift {
+  animation-name: drift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
 @media (prefers-reduced-motion: reduce) {
-  .carousel-track {
-    animation: none;
-  }
+  .drift { animation: none; opacity: 0.25; }
+  .animate-scroll-x { animation: none; }
 }
 
-/* ─── Ken Burns Hero Animations ─────────────────────────────────── */
-@keyframes kenburns-a {
-  0%   { transform: scale(1.0) translate(0, 0); }
-  100% { transform: scale(1.1) translate(-1.5%, 0.8%); }
+/* Hero zoom — slow scale ping for hero photos */
+@keyframes heroZoom {
+  0%   { transform: scale(1.03); }
+  100% { transform: scale(1.10); }
 }
-@keyframes kenburns-b {
-  0%   { transform: scale(1.0) translate(0, 0); }
-  100% { transform: scale(1.1) translate(1.5%, -0.8%); }
-}
-@keyframes kenburns-c {
-  0%   { transform: scale(1.0) translate(0, 0); }
-  100% { transform: scale(1.1) translate(1%, 0.8%); }
-}
-@keyframes kenburns-d {
-  0%   { transform: scale(1.0) translate(0, 0); }
-  100% { transform: scale(1.1) translate(-0.8%, -1%); }
+.animate-hero-zoom {
+  animation: heroZoom 18s ease-in-out infinite alternate;
 }
 
-.ken-burns-a { animation: kenburns-a 9s ease-in-out forwards; }
-.ken-burns-b { animation: kenburns-b 9s ease-in-out forwards; }
-.ken-burns-c { animation: kenburns-c 9s ease-in-out forwards; }
-.ken-burns-d { animation: kenburns-d 9s ease-in-out forwards; }
-
-/* ─── Hero Slide Transition ─────────────────────────────────────── */
-.hero-slide-enter {
+/* Scroll-reveal — wrapper for IntersectionObserver-driven reveals */
+.reveal {
   opacity: 0;
-  transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease-smooth), transform 0.7s var(--ease-smooth);
+  will-change: opacity, transform;
 }
-.hero-slide-active {
-  opacity: 1;
-}
-
-/* ─── Service Card Micro-interactions ──────────────────────────── */
-.service-card-meta {
-  transform: translateY(6px);
-  transition: transform 0.5s var(--ease-smooth-out);
-}
-.group:hover .service-card-meta {
-  transform: translateY(0);
-}
-
-.service-card-desc {
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.4s ease, transform 0.4s var(--ease-smooth-out);
-  transition-delay: 0.06s;
-}
-.group:hover .service-card-desc {
+.reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ─── Project Card Reveal ────────────────────────────────────────── */
-.project-card-reveal {
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.35s ease, transform 0.4s var(--ease-smooth-out);
-  transition-delay: 0.05s;
-}
-.group:hover .project-card-reveal {
-  opacity: 1;
-  transform: translateY(0);
+/* Selection */
+::selection {
+  background: var(--color-bark);
+  color: var(--color-cream);
 }
 
-/* ─── Underline Slide Animation ─────────────────────────────────── */
-.link-underline {
+/* Image rendering */
+img {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Underline-on-hover link (used inside body prose) */
+.text-link {
   position: relative;
+  color: var(--color-earth);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: color 0.3s var(--ease-smooth);
 }
-.link-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: currentColor;
-  transition: width 0.3s var(--ease-smooth-out);
-}
-.link-underline:hover::after {
-  width: 100%;
+.text-link:hover {
+  color: var(--color-moss);
 }
 
-/* ─── Mobile: Increase Display Font Weight for Legibility ───────── */
-/* Playfair Display — on mobile, keep at 400 for clarity.  */
-/* Already 400 minimum; override is now a no-op but harmless.        */
-@media (max-width: 767px) {
-  .font-display {
-    font-weight: 400 !important;
-  }
+/* Editorial prose container — used on journal posts and About */
+.prose-editorial {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--color-earth);
+}
+.prose-editorial p {
+  margin-bottom: 1.4em;
+}
+.prose-editorial h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(28px, 3.4vw, 40px);
+  line-height: 1.15;
+  color: var(--color-bark);
+  margin-top: 2.2em;
+  margin-bottom: 0.6em;
+  letter-spacing: -0.012em;
+}
+.prose-editorial h3 {
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.4;
+  color: var(--color-bark);
+  margin-top: 1.8em;
+  margin-bottom: 0.5em;
+}
+.prose-editorial blockquote {
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(22px, 2.6vw, 30px);
+  line-height: 1.4;
+  color: var(--color-bark);
+  border-left: 1px solid var(--color-moss);
+  padding-left: 28px;
+  margin: 2em 0;
+  letter-spacing: -0.01em;
+}
+.prose-editorial ul, .prose-editorial ol {
+  margin: 1em 0 1.6em 1.2em;
+}
+.prose-editorial ul li {
+  list-style-type: disc;
+  margin-bottom: 0.5em;
+}
+.prose-editorial ol li {
+  list-style-type: decimal;
+  margin-bottom: 0.5em;
+}
+.prose-editorial a {
+  color: var(--color-moss);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.prose-editorial a:hover {
+  color: var(--color-bark);
 }
 
-/* ─── Touch Device: show hover-only card content immediately ────── */
-/* On touch devices, :hover never reliably fires. Make all hover-gated
-   card content visible so mobile users see complete information.     */
-@media (hover: none) {
-  .service-card-meta {
-    transform: translateY(0);
-  }
-  .service-card-desc {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .project-card-reveal {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ─── No-JS Fallback for Reveal ─────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .reveal-hidden {
-    opacity: 1;
-    transform: none;
-  }
-  .reveal-visible {
-    transition: none;
-  }
-  .img-hover-scale img {
-    transition: none;
-  }
-  .ken-burns-a,
-  .ken-burns-b,
-  .ken-burns-c,
-  .ken-burns-d {
-    animation: none;
-  }
-  .service-card-meta,
-  .service-card-desc,
-  .project-card-reveal {
-    transform: none;
-    opacity: 1;
-    transition: none;
+  .animate-hero-zoom,
+  .animate-fade-up,
+  .reveal {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
+
+/* Hide the floating reCAPTCHA v3 badge — Google's terms allow this
+   provided the disclosure text appears next to each protected form. */
+.grecaptcha-badge { visibility: hidden !important; }

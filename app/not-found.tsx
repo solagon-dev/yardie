@@ -1,45 +1,34 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
+import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: 'Page Not Found | Yardie Design',
+  title: "Page not found — Yardie",
   robots: { index: false },
 };
 
 export default function NotFound() {
   return (
-    <div className="bg-cream min-h-screen pt-[72px] flex items-center justify-center px-6">
-      <div className="text-center max-w-[480px]">
-        <p
-          className="font-display text-warm-stone select-none mb-6"
-          style={{ fontSize: 'clamp(6rem,14vw,12rem)', lineHeight: '1', fontWeight: 500 }}
-          aria-hidden="true"
-        >
+    <section className="bg-cream text-bark min-h-[80svh] flex items-center justify-center px-6 py-32">
+      <div className="text-center max-w-2xl">
+        <p className="font-display text-stone select-none mb-6 leading-none" style={{ fontSize: "clamp(120px, 18vw, 240px)", fontWeight: 300 }} aria-hidden>
           404
         </p>
-        <h1 className="font-display text-bark mb-4" style={{ fontSize: 'clamp(1.5rem,3vw,2.25rem)', fontWeight: 400 }}>
-          Page not found.
+        <h1 className="font-display text-4xl sm:text-5xl lg:text-[64px] leading-[1.04] tracking-tight font-light max-w-[20ch] mx-auto">
+          That page seems to have
+          <span className="italic text-moss"> wandered off.</span>
         </h1>
-        <p className="text-clay text-[14px] leading-[1.75] mb-10">
-          The page you&apos;re looking for doesn&apos;t exist or has moved. Let&apos;s get you back on track.
+        <p className="mt-6 text-[16px] text-earth leading-relaxed max-w-md mx-auto">
+          The page you&rsquo;re looking for isn&rsquo;t here — or has moved. Try one of the links below.
         </p>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <Link
-            href="/"
-            className="inline-block bg-bark text-cream text-[11px] tracking-[0.12em] uppercase font-[500] px-8 py-3.5 hover:bg-earth transition-colors"
-            style={{ borderRadius: '2px' }}
-          >
-            Go Home
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <Link href="/" className="inline-flex items-center justify-center px-9 py-4 bg-bark text-cream text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-earth transition-colors">
+            Return Home
           </Link>
-          <Link
-            href="/work"
-            className="inline-block border border-bark text-bark text-[11px] tracking-[0.12em] uppercase font-[500] px-8 py-3.5 hover:bg-bark hover:text-cream transition-colors"
-            style={{ borderRadius: '2px' }}
-          >
+          <Link href="/gallery" className="inline-flex items-center justify-center px-9 py-4 border border-bark text-bark text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-bark hover:text-cream transition-colors">
             View Our Work
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

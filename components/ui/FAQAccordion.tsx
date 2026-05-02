@@ -1,71 +1,49 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-interface AccordionItem {
-  question: string;
-  answer: string;
-}
+export interface FAQItem { q: string; a: string }
 
-export default function FAQAccordion({ items }: { items: AccordionItem[] }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+export default function FAQAccordion({ items, tone = "light" }: {
+  items: FAQItem[];
+  tone?: "light" | "dark";
+}) {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const isLight = tone === "light";
 
   return (
-    <div>
+    <ul className={`divide-y ${isLight ? "divide-border" : "divide-cream/15"}`}>
       {items.map((item, i) => {
-        const isOpen = openIndex === i;
+        const open = openIndex === i;
         return (
-          <div key={i} style={{ borderTop: '1px solid rgba(26,24,20,0.1)' }}>
+          <li key={i} className="py-1">
             <button
-              className="w-full flex items-start justify-between gap-6 py-7 lg:py-8 text-left group"
-              onClick={() => setOpenIndex(isOpen ? null : i)}
-              aria-expanded={isOpen}
+              type="button"
+              onClick={() => setOpenIndex(open ? null : i)}
+              aria-expanded={open}
+              className="group w-full flex items-start gap-6 py-6 lg:py-7 text-left"
             >
-              <div className="flex items-start gap-5 flex-1 min-w-0">
-                <span
-                  className="font-sans flex-shrink-0 pt-0.5"
-                  style={{ fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--color-clay)', opacity: 0.5 }}
-                >
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <h3
-                  className="font-display text-bark text-balance group-hover:text-moss transition-colors duration-300"
-                  style={{ fontSize: 'clamp(1.05rem,1.5vw,1.25rem)', fontWeight: 500, lineHeight: '1.25' }}
-                >
-                  {item.question}
-                </h3>
-              </div>
-              <span
-                className="flex-shrink-0 w-7 h-7 flex items-center justify-center border border-[var(--color-border-warm)] mt-0.5"
-                style={{
-                  borderRadius: '2px',
-                  transition: 'transform 0.35s cubic-bezier(0.22,1,0.36,1)',
-                  transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)',
-                }}
-              >
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-                  <path d="M5 1v8M1 5h8" stroke="var(--color-clay)" strokeWidth="1.3" strokeLinecap="round" />
+              <span className={`shrink-0 mt-1 h-4 w-4 transition-transform duration-300 ${open ? "rotate-45" : ""} ${isLight ? "text-moss" : "text-stone"}`} aria-hidden>
+                <svg viewBox="0 0 24 24" fill="none" strokeWidth={1.4} stroke="currentColor" className="h-4 w-4">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m-7.5-7.5h15" />
                 </svg>
               </span>
+              <span className={`flex-1 font-display text-[22px] sm:text-[26px] lg:text-[30px] leading-snug tracking-tight font-light ${isLight ? "text-bark" : "text-cream"}`}>
+                {item.q}
+              </span>
             </button>
-
             <div
-              style={{
-                display: 'grid',
-                gridTemplateRows: isOpen ? '1fr' : '0fr',
-                transition: 'grid-template-rows 0.38s cubic-bezier(0.22,1,0.36,1)',
-              }}
+              className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                open ? "grid-rows-[1fr] opacity-100 pb-6 lg:pb-8" : "grid-rows-[0fr] opacity-0 pb-0"
+              }`}
             >
-              <div style={{ overflow: 'hidden' }}>
-                <div className="pb-8 lg:pb-10 pl-9 pr-2">
-                  <p className="text-clay text-[14px] leading-[1.85] max-w-[640px]">{item.answer}</p>
-                </div>
+              <div className={`overflow-hidden pl-10 max-w-3xl text-[15.5px] leading-relaxed ${isLight ? "text-earth" : "text-cream/80"}`}>
+                {item.a}
               </div>
             </div>
-          </div>
+          </li>
         );
       })}
-      <div style={{ borderTop: '1px solid rgba(26,24,20,0.1)' }} />
-    </div>
+    </ul>
   );
 }

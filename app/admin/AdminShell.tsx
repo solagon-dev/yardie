@@ -30,16 +30,6 @@ const nav = [
     ),
   },
   {
-    label: 'Projects',
-    href: '/admin/projects',
-    icon: (
-      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <rect x="1.5" y="2.5" width="13" height="11" rx="1.5" stroke="currentColor" strokeWidth="1.25"/>
-        <path d="M5 6h6M5 9h4" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round"/>
-      </svg>
-    ),
-  },
-  {
     label: 'Blog Posts',
     href: '/admin/posts',
     icon: (
@@ -54,9 +44,6 @@ const nav = [
 function getPageLabel(pathname: string): string {
   if (pathname === '/admin/dashboard') return 'Dashboard';
   if (pathname === '/admin/hero') return 'Hero Slideshow';
-  if (pathname === '/admin/projects') return 'Projects';
-  if (pathname === '/admin/projects/new') return 'New Project';
-  if (pathname.match(/^\/admin\/projects\/[^/]+\/edit$/)) return 'Edit Project';
   if (pathname === '/admin/posts') return 'Blog Posts';
   if (pathname === '/admin/posts/new') return 'New Post';
   if (pathname.match(/^\/admin\/posts\/[^/]+\/edit$/)) return 'Edit Post';
@@ -91,7 +78,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
         {/* Logo */}
         <div className="px-5 py-4 border-b border-[rgba(248,244,238,0.06)]">
           <Image
-            src="/yardielogofullwhite.svg"
+            src="/brand/logo-full-white.svg"
             alt="Yardie Design"
             width={120}
             height={36}
@@ -173,7 +160,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
       {/* Main */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Top bar */}
-        <header className="h-[52px] bg-white border-b border-[#EAE6DE] flex items-center justify-between px-5 sticky top-0 z-20">
+        <header className="h-[52px] bg-limestone border-b border-[#EAE6DE] flex items-center justify-between px-5 sticky top-0 z-20">
           <div className="flex items-center gap-3">
             <button
               className="lg:hidden p-1.5 text-[#8C8478] hover:text-[#1A1814] transition-colors"
@@ -191,7 +178,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
               href="/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-1.5 text-[11px] text-[#A8A098] hover:text-[#5C5548] tracking-[0.03em] transition-colors"
+              className="hidden sm:inline-flex items-center justify-center gap-1.5 text-[11px] text-[#A8A098] hover:text-[#5C5548] tracking-[0.03em] transition-colors"
             >
               <svg width="10" height="10" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path d="M6 2H2.5A1.5 1.5 0 0 0 1 3.5v8A1.5 1.5 0 0 0 2.5 13h8A1.5 1.5 0 0 0 12 11.5V8M8 1h5v5M13 1 6.5 7.5"

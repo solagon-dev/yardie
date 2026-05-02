@@ -130,7 +130,7 @@ export default function ConversionPopup() {
             {/* ── Image panel ── */}
             <div className="relative hidden sm:block" style={{ aspectRatio: '4/5' }}>
               <Image
-                src="/IMG_8148.jpg"
+                src="/projects/pools/rectangular-pool-brick-fireplace-01.jpg"
                 alt="Yardie Design — beautifully transformed outdoor living space"
                 fill
                 className="object-cover object-center"
@@ -172,7 +172,7 @@ export default function ConversionPopup() {
               </p>
 
               <Link
-                href="/consultation"
+                href="/quote"
                 onClick={dismiss}
                 className="inline-block bg-cream text-bark text-[10px] tracking-[0.18em] uppercase font-[500] px-8 py-[14px] text-center transition-all duration-300 hover:bg-warm-stone mb-4"
                 style={{ borderRadius: '2px' }}

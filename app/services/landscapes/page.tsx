@@ -1,23 +1,19 @@
-import type { Metadata } from 'next';
-import ServicePage from '@/components/services/ServicePage';
-import { getServiceBySlug, faqs } from '@/lib/data';
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import ServicePage from "@/components/services/ServicePage";
+import { services } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: 'Landscape Design in Greenville, NC — Gardens, Planting & Lawn Care',
-  description:
-    'Custom landscape design, planting, and lawn care in Greenville, NC. Yardie Design creates beautiful, enduring landscapes for Eastern North Carolina homeowners.',
-  alternates: {
-    canonical: 'https://www.yardiedesign.com/services/landscapes',
-  },
-  openGraph: {
-    title: 'Landscape Design — Yardie Design, Greenville NC',
-    description: 'Custom landscape design, planting, and lawn care for Eastern NC homeowners. Serving Greenville, Winterville, Farmville, and Pitt County.',
-    images: [{ url: '/DSC00636.JPG', alt: 'Landscape design by Yardie Design in Greenville NC' }],
-  },
-};
+const service = services.find((s) => s.slug === "landscapes")!;
 
-export default function LandscapesPage() {
-  const service = getServiceBySlug('landscapes')!;
-  const serviceFaqs = faqs.find((f) => f.category === 'Landscapes')!;
-  return <ServicePage service={service} faqs={serviceFaqs} />;
+export const metadata: Metadata = buildMetadata({
+  title: service.seoTitle,
+  description: service.seoDescription,
+  path: `/services/${service.slug}`,
+  keywords: ["landscape design Greenville NC", "landscaping Eastern NC", "garden design Pitt County"],
+});
+
+export default function Page() {
+  if (!service) return notFound();
+  return <ServicePage service={service} />;
 }

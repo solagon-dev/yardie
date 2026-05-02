@@ -1,11 +1,8 @@
-import type { Metadata } from 'next';
-import AdminShell from './AdminShell';
-
-export const metadata: Metadata = {
-  title: 'Admin — Yardie Design',
+export const metadata = {
+  title: "Admin",
   robots: { index: false, follow: false },
 };
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  return <AdminShell>{children}</AdminShell>;
+  return <div className="min-h-screen bg-cream text-bark">{children}</div>;
 }

@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -17,16 +13,8 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
+    "plugins": [{ "name": "next" }],
+    "paths": { "@/*": ["./*"] }
   },
   "include": [
     "next-env.d.ts",
@@ -36,6 +24,17 @@
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "prisma",
+    "proxy.ts",
+    "prisma.config.ts",
+    "components/locations",
+    "app/admin/AdminShell.tsx",
+    "app/admin/components",
+    "app/admin/hero/HeroSlidesManager.tsx",
+    "app/contact/ContactForm.tsx",
+    "app/consultation/ConsultationContent.tsx",
+    "app/insights/InsightsClient.tsx",
+    "components/layout"
   ]
 }

@@ -63,7 +63,7 @@ export default function ImageUpload({ label, value, onChange, hint }: ImageUploa
             <button
               type="button"
               onClick={() => inputRef.current?.click()}
-              className="bg-white text-[#1A1814] text-[10px] tracking-[0.12em] uppercase font-[500] px-3.5 py-2 hover:bg-[#F5F0E8] transition-colors"
+              className="bg-limestone text-[#1A1814] text-[10px] tracking-[0.12em] uppercase font-[500] px-3.5 py-2 hover:bg-[#F5F0E8] transition-colors"
               style={{ borderRadius: '3px' }}
             >
               Replace

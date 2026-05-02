@@ -1,138 +1,127 @@
-import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans } from 'next/font/google';
+import type { Metadata, Viewport } from "next";
+import { Cormorant_Garamond, DM_Sans, Homemade_Apple } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
-import PublicWrapper from "@/components/layout/PublicWrapper";
 
-const displayFont = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-  variable: '--font-display',
-  display: 'swap',
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import CookieConsent from "@/components/CookieConsent";
+import { localBusinessSchema, SITE_URL } from "@/lib/seo";
+import { company } from "@/lib/content";
+
+const display = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-display",
+  display: "swap",
 });
 
-const sansFont = DM_Sans({
-  subsets: ['latin'],
-  weight: ['300', '400', '500'],
-  style: ['normal', 'italic'],
-  variable: '--font-sans',
-  display: 'swap',
+const sans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-sans",
+  display: "swap",
 });
 
-const BASE_URL = 'https://www.yardiedesign.com';
+const signature = Homemade_Apple({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-signature",
+  display: "swap",
+});
+
+export const viewport: Viewport = {
+  themeColor: "#1A1814",
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
-  metadataBase: new URL(BASE_URL),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Yardie Design — Exterior Design & Landscaping, Greenville NC",
-    template: "%s | Yardie Design",
+    default: `${company.name} — Exterior Design Studio in Greenville, NC`,
+    template: `%s | ${company.name}`,
   },
-  description:
-    "Yardie Design transforms outdoor spaces into stunning, functional environments. Expert landscape design, hardscaping, masonry, lighting, and irrigation in Greenville, NC.",
+  description: company.description,
+  applicationName: company.name,
+  authors: [{ name: company.legalName }],
+  creator: company.legalName,
+  publisher: company.legalName,
   keywords: [
     "exterior design Greenville NC",
     "landscape design Greenville NC",
-    "hardscaping Greenville NC",
+    "hardscape design Eastern NC",
     "masonry contractor Greenville NC",
-    "outdoor lighting installation Greenville NC",
-    "irrigation system Greenville NC",
-    "outdoor living spaces Eastern NC",
-    "patio design Greenville NC",
-    "landscaping company Pitt County NC",
-    "yard design Winterville NC",
-    "exterior designer Farmville NC",
-    "landscaping Ayden NC",
+    "outdoor lighting Pitt County",
+    "irrigation systems Eastern NC",
+    "landscape architect Greenville NC",
+    "landscaping Winterville",
+    "landscaping Farmville NC",
+    "landscaping Washington NC",
+    "Yardie Design",
+    "Yardie",
   ],
-  authors: [{ name: "Yardie Design" }],
-  creator: "Yardie Design",
   openGraph: {
-    title: "Yardie Design — Premium Exterior Design, Greenville NC",
-    description:
-      "Transforming outdoor spaces into beautiful, functional environments. Serving Greenville, NC and surrounding areas.",
     type: "website",
     locale: "en_US",
-    siteName: "Yardie Design",
-    url: BASE_URL,
-    images: [
-      {
-        url: "/IMG_8148.jpg",
-        width: 1200,
-        height: 800,
-        alt: "Yardie Design — Exterior Design & Landscaping, Greenville NC",
-      },
-    ],
+    url: SITE_URL,
+    siteName: company.name,
+    title: `${company.name} — Exterior Design Studio in Greenville, NC`,
+    description: company.description,
+    images: [{ url: "/brand/og.png", width: 1200, height: 630, alt: company.name }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yardie Design — Exterior Design & Landscaping",
-    description: "Premium exterior design and landscaping in Greenville, NC.",
-    images: ["/IMG_8148.jpg"],
+    title: `${company.name} — Exterior Design Studio in Greenville, NC`,
+    description: company.description,
+    images: ["/brand/og.png"],
   },
   icons: {
     icon: [
-      { url: '/yardie-favicon.svg', type: 'image/svg+xml' },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
     ],
-    shortcut: '/yardie-favicon.svg',
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true },
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LandscapingBusiness",
-  name: "Yardie Design",
-  description:
-    "Premium exterior design and landscaping in Greenville, NC — landscapes, hardscapes, masonry, outdoor lighting, and irrigation.",
-  url: BASE_URL,
-  telephone: "+1-252-756-7788",
-  email: "hello@yardiedesign.com",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "5036 Winterville Parkway",
-    addressLocality: "Winterville",
-    addressRegion: "NC",
-    postalCode: "28590",
-    addressCountry: "US",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 35.5301,
-    longitude: -77.4155,
-  },
-  areaServed: [
-    { "@type": "City", name: "Greenville" },
-    { "@type": "City", name: "Winterville" },
-    { "@type": "City", name: "Farmville" },
-    { "@type": "City", name: "Ayden" },
-  ],
-  founder: {
-    "@type": "Person",
-    name: "Scott Baldwin",
-  },
-  priceRange: "$$$",
-  image: `${BASE_URL}/IMG_8148.jpg`,
-  sameAs: [
-    "https://www.instagram.com/yardienc/",
-    "https://www.facebook.com/yardiedesign/",
-  ],
 };
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${displayFont.variable} ${sansFont.variable}`}>
-      <body>
-        <PublicWrapper>{children}</PublicWrapper>
+    <html
+      lang="en"
+      className={`${display.variable} ${sans.variable} ${signature.variable} h-full antialiased`}
+    >
+      <head>
+        {/* Ahrefs Web Analytics */}
         <script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="58FdYKXK/cR1Vn7ZzkBBmQ"
+          async
+        />
+      </head>
+      <body className="min-h-full flex flex-col bg-cream text-earth">
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
+        <CookieConsent />
+
+        <Script
+          id="ld-business"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessSchema()),
+          }}
         />
       </body>
     </html>

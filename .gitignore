@@ -35,3 +35,29 @@ yarn-error.log*
 next-env.d.ts
 
 /lib/generated/prisma
+
+# Local-only archive of unsorted source assets — not served.
+_archive/
+
+# Image assets are hosted on Vercel Blob (next.config.js rewrites
+# /projects/* → BLOB). Keeping them locally for dev convenience but
+# not committing — keeps the repo small enough for fast clones and
+# fast Vercel deploys.
+/public/projects/
+/public/renderings/
+/public/photoshoot/
+/public/journal/
+/public/staff/
+/public/cities/
+/public/brand/
+/public/sketches/
+
+# Vercel env-pull artifact — contains tokens, never commit.
+.env.vercel-pull
+# Blob upload manifest — local cache, regenerable.
+.blob-manifest.json
+# One-off migration cleanup helper — already executed, kept locally only.
+cleanup-public.sh
+
+# Claude Code session metadata — tooling state, not project state.
+.claude/

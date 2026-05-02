@@ -1,23 +1,19 @@
-import type { Metadata } from 'next';
-import ServicePage from '@/components/services/ServicePage';
-import { getServiceBySlug, faqs } from '@/lib/data';
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import ServicePage from "@/components/services/ServicePage";
+import { services } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: 'Masonry in Greenville, NC — Stone, Brick & Custom Built Features',
-  description:
-    'Expert masonry — stone walls, brick pathways, columns, steps, outdoor kitchens, and seating walls in Greenville, NC. Timeless craftsmanship by Yardie Design.',
-  alternates: {
-    canonical: 'https://www.yardiedesign.com/services/masonry',
-  },
-  openGraph: {
-    title: 'Masonry Services — Yardie Design, Greenville NC',
-    description: 'Stone walls, brick pathways, columns, outdoor kitchens, and seating walls in Greenville, NC. Timeless masonry craftsmanship from Yardie Design.',
-    images: [{ url: '/IMG_8140.jpg', alt: 'Custom masonry work by Yardie Design in Greenville NC' }],
-  },
-};
+const service = services.find((s) => s.slug === "masonry")!;
 
-export default function MasonryPage() {
-  const service = getServiceBySlug('masonry')!;
-  const serviceFaqs = faqs.find((f) => f.category === 'Masonry')!;
-  return <ServicePage service={service} faqs={serviceFaqs} />;
+export const metadata: Metadata = buildMetadata({
+  title: service.seoTitle,
+  description: service.seoDescription,
+  path: `/services/${service.slug}`,
+  keywords: ["masonry contractor Greenville NC", "stone walls Eastern NC", "brick masonry Pitt County"],
+});
+
+export default function Page() {
+  if (!service) return notFound();
+  return <ServicePage service={service} />;
 }

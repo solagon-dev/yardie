@@ -127,7 +127,7 @@ export default function HeroSlidesManager({ initialSlides }: { initialSlides: Sl
 
       {/* Slides list */}
       {slides.length === 0 ? (
-        <div className="bg-white border border-[#E8E4DC] rounded py-12 text-center" style={{ borderRadius: '4px' }}>
+        <div className="bg-limestone border border-[#E8E4DC] rounded py-12 text-center" style={{ borderRadius: '4px' }}>
           <p className="text-[#8C8478] text-[13px]">No slides yet. Upload an image above to add the first one.</p>
         </div>
       ) : (
@@ -181,7 +181,7 @@ function SlideCard({
 
   return (
     <div
-      className={`bg-white border rounded flex items-stretch overflow-hidden transition-opacity ${
+      className={`bg-limestone border rounded flex items-stretch overflow-hidden transition-opacity ${
         deleting ? 'opacity-40' : ''
       } ${!slide.active ? 'opacity-60' : ''}`}
       style={{ borderColor: '#E8E4DC', borderRadius: '4px' }}

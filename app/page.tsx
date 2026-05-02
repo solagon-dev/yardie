@@ -1,913 +1,793 @@
-import type { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
-import HeroSlider from '@/components/ui/HeroSlider';
-import RevealOnScroll from '@/components/ui/RevealOnScroll';
-import SectionLabel from '@/components/ui/SectionLabel';
-import Button from '@/components/ui/Button';
-import BeforeAfterSlider from '@/components/ui/BeforeAfterSlider';
-import PartnersCarousel from '@/components/sections/PartnersCarousel';
-import ReviewsCarousel from '@/components/sections/ReviewsCarousel';
-import ConversionPopup from '@/components/ui/ConversionPopup';
-import FAQAccordion from '@/components/ui/FAQAccordion';
-import { db } from '@/lib/db';
-import { getGoogleReviews } from '@/lib/google-reviews';
-import { getInstagramFeed } from '@/lib/instagram';
-import { locations } from '@/lib/locations';
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import Script from "next/script";
 
-export const metadata: Metadata = {
-  title: 'Yardie Design — Exterior Design & Landscaping, Greenville NC',
-  description:
-    'Yardie Design transforms outdoor living spaces into stunning, functional environments. Landscape design, hardscaping, masonry, lighting, and irrigation in Greenville, NC.',
+import { company, services, journal, serviceAreas } from "@/lib/content";
+import { photos, projectPhotos, photosByService, staffPhotos } from "@/lib/media";
+import { buildMetadata, breadcrumbSchema } from "@/lib/seo";
+import { getGoogleReviews } from "@/lib/google-reviews";
+
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import FAQAccordion from "@/components/ui/FAQAccordion";
+import GalleryMosaic from "@/components/GalleryMosaic";
+import HeroSlider from "@/components/HeroSlider";
+import InstagramFeed from "@/components/InstagramFeed";
+import JournalCard from "@/components/JournalCard";
+import PartnerLogos from "@/components/sections/PartnerLogos";
+import QuotePromptModal from "@/components/QuotePromptModal";
+import Reviews from "@/components/Reviews";
+import ServiceAreaPostcards from "@/components/ServiceAreaPostcards";
+import StoryVideo from "@/components/StoryVideo";
+import { Button, TextLink } from "@/components/ui/Button";
+
+export const metadata: Metadata = buildMetadata({
+  title: `${company.name} — Exterior Design Studio in Greenville, NC`,
+  description: company.description,
+  path: "/",
+  keywords: [
+    "exterior design Greenville NC",
+    "landscape design Greenville NC",
+    "hardscape Eastern NC",
+    "masonry contractor Greenville NC",
+    "outdoor lighting Pitt County",
+    "irrigation systems Eastern NC",
+    "landscape architect Eastern NC",
+  ],
+});
+
+/* ───── Page-level data ───── */
+const heroSlides = [
+  photos.heroAman,
+  photos.heroBelhaven,
+  photos.heroFlagstone,
+  photos.heroPool,
+  photos.heroPatioFire,
+  photos.heroLawn,
+].map((p) => ({ src: p.src, alt: p.alt }));
+
+const trustBadges = [
+  "Designed Outdoor Living",
+  "Eastern NC Craftsmanship",
+  `Founded in ${company.founded}`,
+  "Drawn Site Plans · 2D & Hand-Sketch",
+  "In-House Designers, Masons & Gardeners",
+];
+
+// Six-service grid on the homepage — one feature per Yardie service group.
+// Picked to span living spaces, foundations, and gardens-and-systems so
+// the rail reads as the full breadth of the studio.
+const featuredServiceSlugs = [
+  "landscapes",
+  "patios-pavers",
+  "outdoor-kitchens",
+  "fire-features",
+  "pool-decks",
+  "lighting",
+];
+
+const serviceBlurbs: Record<string, string> = {
+  landscapes:
+    "Master plans, planting design, and seasonal upkeep tuned to Pitt County soil and the way you live.",
+  "patios-pavers":
+    "Brick, paver, and natural-stone patios composed as outdoor rooms — engineered to last twenty years.",
+  "outdoor-kitchens":
+    "Built-in grills, pizza ovens, masonry cabinetry, and counters — the room that pulls you outside.",
+  "fire-features":
+    "Masonry fireplaces, fire pits, and hearths designed into the patio — the reason to stay outside.",
+  "pool-decks":
+    "Paver, travertine, and bluestone decks, coping, and pool-surround landscape, drained and detailed for the long run.",
+  lighting:
+    "Layered low-voltage path, accent, and architectural lighting — fewer fixtures, better aim, warmer light.",
+  // Remaining services keep their blurbs available for the dropdown / footer.
+  masonry:
+    "Hand-laid stone, brick, and veneer — set by Yardie masons, never subcontracted out.",
+  "walkways-driveways":
+    "Brick walks, stepping stones, and paver drives — the architecture of the approach.",
+  "retaining-walls":
+    "Engineered stone and segmental walls — drainage, batter, and reinforcement designed in.",
+  "pergolas-pavilions":
+    "Cedar, ipe, and stone-column pergolas plus full pavilions and screened porches.",
+  "water-features":
+    "Spillways, fountains, pondless waterfalls — sound, movement, and reflection in the garden.",
+  irrigation:
+    "Smart-controller systems sized to plant type and soil — designed to use less water and keep gardens healthier.",
 };
 
-const services = [
-  { num: '01', name: 'Landscapes',  href: '/services/landscapes', desc: 'Planting design, lawn care, and seasonal stewardship.',             image: '/DSC03551.jpg'        },
-  { num: '02', name: 'Hardscapes',  href: '/services/hardscapes', desc: 'Patios, walkways, walls, and outdoor living structures.',           image: '/DSC00044.jpg'        },
-  { num: '03', name: 'Masonry',     href: '/services/masonry',    desc: 'Stone, brick, and hand-built permanent features.',                  image: '/DSC03765.jpg'        },
-  { num: '04', name: 'Lighting',    href: '/services/lighting',   desc: 'Architectural outdoor lighting design and installation.',           image: '/nav-menu-arch-2.png' },
-  { num: '05', name: 'Irrigation',  href: '/services/irrigation', desc: 'Smart, efficient irrigation systems for every landscape.',          image: '/File_027.jpg'        },
-];
-
+// Process — six steps, each photographed at the corresponding moment
+// of an actual job. Each photo was vetted to actually show what the
+// step says it shows (no drafting photo on a build step, no winter
+// dormant garden on a "looking after it" step, etc.).
 const processSteps = [
-  { num: '01', title: 'Consultation', body: "We begin with a complimentary site visit and conversation — learning about your property, your lifestyle, and your vision. No generic packages. Every project starts with listening." },
-  { num: '02', title: 'Design',       body: "Our team develops a custom design tailored to your property's architecture, site conditions, and your aesthetic goals. We walk you through the plan in detail, refine it together, and confirm the brief before anything is built." },
-  { num: '03', title: 'Installation', body: "Our skilled craftsmen execute the design with precision — from material selection and procurement to final installation. Every phase is managed by Yardie. You're kept informed throughout, and you get the result you were shown." },
+  { num: "01", title: "The conversation",  body: "It starts on the property. We walk it together, look at the architecture, and listen to how you want the space to live. No drawings yet — just the brief.",      photo: projectPhotos.allenDonald.progress1 /* designer + client on the lot */ },
+  { num: "02", title: "Reading the site",  body: "Drainage, sun, sightlines, soil, the way the wind moves through. Before we put a line on paper, we understand what the property is asking for.",                  photo: { src: "/projects/process/crew-staking-out-shrubs-01.jpg", alt: "Crew staking out shrub locations during site analysis." } },
+  { num: "03", title: "Drawing",           body: "Hand sketches first, then dimensioned plans, then material samples laid against the existing facade. Revision is built into the schedule.",                       photo: staffPhotos.scottDrafting /* Scott actually drafting */ },
+  { num: "04", title: "Specifying",        body: "Stone supplier, brick coursework, plant palette, fixture aim, controller schedule. Every detail is specified to the property — never pulled from a stock list.",  photo: projectPhotos.holton.stoneDetail /* finished material detail */ },
+  { num: "05", title: "Building",          body: "Yardie masons, gardeners, and irrigation crews execute the drawing. Same designer on site at every milestone — no handoff to a sub you've never met.",            photo: { src: "/projects/process/crew-laying-pavers-patio-01.jpg", alt: "Yardie crew laying pavers on a patio." } },
+  { num: "06", title: "Looking after it",  body: "First-year care visits establish plantings, catch any settling, and tune the irrigation through one full growing season. Most clients keep us on year-round.",    photo: projectPhotos.holton.extra13 /* mature established garden corner */ },
 ];
 
-export default async function HomePage() {
-  const [featuredProjects, featuredPosts, { rating, totalReviews, reviews }, { posts: instagramPosts, isLive: instagramLive }, heroSlides] = await Promise.all([
-    db.project.findMany({
-      where: { publishStatus: 'published' },
-      orderBy: [{ sortOrder: 'asc' }, { createdAt: 'desc' }],
-      select: { slug: true, title: true, featuredImage: true, projectLocation: true, serviceCategories: true, completionDate: true },
-      take: 3,
-    }),
-    db.post.findMany({
-      where: { publishStatus: 'published' },
-      orderBy: [{ publishDate: 'desc' }, { createdAt: 'desc' }],
-      select: { slug: true, title: true, excerpt: true, featuredImage: true, category: true, readTime: true, publishDate: true },
-      take: 3,
-    }),
-    getGoogleReviews(),
-    getInstagramFeed(6),
-    db.heroSlide.findMany({
-      where: { active: true },
-      orderBy: { sortOrder: 'asc' },
-      select: { imageUrl: true, altText: true },
-    }),
-  ]);
+// Justified-gallery tiles — nine distinct photos, sized to fill two
+// mosaic rows on desktop without leaving a sparse trailing row. No
+// overlap with hero, pillars, or process-step photos.
+const homeGalleryTiles = [
+  { src: "/projects/outdoor-kitchens/outdoor-kitchen-grill-stone-base-01.jpg", alt: "Built-in outdoor kitchen with stainless grill and stone-clad cabinetry.", ratio: 16 / 10 },
+  { src: "/projects/landscapes/foundation-bed-japanese-maple-01.jpg",          alt: "Foundation bed featuring a specimen Japanese maple.",                     ratio: 3 / 4 },
+  { src: "/projects/hardscapes/herringbone-paver-walkway-pillars-01.jpg",      alt: "Herringbone paver walkway threaded between brick pillars.",               ratio: 3 / 2 },
+  { src: "/projects/pools/freeform-pool-stone-fireplace-paver-deck-01.jpg",    alt: "Freeform pool with stone fireplace and paver deck.",                      ratio: 4 / 5 },
+  { src: "/projects/masonry/may-blvd-fireplace-03.jpg",                        alt: "Patio fireplace integrated into a hand-laid stone surround.",             ratio: 16 / 9 },
+  { src: "/projects/hardscapes/colonial-paver-driveway-front-01.jpg",          alt: "Colonial home with a brick paver driveway.",                              ratio: 5 / 4 },
+  { src: "/projects/landscapes/autumn-lakes-shaded-corner-07.jpg",             alt: "Shaded garden corner with established planting.",                         ratio: 2 / 3 },
+  { src: "/projects/landscapes/williamsburg-109-rear-garden-02.jpg",           alt: "Rear-garden landscape with composed planting beds.",                      ratio: 7 / 5 },
+  { src: "/projects/masonry/stone-retaining-wall-bluestone-steps-01.jpg",      alt: "Stone retaining wall with bluestone steps.",                              ratio: 4 / 3 },
+];
+
+const featuredAreaSlugs = [
+  "greenville", "winterville", "ayden", "farmville",
+  "washington", "kinston", "new-bern", "goldsboro", "wilson",
+];
+
+// Five high-impact questions that handle objections right before the
+// final CTA. Tone matches the Yardie voice: concrete, plainspoken.
+const homeFAQ = [
+  {
+    q: "How does a project usually begin?",
+    a: "With a property visit. We walk the site together, listen to how you want to live in the space, and read the architecture of the house. The first conversation is at no cost and there's no pressure to commit afterward.",
+  },
+  {
+    q: "What does a Yardie project cost?",
+    a: "Every project is scoped individually after the first property visit. Cost depends on scope, materials, site conditions, and how many disciplines are involved. Once we've walked the property and agreed on the brief, you'll receive a written design fee and an itemized build estimate in writing — with nothing to commit to until you decide to move forward.",
+  },
+  {
+    q: "Do you design and build, or just one or the other?",
+    a: "Both, under one studio. Our designers draw the plan, our masons and gardeners install it, and the same designer is on site at every milestone. We don't subcontract the work that bears our name.",
+  },
+  {
+    q: "How long do projects take?",
+    a: "Design takes two to six weeks depending on scope. Construction varies — a focused install might take ten days, a full property redesign with hardscape and masonry runs eight to twelve weeks. We share an honest schedule before we start.",
+  },
+  {
+    q: "Where do you work?",
+    a: "Our home market is Greenville and the surrounding Pitt County towns — Winterville, Ayden, Farmville. We routinely take projects in Washington, Kinston, New Bern, Goldsboro, Wilson, and Rocky Mount when the property and the brief warrant the travel.",
+  },
+];
+
+export default async function Home() {
+  const featuredServices = featuredServiceSlugs
+    .map((slug) => services.find((s) => s.slug === slug))
+    .filter((s): s is NonNullable<typeof s> => Boolean(s));
+
+  const articles = journal.slice(0, 3);
+
+  const featuredAreas = featuredAreaSlugs
+    .map((slug) => serviceAreas.find((a) => a.slug === slug))
+    .filter((a): a is NonNullable<typeof a> => Boolean(a))
+    .map((a) => ({ name: a.name, slug: a.slug }));
+
+  const { reviews: googleReviews, rating: googleRating, totalReviews: googleTotal } =
+    await getGoogleReviews();
+
+  const serviceImageFor = (slug: string) =>
+    photosByService[slug]?.[0] ?? photos.heroAman;
 
   return (
     <>
-      {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <HeroSlider slides={heroSlides} />
+      {/* ────────────────────────────────────────────────────
+          HERO — MOBILE: slider fades into bark text section
+         ──────────────────────────────────────────────────── */}
+      <section className="lg:hidden relative -mt-14 overflow-hidden bg-bark">
+        <div className="relative aspect-[4/3] sm:aspect-[5/3]">
+          <HeroSlider slides={heroSlides} />
+          <div
+            aria-hidden
+            className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-b from-transparent via-bark/65 to-bark pointer-events-none"
+          />
+        </div>
+      </section>
 
-      {/* ── BRAND STATEMENT ───────────────────────────────────────────── */}
-      <section className="bg-cream py-28 lg:py-44 px-6 lg:px-[clamp(24px,5vw,80px)]">
-        <RevealOnScroll className="max-w-[1320px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 items-start gap-12 lg:gap-0">
-            <div className="lg:col-span-1 hidden lg:flex items-start pt-3">
-              <div style={{ width: '1px', height: '52px', background: 'var(--color-border-warm)' }} />
+      <section className="lg:hidden bg-bark text-cream">
+        <div className="px-5 sm:px-8 pt-10 sm:pt-12 pb-16 sm:pb-20 text-center">
+          <h1 className="font-display text-[36px] sm:text-[44px] text-cream leading-[1.08] tracking-tight font-light max-w-xl mx-auto">
+            Designed outdoor living for{" "}
+            <span className="italic text-stone">Eastern North Carolina homes.</span>
+          </h1>
+          <p className="mt-5 text-[15px] sm:text-[16px] text-cream/75 leading-relaxed max-w-md mx-auto">
+            Landscapes, hardscapes, masonry, lighting, and irrigation —
+            drawn first, built once, looked after for years.
+          </p>
+          <div className="mt-8 grid grid-cols-1 sm:flex sm:flex-row sm:justify-center gap-3 max-w-sm sm:max-w-none mx-auto">
+            <Button href="/quote" variant="ghost-light" arrow className="w-full sm:w-auto">
+              Schedule a Consultation
+            </Button>
+            <Button href="/gallery" variant="ghost-dark" className="w-full sm:w-auto">
+              View Our Work
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* ────────────────────────────────────────────────────
+          HERO — DESKTOP: overlay
+         ──────────────────────────────────────────────────── */}
+      <section className="hidden lg:flex relative -mt-[68px] min-h-[100svh] items-end overflow-hidden bg-bark">
+        <HeroSlider slides={heroSlides} />
+        <div className="absolute inset-0 bg-gradient-to-t from-bark via-bark/55 to-bark/15 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-bark/55 via-bark/15 to-transparent pointer-events-none" />
+
+        <div className="relative w-full mx-auto max-w-[1400px] px-12 pt-28 pb-20">
+          <div className="max-w-2xl animate-fade-up">
+            <h1 className="font-display text-[56px] xl:text-[80px] text-cream leading-[1.0] tracking-tight font-light">
+              Designed outdoor living for{" "}
+              <span className="italic text-stone">Eastern North Carolina homes.</span>
+            </h1>
+            <p className="mt-7 text-base text-cream/75 leading-relaxed max-w-md">
+              Landscapes, hardscapes, masonry, lighting, and irrigation —
+              drawn first, built once, looked after for years.
+            </p>
+
+            <div className="mt-10 flex flex-row gap-3">
+              <Button href="/quote" variant="ghost-light" arrow>
+                Schedule a Consultation
+              </Button>
+              <Button href="/gallery" variant="ghost-dark">
+                View Our Work
+              </Button>
             </div>
-            <div className="lg:col-span-9">
-              <SectionLabel className="mb-10">Yardie Design — Est. Greenville, NC</SectionLabel>
-              <p
-                className="font-display text-bark text-balance"
-                style={{ fontSize: 'clamp(2rem,3.8vw,3.25rem)', lineHeight: '1.18', fontWeight: 500, maxWidth: '840px' }}
-              >
-                We don&apos;t just design yards. We create the places{' '}
-                <em>where your life happens outside.</em>
+          </div>
+        </div>
+      </section>
+
+      {/* ────────────────────────────────────────────────────
+          TRUST BAR — infinite marquee
+         ──────────────────────────────────────────────────── */}
+      <section
+        aria-label="What we offer"
+        className="bg-cream border-y border-border py-5 lg:py-6 relative overflow-hidden"
+      >
+        <div className="absolute inset-y-0 left-0 w-16 sm:w-24 bg-gradient-to-r from-cream to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-16 sm:w-24 bg-gradient-to-l from-cream to-transparent z-10 pointer-events-none" />
+
+        <ul className="flex animate-scroll-x w-max footer-label text-clay" aria-hidden>
+          {[...trustBadges, ...trustBadges].map((badge, i) => (
+            <li key={`${badge}-${i}`} className="flex items-center gap-8 lg:gap-12 px-4 lg:px-6 whitespace-nowrap">
+              <span className="block h-1 w-1 rounded-full bg-clay/60" aria-hidden />
+              {badge}
+            </li>
+          ))}
+        </ul>
+
+        <ul className="sr-only">
+          {trustBadges.map((badge) => (<li key={badge}>{badge}</li>))}
+        </ul>
+      </section>
+
+      {/* ────────────────────────────────────────────────────
+          SERVICES — cards (horizontal swipe on mobile, grid on md+)
+         ──────────────────────────────────────────────────── */}
+      <section className="py-16 sm:py-24 lg:py-32 bg-cream-alt border-y border-border">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="px-5 sm:px-8 lg:px-12">
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 sm:mb-12 lg:mb-14 text-center lg:text-left">
+              <h2 className="font-display text-[34px] sm:text-[40px] lg:text-[56px] text-bark leading-[1.04] tracking-tight font-light max-w-[16ch] mx-auto lg:mx-0">
+                Designed and built{" "}
+                <span className="italic text-moss">in-house.</span>
+              </h2>
+              <p className="max-w-sm mx-auto lg:mx-0 text-[14.5px] sm:text-[15px] text-clay leading-relaxed">
+                Six disciplines under one roof. Most projects we draw involve
+                some mix of them.
               </p>
             </div>
-            <div className="lg:col-span-2 lg:flex justify-end items-end hidden">
-              <Button href="/about" variant="outline" size="sm">Our Story</Button>
-            </div>
           </div>
-        </RevealOnScroll>
-      </section>
 
-      {/* ── SERVICES ──────────────────────────────────────────────────── */}
-      <section className="bg-bark py-0" aria-labelledby="services-heading">
-        <div className="px-6 lg:px-[clamp(24px,5vw,80px)] py-14 lg:py-18 border-b border-[rgba(248,244,238,0.08)]">
-          <div className="max-w-[1320px] mx-auto flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <RevealOnScroll>
-              <SectionLabel className="mb-4" light>What We Design</SectionLabel>
-              <h2
-                id="services-heading"
-                className="font-display text-cream text-balance"
-                style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 500 }}
-              >
-                Five disciplines.<br /><em>One unified vision.</em>
-              </h2>
-            </RevealOnScroll>
-            <RevealOnScroll delay={0.1}>
-              <Button href="/services" variant="ghost" size="sm">All Services</Button>
-            </RevealOnScroll>
-          </div>
-        </div>
-
-        {/* Mobile: horizontal scroll */}
-        <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory gap-px" style={{ scrollbarWidth: 'none' }}>
-          {services.map((s) => (
-            <Link
-              key={s.name}
-              href={s.href}
-              className="group relative flex-none overflow-hidden bg-bark snap-start"
-              style={{ width: '78vw', aspectRatio: '3/4' }}
-              aria-label={`${s.name} — ${s.desc}`}
-            >
-              <Image
-                src={s.image}
-                alt={s.name}
-                fill
-                className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
-                sizes="78vw"
-                unoptimized
-              />
-              <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(26,24,20,0.88) 0%, rgba(26,24,20,0.3) 45%, rgba(26,24,20,0.05) 75%)' }} />
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <p className="font-sans text-[9px] tracking-[0.22em] uppercase text-[rgba(248,244,238,0.4)] mb-3">{s.num}</p>
-                <h3 className="font-display text-cream font-[400] leading-none mb-2.5" style={{ fontSize: '1.45rem' }}>
-                  {s.name}
-                </h3>
-                <p className="text-[rgba(248,244,238,0.6)] text-[12px] leading-snug">{s.desc}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {/* Desktop: grid */}
-        <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-5 gap-px bg-[rgba(248,244,238,0.06)]">
-          {services.map((s, i) => (
-            <RevealOnScroll key={s.name} delay={i * 0.06}>
-              <Link
-                href={s.href}
-                className="group block relative overflow-hidden bg-bark"
-                style={{ aspectRatio: '3/4' }}
-                aria-label={`${s.name} — ${s.desc}`}
-              >
-                <Image
-                  src={s.image}
-                  alt={s.name}
-                  fill
-                  className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
-                  sizes="(max-width:1200px)33vw,20vw"
-                  unoptimized
-                />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(26,24,20,0.88) 0%, rgba(26,24,20,0.3) 45%, rgba(26,24,20,0.05) 75%)' }} />
-                <div className="absolute inset-0 bg-[rgba(26,24,20,0.18)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-7">
-                  <p className="font-sans text-[9px] tracking-[0.22em] uppercase text-[rgba(248,244,238,0.4)] mb-3 service-card-meta">{s.num}</p>
-                  <h3 className="font-display text-cream font-[300] leading-none mb-2.5 service-card-meta" style={{ fontSize: 'clamp(1.3rem,1.7vw,1.55rem)' }}>
-                    {s.name}
-                  </h3>
-                  <p className="text-[rgba(248,244,238,0.6)] text-[12px] leading-snug service-card-desc">{s.desc}</p>
-                </div>
-              </Link>
-            </RevealOnScroll>
-          ))}
-        </div>
-      </section>
-
-      {/* ── FEATURED WORK ─────────────────────────────────────────────── */}
-      <section className="bg-cream py-24 lg:py-40 px-6 lg:px-[clamp(24px,5vw,80px)]" aria-labelledby="work-heading">
-        <div className="max-w-[1320px] mx-auto">
-          <RevealOnScroll className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-            <div>
-              <SectionLabel className="mb-4">Recent Work</SectionLabel>
-              <h2
-                id="work-heading"
-                className="font-display text-bark"
-                style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 500 }}
-              >
-                Selected Projects
-              </h2>
-            </div>
-            <Button href="/work" variant="outline" size="sm">View All Projects</Button>
-          </RevealOnScroll>
-
-          {featuredProjects.length > 0 && (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-2.5">
-            {/* Large featured card */}
-            <RevealOnScroll className="lg:col-span-7">
-              <Link
-                href={`/work/${featuredProjects[0].slug}`}
-                className="group block relative overflow-hidden bg-warm-stone"
-                style={{ aspectRatio: '4/5' }}
-                aria-label={`View project: ${featuredProjects[0].title}`}
-              >
-                {featuredProjects[0].featuredImage && (
-                  <Image
-                    src={featuredProjects[0].featuredImage}
-                    alt={featuredProjects[0].title}
-                    fill
-                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
-                    sizes="(max-width:1024px)100vw,58vw"
-                    unoptimized
-                  />
-                )}
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(26,24,20,0.88) 0%, rgba(26,24,20,0.18) 50%, transparent 75%)' }} />
-                <div className="absolute bottom-0 left-0 p-8 lg:p-10 w-full">
-                  {/* Location — hidden by default, slides up on hover */}
-                  <p className="label-light mb-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)]">
-                    {featuredProjects[0].projectLocation}
-                  </p>
-                  {/* Title — always visible, lifts on hover */}
-                  <h3
-                    className="font-display text-cream font-[300] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1"
-                    style={{ fontSize: 'clamp(1.6rem,2.8vw,2.4rem)', lineHeight: '1.1' }}
-                  >
-                    {featuredProjects[0].title}
-                  </h3>
-                  {/* Tags + CTA — fade up on hover with delay */}
-                  <div className="opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] delay-75">
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {featuredProjects[0].serviceCategories.map((tag) => (
-                        <span key={tag} className="text-[9px] tracking-[0.18em] uppercase text-[rgba(248,244,238,0.65)] border border-[rgba(248,244,238,0.22)] px-3 py-1">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <p className="mt-4 text-[rgba(248,244,238,0.7)] text-[10px] tracking-[0.2em] uppercase font-[500]">
-                      View Project →
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            </RevealOnScroll>
-
-            <div className="lg:col-span-5 flex flex-col gap-2.5">
-              {featuredProjects.slice(1, 3).map((proj, i) => (
-                <RevealOnScroll key={proj.slug} delay={0.12 + i * 0.1} className="flex-1">
+          <ul
+            className="
+              flex md:grid md:grid-cols-2 lg:grid-cols-3
+              gap-4 sm:gap-5 lg:gap-6
+              overflow-x-auto md:overflow-visible
+              snap-x snap-mandatory md:snap-none
+              scrollbar-hide
+              px-5 sm:px-8 lg:px-12
+              pb-2 md:pb-0
+            "
+          >
+            {featuredServices.map((service) => {
+              const photo = serviceImageFor(service.slug);
+              return (
+                <li
+                  key={service.slug}
+                  className="snap-start shrink-0 w-[78vw] sm:w-[60vw] md:w-auto"
+                >
                   <Link
-                    href={`/work/${proj.slug}`}
-                    className="group block relative overflow-hidden bg-warm-stone h-full"
-                    style={{ minHeight: '240px' }}
-                    aria-label={`View project: ${proj.title}`}
+                    href={`/services/${service.slug}`}
+                    className="group flex flex-col h-full bg-stone/60 border border-border hover:border-moss/40 transition-colors duration-500"
                   >
-                    {proj.featuredImage && (
+                    <div className="relative aspect-[5/6] sm:aspect-[4/5] overflow-hidden bg-stone">
                       <Image
-                        src={proj.featuredImage}
-                        alt={proj.title}
+                        src={photo.src}
+                        alt={photo.alt}
                         fill
-                        className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
-                        sizes="(max-width:1024px)100vw,40vw"
-                        unoptimized
+                        sizes="(max-width:640px) 78vw, (max-width:768px) 60vw, (max-width:1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
                       />
-                    )}
-                    <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(26,24,20,0.85) 0%, rgba(26,24,20,0.12) 55%, transparent 80%)' }} />
-                    <div className="absolute bottom-0 left-0 p-6 lg:p-7 w-full">
-                      {/* Location — hidden by default */}
-                      <p className="label-light mb-2 opacity-0 translate-y-1.5 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-[380ms] ease-[cubic-bezier(0.22,1,0.36,1)]">
-                        {proj.projectLocation}
-                      </p>
-                      {/* Title */}
-                      <h3
-                        className="font-display text-cream font-[300] transition-transform duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1"
-                        style={{ fontSize: 'clamp(1.2rem,1.8vw,1.6rem)', lineHeight: '1.1' }}
-                      >
-                        {proj.title}
+                    </div>
+                    <div className="p-6 sm:p-7 lg:p-8 flex flex-col flex-1 bg-cream">
+                      <h3 className="font-display text-[22px] sm:text-[24px] lg:text-[30px] text-bark leading-[1.1] tracking-tight font-light">
+                        {service.name}
                       </h3>
-                      {/* View link */}
-                      <p className="mt-3 text-[rgba(248,244,238,0.65)] text-[9px] tracking-[0.2em] uppercase font-[500] opacity-0 translate-y-1.5 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-[380ms] ease-[cubic-bezier(0.22,1,0.36,1)] delay-[60ms]">
-                        View Project →
+                      <p className="mt-3 sm:mt-4 text-[14px] sm:text-[14.5px] text-clay leading-relaxed flex-1">
+                        {serviceBlurbs[service.slug] ?? service.tagline}
                       </p>
+                      <span className="mt-6 sm:mt-7 inline-flex items-center justify-center gap-3 text-[11px] tracking-[0.22em] uppercase font-medium text-bark group-hover:text-moss transition-colors duration-300">
+                        <span aria-hidden className="block h-px w-6 bg-bark group-hover:w-10 group-hover:bg-moss transition-all duration-500 ease-out" />
+                        Explore
+                        <svg className="h-3 w-3 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                        </svg>
+                      </span>
                     </div>
                   </Link>
-                </RevealOnScroll>
-              ))}
-            </div>
+                </li>
+              );
+            })}
+          </ul>
+
+          <div className="md:hidden mt-5 flex items-center justify-center gap-2 footer-label text-clay">
+            <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+            </svg>
+            Swipe
+            <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
           </div>
-          )}
-        </div>
-      </section>
 
-      {/* ── DESIGN VISUALIZATION ─────────────────────────────────────── */}
-      <section className="bg-bark py-24 lg:py-40 px-6 lg:px-[clamp(24px,5vw,80px)]" aria-labelledby="visualization-heading">
-        <div className="max-w-[1320px] mx-auto">
-
-          {/* Header row */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 items-end mb-14">
-            <RevealOnScroll className="lg:col-span-7">
-              <SectionLabel className="mb-5" light>Design Visualization</SectionLabel>
-              <h2
-                id="visualization-heading"
-                className="font-display text-cream text-balance"
-                style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 500 }}
-              >
-                You&apos;ll see it clearly<br /><em>before we build it.</em>
-              </h2>
-            </RevealOnScroll>
-            <RevealOnScroll delay={0.1} className="lg:col-span-5">
-              <p className="text-[rgba(248,244,238,0.6)] text-[15px] leading-[1.8]">
-                Most exterior contractors hand you a quote. We hand you a design. Before a stone is placed or a plant is selected, Yardie produces a complete visual presentation of your outdoor space — so you can see exactly what you&apos;re approving, refine it freely, and build with total confidence.
+          <div className="px-5 sm:px-8 lg:px-12">
+            <div className="mt-12 sm:mt-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-border pt-8 sm:pt-10">
+              <p className="text-[13.5px] sm:text-[14px] text-clay max-w-md">
+                Every yard we draw involves some mix of these five — composed against the architecture and the way you want to live.
               </p>
-            </RevealOnScroll>
-          </div>
-
-          {/* Before / After slider */}
-          <RevealOnScroll>
-            <BeforeAfterSlider
-              beforeSrc="/minshew-2(3D).png"
-              afterSrc="/minshew-2.PNG"
-              beforeLabel="3D Rendering"
-              afterLabel="Completed Project"
-              beforeAlt="Yardie Design — 3D design rendering of Minshew project"
-              afterAlt="Yardie Design — completed Minshew project"
-            />
-          </RevealOnScroll>
-
-          {/* Three pillars */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[rgba(248,244,238,0.06)] mt-px">
-            {([
-              [
-                'A Design That\'s Yours',
-                'We don\'t work from templates. Every sketch, material selection, and spatial decision is specific to your property, your architecture, and the way you live outside.',
-              ],
-              [
-                'Refine Until It\'s Right',
-                'The design phase is collaborative by intention. Change the stone, adjust the layout, move the firepit. We iterate until the plan reflects exactly the space you had in mind.',
-              ],
-              [
-                'Build With Full Clarity',
-                'When construction begins, both sides know exactly what the outcome looks like. No surprises, no substitutions — just a realized version of what you approved.',
-              ],
-            ] as const).map(([title, body], i) => (
-              <RevealOnScroll key={title} delay={i * 0.08}>
-                <div className="bg-bark px-8 py-10">
-                  <p className="font-sans text-[9px] tracking-[0.22em] uppercase text-moss mb-5">
-                    {String(i + 1).padStart(2, '0')}
-                  </p>
-                  <h3 className="font-display text-cream font-[300] mb-3" style={{ fontSize: '1.25rem', lineHeight: '1.2' }}>
-                    {title}
-                  </h3>
-                  <p className="text-[rgba(248,244,238,0.5)] text-[13px] leading-[1.75]">{body}</p>
-                </div>
-              </RevealOnScroll>
-            ))}
-          </div>
-
-          {/* Section CTA */}
-          <RevealOnScroll delay={0.12}>
-            <div className="mt-14 flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-10"
-              style={{ borderTop: '1px solid rgba(248,244,238,0.08)' }}
-            >
-              <p className="font-display text-cream font-[300] text-balance" style={{ fontSize: 'clamp(1.1rem,1.6vw,1.35rem)', lineHeight: '1.3', maxWidth: '460px' }}>
-                Ready to see your space designed before a single decision is made?
-              </p>
-              <Link
-                href="/consultation"
-                className="flex-shrink-0 inline-block border border-[rgba(248,244,238,0.3)] text-cream text-[10px] tracking-[0.18em] uppercase font-[500] px-9 py-[14px] transition-all duration-300 hover:border-[rgba(248,244,238,0.7)] hover:bg-[rgba(248,244,238,0.06)]"
-                style={{ borderRadius: '2px' }}
-              >
-                Schedule a Consultation
-              </Link>
+              <TextLink href="/services">Explore All Services</TextLink>
             </div>
-          </RevealOnScroll>
-
-        </div>
-      </section>
-
-      {/* ── CINEMATIC STATEMENT ─────────────────────────────────────────── */}
-      <section
-        className="relative w-full overflow-hidden"
-        style={{ height: 'clamp(480px,60vw,720px)' }}
-        aria-label="Yardie Design — by the numbers"
-      >
-        <Image
-          src="/File_055.jpg"
-          alt="Yardie Design project — Eastern North Carolina"
-          fill
-          className="object-cover object-[center_40%]"
-          sizes="100vw"
-          unoptimized
-        />
-        {/* Cinematic overlay — heavier than before, gives depth to the stats */}
-        <div
-          className="absolute inset-0"
-          style={{ background: 'linear-gradient(to bottom, rgba(26,24,20,0.38) 0%, rgba(26,24,20,0.55) 60%, rgba(26,24,20,0.68) 100%)' }}
-        />
-        {/* Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 lg:px-[clamp(24px,5vw,80px)]">
-          <div className="w-8 h-px bg-[rgba(248,244,238,0.22)] mb-14" />
-          <div className="grid grid-cols-3 gap-4 md:gap-20 lg:gap-28 text-center">
-            {([
-              ['100+', 'Projects Completed', 'Across Eastern NC'],
-              ['20+',  'Years Experience',   'In exterior design'],
-              ['5',    'Design Disciplines', 'As one vision'],
-            ] as const).map(([num, label, sub]) => (
-              <div key={label}>
-                <p
-                  className="font-display text-cream"
-                  style={{ fontSize: 'clamp(2rem,5.5vw,5.5rem)', fontWeight: 500, lineHeight: '1', letterSpacing: '-0.03em' }}
-                >
-                  {num}
-                </p>
-                <p className="label-light mt-3">{label}</p>
-                <p className="hidden md:block mt-1.5 text-[rgba(248,244,238,0.28)] text-[9px] tracking-[0.14em] uppercase">{sub}</p>
-              </div>
-            ))}
           </div>
-          <div className="w-8 h-px bg-[rgba(248,244,238,0.22)] mt-14" />
         </div>
       </section>
 
-      {/* ── PROCESS ───────────────────────────────────────────────────── */}
-      <section className="bg-cream-alt py-24 lg:py-40 px-6 lg:px-[clamp(24px,5vw,80px)]" aria-labelledby="process-heading">
-        <div className="max-w-[1320px] mx-auto">
-          <RevealOnScroll className="mb-20">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-              <div className="lg:col-span-5">
-                <SectionLabel className="mb-5">The Process</SectionLabel>
-                <h2
-                  id="process-heading"
-                  className="font-display text-bark"
-                  style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 500 }}
-                >
-                  How we work<br /><em>together</em>
-                </h2>
-              </div>
-              <div className="lg:col-span-5 lg:col-start-8 flex items-end">
-                <p className="text-clay text-[14px] leading-[1.8]">
-                  Every Yardie project follows a proven three-phase process — designed to ensure clarity, craftsmanship, and a result that exceeds your expectations.
-                </p>
-              </div>
-            </div>
-          </RevealOnScroll>
-
-          <div className="divide-y divide-border-light">
-            {processSteps.map((step, i) => (
-              <RevealOnScroll key={step.num} delay={i * 0.1}>
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-16 py-14 lg:py-16 items-start">
-                  <div className="lg:col-span-1">
-                    <span
-                      className="font-display text-border-warm select-none block"
-                      style={{ fontSize: 'clamp(2.5rem,5vw,5rem)', lineHeight: '1', fontWeight: 500 }}
-                      aria-hidden="true"
-                    >
-                      {step.num}
-                    </span>
-                  </div>
-                  <div className="lg:col-span-4">
-                    <h3 className="font-display text-bark" style={{ fontSize: 'clamp(1.5rem,2.4vw,2.1rem)', fontWeight: 500, lineHeight: '1.1' }}>
-                      {step.title}
-                    </h3>
-                  </div>
-                  <div className="lg:col-span-6 lg:col-start-7">
-                    <p className="text-clay leading-[1.8] text-[15px]">{step.body}</p>
-                  </div>
-                </div>
-              </RevealOnScroll>
-            ))}
-          </div>
-
-          <RevealOnScroll className="mt-14">
-            <Button href="/consultation" variant="primary" size="md">Begin the Conversation</Button>
-          </RevealOnScroll>
-        </div>
-      </section>
-
-      {/* ── REVIEWS ───────────────────────────────────────────────────── */}
-      <section className="bg-bark py-24 lg:py-40 px-6 lg:px-[clamp(24px,5vw,80px)]" aria-label="Client reviews">
-        <div className="max-w-[1320px] mx-auto">
-
-          {/* Section header */}
-          <RevealOnScroll className="mb-14">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-              <div>
-                <SectionLabel className="mb-5" light>Client Reviews</SectionLabel>
-                <h2
-                  className="font-display text-cream"
-                  style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 500 }}
-                >
-                  What our clients say
-                </h2>
-                {/* Rating badge */}
-                {rating > 0 && (
-                  <div className="flex items-center gap-3 mt-5">
-                    <div className="flex gap-[3px]" aria-label={`${rating} out of 5 stars`}>
-                      {[1,2,3,4,5].map((s) => (
-                        <svg key={s} width="13" height="13" viewBox="0 0 16 16" fill="currentColor" className="text-moss" aria-hidden="true">
-                          <path d="M8 1l1.85 3.75L14 5.5l-3 2.92.71 4.12L8 10.5l-3.71 1.95.71-4.12L2 5.5l4.15-.75L8 1z"/>
-                        </svg>
-                      ))}
-                    </div>
-                    <span className="text-cream text-[14px] font-[500]">{rating.toFixed(1)}</span>
-                    <span className="text-[rgba(248,244,238,0.35)] text-[13px]">
-                      · {totalReviews} reviews on Google
-                    </span>
-                  </div>
-                )}
-              </div>
-              <Button href="/work" variant="ghost" size="sm">See Our Work</Button>
-            </div>
-          </RevealOnScroll>
-
-          {/* Carousel or fallback */}
-          {reviews.length > 0 ? (
-            <RevealOnScroll>
-              <ReviewsCarousel reviews={reviews} />
-            </RevealOnScroll>
-          ) : (
-            <RevealOnScroll className="max-w-[820px]">
-              <div className="relative overflow-hidden" style={{ borderLeft: '2px solid var(--color-moss)', paddingLeft: '2rem' }}>
-                <p className="font-display text-cream font-[300] italic leading-[1.5]" style={{ fontSize: 'clamp(1.4rem,2.5vw,2rem)' }}>
-                  &ldquo;Transforming outdoor spaces into beautiful, functional environments — one project at a time.&rdquo;
-                </p>
-                <p className="label-light mt-6" style={{ color: 'rgba(248,244,238,0.35)' }}>Yardie Design — Greenville, NC</p>
-              </div>
-            </RevealOnScroll>
-          )}
-
-        </div>
-      </section>
-
-      {/* ── PARTNERS CAROUSEL ─────────────────────────────────────────── */}
-      <section className="bg-cream py-12 lg:py-16 border-y border-[var(--color-border-light)] overflow-hidden">
-        <RevealOnScroll className="max-w-[1320px] mx-auto px-6 lg:px-[clamp(24px,5vw,80px)] mb-8">
-          <SectionLabel>Trusted Brands &amp; Partners</SectionLabel>
-        </RevealOnScroll>
-        <PartnersCarousel />
-      </section>
-
-      {/* ── ABOUT GLIMPSE ─────────────────────────────────────────────── */}
-      <section className="bg-cream py-24 lg:py-40 px-6 lg:px-[clamp(24px,5vw,80px)]">
-        <div className="max-w-[1320px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-28 items-center">
-          <RevealOnScroll>
-            <SectionLabel className="mb-7">About Yardie</SectionLabel>
-            <h2
-              className="font-display text-bark mb-9 text-balance"
-              style={{ fontSize: 'clamp(2rem,3.4vw,3rem)', lineHeight: '1.1', fontWeight: 500 }}
-            >
-              Founded in Greenville.<br />
-              <em>Rooted in craftsmanship.</em>
+      {/* ────────────────────────────────────────────────────
+          PORTFOLIO MOSAIC — 2-col masonry mobile,
+          justified gallery on tablet+
+         ──────────────────────────────────────────────────── */}
+      <section className="py-16 sm:py-24 lg:py-32 bg-cream">
+        <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 sm:mb-12 lg:mb-14 text-center lg:text-left">
+            <h2 className="font-display text-[34px] sm:text-[40px] lg:text-[56px] text-bark leading-[1.04] tracking-tight font-light max-w-[20ch] mx-auto lg:mx-0">
+              A look at what we&rsquo;ve{" "}
+              <span className="italic text-moss">been building lately.</span>
             </h2>
-            <p className="text-clay text-[15px] leading-[1.8] mb-5 max-w-[500px]">
-              Yardie is an exterior design company built on the belief that every property has extraordinary potential. Under the leadership of Scott Baldwin, our team of designers and craftsmen transforms ordinary exteriors into spaces you&apos;ll love spending time in.
-            </p>
-            <p className="text-clay text-[15px] leading-[1.8] mb-12 max-w-[500px]">
-              With 20+ years of experience and hundreds of completed projects across Greenville and Eastern North Carolina, we bring expertise, care, and genuine craft to every engagement.
-            </p>
-            <div className="grid grid-cols-3 gap-8 mb-12 pt-10" style={{ borderTop: '1px solid var(--color-border-light)' }}>
-              {([['100+', 'Clients Served'], ['20+', 'Years Experience'], ['30+', 'Team Members']] as const).map(([num, label]) => (
-                <div key={label}>
-                  <p className="font-display text-bark" style={{ fontSize: 'clamp(1.8rem,2.8vw,2.75rem)', fontWeight: 500, lineHeight: '1' }}>{num}</p>
-                  <p className="label mt-2">{label}</p>
-                </div>
-              ))}
+            <div className="flex justify-center lg:justify-end">
+              <TextLink href="/gallery">View Full Gallery</TextLink>
             </div>
-            <Button href="/about" variant="outline" size="md">Our Story</Button>
-          </RevealOnScroll>
+          </div>
 
-          <RevealOnScroll delay={0.15} className="relative">
-            <div className="relative overflow-hidden" style={{ aspectRatio: '3/4' }}>
-              <Image
-                src="/IMG_4722.jpg"
-                alt="Scott Baldwin, founder of Yardie Design, reviewing plans in Greenville NC"
-                fill
-                className="object-cover"
-                sizes="(max-width:1024px)100vw,50vw"
-                unoptimized
+          {/* Mobile — 2-col masonry. Whole grid links to /gallery so any
+              tap navigates; cursor-pointer makes that affordance obvious. */}
+          <Link
+            href="/gallery"
+            aria-label="Open the full gallery"
+            className="md:hidden block columns-2 gap-3 [column-fill:balance] cursor-pointer"
+          >
+            {homeGalleryTiles.slice(0, 6).map((tile, i) => (
+              <figure
+                key={`${tile.src}-${i}`}
+                className="relative mb-3 break-inside-avoid overflow-hidden bg-stone"
+                style={{ aspectRatio: tile.ratio }}
+              >
+                <Image
+                  src={tile.src}
+                  alt={tile.alt}
+                  fill
+                  sizes="50vw"
+                  className="object-cover"
+                />
+              </figure>
+            ))}
+          </Link>
+
+          {/* Tablet+ — justified gallery, also linked through to /gallery. */}
+          <Link
+            href="/gallery"
+            aria-label="Open the full gallery"
+            className="hidden md:block cursor-pointer group"
+          >
+            <GalleryMosaic tiles={homeGalleryTiles} />
+          </Link>
+        </div>
+      </section>
+
+      {/* ────────────────────────────────────────────────────
+          PROCESS — six steps on dark bark.
+          Mobile: horizontal swipe rail with snap, mirroring the
+          Services section pattern. Saves a massive amount of vertical
+          scroll vs. the previous stacked-card column. Tablet+ keeps
+          the editorial multi-column grid.
+         ──────────────────────────────────────────────────── */}
+      <section className="py-14 sm:py-24 lg:py-32 bg-bark text-cream relative overflow-hidden">
+        <Image
+          src={photos.aboutCraft.src}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover opacity-15"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-bark via-bark/90 to-bark/70" />
+        <div className="relative mx-auto max-w-[1400px]">
+          <div className="px-5 sm:px-8 lg:px-12">
+            <div className="grid lg:grid-cols-12 gap-6 lg:gap-16 mb-10 sm:mb-14 lg:mb-16 items-end">
+              <div className="lg:col-span-7">
+                <h2 className="font-display text-[32px] sm:text-5xl lg:text-[64px] text-cream leading-[1.04] tracking-tight font-light max-w-[18ch]">
+                  From first walk
+                  <span className="italic text-stone"> to finished outdoor space.</span>
+                </h2>
+              </div>
+              <p className="lg:col-span-5 text-[14.5px] sm:text-[16px] text-cream/65 leading-relaxed">
+                Six clear steps, one team, no handoffs to subs you&rsquo;ve never met. The point is simple: you should know exactly what&rsquo;s happening, from the first conversation to the last walkthrough.
+              </p>
+            </div>
+          </div>
+
+          <ul
+            className="
+              flex sm:grid sm:grid-cols-2 lg:grid-cols-3
+              gap-4 sm:gap-x-10 sm:gap-y-12 lg:gap-y-16
+              overflow-x-auto sm:overflow-visible
+              snap-x snap-mandatory sm:snap-none
+              scrollbar-hide
+              px-5 sm:px-8 lg:px-12
+              pb-2 sm:pb-0
+            "
+          >
+            {processSteps.map((step) => (
+              <li
+                key={step.num}
+                className="
+                  snap-start shrink-0 w-[78vw] sm:w-auto
+                  bg-dark-surface/70 sm:bg-transparent
+                  border border-cream/10 sm:border-0
+                  sm:border-t sm:border-cream/15
+                  p-6 sm:p-0 sm:pt-7
+                "
+              >
+                <p className="font-display text-[44px] sm:text-5xl text-stone/85 leading-none tracking-tight">
+                  {step.num}
+                </p>
+                <h3 className="mt-4 sm:mt-6 text-[12.5px] sm:text-[14px] font-medium uppercase tracking-[0.18em] text-cream">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-[14px] sm:text-[14.5px] text-cream/65 leading-relaxed">
+                  {step.body}
+                </p>
+              </li>
+            ))}
+          </ul>
+
+          {/* Swipe hint — mobile only */}
+          <div className="sm:hidden mt-5 px-5 flex items-center justify-center gap-2 text-[10.5px] tracking-[0.22em] uppercase text-cream/50">
+            <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+            </svg>
+            Swipe through the steps
+            <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      {/* ────────────────────────────────────────────────────
+          DRAWN VS BUILT — drag-to-reveal before/after
+         ──────────────────────────────────────────────────── */}
+      <section className="py-16 sm:py-24 lg:py-32 bg-cream text-bark border-t border-border">
+        <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-end mb-10 sm:mb-14 lg:mb-16">
+            <div className="lg:col-span-7">
+              <h2 className="font-display text-[34px] sm:text-[44px] lg:text-[64px] text-bark leading-[1.04] tracking-tight font-light max-w-[18ch]">
+                Drawn first.{" "}
+                <span className="italic text-moss">Built once.</span>
+              </h2>
+            </div>
+            <div className="lg:col-span-5">
+              <p className="text-[15px] sm:text-[16px] text-clay leading-relaxed max-w-md">
+                Every Yardie project starts as a drawing. Drag the slider to see the
+                3D plan beside the finished build &mdash; the design intent is the
+                installed result.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative">
+            <BeforeAfterSlider
+              before={{ src: "/renderings/minshew-rendering-02.png", alt: "3D rendering of the Minshew outdoor kitchen and pavilion" }}
+              after={{ src: "/renderings/minshew-front-yard-02.png", alt: "The Minshew pavilion as built" }}
+              beforeLabel="3D Plan"
+              afterLabel="Built"
+              className="aspect-[16/10] sm:aspect-[16/9]"
+            />
+            <p className="mt-4 sm:mt-5 text-[11.5px] tracking-[0.22em] uppercase text-clay/70">
+              Minshew Residence &mdash; Greenville, NC &middot; Drag to compare
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ────────────────────────────────────────────────────
+          INSIDE THE STUDIO — story video + brand intro
+         ──────────────────────────────────────────────────── */}
+      <section className="bg-cream py-16 sm:py-20 lg:py-32">
+        <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
+          <div className="grid lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-20 items-center">
+            <div className="lg:col-span-5 w-[68vw] max-w-[300px] sm:w-full sm:max-w-[360px] lg:max-w-none mx-auto">
+              <StoryVideo
+                poster={staffPhotos.scottDrafting.src}
+                alt="Yardie founder Scott Baldwin drafting a site plan."
               />
             </div>
-            <div
-              className="absolute -bottom-8 -left-8 bg-moss p-8 max-w-[240px] hidden lg:block"
-              style={{ borderRadius: '2px' }}
-            >
-              <p className="font-display text-cream italic leading-snug" style={{ fontSize: '1.1rem' }}>
-                &ldquo;Design should be an experience, not just a product.&rdquo;
+
+            <div className="lg:col-span-6 lg:col-start-7">
+              <p className="font-display text-[26px] sm:text-[30px] lg:text-[36px] text-bark leading-[1.22] tracking-tight max-w-[28ch] mx-auto lg:mx-0 text-center lg:text-left">
+                I started Yardie because most yards are an{" "}
+                <span className="italic text-moss">afterthought</span> &mdash;
+                handed off, subbed out, finished but not quite right.
               </p>
-              <p className="label-light mt-4">Scott Baldwin, Founder</p>
-            </div>
-          </RevealOnScroll>
-        </div>
-      </section>
 
-      {/* ── PERSPECTIVES ──────────────────────────────────────────────────── */}
-      <section className="bg-bark py-24 lg:py-40 px-6 lg:px-[clamp(24px,5vw,80px)]" aria-labelledby="perspectives-heading">
-        <div className="max-w-[1320px] mx-auto">
-          <RevealOnScroll className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-            <div>
-              <SectionLabel className="mb-4" light>Perspectives</SectionLabel>
-              <h2
-                id="perspectives-heading"
-                className="font-display text-cream"
-                style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 500 }}
-              >
-                Ideas from the studio
-              </h2>
-            </div>
-            <Button href="/insights" variant="ghost" size="sm">All Perspectives</Button>
-          </RevealOnScroll>
+              <p className="mt-5 sm:mt-6 text-[15px] sm:text-[16px] text-earth leading-relaxed max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
+                We do it differently. We draw the property ourselves, our crew
+                builds it, and we come back season after season to make sure it
+                still feels like the place you wanted. That&rsquo;s the only
+                way we know how to work.
+              </p>
 
-          {/* Featured article — editorial split card */}
-          {featuredPosts.length > 0 && (
-          <RevealOnScroll className="mb-2.5">
-            <Link
-              href={`/insights/${featuredPosts[0].slug}`}
-              className="group grid grid-cols-1 lg:grid-cols-5"
-              aria-label={`Read: ${featuredPosts[0].title}`}
-            >
-              {/* Image panel — 3/5 width */}
-              <div className="lg:col-span-3 relative overflow-hidden bg-earth" style={{ aspectRatio: '3/2', minHeight: '300px' }}>
-                {featuredPosts[0].featuredImage && (
-                  <Image
-                    src={featuredPosts[0].featuredImage}
-                    alt={featuredPosts[0].title}
-                    fill
-                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
-                    sizes="(max-width:1024px)100vw,62vw"
-                    unoptimized
-                  />
-                )}
-                {/* Subtle label overlay on image */}
-                <div className="absolute top-6 left-6">
-                  <span className="label-light text-[rgba(248,244,238,0.55)]">{featuredPosts[0].readTime}</span>
-                </div>
+              <div className="mt-9 sm:mt-11 flex flex-col items-center lg:items-start">
+                <span className="font-signature text-[20px] sm:text-[24px] text-bark leading-[1.2] -rotate-[3deg] origin-left">
+                  Scott Baldwin
+                </span>
+                <span className="font-mono text-[10.5px] tabular-nums text-clay/70 tracking-[0.22em] uppercase mt-3">
+                  Founder &middot; Yardie
+                </span>
               </div>
-              {/* Text panel — 2/5 width */}
-              <div className="lg:col-span-2 flex flex-col justify-between bg-[#1F1D19] p-10 lg:p-14" style={{ minHeight: '300px' }}>
-                <div>
-                  <p className="label text-moss mb-7">{featuredPosts[0].category}</p>
-                  <h3
-                    className="font-display text-cream font-[300] text-balance transition-colors duration-300 group-hover:text-[rgba(248,244,238,0.78)]"
-                    style={{ fontSize: 'clamp(1.4rem,2vw,1.9rem)', lineHeight: '1.15' }}
-                  >
-                    {featuredPosts[0].title}
-                  </h3>
-                  <p className="text-[rgba(248,244,238,0.42)] text-[13px] leading-[1.8] mt-5">
-                    {featuredPosts[0].excerpt}
-                  </p>
-                </div>
-                <div>
-                  <div className="h-px bg-[rgba(248,244,238,0.07)] mb-6" />
-                  <div className="flex items-center justify-between">
-                    <span className="text-[rgba(248,244,238,0.28)] text-[11px] tracking-[0.05em]">
-                      {featuredPosts[0].publishDate ? new Date(featuredPosts[0].publishDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : ''}
-                    </span>
-                    <span className="label text-moss group-hover:text-moss-light transition-colors duration-300">
-                      Read Article →
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </RevealOnScroll>
-          )}
 
-          {/* Two secondary articles — horizontal compact cards */}
-          {featuredPosts.length > 1 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
-            {featuredPosts.slice(1, 3).map((post, i) => (
-              <RevealOnScroll key={post.slug} delay={(i + 1) * 0.1}>
-                <Link
-                  href={`/insights/${post.slug}`}
-                  className="group grid grid-cols-1 sm:grid-cols-5 bg-[#1F1D19]"
-                  aria-label={`Read: ${post.title}`}
-                >
-                  <div className="col-span-full sm:col-span-2 relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
-                    {post.featuredImage && (
-                      <Image
-                        src={post.featuredImage}
-                        alt={post.title}
-                        fill
-                        className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
-                        sizes="(max-width:768px)40vw,25vw"
-                        unoptimized
-                      />
-                    )}
-                  </div>
-                  <div className="col-span-full sm:col-span-3 flex flex-col justify-center p-6 lg:p-8">
-                    <p className="label text-moss mb-3">{post.category}</p>
-                    <h3
-                      className="font-display text-cream font-[300] transition-colors duration-300 group-hover:text-[rgba(248,244,238,0.78)]"
-                      style={{ fontSize: 'clamp(0.95rem,1.3vw,1.15rem)', lineHeight: '1.25' }}
-                    >
-                      {post.title}
-                    </h3>
-                    <div className="flex items-center justify-between mt-4">
-                      <span className="text-[rgba(248,244,238,0.28)] text-[11px] tracking-[0.04em]">
-                        {post.publishDate ? new Date(post.publishDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : ''}
-                      </span>
-                      <span className="label text-[rgba(248,244,238,0.25)] group-hover:text-moss transition-colors duration-300">→</span>
-                    </div>
-                  </div>
-                </Link>
-              </RevealOnScroll>
-            ))}
+              <div className="mt-8 sm:mt-10 flex justify-center lg:justify-start">
+                <TextLink href="/about">Read about the studio</TextLink>
+              </div>
+            </div>
           </div>
-          )}
         </div>
       </section>
 
-      {/* ── INSTAGRAM ─────────────────────────────────────────────────── */}
-      <section className="bg-cream py-24 lg:py-40 px-6 lg:px-[clamp(24px,5vw,80px)]" aria-labelledby="instagram-heading">
-        <div className="max-w-[1320px] mx-auto">
-          <RevealOnScroll className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-            <div>
-              <SectionLabel className="mb-4">Follow Along</SectionLabel>
-              <h2
-                id="instagram-heading"
-                className="font-display text-bark"
-                style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 500 }}
-              >
-                @yardiedesign
+      {/* ────────────────────────────────────────────────────
+          REVIEWS · PARTNERS
+         ──────────────────────────────────────────────────── */}
+      <Reviews
+        googleReviews={googleReviews}
+        rating={googleRating}
+        totalReviews={googleTotal}
+      />
+      <PartnerLogos />
+
+      {/* ────────────────────────────────────────────────────
+          SERVICE AREAS — postcard rail
+         ──────────────────────────────────────────────────── */}
+      <section className="py-16 sm:py-24 lg:py-32 bg-cream border-t border-border">
+        <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-8 mb-10 sm:mb-12 lg:mb-14 text-center lg:text-left">
+            <div className="max-w-xl mx-auto lg:mx-0">
+              <h2 className="font-display text-[32px] sm:text-[40px] lg:text-[56px] text-bark leading-[1.06] tracking-tight font-light">
+                Designed across Greenville{" "}
+                <span className="italic text-moss">and Eastern North Carolina.</span>
               </h2>
+              <p className="mt-5 text-[14.5px] sm:text-[15px] text-clay leading-relaxed max-w-md mx-auto lg:mx-0">
+                Postcards from the towns and counties where we work — from Pitt County to the coast.
+              </p>
             </div>
+            <div className="flex justify-center lg:justify-end">
+              <TextLink href="/service-areas">See All Service Areas</TextLink>
+            </div>
+          </div>
+        </div>
+        <ServiceAreaPostcards areas={featuredAreas} />
+
+        {/* Wikimedia attribution for the city photos on each postcard. */}
+        <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12 mt-6">
+          <p className="text-[11px] text-clay/70 leading-relaxed text-center lg:text-left">
+            City photos courtesy of{" "}
             <a
-              href="https://www.instagram.com/yardiedesign/"
+              href="https://commons.wikimedia.org/"
               target="_blank"
               rel="noopener noreferrer"
-              className="label text-moss hover:text-moss-dark transition-colors flex items-center gap-2"
+              className="underline underline-offset-2 hover:text-bark transition-colors"
             >
-              {instagramLive ? 'View on Instagram →' : 'Follow on Instagram →'}
+              Wikimedia Commons
             </a>
-          </RevealOnScroll>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-[var(--color-border-light)]">
-            {instagramPosts.slice(0, 6).map((post, i) => (
-              <RevealOnScroll key={post.id} delay={i * 0.05}>
-                <a
-                  href={post.permalink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative block overflow-hidden bg-warm-stone"
-                  style={{ aspectRatio: '1/1' }}
-                  aria-label="View on Instagram"
-                >
-                  <Image
-                    src={post.media_url}
-                    alt={post.caption ? post.caption.slice(0, 80) : 'Yardie Design project'}
-                    fill
-                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
-                    sizes="(max-width:768px)50vw,33vw"
-                    unoptimized
-                  />
-                  <div className="absolute inset-0 bg-[rgba(26,24,20,0)] group-hover:bg-[rgba(26,24,20,0.45)] transition-colors duration-400 flex items-center justify-center">
-                    <svg
-                      width="28" height="28" viewBox="0 0 24 24" fill="none"
-                      stroke="rgba(248,244,238,0.9)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-                      className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      aria-hidden="true"
-                    >
-                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                      <circle cx="12" cy="12" r="4.5"/>
-                      <circle cx="17.5" cy="6.5" r="1" fill="rgba(248,244,238,0.9)" stroke="none"/>
-                    </svg>
-                  </div>
-                </a>
-              </RevealOnScroll>
-            ))}
-          </div>
+            , used under{" "}
+            <a
+              href="https://creativecommons.org/licenses/by-sa/4.0/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 hover:text-bark transition-colors"
+            >
+              CC BY-SA 4.0
+            </a>
+            .
+          </p>
         </div>
       </section>
 
-      {/* ── LOCAL TRUST ───────────────────────────────────────────────── */}
-      <section className="bg-cream py-20 lg:py-28 px-6 lg:px-[clamp(24px,5vw,80px)]">
-        <RevealOnScroll className="max-w-[1320px] mx-auto">
-          <div
-            className="grid grid-cols-1 lg:grid-cols-12 items-center gap-10 py-12 lg:py-16"
-            style={{ borderTop: '1px solid var(--color-border-light)', borderBottom: '1px solid var(--color-border-light)' }}
-          >
-            <div className="lg:col-span-7">
-              <SectionLabel className="mb-4">Service Area</SectionLabel>
-              <p className="font-display text-bark" style={{ fontSize: 'clamp(1.2rem,2vw,1.6rem)', fontWeight: 500, lineHeight: '1.45' }}>
-                Proudly serving Greenville, Winterville, Farmville,<br className="hidden lg:block" /> Ayden, and the greater Pitt County region.
-              </p>
-            </div>
-            <div className="lg:col-span-4 lg:col-start-9 space-y-3">
-              <a href="tel:+12527567788" className="block font-sans text-bark font-[500] text-[15px] hover:text-moss transition-colors tracking-[0.04em]">
-                (252) 756-7788
-              </a>
-              <a href="mailto:hello@yardiedesign.com" className="block text-clay text-[13px] hover:text-bark transition-colors">
-                hello@yardiedesign.com
-              </a>
-              <Link href="/consultation" className="block label text-moss hover:text-moss-dark transition-colors mt-4">
-                Schedule a consultation →
-              </Link>
-            </div>
-          </div>
-        </RevealOnScroll>
-      </section>
-      {/* ── SERVICE AREAS ─────────────────────────────────────────────── */}
-      <section className="bg-cream py-24 lg:py-36 px-6 lg:px-[clamp(24px,5vw,80px)]" aria-labelledby="areas-heading">
-        <div className="max-w-[1320px] mx-auto">
-          <RevealOnScroll className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
-            <div>
-              <SectionLabel className="mb-4">Where We Work</SectionLabel>
-              <h2
-                id="areas-heading"
-                className="font-display text-bark"
-                style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', lineHeight: '1.06', fontWeight: 500 }}
-              >
-                Serving Eastern<br /><em>North Carolina</em>
-              </h2>
-            </div>
-            <Button href="/service-areas" variant="outline" size="sm">All Service Areas</Button>
-          </RevealOnScroll>
-          <RevealOnScroll className="mb-12">
-            <p className="text-clay text-[14px] leading-[1.75] max-w-[540px]">
-              Based in Winterville, we bring the same design standards, the same crew, and the same level of craft to every project — regardless of where it is in Eastern NC.
-            </p>
-          </RevealOnScroll>
+      {/* ────────────────────────────────────────────────────
+          INSTAGRAM — drift section
+         ──────────────────────────────────────────────────── */}
+      <InstagramFeed />
 
-          {/* Location grid — architectural text layout */}
-          <div className="divide-y divide-border-light">
-            {locations.map((loc, i) => (
-              <RevealOnScroll key={loc.slug} delay={i * 0.05}>
-                <Link
-                  href={`/service-areas/${loc.slug}`}
-                  className="group grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-6 md:py-7 items-center hover:bg-cream-alt transition-colors duration-200 -mx-4 px-4"
-                  aria-label={`Exterior design services in ${loc.fullName}`}
-                >
-                  <div className="md:col-span-1 hidden md:flex items-center">
-                    <span className="font-sans text-[10px] tracking-[0.16em] text-warm-stone uppercase">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
+      {/* ────────────────────────────────────────────────────
+          ARTICLES
+         ──────────────────────────────────────────────────── */}
+      {articles.length > 0 && (
+        <section className="py-16 sm:py-24 lg:py-32 bg-cream-alt border-y border-border">
+          <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 sm:mb-12 lg:mb-14 text-center lg:text-left">
+              <div className="max-w-xl mx-auto lg:mx-0">
+                <h2 className="font-display text-[32px] sm:text-[40px] lg:text-[56px] text-bark leading-[1.06] tracking-tight font-light">
+                  Planning your{" "}
+                  <span className="italic text-moss">outdoor space?</span>
+                </h2>
+              </div>
+              <div className="flex justify-center lg:justify-end">
+                <TextLink href="/journal">All Articles</TextLink>
+              </div>
+            </div>
+
+            {/* Mobile — featured + list */}
+            <div className="md:hidden">
+              {articles[0] && (
+                <Link href={`/journal/${articles[0].slug}`} className="group block mb-8">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-stone">
+                    <Image
+                      src={articles[0].coverImage}
+                      alt={articles[0].title}
+                      fill
+                      sizes="100vw"
+                      className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
+                    />
                   </div>
-                  <div className="md:col-span-3 flex items-center gap-3">
-                    <span className="label md:hidden">{String(i + 1).padStart(2, '0')}</span>
-                    <h3
-                      className="font-display text-bark group-hover:text-moss transition-colors duration-200"
-                      style={{ fontSize: 'clamp(1.15rem,1.6vw,1.45rem)', fontWeight: 400 }}
-                    >
-                      {loc.fullName}
+                  <div className="pt-5">
+                    <h3 className="mt-2.5 font-display text-[24px] text-bark leading-[1.2] group-hover:text-moss transition-colors font-light tracking-tight">
+                      {articles[0].title}
                     </h3>
-                  </div>
-                  <div className="md:col-span-2 hidden md:block">
-                    <span className="label text-clay">{loc.county}</span>
-                    <p className="text-[rgba(26,24,20,0.38)] text-[10px] tracking-[0.06em] mt-0.5">{loc.distanceNote}</p>
-                  </div>
-                  <div className="md:col-span-5">
-                    <p className="text-clay text-[13px] leading-[1.65] max-w-[420px]">{loc.tagline}</p>
-                  </div>
-                  <div className="hidden md:flex md:col-span-1 justify-end">
-                    <svg width="8" height="13" viewBox="0 0 8 13" fill="none" className="text-warm-stone group-hover:text-moss transition-colors duration-200">
-                      <path d="M1 1L7 6.5L1 12" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
+                    <p className="mt-2.5 text-[14px] text-clay leading-relaxed line-clamp-2">
+                      {articles[0].excerpt}
+                    </p>
                   </div>
                 </Link>
-              </RevealOnScroll>
-            ))}
-          </div>
-        </div>
-      </section>
+              )}
 
-      {/* ── FAQ ──────────────────────────────────────────────────────────── */}
-      <section className="bg-cream-alt py-24 lg:py-36 px-6 lg:px-[clamp(24px,5vw,80px)]" aria-labelledby="faq-heading">
-        <div className="max-w-[1320px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20">
-            {/* Left: heading + CTA */}
-            <RevealOnScroll className="lg:col-span-4">
-              <SectionLabel className="mb-5">Common Questions</SectionLabel>
-              <h2
-                id="faq-heading"
-                className="font-display text-bark text-balance"
-                style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', lineHeight: '1.08', fontWeight: 500 }}
-              >
-                Everything you&apos;d want to know before we begin
+              {articles.slice(1).length > 0 && (
+                <ul className="border-t border-border">
+                  {articles.slice(1).map((post) => (
+                    <li key={post.slug} className="border-b border-border">
+                      <Link
+                        href={`/journal/${post.slug}`}
+                        className="group flex items-start gap-4 py-5"
+                      >
+                        <div className="relative shrink-0 h-20 w-20 overflow-hidden bg-stone">
+                          <Image
+                            src={post.coverImage}
+                            alt={post.title}
+                            fill
+                            sizes="80px"
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <h3 className="font-display text-[18px] text-bark leading-[1.25] group-hover:text-moss transition-colors line-clamp-2 font-light tracking-tight">
+                            {post.title}
+                          </h3>
+                        </div>
+                        <svg
+                          className="shrink-0 h-3 w-3 mt-2 text-clay group-hover:text-moss group-hover:translate-x-1 transition-all"
+                          fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                        </svg>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
+            {/* Tablet+ — 3-up grid */}
+            <div className="hidden md:grid md:grid-cols-3 gap-6 lg:gap-8">
+              {articles.map((post) => (
+                <JournalCard key={post.slug} post={post} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ────────────────────────────────────────────────────
+          FAQ — handle the last objections before the close
+         ──────────────────────────────────────────────────── */}
+      <section className="py-16 sm:py-24 lg:py-32 bg-cream text-bark border-t border-border">
+        <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-20 items-start">
+            <div className="lg:col-span-5 lg:sticky lg:top-28">
+              <h2 className="font-display text-[34px] sm:text-[44px] lg:text-[64px] text-bark leading-[1.04] tracking-tight font-light max-w-[14ch]">
+                Common{" "}
+                <span className="italic text-moss">questions.</span>
               </h2>
-              <p className="text-clay text-[14px] leading-[1.8] mt-6 mb-10 max-w-[340px]">
-                Have a question that&apos;s not answered here? We&apos;re always happy to speak directly.
+              <p className="mt-6 text-[15px] sm:text-[16px] text-clay leading-relaxed max-w-md">
+                The questions we&rsquo;re asked most often before the first site visit. If yours isn&rsquo;t here, send us a note &mdash; we answer every email ourselves.
               </p>
-              <Button href="/consultation" variant="outline" size="md">Speak With Us</Button>
-            </RevealOnScroll>
+              <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+                <TextLink href="/faq">All Questions</TextLink>
+                <Link
+                  href="/contact"
+                  className="text-[13px] text-clay hover:text-bark transition-colors tracking-wide"
+                >
+                  or send a message &rarr;
+                </Link>
+              </div>
+            </div>
 
-            {/* Right: accordion */}
-            <RevealOnScroll delay={0.1} className="lg:col-span-8 lg:col-start-5">
-              <FAQAccordion items={[
-                {
-                  question: 'How do I begin a project with Yardie?',
-                  answer: 'Start with a complimentary consultation — a brief site visit and conversation where we learn about your property, your goals, and your aesthetic vision. There\'s no commitment and no cost. From there, we\'ll outline a design approach and proposal tailored to your specific project.',
-                },
-                {
-                  question: 'What areas do you serve?',
-                  answer: 'Yardie primarily serves Greenville, Winterville, Farmville, Ayden, and the greater Pitt County region. We occasionally take projects in surrounding Eastern North Carolina communities — contact us to discuss your location.',
-                },
-                {
-                  question: 'What does an exterior design project typically cost?',
-                  answer: 'Projects vary significantly based on scope, materials, and site conditions. Every project is priced individually after an initial consultation — we don\'t use fixed packages or generic tiers. We provide detailed, transparent proposals so you always know exactly what you\'re investing in before any work begins.',
-                },
-                {
-                  question: 'How long does a typical project take from start to finish?',
-                  answer: 'A focused intervention — a pathway, entry planting, or patio — typically takes two to four weeks from design approval to completion. Comprehensive full-property transformations generally run two to four months. We\'ll provide a clear timeline in your proposal and keep you updated at every phase.',
-                },
-                {
-                  question: 'Do you offer ongoing maintenance after installation?',
-                  answer: 'Yes — for most projects we offer seasonal maintenance programs covering lawn care, planting bed upkeep, irrigation management, and lighting service. These are tailored to each property. Ask about our stewardship program during your consultation.',
-                },
-                {
-                  question: 'What makes Yardie different from a standard landscaping company?',
-                  answer: 'Design intent. A standard landscaping company installs plants and hardscape according to what\'s available and affordable. We start with a considered design brief, develop a visual plan for your approval, select materials and plants that honor your home\'s architecture, and execute with craftsmen who take genuine pride in their work. The result looks like it was always meant to be there.',
-                },
-              ]} />
-            </RevealOnScroll>
+            <div className="lg:col-span-7">
+              <FAQAccordion items={homeFAQ} />
+            </div>
           </div>
         </div>
       </section>
 
-      <ConversionPopup />
+      {/* ────────────────────────────────────────────────────
+          FINAL CTA
+         ──────────────────────────────────────────────────── */}
+      <section className="relative py-32 sm:py-40 overflow-hidden bg-bark">
+        <Image
+          src={photos.heroAman.src}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-bark via-bark/85 to-bark/65" />
+        <div className="relative mx-auto max-w-3xl text-center px-5 sm:px-8">
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-[72px] text-cream leading-[1.05] tracking-tight font-light">
+            Ready to turn your yard into{" "}
+            <span className="italic text-stone">the best part of your home?</span>
+          </h2>
+          <p className="mt-7 text-[17px] text-cream/75 leading-relaxed max-w-xl mx-auto">
+            Tell us about your property. The first conversation is at no cost — we walk the site, listen, and let you know whether we&rsquo;re the right studio for the project.
+          </p>
+          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button href="/quote" variant="ghost-light" arrow>
+              Schedule a Consultation
+            </Button>
+            <Button href="/gallery" variant="ghost-dark">
+              View Our Work
+            </Button>
+          </div>
+          <p className="mt-10 text-[12px] text-cream/55 tracking-wide">
+            Or call <a href={company.phoneTel} className="text-cream font-medium hover:text-stone transition-colors">{company.phone}</a>
+          </p>
+        </div>
+      </section>
+
+      <Script
+        id="ld-home-breadcrumb"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema([{ name: "Home", href: "/" }])),
+        }}
+      />
+
+      <QuotePromptModal />
     </>
   );
 }
