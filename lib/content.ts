@@ -9,7 +9,7 @@ export const company = {
   legalName: "Yardie Design",
   tagline: "Designed Outdoor Living for Eastern North Carolina",
   description:
-    "Yardie is an exterior design studio in Greenville, NC. We design and build landscapes, hardscapes, masonry, lighting, and irrigation for homeowners who care about how they live outside.",
+    "Exterior design studio in Greenville, NC. We design and build landscapes, hardscapes, masonry, lighting, and irrigation across Eastern North Carolina.",
 
   // Contact
   phone: "(252) 756-7788",
@@ -133,7 +133,7 @@ export const services: Service[] = [
     ],
     seoTitle: "Landscape Design in Greenville, NC | Yardie",
     seoDescription:
-      "Custom landscape design and installation in Greenville, NC. Yardie draws planting plans, garden refreshes, and full property landscapes for Eastern North Carolina homes.",
+      "Custom landscape design and installation in Greenville, NC. Planting plans, garden refreshes, and full property landscapes across Eastern NC.",
   },
 
   {
@@ -183,7 +183,7 @@ export const services: Service[] = [
     ],
     seoTitle: "Pavers & Hardscape Design in Greenville, NC | Yardie",
     seoDescription:
-      "Custom pavers and hardscapes — patios, walkways, retaining walls, and fire features — designed and built by Yardie for Greenville, NC and Eastern NC homes.",
+      "Custom pavers and hardscapes — patios, walkways, walls, and fire features — designed and built by Yardie for Greenville, NC and Eastern NC.",
   },
 
   {
@@ -233,7 +233,7 @@ export const services: Service[] = [
     ],
     seoTitle: "Outdoor Kitchen Design & Build in Greenville, NC | Yardie",
     seoDescription:
-      "Custom outdoor kitchens — built-in grills, pizza ovens, masonry cabinetry, counters, and refrigeration — designed and built by Yardie for Greenville and Eastern NC.",
+      "Custom outdoor kitchens — built-in grills, pizza ovens, masonry cabinetry, and counters — built by Yardie in Greenville, NC.",
   },
 
   {
@@ -283,7 +283,7 @@ export const services: Service[] = [
     ],
     seoTitle: "Masonry Contractor in Greenville, NC | Yardie",
     seoDescription:
-      "Yardie designs and builds custom masonry — stone patios, garden walls, fireplaces, steps, and seating walls — for Greenville, NC and the surrounding Pitt County area.",
+      "Custom stone and brick masonry — patios, walls, fireplaces, steps, and seating walls — built by Yardie for Greenville, NC and Pitt County.",
   },
 
   {
@@ -333,7 +333,7 @@ export const services: Service[] = [
     ],
     seoTitle: "Outdoor Landscape Lighting in Greenville, NC | Yardie",
     seoDescription:
-      "Yardie designs and installs custom outdoor lighting — pathway, accent, architectural, and smart-control systems — for homes in Greenville and Eastern North Carolina.",
+      "Custom outdoor lighting — pathway, accent, and architectural fixtures with smart controls — designed and installed by Yardie in Greenville, NC.",
   },
 
   {
@@ -382,7 +382,7 @@ export const services: Service[] = [
     ],
     seoTitle: "Irrigation Systems in Greenville, NC | Yardie",
     seoDescription:
-      "Custom irrigation design, installation, and repair in Greenville, NC. Smart controllers, drip systems, and zoned coverage for healthy, water-wise landscapes.",
+      "Custom irrigation design, installation, and repair in Greenville, NC. Smart controllers, drip zones, and water-wise coverage.",
   },
 
   // ─────── New, more specific services (added Apr 30 2026) ───────

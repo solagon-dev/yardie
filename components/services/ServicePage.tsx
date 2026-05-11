@@ -149,9 +149,15 @@ export default function ServicePage({ service }: { service: Service }) {
               <p className="font-mono text-[11px] tabular-nums text-stone/85 tracking-[0.22em] mb-7">
                 Discipline · {String(idx + 1).padStart(2, "0")} of {String(services.length).padStart(2, "0")}
               </p>
-              <h1 className="font-display text-[88px] xl:text-[104px] text-cream leading-[0.96] tracking-tight max-w-[14ch] font-light">
+              {/* Visually a heading; rendered as <p role="heading" aria-level={1}>
+                  so the page has exactly one <h1> (the mobile hero above). */}
+              <p
+                role="heading"
+                aria-level={1}
+                className="font-display text-[88px] xl:text-[104px] text-cream leading-[0.96] tracking-tight max-w-[14ch] font-light"
+              >
                 {service.name}
-              </h1>
+              </p>
               <p className="mt-9 font-display italic text-stone text-[28px] leading-snug tracking-tight max-w-[34ch]">
                 {service.tagline}{service.italicTail && ` ${service.italicTail}`}
               </p>

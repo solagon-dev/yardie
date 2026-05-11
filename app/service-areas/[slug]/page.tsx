@@ -17,9 +17,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const area = serviceAreas.find((a) => a.slug === slug);
   if (!area) return buildMetadata({ title: "Area not found", description: "", path: `/service-areas/${slug}` });
+  // Description kept under 155 chars (Ahrefs / Google preview limit).
+  // Uses brand + city + 3 disciplines + county for keyword density without
+  // overstuffing.
   return buildMetadata({
     title: `Exterior Design in ${area.name}, NC — Yardie`,
-    description: `Yardie designs and builds landscapes, hardscapes, masonry, lighting, and irrigation for homes in ${area.name}, NC. ${area.description}`,
+    description: `Yardie designs landscapes, hardscapes, masonry, lighting, and irrigation for homes in ${area.name}, NC and the surrounding ${area.county} County area.`,
     path: `/service-areas/${area.slug}`,
     keywords: [
       `landscape design ${area.name} NC`,

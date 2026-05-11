@@ -27,8 +27,10 @@ export function buildMetadata(page: {
   const url = `${SITE_URL}${page.path}`;
   const ogImage = page.ogImage || DEFAULT_OG_IMAGE;
 
+  // Use { absolute } so root layout's `template: "%s | Yardie"` doesn't
+  // double-append "| Yardie" — each page title already includes the brand.
   return {
-    title: page.title,
+    title: { absolute: page.title },
     description: page.description,
     keywords: page.keywords,
     alternates: { canonical: url },

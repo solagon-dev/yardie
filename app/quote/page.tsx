@@ -8,9 +8,9 @@ import ConsultationForm from "@/components/ConsultationForm";
 import FAQAccordion from "@/components/ui/FAQAccordion";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Request a Quote — Yardie",
+  title: "Free Landscape & Hardscape Quote in Greenville, NC | Yardie",
   description:
-    "Tell us about your property. The first conversation is at no cost — we walk the site, listen, and send a written estimate within one business day.",
+    "Get a no-cost quote from Yardie for landscape, hardscape, masonry, lighting, or irrigation work in Greenville and Eastern NC. Written estimate within one business day.",
   path: "/quote",
   keywords: [
     "request a quote Yardie",

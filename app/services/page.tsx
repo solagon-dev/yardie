@@ -10,7 +10,7 @@ import { TextLink } from "@/components/ui/Button";
 export const metadata: Metadata = buildMetadata({
   title: "Exterior Design Services in Greenville, NC — Yardie",
   description:
-    "Yardie's exterior design disciplines for Eastern North Carolina — landscapes, hardscapes, masonry, lighting, and irrigation, drawn together under one studio.",
+    "Yardie's exterior design disciplines — landscapes, hardscapes, masonry, lighting, and irrigation — under one studio in Greenville, NC.",
   path: "/services",
   keywords: [
     "exterior design services Greenville NC",

@@ -6,10 +6,18 @@ import { photos } from "@/lib/media";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Journal — Yardie",
+  title: "Landscape Design Journal & Ideas | Yardie — Greenville, NC",
   description:
-    "Field notes from the Yardie studio — design ideas, project stories, and outdoor-living reference for homeowners across Eastern North Carolina.",
+    "Field notes from the Yardie studio: landscape and hardscape ideas, costs, project stories, and outdoor-living reference for homeowners across Eastern North Carolina.",
   path: "/journal",
+  keywords: [
+    "landscape design ideas Eastern NC",
+    "hardscape ideas",
+    "outdoor kitchen ideas",
+    "fire pit ideas",
+    "landscaping cost Greenville NC",
+    "Eastern NC landscape blog",
+  ],
 });
 
 // Sort newest first by parsing the human-readable date string.

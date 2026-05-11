@@ -8,10 +8,16 @@ import { photos } from "@/lib/media";
 import { buildMetadata, faqSchema } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "FAQ — Yardie",
+  title: "Landscape & Hardscape FAQ | Yardie — Greenville, NC",
   description:
-    "Common questions about Yardie's services, process, materials, and how a project gets started. If your question isn't here, send us a message.",
+    "Common questions about landscape design, hardscape costs, irrigation systems, project timelines, and working with Yardie in Greenville and Eastern North Carolina.",
   path: "/faq",
+  keywords: [
+    "landscaping FAQ Greenville NC",
+    "hardscape questions",
+    "landscape design cost Eastern NC",
+    "irrigation system FAQ",
+  ],
 });
 
 export default function FAQPage() {

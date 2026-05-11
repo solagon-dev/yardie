@@ -78,7 +78,13 @@ export default function PageHero({ headline, italicTail, intro, image, label }: 
               {label}
             </p>
           )}
-          <h1 className="font-display text-[80px] xl:text-[96px] text-cream leading-[0.98] tracking-tight max-w-[22ch] font-light">
+          {/* Visually a heading; rendered as <p role="heading" aria-level={1}>
+              so the page has exactly one <h1> (the mobile hero above). */}
+          <p
+            role="heading"
+            aria-level={1}
+            className="font-display text-[80px] xl:text-[96px] text-cream leading-[0.98] tracking-tight max-w-[22ch] font-light"
+          >
             {headline}
             {italicTail && (
               <>
@@ -86,7 +92,7 @@ export default function PageHero({ headline, italicTail, intro, image, label }: 
                 <span className="italic text-stone">{italicTail}</span>
               </>
             )}
-          </h1>
+          </p>
           {intro && (
             <p className="mt-7 text-[17px] text-cream/75 leading-relaxed max-w-2xl">
               {intro}

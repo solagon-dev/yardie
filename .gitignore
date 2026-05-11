@@ -61,3 +61,12 @@ cleanup-public.sh
 
 # Claude Code session metadata — tooling state, not project state.
 .claude/
+
+# Editor / tool backup files (e.g. created during image compression).
+*~
+
+# SEO planning deliverables — not part of the deployable site.
+SEO_CHANGES_LOG.md
+Yardie_SEO_Strategy.docx
+Yardie_GSC_Findings.docx
+gsc_data.json

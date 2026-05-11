@@ -216,10 +216,17 @@ export default async function Home() {
 
         <div className="relative w-full mx-auto max-w-[1400px] px-12 pt-28 pb-20">
           <div className="max-w-2xl animate-fade-up">
-            <h1 className="font-display text-[56px] xl:text-[80px] text-cream leading-[1.0] tracking-tight font-light">
+            {/* Visually a heading; rendered as <p> so the page has exactly
+                one <h1> (the mobile hero above). aria-level keeps assistive
+                tech informed. */}
+            <p
+              role="heading"
+              aria-level={1}
+              className="font-display text-[56px] xl:text-[80px] text-cream leading-[1.0] tracking-tight font-light"
+            >
               Designed outdoor living for{" "}
               <span className="italic text-stone">Eastern North Carolina homes.</span>
-            </h1>
+            </p>
             <p className="mt-7 text-base text-cream/75 leading-relaxed max-w-md">
               Landscapes, hardscapes, masonry, lighting, and irrigation —
               drawn first, built once, looked after for years.

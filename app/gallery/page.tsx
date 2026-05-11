@@ -5,10 +5,16 @@ import { getImageDim } from "@/lib/image-dimensions";
 import GalleryClient, { type GalleryPhoto } from "@/components/gallery/GalleryClient";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Gallery — Yardie",
+  title: "Project Gallery & Portfolio | Yardie — Greenville, NC",
   description:
-    "A gallery of finished work from Yardie — exterior design and build for homes across Greenville and Eastern North Carolina. Landscapes, hardscapes, outdoor kitchens, masonry, lighting, and irrigation.",
+    "Finished landscape, hardscape, masonry, lighting, and irrigation projects from Yardie across Greenville and Eastern North Carolina. Browse the portfolio.",
   path: "/gallery",
+  keywords: [
+    "landscape portfolio Greenville NC",
+    "hardscape project gallery",
+    "paver patio examples",
+    "backyard design photos Eastern NC",
+  ],
 });
 
 interface Photo {
