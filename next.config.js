@@ -72,6 +72,8 @@ const nextConfig = {
         destination: '/journal/five-creative-ways-to-boost-curb-appeal', permanent: true },
       { source: '/post/low-maintenance-landscaping-ideas-for-busy-homeowners',
         destination: '/journal/low-maintenance-landscaping-ideas', permanent: true },
+      { source: '/post/solutions-for-common-drainage-issues-in-outdoor-spaces',
+        destination: '/journal/common-drainage-issues-outdoor', permanent: true },
 
       // --- Wildcard fallback for any other old post/insight slugs --- //
       { source: '/insights', destination: '/journal', permanent: true },
