@@ -1,5 +1,10 @@
 import { NextResponse } from 'next/server'
-import { SITE_URL } from '@/lib/seo'
+
+// Inlined to avoid the path-alias resolution issue Turbopack hit on
+// the first deploy of this route. Matches lib/seo.ts SITE_URL constant.
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ||
+  'https://www.yardiedesign.com'
 
 /**
  * IndexNow integration — submits URLs to Bing, Yandex, Naver, and Seznam
