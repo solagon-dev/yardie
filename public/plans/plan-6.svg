@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" fill="none" stroke="#4A5A4D" stroke-width="1" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="0.08em">
+  <rect x="20" y="20" width="760" height="460" stroke-dasharray="4 4" />
+  <!-- house -->
+  <path d="M 120 130 L 680 130 L 680 300 L 120 300 Z" />
+  <text x="400" y="220" fill="#4A5A4D" text-anchor="middle">HOUSE</text>
+  <!-- planting beds with irrigation zones shown -->
+  <path d="M 100 320 L 700 320 L 700 400 L 100 400 Z" />
+  <text x="400" y="420" fill="#4A5A4D" text-anchor="middle">FOUNDATION BED</text>
+  <!-- spray heads (dotted circles with X) -->
+  <g stroke="#B8832A" stroke-width="1">
+    <circle cx="150" cy="360" r="40" stroke-dasharray="2 3" />
+    <g transform="translate(150, 360)"><line x1="-3" y1="-3" x2="3" y2="3" /><line x1="-3" y1="3" x2="3" y2="-3" /></g>
+    <circle cx="270" cy="360" r="40" stroke-dasharray="2 3" />
+    <g transform="translate(270, 360)"><line x1="-3" y1="-3" x2="3" y2="3" /><line x1="-3" y1="3" x2="3" y2="-3" /></g>
+    <circle cx="390" cy="360" r="40" stroke-dasharray="2 3" />
+    <g transform="translate(390, 360)"><line x1="-3" y1="-3" x2="3" y2="3" /><line x1="-3" y1="3" x2="3" y2="-3" /></g>
+    <circle cx="510" cy="360" r="40" stroke-dasharray="2 3" />
+    <g transform="translate(510, 360)"><line x1="-3" y1="-3" x2="3" y2="3" /><line x1="-3" y1="3" x2="3" y2="-3" /></g>
+    <circle cx="630" cy="360" r="40" stroke-dasharray="2 3" />
+    <g transform="translate(630, 360)"><line x1="-3" y1="-3" x2="3" y2="3" /><line x1="-3" y1="3" x2="3" y2="-3" /></g>
+  </g>
+  <!-- trees along property -->
+  <circle cx="70" cy="70" r="18" />
+  <circle cx="730" cy="70" r="16" />
+  <circle cx="70" cy="450" r="16" />
+  <circle cx="730" cy="450" r="18" />
+  <!-- specimen trees -->
+  <circle cx="400" cy="60" r="22" />
+  <text x="400" y="40" fill="#4A5A4D" text-anchor="middle">SPECIMEN OAK</text>
+  <!-- legend -->
+  <g transform="translate(560, 450)">
+    <circle r="5" stroke="#B8832A" stroke-dasharray="2 3" />
+    <text x="12" y="4" fill="#4A5A4D" stroke="none">SPRAY ZONE</text>
+  </g>
+  <text x="40" y="60" fill="#4A5A4D">PLANTING + IRRIGATION PLAN</text>
+</svg>

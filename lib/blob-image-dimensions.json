@@ -1,0 +1,3822 @@
+{
+  "/brand/icon-1.png": [
+    1024,
+    1024
+  ],
+  "/brand/icon-2.png": [
+    1024,
+    1024
+  ],
+  "/brand/icon-3.png": [
+    1024,
+    1024
+  ],
+  "/brand/icon-4.png": [
+    1024,
+    1024
+  ],
+  "/brand/og.png": [
+    1200,
+    630
+  ],
+  "/brand/opengraph.png": [
+    1200,
+    630
+  ],
+  "/brand/partners/buechel-stone.png": [
+    280,
+    121
+  ],
+  "/brand/partners/fire-rock.png": [
+    541,
+    71
+  ],
+  "/cities/ayden.jpg": [
+    1280,
+    757
+  ],
+  "/cities/farmville.jpg": [
+    1280,
+    808
+  ],
+  "/cities/goldsboro.jpg": [
+    1280,
+    1707
+  ],
+  "/cities/greenville.jpg": [
+    1280,
+    853
+  ],
+  "/cities/kinston.jpg": [
+    1280,
+    1047
+  ],
+  "/cities/new-bern.jpg": [
+    1280,
+    853
+  ],
+  "/cities/rocky-mount.jpg": [
+    1280,
+    852
+  ],
+  "/cities/washington.jpg": [
+    1280,
+    776
+  ],
+  "/cities/wilson.jpg": [
+    1280,
+    822
+  ],
+  "/cities/winterville.jpg": [
+    1280,
+    944
+  ],
+  "/journal/journal-cover-01.png": [
+    1024,
+    1024
+  ],
+  "/journal/journal-cover-02.png": [
+    1024,
+    1024
+  ],
+  "/journal/journal-cover-03.png": [
+    1024,
+    1024
+  ],
+  "/journal/journal-cover-04.png": [
+    1024,
+    1024
+  ],
+  "/journal/journal-cover-05.png": [
+    1024,
+    1024
+  ],
+  "/journal/journal-cover-06.png": [
+    1024,
+    1024
+  ],
+  "/journal/journal-cover-07.png": [
+    1024,
+    1024
+  ],
+  "/journal/journal-cover-08.png": [
+    1024,
+    1024
+  ],
+  "/journal/journal-cover-09.png": [
+    1024,
+    1024
+  ],
+  "/journal/journal-cover-10.png": [
+    1024,
+    1024
+  ],
+  "/journal/journal-cover-11.png": [
+    1024,
+    1024
+  ],
+  "/journal/journal-cover-12.png": [
+    1024,
+    1024
+  ],
+  "/journal/journal-cover-13.png": [
+    1024,
+    1024
+  ],
+  "/journal/journal-cover-14.png": [
+    1024,
+    1024
+  ],
+  "/journal/journal-cover-15.png": [
+    1024,
+    1024
+  ],
+  "/journal/journal-cover-16.png": [
+    1024,
+    1024
+  ],
+  "/journal/journal-cover-17.png": [
+    1024,
+    1024
+  ],
+  "/journal/journal-cover-18.png": [
+    1024,
+    1024
+  ],
+  "/journal/journal-cover-19.png": [
+    1024,
+    1024
+  ],
+  "/journal/journal-cover-20.png": [
+    1024,
+    1024
+  ],
+  "/photoshoot/featured/shoot-01.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-02.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-03.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-04.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-05.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-06.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-07.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-08.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-09.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-10.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-11.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-12.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-25.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-26.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-27.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-28.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-29.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-30.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-31.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-32.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-33.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-34.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-35.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-36.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-37.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-38.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-39.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-40.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-41.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-42.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-43.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-44.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-45.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-46.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-47.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-48.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-49.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-50.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-51.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-52.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-53.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-54.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-b2-1.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-b2-2.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-b2-3.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-b2-4.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-b2-5.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-b2-6.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-b3-1.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-b3-2.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-b3-3.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-b3-4.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-b3-5.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-b3-6.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-b4-1.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-b4-2.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-b4-3.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-b4-4.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/featured/shoot-b4-5.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-01.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-02.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-03.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-04.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-05.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-06.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-07.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-08.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-09.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-10.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-11.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-12.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-25.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-26.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-27.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-28.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-29.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-30.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-31.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-32.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-33.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-34.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-35.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-36.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-37.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-38.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-39.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-40.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-41.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-42.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-43.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-44.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-45.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-46.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-47.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-48.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-49.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-50.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-51.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-52.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-53.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-54.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-b2-1.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-b2-2.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-b2-3.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-b2-4.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-b2-5.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-b2-6.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-b3-1.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-b3-2.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-b3-3.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-b3-4.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-b3-5.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-b3-6.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-b4-1.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-b4-2.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-b4-3.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-b4-4.png": [
+    1616,
+    1080
+  ],
+  "/photoshoot/studio-photoshoot-b4-5.png": [
+    1616,
+    1080
+  ],
+  "/projects/728-remington/01-progress.jpg": [
+    6076,
+    4672
+  ],
+  "/projects/728-remington/02-progress.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/728-remington/03-progress.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/728-remington/04-progress.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/728-remington/05-extra.jpg": [
+    6076,
+    4672
+  ],
+  "/projects/728-remington/06-extra.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/728-remington/07-extra.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/728-remington/08-extra.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/allen-donald/01-progress.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/allen-donald/02-progress.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/allen-donald/03-progress.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/allen-donald/04-progress.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/allen-donald/05-progress.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/allen-donald/06-extra.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/allen-donald/07-extra.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/allen-donald/08-extra.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/allen-donald/09-extra.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/allen-donald/10-extra.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/autumn-lakes-detail-06.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/autumn-lakes-finish-09.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/autumn-lakes-overview-01.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/autumn-lakes-planting-05.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/autumn-lakes-pool-deck-02.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/autumn-lakes-portrait-10.jpg": [
+    2560,
+    1707
+  ],
+  "/projects/autumn-lakes-shaded-corner-07.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/autumn-lakes-stone-walk-08.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/autumn-lakes-terrace-04.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/autumn-lakes-water-feature-03.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/autumn-lakes/01-overview.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/autumn-lakes/02-pool-deck.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/autumn-lakes/03-water-feature.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/autumn-lakes/04-terrace.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/autumn-lakes/05-planting.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/autumn-lakes/06-detail.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/autumn-lakes/07-shaded-corner.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/autumn-lakes/08-stone-walk.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/autumn-lakes/09-finish.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/autumn-lakes/10-portrait.jpg": [
+    2560,
+    1707
+  ],
+  "/projects/bobcat-clearing-side-yard-01.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/bobcat-clearing-yard-01.jpg": [
+    1538,
+    1469
+  ],
+  "/projects/bobcat-stump-clearing-01.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/boxwood-foundation-bed-pond-view-01.jpg": [
+    1542,
+    1031
+  ],
+  "/projects/brick-back-steps-french-doors-01.jpg": [
+    2044,
+    1534
+  ],
+  "/projects/brick-cape-cod-front-elevation-lawn-01.jpg": [
+    3340,
+    2505
+  ],
+  "/projects/brick-cape-cod-front-elevation-lawn-02.jpg": [
+    1787,
+    1340
+  ],
+  "/projects/brick-cottage-front-double-door-01.jpg": [
+    2039,
+    1530
+  ],
+  "/projects/brick-courtyard-pool-gate-view-01.jpg": [
+    2771,
+    3694
+  ],
+  "/projects/brick-farmhouse-front-corner-elevation-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/brick-firepit-bench-corner-rear-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/brick-firepit-bench-rear-patio-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/brick-fireplace-pool-twilight-01.jpg": [
+    5280,
+    3960
+  ],
+  "/projects/brick-front-corner-japanese-maple-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/brick-front-elevation-paver-walk-tulips-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/brick-home-arched-entry-front-elevation-01.jpg": [
+    6012,
+    4463
+  ],
+  "/projects/brick-home-front-corner-elevation-01.jpg": [
+    4963,
+    3483
+  ],
+  "/projects/brick-home-side-elevation-young-tree-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/brick-ranch-front-fall-leaves-01.jpg": [
+    1582,
+    1187
+  ],
+  "/projects/brick-ranch-grading-prep-01.jpg": [
+    2027,
+    1521
+  ],
+  "/projects/brick-ranch-rear-patio-planting-bed-01.jpg": [
+    3807,
+    2855
+  ],
+  "/projects/brick-ranch-with-fresh-mulch-bed-01.jpg": [
+    3115,
+    3300
+  ],
+  "/projects/brick-rear-elevation-screened-porch-01.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/brick-side-elevation-shrub-bed-01.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/brick-walkway-shed-lantern-01.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/castlebrook-detail-03.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/castlebrook-finish-04.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/castlebrook-front-01.jpg": [
+    2048,
+    1365
+  ],
+  "/projects/castlebrook-walk-02.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/castlebrook/01-front.jpg": [
+    2048,
+    1365
+  ],
+  "/projects/castlebrook/02-walk.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/castlebrook/03-detail.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/castlebrook/04-finish.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/colonial-paver-driveway-front-01.jpg": [
+    1335,
+    1780
+  ],
+  "/projects/covered-outdoor-kitchen-grill-bar-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/covered-outdoor-kitchen-wood-columns-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/covered-patio-wicker-seating-01.jpg": [
+    1869,
+    1246
+  ],
+  "/projects/covered-patio-wood-ceiling-fan-01.jpg": [
+    1179,
+    774
+  ],
+  "/projects/crew-clearing-debris-01.jpg": [
+    2048,
+    1365
+  ],
+  "/projects/crew-cutting-pavers-stihl-saw-01.jpg": [
+    3547,
+    2663
+  ],
+  "/projects/crew-installing-paver-edging-01.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/crew-installing-shrubs-01.jpg": [
+    1537,
+    1629
+  ],
+  "/projects/crew-laying-pavers-patio-01.jpg": [
+    1501,
+    2000
+  ],
+  "/projects/crew-leveling-paver-base-01.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/crew-reviewing-blueprints-truck-tailgate-01.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/crew-staking-out-shrubs-01.jpg": [
+    1537,
+    1481
+  ],
+  "/projects/donald-drive-extra-06.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/donald-drive-extra-07.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/donald-drive-extra-08.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/donald-drive-extra-09.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/donald-drive-extra-10.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/donald-drive-progress-01.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/donald-drive-progress-02.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/donald-drive-progress-03.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/donald-drive-progress-04.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/donald-drive-progress-05.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/emma-cannon-detail-02.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/emma-cannon-front-01.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/emma-cannon/01-front.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/emma-cannon/02-detail.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/empty-pool-shell-rough-grade-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/evans-photo-01.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/evans/01-photo.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/facades/brick-cape-cod-front-elevation-lawn-01.jpg": [
+    3340,
+    2505
+  ],
+  "/projects/facades/brick-cape-cod-front-elevation-lawn-02.jpg": [
+    1787,
+    1340
+  ],
+  "/projects/facades/brick-cottage-front-double-door-01.jpg": [
+    2039,
+    1530
+  ],
+  "/projects/facades/brick-farmhouse-front-corner-elevation-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/facades/brick-front-corner-japanese-maple-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/facades/brick-home-arched-entry-front-elevation-01.jpg": [
+    6012,
+    4463
+  ],
+  "/projects/facades/brick-home-front-corner-elevation-01.jpg": [
+    4963,
+    3483
+  ],
+  "/projects/facades/brick-home-side-elevation-young-tree-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/facades/brick-ranch-front-fall-leaves-01.jpg": [
+    1582,
+    1187
+  ],
+  "/projects/facades/brick-ranch-with-fresh-mulch-bed-01.jpg": [
+    3115,
+    3300
+  ],
+  "/projects/facades/brick-rear-elevation-screened-porch-01.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/facades/brick-side-elevation-shrub-bed-01.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/facades/holton-front-elevation-03.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/facades/white-brick-front-arched-entry-01.jpg": [
+    1613,
+    1078
+  ],
+  "/projects/facades/white-brick-mansion-front-elevation-01.jpg": [
+    1526,
+    1020
+  ],
+  "/projects/facades/white-brick-mansion-side-front-elevation-01.jpg": [
+    1570,
+    1049
+  ],
+  "/projects/facades/white-cape-cod-front-elevation-flag-01.jpg": [
+    2043,
+    1533
+  ],
+  "/projects/facades/white-cape-cod-front-fall-01.jpg": [
+    2048,
+    1365
+  ],
+  "/projects/facades/white-cottage-flagstone-walkway-01.jpg": [
+    1487,
+    1981
+  ],
+  "/projects/facades/white-cottage-front-foundation-bed-01.jpg": [
+    1892,
+    1261
+  ],
+  "/projects/facades/white-cottage-iron-fence-front-01.jpg": [
+    2038,
+    1529
+  ],
+  "/projects/facades/white-painted-brick-side-elevation-01.jpg": [
+    1942,
+    1295
+  ],
+  "/projects/facades/williamsburg-106-detail-05.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/facades/williamsburg-106-entry-04.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/facades/williamsburg-106-front-elevation-01.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/fences/iron-fence-mulch-bed-rear-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/fences/iron-fence-shrub-bed-curved-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/fences/white-vinyl-fence-corner-residential-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/fences/white-vinyl-fence-corner-tan-house-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/fences/white-vinyl-fence-rear-elevation-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/fences/white-vinyl-fence-roadside-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/fences/white-vinyl-fence-side-yard-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/flagstone-pavers-pond-overlook-01.jpg": [
+    1538,
+    2048
+  ],
+  "/projects/flagstone-stepping-stones-iron-fence-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/flagstone-stepping-stones-river-rock-01.jpg": [
+    1577,
+    1054
+  ],
+  "/projects/flagstone-steps-to-paver-patio-01.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/flagstone-walkway-stone-pillars-yard-01.jpg": [
+    1547,
+    1034
+  ],
+  "/projects/foundation-bed-japanese-maple-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/foundation-bed-mulch-shrubs-side-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/freeform-pool-concrete-deck-poured-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/freeform-pool-deck-progress-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/freeform-pool-paver-coping-01.jpg": [
+    2048,
+    1365
+  ],
+  "/projects/freeform-pool-screened-porch-progress-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/freeform-pool-spa-rough-construction-01.jpg": [
+    6362,
+    4772
+  ],
+  "/projects/freeform-pool-spa-shells-progress-01.jpg": [
+    7770,
+    5828
+  ],
+  "/projects/freeform-pool-stone-fireplace-paver-deck-01.jpg": [
+    3031,
+    2273
+  ],
+  "/projects/freestanding-brick-fireplace-01.jpg": [
+    6110,
+    4586
+  ],
+  "/projects/front-corner-bed-lantern-japanese-maple-01.jpg": [
+    1607,
+    1074
+  ],
+  "/projects/front-foundation-bed-river-rock-edge-01.jpg": [
+    1577,
+    1054
+  ],
+  "/projects/front-foundation-topiary-shrubs-01.jpg": [
+    1574,
+    1052
+  ],
+  "/projects/grass-paver-driveway-circle-01.jpg": [
+    1570,
+    1049
+  ],
+  "/projects/grass-paver-driveway-front-yard-01.jpg": [
+    1472,
+    984
+  ],
+  "/projects/grass-paver-patio-firepit-adirondack-01.jpg": [
+    6205,
+    4658
+  ],
+  "/projects/gravel-driveway-formal-garden-01.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/hardscapes/autumn-lakes-stone-walk-08.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/hardscapes/brick-back-steps-french-doors-01.jpg": [
+    2044,
+    1534
+  ],
+  "/projects/hardscapes/brick-front-elevation-paver-walk-tulips-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/hardscapes/brick-ranch-rear-patio-planting-bed-01.jpg": [
+    3807,
+    2855
+  ],
+  "/projects/hardscapes/brick-walkway-shed-lantern-01.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/hardscapes/castlebrook-walk-02.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/hardscapes/colonial-paver-driveway-front-01.jpg": [
+    1335,
+    1780
+  ],
+  "/projects/hardscapes/donald-drive-extra-07.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/hardscapes/flagstone-pavers-pond-overlook-01.jpg": [
+    1538,
+    2048
+  ],
+  "/projects/hardscapes/flagstone-stepping-stones-iron-fence-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/hardscapes/flagstone-stepping-stones-river-rock-01.jpg": [
+    1577,
+    1054
+  ],
+  "/projects/hardscapes/flagstone-steps-to-paver-patio-01.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/hardscapes/grass-paver-driveway-circle-01.jpg": [
+    1570,
+    1049
+  ],
+  "/projects/hardscapes/grass-paver-driveway-front-yard-01.jpg": [
+    1472,
+    984
+  ],
+  "/projects/hardscapes/gravel-driveway-formal-garden-01.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/hardscapes/herringbone-paver-walkway-pillars-01.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/hardscapes/holton-front-walk-02.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/hardscapes/may-blvd-extra-31.jpg": [
+    3072,
+    4096
+  ],
+  "/projects/hardscapes/may-blvd-paths-11.jpg": [
+    3053,
+    4070
+  ],
+  "/projects/hardscapes/may-blvd-stepped-terrace-02.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/hardscapes/rear-yard-arborvitae-screen-patio-01.jpg": [
+    4039,
+    3029
+  ],
+  "/projects/hardscapes/remington-extra-05.jpg": [
+    6076,
+    4672
+  ],
+  "/projects/hardscapes/side-stepping-stone-walkway-pond-01.jpg": [
+    1541,
+    1030
+  ],
+  "/projects/hardscapes/side-yard-paver-walkway-fenced-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/hardscapes/tan-rear-elevation-brick-patio-01.jpg": [
+    2042,
+    1532
+  ],
+  "/projects/hardscapes/tudor-front-elevation-paver-walk-01.jpg": [
+    1610,
+    1208
+  ],
+  "/projects/hardscapes/white-brick-front-paver-walk-topiary-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/hardscapes/white-brick-side-paver-entry-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/hardscapes/white-farmhouse-front-elevation-paver-walk-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/hardscapes/williamsburg-106-walkway-02.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/hardscapes/williamsburg-109-patio-03.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/herringbone-brick-fireplace-patio-lounge-01.jpg": [
+    4028,
+    3021
+  ],
+  "/projects/herringbone-paver-walkway-pillars-01.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton-extra-11.jpg": [
+    1365,
+    2048
+  ],
+  "/projects/holton-extra-12.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton-extra-13.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton-extra-14.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton-extra-15.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton-extra-16.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton-extra-17.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton-extra-18.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton-extra-19.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton-extra-20.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton-extra-21.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton-extra-22.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton-extra-23.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton-extra-24.jpg": [
+    1538,
+    2048
+  ],
+  "/projects/holton-extra-25.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton-extra-26.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton-extra-27.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton-extra-28.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton-extra-29.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton-extra-30.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton-extra-31.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton-extra-32.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton-extra-33.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton-extra-34.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton-extra-35.jpg": [
+    2048,
+    1365
+  ],
+  "/projects/holton-finish-10.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton-finished-bed-09.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton-front-elevation-03.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton-front-walk-02.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton-overview-01.jpg": [
+    1365,
+    2048
+  ],
+  "/projects/holton-planting-08.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton-rear-yard-07.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton-side-bed-04.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton-step-detail-06.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton-stone-detail-05.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton/01-overview.jpg": [
+    1365,
+    2048
+  ],
+  "/projects/holton/02-front-walk.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton/03-front-elevation.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton/04-side-bed.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton/05-stone-detail.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton/06-step-detail.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton/07-rear-yard.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton/08-planting.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton/09-finished-bed.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton/10-finish.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton/11-extra.jpg": [
+    1365,
+    2048
+  ],
+  "/projects/holton/12-extra.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton/13-extra.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton/14-extra.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton/15-extra.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton/16-extra.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton/17-extra.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton/18-extra.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton/19-extra.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton/20-extra.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton/21-extra.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton/22-extra.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton/23-extra.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton/24-extra.jpg": [
+    1538,
+    2048
+  ],
+  "/projects/holton/25-extra.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton/26-extra.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton/27-extra.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton/28-extra.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton/29-extra.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton/30-extra.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton/31-extra.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/holton/32-extra.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton/33-extra.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton/34-extra.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/holton/35-extra.jpg": [
+    2048,
+    1365
+  ],
+  "/projects/inground-pool-during-install-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/inground-pool-gravel-surround-progress-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/iron-fence-mulch-bed-rear-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/iron-fence-shrub-bed-curved-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/iron-fence-stone-columns-paver-patio-01.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/landscape-entry-pillars-paver-walk-01.jpg": [
+    1564,
+    1045
+  ],
+  "/projects/landscapes/autumn-lakes-detail-06.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/autumn-lakes-finish-09.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/autumn-lakes-overview-01.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/autumn-lakes-planting-05.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/landscapes/autumn-lakes-shaded-corner-07.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/boxwood-foundation-bed-pond-view-01.jpg": [
+    1542,
+    1031
+  ],
+  "/projects/landscapes/castlebrook-detail-03.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/landscapes/castlebrook-finish-04.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/landscapes/castlebrook-front-01.jpg": [
+    2048,
+    1365
+  ],
+  "/projects/landscapes/donald-drive-extra-06.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/landscapes/donald-drive-extra-07.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/landscapes/donald-drive-extra-08.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/landscapes/donald-drive-extra-09.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/landscapes/donald-drive-extra-10.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/landscapes/emma-cannon-detail-02.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/landscapes/emma-cannon-front-01.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/landscapes/evans-photo-01.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/foundation-bed-japanese-maple-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/landscapes/foundation-bed-mulch-shrubs-side-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/landscapes/front-corner-bed-lantern-japanese-maple-01.jpg": [
+    1607,
+    1074
+  ],
+  "/projects/landscapes/front-foundation-bed-river-rock-edge-01.jpg": [
+    1577,
+    1054
+  ],
+  "/projects/landscapes/front-foundation-topiary-shrubs-01.jpg": [
+    1574,
+    1052
+  ],
+  "/projects/landscapes/holton-extra-11.jpg": [
+    1365,
+    2048
+  ],
+  "/projects/landscapes/holton-extra-12.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/holton-extra-13.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/holton-extra-14.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/holton-extra-15.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/landscapes/holton-extra-16.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/landscapes/holton-extra-17.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/holton-extra-18.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/landscapes/holton-extra-19.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/landscapes/holton-extra-20.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/holton-extra-21.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/holton-extra-22.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/landscapes/holton-extra-23.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/holton-extra-24.jpg": [
+    1538,
+    2048
+  ],
+  "/projects/landscapes/holton-extra-25.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/holton-extra-26.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/landscapes/holton-extra-27.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/landscapes/holton-extra-28.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/landscapes/holton-extra-29.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/holton-extra-30.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/holton-extra-31.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/landscapes/holton-extra-32.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/holton-extra-33.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/holton-extra-34.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/holton-extra-35.jpg": [
+    2048,
+    1365
+  ],
+  "/projects/landscapes/holton-finish-10.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/landscapes/holton-finished-bed-09.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/holton-overview-01.jpg": [
+    1365,
+    2048
+  ],
+  "/projects/landscapes/holton-planting-08.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/holton-rear-yard-07.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/holton-side-bed-04.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/landscapes/manicured-shrub-fall-flagpole-01.jpg": [
+    1532,
+    2041
+  ],
+  "/projects/landscapes/may-blvd-canopy-trees-08.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/landscapes/may-blvd-extra-13.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/landscapes/may-blvd-extra-14.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/landscapes/may-blvd-extra-15.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/landscapes/may-blvd-extra-16.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/landscapes/may-blvd-extra-17.jpg": [
+    4010,
+    3008
+  ],
+  "/projects/landscapes/may-blvd-extra-18.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/landscapes/may-blvd-extra-19.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/landscapes/may-blvd-extra-20.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/landscapes/may-blvd-extra-21.jpg": [
+    3072,
+    4096
+  ],
+  "/projects/landscapes/may-blvd-extra-22.jpg": [
+    3543,
+    2657
+  ],
+  "/projects/landscapes/may-blvd-extra-23.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/landscapes/may-blvd-extra-24.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/landscapes/may-blvd-extra-25.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/landscapes/may-blvd-extra-26.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/landscapes/may-blvd-extra-27.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/landscapes/may-blvd-extra-28.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/landscapes/may-blvd-extra-29.jpg": [
+    3069,
+    4092
+  ],
+  "/projects/landscapes/may-blvd-extra-30.jpg": [
+    2976,
+    3968
+  ],
+  "/projects/landscapes/may-blvd-extra-31.jpg": [
+    3072,
+    4096
+  ],
+  "/projects/landscapes/may-blvd-extra-32.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/landscapes/may-blvd-extra-33.jpg": [
+    4039,
+    3029
+  ],
+  "/projects/landscapes/may-blvd-extra-34.jpg": [
+    3072,
+    4096
+  ],
+  "/projects/landscapes/may-blvd-finished-view-12.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/landscapes/may-blvd-overview-01.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/landscapes/may-blvd-planting-bed-05.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/landscapes/may-blvd-rear-lawn-09.jpg": [
+    4039,
+    3029
+  ],
+  "/projects/landscapes/may-blvd-seat-wall-06.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/landscapes/new-build-corner-shrub-bed-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/landscapes/remington-extra-08.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/landscapes/side-foundation-bed-pinestraw-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/landscapes/side-foundation-bed-river-rock-edge-01.jpg": [
+    1584,
+    1059
+  ],
+  "/projects/landscapes/speight-seed-extra-07.jpg": [
+    5657,
+    4246
+  ],
+  "/projects/landscapes/speight-seed-extra-08.jpg": [
+    5657,
+    4246
+  ],
+  "/projects/landscapes/speight-seed-extra-09.jpg": [
+    5657,
+    4246
+  ],
+  "/projects/landscapes/speight-seed-extra-10.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/landscapes/speight-seed-extra-11.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/landscapes/speight-seed-extra-12.jpg": [
+    6165,
+    4628
+  ],
+  "/projects/landscapes/speight-seed-extra-13.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/landscapes/speight-seed-extra-14.jpg": [
+    4672,
+    6224
+  ],
+  "/projects/landscapes/speight-seed-extra-15.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/landscapes/speight-seed-extra-16.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/landscapes/tan-brick-front-driveway-foundation-bed-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/landscapes/tan-brick-side-foundation-bed-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/landscapes/white-brick-side-foundation-hedge-01.jpg": [
+    1572,
+    965
+  ],
+  "/projects/landscapes/williamsburg-109-canopy-06.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/landscapes/williamsburg-109-finish-07.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/williamsburg-109-foundation-planting-01.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/landscapes/williamsburg-109-planting-detail-05.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/landscapes/williamsburg-109-rear-garden-02.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/landscapes/yardie-portfolio-different-job-10.jpg": [
+    1020,
+    765
+  ],
+  "/projects/landscapes/yardie-portfolio-extra-19.jpg": [
+    1024,
+    683
+  ],
+  "/projects/landscapes/yardie-portfolio-extra-20.jpg": [
+    1024,
+    683
+  ],
+  "/projects/landscapes/yardie-portfolio-extra-21.jpg": [
+    1024,
+    683
+  ],
+  "/projects/landscapes/yardie-portfolio-extra-22.jpg": [
+    1024,
+    683
+  ],
+  "/projects/lighting/may-blvd-evening-light-10.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/lighting/williamsburg-106-twilight-06.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/manicured-shrub-fall-flagpole-01.jpg": [
+    1532,
+    2041
+  ],
+  "/projects/masonry/brick-firepit-bench-corner-rear-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/masonry/brick-firepit-bench-rear-patio-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/masonry/donald-drive-extra-06.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/masonry/flagstone-walkway-stone-pillars-yard-01.jpg": [
+    1547,
+    1034
+  ],
+  "/projects/masonry/freestanding-brick-fireplace-01.jpg": [
+    6110,
+    4586
+  ],
+  "/projects/masonry/grass-paver-patio-firepit-adirondack-01.jpg": [
+    6205,
+    4658
+  ],
+  "/projects/masonry/herringbone-brick-fireplace-patio-lounge-01.jpg": [
+    4028,
+    3021
+  ],
+  "/projects/masonry/holton-step-detail-06.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/masonry/holton-stone-detail-05.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/masonry/iron-fence-stone-columns-paver-patio-01.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/masonry/landscape-entry-pillars-paver-walk-01.jpg": [
+    1564,
+    1045
+  ],
+  "/projects/masonry/may-blvd-fireplace-03.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/masonry/may-blvd-stone-detail-07.jpg": [
+    3072,
+    4096
+  ],
+  "/projects/masonry/pond-dock-flagstone-pillars-front-01.jpg": [
+    1599,
+    1069
+  ],
+  "/projects/masonry/pond-dock-flagstone-pillars-rear-01.jpg": [
+    1544,
+    1032
+  ],
+  "/projects/masonry/pond-dock-flagstone-walkway-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/masonry/pond-dock-stone-pillars-flagstone-01.jpg": [
+    1579,
+    1055
+  ],
+  "/projects/masonry/pond-dock-stone-pillars-front-view-01.jpg": [
+    1598,
+    1068
+  ],
+  "/projects/masonry/pond-dock-stone-pillars-side-view-01.jpg": [
+    1598,
+    1068
+  ],
+  "/projects/masonry/pond-dock-twin-lantern-pillars-01.jpg": [
+    1550,
+    1036
+  ],
+  "/projects/masonry/rear-patio-firepit-iron-fence-01.jpg": [
+    1406,
+    940
+  ],
+  "/projects/masonry/rear-patio-firepit-stone-veneer-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/masonry/remington-extra-06.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/masonry/remington-extra-07.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/masonry/stone-column-lantern-closeup-01.jpg": [
+    3875,
+    2906
+  ],
+  "/projects/masonry/stone-column-mailbox-lantern-01.jpg": [
+    3189,
+    2392
+  ],
+  "/projects/masonry/stone-retaining-wall-bluestone-steps-01.jpg": [
+    6182,
+    4640
+  ],
+  "/projects/masonry/tall-stone-fireplace-paver-patio-01.jpg": [
+    2981,
+    3975
+  ],
+  "/projects/masonry/white-brick-rear-elevation-firepit-bench-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/masonry/white-brick-rear-firepit-pergola-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/masonry/white-brick-rear-firepit-pergola-02.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/masonry/white-brick-rear-firepit-pergola-03.jpg": [
+    1530,
+    1023
+  ],
+  "/projects/masonry/williamsburg-106-columns-03.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/masonry/williamsburg-109-seating-wall-04.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/may-blvd-6047/01-overview.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/02-stepped-terrace.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/03-fireplace.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/04-grill-surround.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/05-planting-bed.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/06-seat-wall.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/07-stone-detail.jpg": [
+    3072,
+    4096
+  ],
+  "/projects/may-blvd-6047/08-canopy-trees.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/09-rear-lawn.jpg": [
+    4039,
+    3029
+  ],
+  "/projects/may-blvd-6047/10-evening-light.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/11-paths.jpg": [
+    3053,
+    4070
+  ],
+  "/projects/may-blvd-6047/12-finished-view.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/13-extra.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/14-extra.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/15-extra.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/16-extra.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/17-extra.jpg": [
+    4010,
+    3008
+  ],
+  "/projects/may-blvd-6047/18-extra.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/19-extra.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/20-extra.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/21-extra.jpg": [
+    3072,
+    4096
+  ],
+  "/projects/may-blvd-6047/22-extra.jpg": [
+    3543,
+    2657
+  ],
+  "/projects/may-blvd-6047/23-extra.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/24-extra.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/25-extra.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/26-extra.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/27-extra.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/28-extra.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/29-extra.jpg": [
+    3069,
+    4092
+  ],
+  "/projects/may-blvd-6047/30-extra.jpg": [
+    2976,
+    3968
+  ],
+  "/projects/may-blvd-6047/31-extra.jpg": [
+    3072,
+    4096
+  ],
+  "/projects/may-blvd-6047/32-extra.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-6047/33-extra.jpg": [
+    4039,
+    3029
+  ],
+  "/projects/may-blvd-6047/34-extra.jpg": [
+    3072,
+    4096
+  ],
+  "/projects/may-blvd-canopy-trees-08.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-evening-light-10.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-extra-13.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-extra-14.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-extra-15.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-extra-16.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-extra-17.jpg": [
+    4010,
+    3008
+  ],
+  "/projects/may-blvd-extra-18.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-extra-19.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-extra-20.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-extra-21.jpg": [
+    3072,
+    4096
+  ],
+  "/projects/may-blvd-extra-22.jpg": [
+    3543,
+    2657
+  ],
+  "/projects/may-blvd-extra-23.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-extra-24.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-extra-25.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-extra-26.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-extra-27.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-extra-28.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-extra-29.jpg": [
+    3069,
+    4092
+  ],
+  "/projects/may-blvd-extra-30.jpg": [
+    2976,
+    3968
+  ],
+  "/projects/may-blvd-extra-31.jpg": [
+    3072,
+    4096
+  ],
+  "/projects/may-blvd-extra-32.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-extra-33.jpg": [
+    4039,
+    3029
+  ],
+  "/projects/may-blvd-extra-34.jpg": [
+    3072,
+    4096
+  ],
+  "/projects/may-blvd-finished-view-12.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-fireplace-03.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-grill-surround-04.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-overview-01.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-paths-11.jpg": [
+    3053,
+    4070
+  ],
+  "/projects/may-blvd-planting-bed-05.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-rear-lawn-09.jpg": [
+    4039,
+    3029
+  ],
+  "/projects/may-blvd-seat-wall-06.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-stepped-terrace-02.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/may-blvd-stone-detail-07.jpg": [
+    3072,
+    4096
+  ],
+  "/projects/modern-farmhouse-pool-front-symmetric-01.jpg": [
+    1551,
+    1037
+  ],
+  "/projects/modern-farmhouse-pool-spa-rear-elevation-01.jpg": [
+    1604,
+    1072
+  ],
+  "/projects/modern-farmhouse-rear-pool-paver-walk-01.jpg": [
+    1438,
+    961
+  ],
+  "/projects/modern-farmhouse-rear-pool-retaining-walls-01.jpg": [
+    1467,
+    850
+  ],
+  "/projects/modern-pool-spillway-stone-veneer-01.jpg": [
+    1602,
+    1071
+  ],
+  "/projects/new-build-corner-shrub-bed-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/outdoor-kitchen-grill-stone-base-01.jpg": [
+    2048,
+    1365
+  ],
+  "/projects/outdoor-kitchen-stone-veneer-01.jpg": [
+    3849,
+    2887
+  ],
+  "/projects/outdoor-kitchens/covered-outdoor-kitchen-grill-bar-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/outdoor-kitchens/covered-outdoor-kitchen-wood-columns-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/outdoor-kitchens/covered-patio-wicker-seating-01.jpg": [
+    1869,
+    1246
+  ],
+  "/projects/outdoor-kitchens/covered-patio-wood-ceiling-fan-01.jpg": [
+    1179,
+    774
+  ],
+  "/projects/outdoor-kitchens/may-blvd-grill-surround-04.jpg": [
+    4096,
+    3072
+  ],
+  "/projects/outdoor-kitchens/outdoor-kitchen-grill-stone-base-01.jpg": [
+    2048,
+    1365
+  ],
+  "/projects/outdoor-kitchens/outdoor-kitchen-stone-veneer-01.jpg": [
+    3849,
+    2887
+  ],
+  "/projects/pond-dock-flagstone-pillars-front-01.jpg": [
+    1599,
+    1069
+  ],
+  "/projects/pond-dock-flagstone-pillars-rear-01.jpg": [
+    1544,
+    1032
+  ],
+  "/projects/pond-dock-flagstone-walkway-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/pond-dock-stone-pillars-flagstone-01.jpg": [
+    1579,
+    1055
+  ],
+  "/projects/pond-dock-stone-pillars-front-view-01.jpg": [
+    1598,
+    1068
+  ],
+  "/projects/pond-dock-stone-pillars-side-view-01.jpg": [
+    1598,
+    1068
+  ],
+  "/projects/pond-dock-twin-lantern-pillars-01.jpg": [
+    1550,
+    1036
+  ],
+  "/projects/pool-deck-arborvitae-pond-view-01.jpg": [
+    1552,
+    1037
+  ],
+  "/projects/pool-spillway-stone-veneer-closeup-01.jpg": [
+    1578,
+    1055
+  ],
+  "/projects/pool-three-spillways-stone-deck-01.jpg": [
+    1420,
+    949
+  ],
+  "/projects/pool-twin-spillways-house-backdrop-01.jpg": [
+    1605,
+    1073
+  ],
+  "/projects/pools/autumn-lakes-pool-deck-02.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/pools/autumn-lakes-portrait-10.jpg": [
+    2560,
+    1707
+  ],
+  "/projects/pools/autumn-lakes-terrace-04.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/pools/autumn-lakes-water-feature-03.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/pools/brick-courtyard-pool-gate-view-01.jpg": [
+    2771,
+    3694
+  ],
+  "/projects/pools/brick-fireplace-pool-twilight-01.jpg": [
+    5280,
+    3960
+  ],
+  "/projects/pools/freeform-pool-paver-coping-01.jpg": [
+    2048,
+    1365
+  ],
+  "/projects/pools/freeform-pool-spa-rough-construction-01.jpg": [
+    6362,
+    4772
+  ],
+  "/projects/pools/freeform-pool-stone-fireplace-paver-deck-01.jpg": [
+    3031,
+    2273
+  ],
+  "/projects/pools/modern-farmhouse-pool-front-symmetric-01.jpg": [
+    1551,
+    1037
+  ],
+  "/projects/pools/modern-farmhouse-pool-spa-rear-elevation-01.jpg": [
+    1604,
+    1072
+  ],
+  "/projects/pools/modern-farmhouse-rear-pool-paver-walk-01.jpg": [
+    1438,
+    961
+  ],
+  "/projects/pools/modern-farmhouse-rear-pool-retaining-walls-01.jpg": [
+    1467,
+    850
+  ],
+  "/projects/pools/modern-pool-spillway-stone-veneer-01.jpg": [
+    1602,
+    1071
+  ],
+  "/projects/pools/pool-deck-arborvitae-pond-view-01.jpg": [
+    1552,
+    1037
+  ],
+  "/projects/pools/pool-spillway-stone-veneer-closeup-01.jpg": [
+    1578,
+    1055
+  ],
+  "/projects/pools/pool-three-spillways-stone-deck-01.jpg": [
+    1420,
+    949
+  ],
+  "/projects/pools/pool-twin-spillways-house-backdrop-01.jpg": [
+    1605,
+    1073
+  ],
+  "/projects/pools/poolside-arborvitae-river-rock-edge-01.jpg": [
+    1561,
+    1043
+  ],
+  "/projects/pools/poolside-river-rock-border-pond-01.jpg": [
+    1600,
+    1069
+  ],
+  "/projects/pools/rectangular-pool-brick-fireplace-01.jpg": [
+    2885,
+    2164
+  ],
+  "/projects/pools/rectangular-pool-deck-screened-porch-01.jpg": [
+    3502,
+    2626
+  ],
+  "/projects/pools/rectangular-pool-pond-view-01.jpg": [
+    1467,
+    980
+  ],
+  "/projects/pools/rectangular-pool-travertine-deck-01.jpg": [
+    1179,
+    874
+  ],
+  "/projects/pools/small-paver-patio-french-doors-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/pools/small-paver-patio-side-yard-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/pools/small-rectangular-pool-wooded-01.jpg": [
+    4952,
+    3714
+  ],
+  "/projects/pools/white-farmhouse-pool-spillway-elevation-01.jpg": [
+    1588,
+    1061
+  ],
+  "/projects/pools/white-farmhouse-pool-spillway-front-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/poolside-arborvitae-river-rock-edge-01.jpg": [
+    1561,
+    1043
+  ],
+  "/projects/poolside-river-rock-border-pond-01.jpg": [
+    1600,
+    1069
+  ],
+  "/projects/porches/screened-porch-rear-elevation-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/porches/screened-porch-shed-rear-elevation-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/porches/screened-porch-side-foundation-bed-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/porches/screened-porch-stone-foundation-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/process/bobcat-clearing-side-yard-01.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/process/bobcat-clearing-yard-01.jpg": [
+    1538,
+    1469
+  ],
+  "/projects/process/bobcat-stump-clearing-01.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/process/brick-ranch-grading-prep-01.jpg": [
+    2027,
+    1521
+  ],
+  "/projects/process/crew-clearing-debris-01.jpg": [
+    2048,
+    1365
+  ],
+  "/projects/process/crew-cutting-pavers-stihl-saw-01.jpg": [
+    3547,
+    2663
+  ],
+  "/projects/process/crew-installing-paver-edging-01.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/process/crew-installing-shrubs-01.jpg": [
+    1537,
+    1629
+  ],
+  "/projects/process/crew-laying-pavers-patio-01.jpg": [
+    1501,
+    2000
+  ],
+  "/projects/process/crew-leveling-paver-base-01.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/process/crew-reviewing-blueprints-truck-tailgate-01.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/process/crew-staking-out-shrubs-01.jpg": [
+    1537,
+    1481
+  ],
+  "/projects/process/donald-drive-progress-01.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/process/donald-drive-progress-02.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/process/donald-drive-progress-03.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/process/donald-drive-progress-04.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/process/donald-drive-progress-05.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/process/empty-pool-shell-rough-grade-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/process/freeform-pool-concrete-deck-poured-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/process/freeform-pool-deck-progress-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/process/freeform-pool-screened-porch-progress-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/process/freeform-pool-spa-shells-progress-01.jpg": [
+    7770,
+    5828
+  ],
+  "/projects/process/inground-pool-during-install-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/process/inground-pool-gravel-surround-progress-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/process/rectangular-pool-arborvitae-screen-progress-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/process/rectangular-pool-formed-shell-01.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/process/rectangular-pool-rough-grade-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/process/rectangular-pool-rough-grade-twilight-01.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/process/rectangular-pool-shell-formwork-01.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/process/remington-progress-01.jpg": [
+    6076,
+    4672
+  ],
+  "/projects/process/remington-progress-02.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/process/remington-progress-03.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/process/remington-progress-04.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/process/retaining-wall-rear-yard-progress-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/process/retaining-wall-shed-progress-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/process/screened-porch-foundation-progress-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/process/screened-porch-progress-rear-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/process/screened-porch-progress-rear-yard-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/process/screened-porch-progress-side-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/process/shrubs-staged-for-planting-01.jpg": [
+    1522,
+    2028
+  ],
+  "/projects/process/speight-seed-before-1-02.jpg": [
+    5657,
+    4246
+  ],
+  "/projects/process/speight-seed-before-2-03.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/process/speight-seed-before-3-04.jpg": [
+    6165,
+    4628
+  ],
+  "/projects/process/speight-seed-before-4-05.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/process/speight-seed-before-5-06.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/process/speight-seed-overview-01.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/process/worker-trenching-paver-edge-01.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/rear-patio-firepit-iron-fence-01.jpg": [
+    1406,
+    940
+  ],
+  "/projects/rear-patio-firepit-stone-veneer-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/rear-yard-arborvitae-screen-patio-01.jpg": [
+    4039,
+    3029
+  ],
+  "/projects/rectangular-pool-arborvitae-screen-progress-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/rectangular-pool-brick-fireplace-01.jpg": [
+    2885,
+    2164
+  ],
+  "/projects/rectangular-pool-deck-screened-porch-01.jpg": [
+    3502,
+    2626
+  ],
+  "/projects/rectangular-pool-formed-shell-01.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/rectangular-pool-pond-view-01.jpg": [
+    1467,
+    980
+  ],
+  "/projects/rectangular-pool-rough-grade-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/rectangular-pool-rough-grade-twilight-01.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/rectangular-pool-shell-formwork-01.jpg": [
+    4032,
+    3024
+  ],
+  "/projects/rectangular-pool-travertine-deck-01.jpg": [
+    1179,
+    874
+  ],
+  "/projects/remington-extra-05.jpg": [
+    6076,
+    4672
+  ],
+  "/projects/remington-extra-06.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/remington-extra-07.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/remington-extra-08.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/remington-progress-01.jpg": [
+    6076,
+    4672
+  ],
+  "/projects/remington-progress-02.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/remington-progress-03.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/remington-progress-04.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/retaining-wall-rear-yard-progress-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/retaining-wall-shed-progress-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/screened-porch-foundation-progress-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/screened-porch-progress-rear-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/screened-porch-progress-rear-yard-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/screened-porch-progress-side-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/screened-porch-rear-elevation-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/screened-porch-shed-rear-elevation-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/screened-porch-side-foundation-bed-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/screened-porch-stone-foundation-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/shrubs-staged-for-planting-01.jpg": [
+    1522,
+    2028
+  ],
+  "/projects/side-foundation-bed-pinestraw-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/side-foundation-bed-river-rock-edge-01.jpg": [
+    1584,
+    1059
+  ],
+  "/projects/side-stepping-stone-walkway-pond-01.jpg": [
+    1541,
+    1030
+  ],
+  "/projects/side-yard-paver-walkway-fenced-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/small-paver-patio-french-doors-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/small-paver-patio-side-yard-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/small-rectangular-pool-wooded-01.jpg": [
+    4952,
+    3714
+  ],
+  "/projects/speight-seed-before-1-02.jpg": [
+    5657,
+    4246
+  ],
+  "/projects/speight-seed-before-2-03.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/speight-seed-before-3-04.jpg": [
+    6165,
+    4628
+  ],
+  "/projects/speight-seed-before-4-05.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/speight-seed-before-5-06.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/speight-seed-extra-07.jpg": [
+    5657,
+    4246
+  ],
+  "/projects/speight-seed-extra-08.jpg": [
+    5657,
+    4246
+  ],
+  "/projects/speight-seed-extra-09.jpg": [
+    5657,
+    4246
+  ],
+  "/projects/speight-seed-extra-10.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/speight-seed-extra-11.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/speight-seed-extra-12.jpg": [
+    6165,
+    4628
+  ],
+  "/projects/speight-seed-extra-13.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/speight-seed-extra-14.jpg": [
+    4672,
+    6224
+  ],
+  "/projects/speight-seed-extra-15.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/speight-seed-extra-16.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/speight-seed-farm/01-overview.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/speight-seed-farm/02-before-1.jpg": [
+    5657,
+    4246
+  ],
+  "/projects/speight-seed-farm/03-before-2.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/speight-seed-farm/04-before-3.jpg": [
+    6165,
+    4628
+  ],
+  "/projects/speight-seed-farm/05-before-4.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/speight-seed-farm/06-before-5.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/speight-seed-farm/07-extra.jpg": [
+    5657,
+    4246
+  ],
+  "/projects/speight-seed-farm/08-extra.jpg": [
+    5657,
+    4246
+  ],
+  "/projects/speight-seed-farm/09-extra.jpg": [
+    5657,
+    4246
+  ],
+  "/projects/speight-seed-farm/10-extra.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/speight-seed-farm/11-extra.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/speight-seed-farm/12-extra.jpg": [
+    6165,
+    4628
+  ],
+  "/projects/speight-seed-farm/13-extra.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/speight-seed-farm/14-extra.jpg": [
+    4672,
+    6224
+  ],
+  "/projects/speight-seed-farm/15-extra.jpg": [
+    6224,
+    4672
+  ],
+  "/projects/speight-seed-farm/16-extra.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/speight-seed-overview-01.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/stone-column-lantern-closeup-01.jpg": [
+    3875,
+    2906
+  ],
+  "/projects/stone-column-mailbox-lantern-01.jpg": [
+    3189,
+    2392
+  ],
+  "/projects/stone-retaining-wall-bluestone-steps-01.jpg": [
+    6182,
+    4640
+  ],
+  "/projects/tall-stone-fireplace-paver-patio-01.jpg": [
+    2981,
+    3975
+  ],
+  "/projects/tan-brick-front-driveway-foundation-bed-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/tan-brick-side-foundation-bed-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/tan-rear-elevation-brick-patio-01.jpg": [
+    2042,
+    1532
+  ],
+  "/projects/tudor-front-elevation-paver-walk-01.jpg": [
+    1610,
+    1208
+  ],
+  "/projects/white-brick-front-arched-entry-01.jpg": [
+    1613,
+    1078
+  ],
+  "/projects/white-brick-front-paver-walk-topiary-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/white-brick-mansion-front-elevation-01.jpg": [
+    1526,
+    1020
+  ],
+  "/projects/white-brick-mansion-side-front-elevation-01.jpg": [
+    1570,
+    1049
+  ],
+  "/projects/white-brick-rear-elevation-firepit-bench-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/white-brick-rear-firepit-pergola-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/white-brick-rear-firepit-pergola-02.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/white-brick-rear-firepit-pergola-03.jpg": [
+    1530,
+    1023
+  ],
+  "/projects/white-brick-side-foundation-hedge-01.jpg": [
+    1572,
+    965
+  ],
+  "/projects/white-brick-side-paver-entry-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/white-cape-cod-front-elevation-flag-01.jpg": [
+    2043,
+    1533
+  ],
+  "/projects/white-cape-cod-front-fall-01.jpg": [
+    2048,
+    1365
+  ],
+  "/projects/white-cottage-flagstone-walkway-01.jpg": [
+    1487,
+    1981
+  ],
+  "/projects/white-cottage-front-foundation-bed-01.jpg": [
+    1892,
+    1261
+  ],
+  "/projects/white-cottage-iron-fence-front-01.jpg": [
+    2038,
+    1529
+  ],
+  "/projects/white-farmhouse-front-elevation-paver-walk-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/white-farmhouse-pool-spillway-elevation-01.jpg": [
+    1588,
+    1061
+  ],
+  "/projects/white-farmhouse-pool-spillway-front-01.jpg": [
+    1616,
+    1080
+  ],
+  "/projects/white-painted-brick-side-elevation-01.jpg": [
+    1942,
+    1295
+  ],
+  "/projects/white-vinyl-fence-corner-residential-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/white-vinyl-fence-corner-tan-house-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/white-vinyl-fence-rear-elevation-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/white-vinyl-fence-roadside-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/white-vinyl-fence-side-yard-01.jpg": [
+    5712,
+    4284
+  ],
+  "/projects/williamsburg-106-columns-03.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/williamsburg-106-detail-05.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/williamsburg-106-entry-04.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/williamsburg-106-front-elevation-01.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/williamsburg-106-twilight-06.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/williamsburg-106-walkway-02.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/williamsburg-106/01-front-elevation.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/williamsburg-106/02-walkway.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/williamsburg-106/03-columns.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/williamsburg-106/04-entry.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/williamsburg-106/05-detail.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/williamsburg-106/06-twilight.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/williamsburg-109-canopy-06.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/williamsburg-109-finish-07.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/williamsburg-109-foundation-planting-01.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/williamsburg-109-patio-03.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/williamsburg-109-planting-detail-05.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/williamsburg-109-rear-garden-02.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/williamsburg-109-seating-wall-04.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/williamsburg-109/01-foundation-planting.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/williamsburg-109/02-rear-garden.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/williamsburg-109/03-patio.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/williamsburg-109/04-seating-wall.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/williamsburg-109/05-planting-detail.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/williamsburg-109/06-canopy.jpg": [
+    2048,
+    1537
+  ],
+  "/projects/williamsburg-109/07-finish.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/worker-trenching-paver-edge-01.jpg": [
+    1537,
+    2048
+  ],
+  "/projects/yardie-portfolio-different-job-10.jpg": [
+    1020,
+    765
+  ],
+  "/projects/yardie-portfolio-extra-19.jpg": [
+    1024,
+    683
+  ],
+  "/projects/yardie-portfolio-extra-20.jpg": [
+    1024,
+    683
+  ],
+  "/projects/yardie-portfolio-extra-21.jpg": [
+    1024,
+    683
+  ],
+  "/projects/yardie-portfolio-extra-22.jpg": [
+    1024,
+    683
+  ],
+  "/projects/yardie-portfolio/10-different-job.jpg": [
+    1020,
+    765
+  ],
+  "/projects/yardie-portfolio/19-extra.jpg": [
+    1024,
+    683
+  ],
+  "/projects/yardie-portfolio/20-extra.jpg": [
+    1024,
+    683
+  ],
+  "/projects/yardie-portfolio/21-extra.jpg": [
+    1024,
+    683
+  ],
+  "/projects/yardie-portfolio/22-extra.jpg": [
+    1024,
+    683
+  ],
+  "/renderings/aman-fireplace-02.png": [
+    3840,
+    2160
+  ],
+  "/renderings/aman-grill-area-04.png": [
+    3840,
+    2160
+  ],
+  "/renderings/aman-multi-level-patio-05.png": [
+    3840,
+    2160
+  ],
+  "/renderings/aman-pool-deck-02.png": [
+    3840,
+    2160
+  ],
+  "/renderings/aman-pool-twilight-03.png": [
+    3840,
+    2160
+  ],
+  "/renderings/aman-poolside-terrace-01.png": [
+    3840,
+    2160
+  ],
+  "/renderings/aman-rear-terrace-03.png": [
+    3840,
+    2160
+  ],
+  "/renderings/aman-rear-yard-06.png": [
+    3840,
+    2160
+  ],
+  "/renderings/aman-stepped-terrace-01.png": [
+    3840,
+    2160
+  ],
+  "/renderings/autumn-lakes-plan-01.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/autumn-lakes-plan-02.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/autumn-lakes-plan-03.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/autumn-lakes-plan-04.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/autumn-lakes-plan-05.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/autumn-lakes/01.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/autumn-lakes/02.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/autumn-lakes/03.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/autumn-lakes/04.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/autumn-lakes/05.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/belhaven-deck-rendering-01.jpg": [
+    3456,
+    1798
+  ],
+  "/renderings/belhaven-pool-dock-rendering-01.jpg": [
+    3456,
+    1798
+  ],
+  "/renderings/belhaven-pool-rendering-01.jpg": [
+    3456,
+    1798
+  ],
+  "/renderings/belhaven-pool-rendering-02.jpg": [
+    3456,
+    1798
+  ],
+  "/renderings/chakalos-plan-01.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/chakalos-plan-02.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/chakalos-plan-03.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/chakalos-plan-04.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/chakalos/01.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/chakalos/02.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/chakalos/03.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/chakalos/04.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/connelly-plan-01.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/connelly-plan-02.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/connelly-plan-03.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/connelly-plan-04.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/connelly-plan-05.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/connelly/01.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/connelly/02.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/connelly/03.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/connelly/04.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/connelly/05.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/minshew-front-yard-01.png": [
+    1536,
+    1024
+  ],
+  "/renderings/minshew-front-yard-02.png": [
+    1179,
+    775
+  ],
+  "/renderings/minshew-rendering-01.png": [
+    1179,
+    772
+  ],
+  "/renderings/minshew-rendering-02.png": [
+    1536,
+    1024
+  ],
+  "/renderings/nagypal-plan-01.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/nagypal-plan-02.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/nagypal-plan-03.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/nagypal-plan-04.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/nagypal-plan-05.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/nagypal/01.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/nagypal/02.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/nagypal/03.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/nagypal/04.jpg": [
+    4000,
+    1969
+  ],
+  "/renderings/nagypal/05.jpg": [
+    4000,
+    1969
+  ],
+  "/sketches/cabana-illustration.png": [
+    1536,
+    1536
+  ],
+  "/sketches/fireplace-illustration.png": [
+    1679,
+    1679
+  ],
+  "/sketches/nav-arch-01.png": [
+    1048,
+    1536
+  ],
+  "/sketches/nav-arch-02.png": [
+    1179,
+    1727
+  ],
+  "/sketches/nav-arch-03.png": [
+    1065,
+    1560
+  ],
+  "/sketches/pathway-illustration.png": [
+    1372,
+    1372
+  ],
+  "/sketches/sketch-blueprint-01.png": [
+    1024,
+    1024
+  ],
+  "/sketches/sketch-blueprint-02.png": [
+    1024,
+    1024
+  ],
+  "/sketches/sketch-cabana.png": [
+    2048,
+    2048
+  ],
+  "/sketches/sketch-fireplace-line-art.png": [
+    1024,
+    1024
+  ],
+  "/sketches/sketch-fireplace.png": [
+    2048,
+    2048
+  ],
+  "/sketches/sketch-planning-icon.png": [
+    1024,
+    1024
+  ],
+  "/sketches/sketch-stone-pathway.png": [
+    2048,
+    2048
+  ],
+  "/staff/mario-taxho.jpg": [
+    1537,
+    2048
+  ],
+  "/staff/scott-and-wife-portrait.jpg": [
+    2911,
+    2183
+  ],
+  "/staff/scott-baldwin-design-table.jpg": [
+    4918,
+    3689
+  ],
+  "/staff/scott-baldwin-drafting.jpg": [
+    4546,
+    3410
+  ],
+  "/staff/scott-baldwin.jpg": [
+    4918,
+    3689
+  ],
+  "/staff/yardie-crew-group.jpg": [
+    4982,
+    2873
+  ]
+}

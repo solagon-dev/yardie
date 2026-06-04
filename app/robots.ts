@@ -1,5 +1,12 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/seo";
+
+// Inlined to dodge a Turbopack edge case where path aliases don't resolve
+// inside Next's special metadata route entrypoints (robots.ts gets compiled
+// via app/robots--route-entry.js, which doesn't see the @/* mapping the same
+// way page components do). Matches lib/seo.ts SITE_URL exactly.
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+  "https://www.yardiedesign.com";
 
 /**
  * Robots policy.
