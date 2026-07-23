@@ -26,10 +26,24 @@ const nextConfig = {
   // one top-level asset directory; ordering doesn't matter since the
   // sources are mutually exclusive prefixes.
   async rewrites() {
-    return BLOB_DIRS.map((dir) => ({
+    // `journal` is also an app route: /journal/[slug] article pages. Its Blob
+    // images live at /journal/<name>.<ext>. Array rewrites are "afterFiles",
+    // which Next.js applies BEFORE dynamic routes — so an unconstrained
+    // /journal/:path* swallows every article URL and returns "Blob not found".
+    // Rewrite ONLY journal paths that end in an image extension; extensionless
+    // article slugs fall through to the dynamic route.
+    const IMG = '(?:png|jpe?g|webp|avif|gif|svg)';
+    const others = BLOB_DIRS.filter((dir) => dir !== 'journal').map((dir) => ({
       source: `/${dir}/:path*`,
       destination: `${BLOB_BASE}/${dir}/:path*`,
     }));
+    return [
+      {
+        source: `/journal/:file(.+\\.${IMG})`,
+        destination: `${BLOB_BASE}/journal/:file`,
+      },
+      ...others,
+    ];
   },
 
   // Permanent redirects — old URLs from yardiedesign.com.
@@ -161,7 +175,12 @@ const nextConfig = {
       // Service-area slug variants.
       { source: '/service-area/:slug*',                      destination: '/service-areas/:slug*',          permanent: true },
       { source: '/areas/:slug*',                             destination: '/service-areas/:slug*',          permanent: true },
-      { source: '/cities/:slug*',                            destination: '/service-areas/:slug*',          permanent: true },
+      // City page slugs never contain a dot; matching only dot-free paths keeps
+      // this legacy redirect from stealing /cities/<name>.<ext> Blob image
+      // requests, which must reach the `cities` rewrite instead (redirects run
+      // before rewrites, so an unconstrained rule 308s images to a 404 page).
+      { source: '/cities',                                  destination: '/service-areas',                 permanent: true },
+      { source: '/cities/:slug([^.]+)',                     destination: '/service-areas/:slug',           permanent: true },
 
       // Sitemap typo + index.html variants.
       { source: '/sitemap',                                  destination: '/sitemap.xml',                   permanent: true },
