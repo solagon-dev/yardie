@@ -140,7 +140,7 @@ export default function Footer() {
                         <span className="text-[14px] text-cream/75 group-hover:text-cream transition-colors">
                           {area.name}
                         </span>
-                        <span className="block text-[11px] text-cream/40 mt-0.5">
+                        <span className="block text-[11px] text-cream/70 mt-0.5">
                           {AREA_COUNTY[area.slug] ?? "Eastern NC"}
                         </span>
                       </Link>
@@ -191,7 +191,7 @@ export default function Footer() {
                   ))}
                 </ul>
                 <div className="mt-7">
-                  <FooterAllLink href="/quote">Request a Quote</FooterAllLink>
+                  <FooterAllLink href="/quote">Request a Consultation</FooterAllLink>
                 </div>
               </div>
 
@@ -208,7 +208,7 @@ export default function Footer() {
                         <span className="block text-[14px] text-cream/85 group-hover:text-cream transition-colors">
                           {area.name}
                         </span>
-                        <span className="block text-[11px] text-cream/40 group-hover:text-stone transition-colors mt-0.5">
+                        <span className="block text-[11px] text-cream/70 group-hover:text-stone transition-colors mt-0.5">
                           {AREA_COUNTY[area.slug] ?? "Eastern NC"}
                         </span>
                       </Link>
@@ -225,7 +225,7 @@ export default function Footer() {
 
         {/* ── Bottom bar ── */}
         <div className="bg-dark-surface/80">
-          <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12 py-5 sm:py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] sm:text-[11.5px] tracking-wide text-cream/45 text-center sm:text-left">
+          <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12 py-5 sm:py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] sm:text-[11.5px] tracking-wide text-cream/70 text-center sm:text-left">
             <p>&copy; {year} {company.legalName}. All rights reserved.</p>
             <div className="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-5 gap-y-2">
               <Link href="/legal/privacy-policy" className="hover:text-cream transition-colors">Privacy</Link>

@@ -170,7 +170,7 @@
 
 | Field | Value | Source |
 |-------|-------|--------|
-| Phone (primary) | (252) 756-7788 | Contact page |
+| Phone (primary) | (252) 320-7660 | Contact page |
 | Phone (secondary) | 252-714-6959 | Privacy Policy + Terms of Service |
 | Email | hello@yardiedesign.com | Contact page, FAQ page |
 | Address | 5036 Winterville Parkway, Winterville, NC 28590 | Contact page |

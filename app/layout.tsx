@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, DM_Sans, Homemade_Apple } from "next/font/google";
+import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
@@ -22,13 +22,6 @@ const sans = DM_Sans({
   weight: ["300", "400", "500"],
   style: ["normal", "italic"],
   variable: "--font-sans",
-  display: "swap",
-});
-
-const signature = Homemade_Apple({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-signature",
   display: "swap",
 });
 
@@ -99,7 +92,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${display.variable} ${sans.variable} ${signature.variable} h-full antialiased`}
+      className={`${display.variable} ${sans.variable} h-full antialiased`}
     >
       <head>
         {/* Ahrefs Web Analytics */}

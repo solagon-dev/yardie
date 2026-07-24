@@ -237,7 +237,7 @@ export default function AboutPage() {
               >
                 {/* Index number */}
                 <div className="col-span-2 sm:col-span-1">
-                  <span className="font-mono text-[11px] tabular-nums text-clay/65 tracking-[0.22em]">
+                  <span className="font-mono text-[11px] tabular-nums text-clay tracking-[0.22em]">
                     0{i + 1}
                   </span>
                 </div>
@@ -259,7 +259,7 @@ export default function AboutPage() {
                   <p className="font-display text-[24px] sm:text-[28px] lg:text-[36px] text-bark leading-[1.05] tracking-tight">
                     {person.name}
                   </p>
-                  <p className="mt-2 font-mono text-[10.5px] tabular-nums text-clay/70 tracking-[0.22em] uppercase">
+                  <p className="mt-2 font-mono text-[10.5px] tabular-nums text-clay tracking-[0.22em] uppercase">
                     {person.title}
                   </p>
                 </div>
@@ -329,7 +329,7 @@ export default function AboutPage() {
               href="/quote"
               className="inline-flex items-center justify-center gap-3 px-9 py-4 bg-bark text-cream text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-earth transition-colors"
             >
-              Request a Quote
+              Request a Property Consultation
               <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
               </svg>

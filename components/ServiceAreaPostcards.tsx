@@ -191,7 +191,7 @@ export default function ServiceAreaPostcards({ areas }: { areas: Area[] }) {
                       <p className="text-[11.5px] text-clay leading-snug italic line-clamp-1">
                         {meta?.notable ?? "Eastern North Carolina"}
                       </p>
-                      <p className="font-mono text-[10.5px] tabular-nums text-clay/65 tracking-[0.18em] uppercase shrink-0">
+                      <p className="font-mono text-[10.5px] tabular-nums text-clay tracking-[0.18em] uppercase shrink-0">
                         {meta?.yearsServing ?? "Since 2004"}
                       </p>
                     </div>

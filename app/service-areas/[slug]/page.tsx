@@ -168,7 +168,7 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
           </p>
           <div className="mt-8 sm:mt-10">
             <Link href="/quote" className="inline-flex w-full sm:w-auto items-center justify-center px-9 py-4 bg-cream text-bark text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-stone transition-colors">
-              Schedule a Consultation
+              Request a Property Consultation
             </Link>
           </div>
         </div>

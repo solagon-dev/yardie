@@ -163,7 +163,7 @@ export default function ServiceAreasPage() {
 
           {/* Wikimedia attribution — small, unobtrusive, keeps us
               compliant with the CC-BY-SA license on the city photos. */}
-          <p className="mt-10 sm:mt-14 text-[11px] text-clay/70 leading-relaxed text-center lg:text-left">
+          <p className="mt-10 sm:mt-14 text-[11px] text-clay leading-relaxed text-center lg:text-left">
             City photos courtesy of{" "}
             <a
               href="https://commons.wikimedia.org/"

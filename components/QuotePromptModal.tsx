@@ -97,7 +97,7 @@ export default function QuotePromptModal() {
             type="button"
             onClick={dismiss}
             aria-label="Dismiss"
-            className="absolute top-3 right-3 inline-flex items-center justify-center h-8 w-8 text-clay/70 hover:text-bark transition-colors"
+            className="absolute top-3 right-3 inline-flex items-center justify-center h-8 w-8 text-clay hover:text-bark transition-colors"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.4} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -120,7 +120,7 @@ export default function QuotePromptModal() {
             onClick={dismiss}
             className="mt-6 inline-flex w-full sm:w-auto items-center justify-center gap-3 px-7 py-3.5 bg-bark text-cream text-[11.5px] tracking-[0.22em] uppercase font-medium hover:bg-earth transition-colors whitespace-nowrap"
           >
-            Schedule a Consultation
+            Request a Property Consultation
             <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor" aria-hidden>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
             </svg>

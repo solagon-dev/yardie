@@ -135,10 +135,10 @@ export default function Footer() {
               </div>
               <div className="space-y-1">
                 <a
-                  href="tel:+12527567788"
+                  href="tel:+12523207660"
                   className="block hover:text-ochre transition-colors mono-caption-sm text-limestone/70 uppercase"
                 >
-                  (252) 756-7788
+                  (252) 320-7660
                 </a>
                 <a
                   href="mailto:hello@yardiedesign.com"

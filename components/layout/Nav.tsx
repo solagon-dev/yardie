@@ -7,7 +7,7 @@ import YardieWordmark from "@/components/brand/YardieWordmark";
 
 /* ─── Navigation (Rooted Southern Craft) ──────────────────────────
    Top nav:  About · Services · Work · Journal · Start a project
-   Phone:    (252) 756-7788
+   Phone:    (252) 320-7660
 */
 
 const serviceLinks = [
@@ -184,12 +184,12 @@ export default function Nav() {
           {/* Phone + CTA */}
           <div className="hidden lg:flex items-center gap-5">
             <a
-              href="tel:+12527567788"
+              href="tel:+12523207660"
               className={`mono-caption-sm uppercase transition-colors duration-200 ${
                 scrolled || !isDarkHero ? "text-moss" : "text-limestone/80"
               } hover:text-ochre`}
             >
-              (252) 756-7788
+              (252) 320-7660
             </a>
             <Link
               href="/quote"
@@ -310,8 +310,8 @@ export default function Nav() {
               Start a project <span aria-hidden>→</span>
             </Link>
             <div className="flex flex-col gap-1 text-limestone/70 text-[13px]">
-              <a href="tel:+12527567788" className="hover:text-ochre transition-colors mono-caption-sm uppercase">
-                (252) 756-7788
+              <a href="tel:+12523207660" className="hover:text-ochre transition-colors mono-caption-sm uppercase">
+                (252) 320-7660
               </a>
               <a href="mailto:hello@yardiedesign.com" className="hover:text-ochre transition-colors mono-caption-sm">
                 hello@yardiedesign.com

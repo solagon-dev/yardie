@@ -47,7 +47,7 @@ export default function NotFound() {
             <li><Link href="/services" className="underline-offset-4 hover:underline">All services</Link></li>
             <li><Link href="/service-areas" className="underline-offset-4 hover:underline">Service areas</Link></li>
             <li><Link href="/journal" className="underline-offset-4 hover:underline">Journal</Link></li>
-            <li><Link href="/quote" className="underline-offset-4 hover:underline">Get a quote</Link></li>
+            <li><Link href="/quote" className="underline-offset-4 hover:underline">Request a consultation</Link></li>
             <li><Link href="/contact" className="underline-offset-4 hover:underline">Contact</Link></li>
           </ul>
         </div>

@@ -65,7 +65,7 @@ export function localBusinessSchema() {
     alternateName: company.name,
     description: company.description,
     url: SITE_URL,
-    telephone: "+12527567788",
+    telephone: "+12523207660",
     email: company.email,
     foundingDate: String(company.founded),
     priceRange: "$$-$$$$",

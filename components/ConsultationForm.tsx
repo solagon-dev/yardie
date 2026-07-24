@@ -2,9 +2,10 @@
 
 import { useState, useRef, useEffect } from "react";
 import { submitForm } from "@/lib/form-handler";
+import { analytics } from "@/lib/analytics";
 
 const inputBase =
-  "w-full border-0 border-b bg-transparent px-0 py-3.5 text-[15px] text-bark placeholder:text-clay/55 outline-none transition-colors focus:border-moss";
+  "w-full border-0 border-b bg-transparent px-0 py-3.5 text-[15px] text-bark placeholder:text-clay outline-none transition-colors focus:border-moss";
 const inputNormal = `${inputBase} border-clay/30`;
 const inputError = `${inputBase} border-terracotta focus:border-terracotta`;
 const labelCls = "block text-[11px] uppercase tracking-[0.22em] font-medium text-clay mb-2";
@@ -52,6 +53,7 @@ export default function ConsultationForm() {
   const [errors, setErrors] = useState<Record<string, boolean>>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const startedRef = useRef(false);
 
   // Only scroll once the user has advanced past step 1. The previous
   // ref-based "skip first render" guard didn't survive StrictMode's
@@ -64,6 +66,11 @@ export default function ConsultationForm() {
   }, [step]);
 
   function set<K extends keyof FormState>(key: K, value: FormState[K]) {
+    // §15: record that the visitor engaged the form, once, with no field data.
+    if (!startedRef.current) {
+      startedRef.current = true;
+      analytics.formStart("consultation");
+    }
     setData((d) => ({ ...d, [key]: value }));
     setErrors((e) => ({ ...e, [key]: false }));
   }
@@ -85,11 +92,17 @@ export default function ConsultationForm() {
       if (!data.vision.trim()) e.vision = true;
     }
     setErrors(e);
-    return Object.keys(e).length === 0;
+    const invalid = Object.keys(e);
+    // §15: field names only — never the values the visitor typed.
+    if (invalid.length > 0) analytics.formInvalid("consultation", invalid);
+    return invalid.length === 0;
   }
 
   function next() {
-    if (validateStep(step)) setStep((s) => Math.min(STEPS.length, s + 1));
+    if (validateStep(step)) {
+      analytics.formStep("consultation", step);
+      setStep((s) => Math.min(STEPS.length, s + 1));
+    }
   }
 
   function prev() {
@@ -119,13 +132,16 @@ export default function ConsultationForm() {
     try {
       const result = await submitForm("consultation", payload as Record<string, string>);
       if (result.success) {
+        analytics.formSuccess("consultation");
         setStatus("success");
         setData(INITIAL);
       } else {
+        analytics.formFailed("consultation", "delivery");
         setStatus("error");
         setErrorMsg(result.message);
       }
     } catch {
+      analytics.formFailed("consultation", "exception");
       setStatus("error");
       setErrorMsg("Something went wrong. Please try again or call us directly.");
     }
@@ -133,15 +149,15 @@ export default function ConsultationForm() {
 
   if (status === "success") {
     return (
-      <div className="text-center py-20">
+      <div className="text-center py-20" role="status" aria-live="polite">
         <div className="h-16 w-16 border border-moss/40 flex items-center justify-center mx-auto mb-7">
           <svg className="h-7 w-7 text-moss" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
           </svg>
         </div>
-        <h3 className="font-display text-4xl sm:text-5xl text-bark mb-4 font-light tracking-tight">
+        <h2 className="font-display text-4xl sm:text-5xl text-bark mb-4 font-light tracking-tight">
           Thank you.
-        </h3>
+        </h2>
         <p className="text-[16px] text-clay leading-relaxed max-w-md mx-auto">
           We&rsquo;ve received your project details. A member of the Yardie team will reach out within 24 hours to set up a property visit.
         </p>
@@ -182,7 +198,7 @@ export default function ConsultationForm() {
                       ? "bg-moss border-moss text-cream"
                       : active
                       ? "bg-cream border-bark text-bark"
-                      : "bg-cream border-clay/30 text-clay/50"
+                      : "bg-cream border-clay/30 text-clay"
                   }`}
                 >
                   {done ? (
@@ -195,7 +211,7 @@ export default function ConsultationForm() {
                 </span>
                 <span
                   className={`mt-3 text-[10.5px] tracking-[0.22em] uppercase whitespace-nowrap transition-colors duration-300 ${
-                    active ? "text-bark font-medium" : done ? "text-clay/80" : "text-clay/50"
+                    active ? "text-bark font-medium" : done ? "text-clay" : "text-clay"
                   }`}
                 >
                   {s.label}
@@ -208,7 +224,7 @@ export default function ConsultationForm() {
 
       <form ref={formRef} onSubmit={submit} noValidate>
         {status === "error" && (
-          <div className="mb-6 p-4 bg-terracotta/10 border border-terracotta/40">
+          <div role="alert" className="mb-6 p-4 bg-terracotta/10 border border-terracotta/40">
             <p className="text-[13px] text-terracotta font-medium">{errorMsg}</p>
           </div>
         )}
@@ -217,7 +233,7 @@ export default function ConsultationForm() {
         {step === 1 && (
           <div className="space-y-7">
             <div>
-              <h3 className="font-display text-3xl sm:text-4xl text-bark font-light tracking-tight">Tell us about you.</h3>
+              <h2 className="font-display text-3xl sm:text-4xl text-bark font-light tracking-tight">Tell us about you.</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
@@ -250,7 +266,7 @@ export default function ConsultationForm() {
         {step === 2 && (
           <div className="space-y-7">
             <div>
-              <h3 className="font-display text-3xl sm:text-4xl text-bark font-light tracking-tight">The project.</h3>
+              <h2 className="font-display text-3xl sm:text-4xl text-bark font-light tracking-tight">The project.</h2>
             </div>
             <div>
               <label className={labelCls}>Primary service <span className="text-terracotta">*</span></label>
@@ -296,7 +312,7 @@ export default function ConsultationForm() {
         {step === 3 && (
           <div className="space-y-7">
             <div>
-              <h3 className="font-display text-3xl sm:text-4xl text-bark font-light tracking-tight">Timeline & budget.</h3>
+              <h2 className="font-display text-3xl sm:text-4xl text-bark font-light tracking-tight">Timeline & budget.</h2>
               <p className="mt-3 max-w-xl text-[14.5px] text-clay leading-relaxed">
                 Honest ranges help us recommend an honest direction. Numbers won&rsquo;t lock you in — they help us decide whether we&rsquo;re a fit.
               </p>
@@ -353,7 +369,7 @@ export default function ConsultationForm() {
         {step === 4 && (
           <div className="space-y-7">
             <div>
-              <h3 className="font-display text-3xl sm:text-4xl text-bark font-light tracking-tight">Your vision.</h3>
+              <h2 className="font-display text-3xl sm:text-4xl text-bark font-light tracking-tight">Your vision.</h2>
               <p className="mt-3 max-w-xl text-[14.5px] text-clay leading-relaxed">
                 Tell us what you&rsquo;re imagining — even in fragments. Photos and references can come later; the words are what start the design.
               </p>
@@ -407,7 +423,7 @@ export default function ConsultationForm() {
           )}
         </div>
 
-        <p className="pt-6 text-[10.5px] text-clay/65 leading-relaxed">
+        <p className="pt-6 text-[10.5px] text-clay leading-relaxed">
           By submitting this form you agree to our{" "}
           <a href="/legal/privacy-policy" className="underline underline-offset-2 hover:text-bark transition-colors">Privacy Policy</a>{" "}
           and{" "}

@@ -36,7 +36,7 @@ export default function PartnersCarousel() {
               >
                 {partner.name}
               </span>
-              <span className="text-[9px] tracking-[0.18em] uppercase text-clay/40 mt-0.5 font-[500]">
+              <span className="text-[9px] tracking-[0.18em] uppercase text-clay mt-0.5 font-[500]">
                 {partner.category}
               </span>
             </div>

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { company } from "@/lib/content";
+import { analytics } from "@/lib/analytics";
 
 export default function MobileCTA() {
   const [visible, setVisible] = useState(false);
@@ -23,12 +24,14 @@ export default function MobileCTA() {
         <div className="flex gap-3">
           <Link
             href="/quote"
+            onClick={() => analytics.ctaClick("mobile_sticky_bar")}
             className="flex-1 flex items-center justify-center py-3 text-[12px] tracking-[0.18em] uppercase bg-bark text-cream hover:bg-earth transition-colors"
           >
-            Schedule a Consultation
+            Request a Consultation
           </Link>
           <a
             href={company.phoneTel}
+            onClick={() => analytics.phoneClick("mobile_sticky_bar")}
             className="flex items-center justify-center px-5 py-3 border border-clay/40 text-bark text-[12px] tracking-[0.18em] hover:bg-stone transition-colors"
             aria-label="Call Yardie"
           >

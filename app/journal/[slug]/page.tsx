@@ -92,6 +92,9 @@ export default async function JournalPostPage({ params }: { params: Promise<{ sl
       {/* Related */}
       <section className="bg-cream-alt text-bark">
         <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12 py-section">
+          <h2 className="font-display text-[28px] sm:text-[34px] text-bark leading-tight tracking-tight font-light mb-10 lg:mb-14">
+            More from the journal
+          </h2>
           <div className="grid sm:grid-cols-2 gap-12 lg:gap-16">
             {related.map((p) => (
               <JournalCard key={p.slug} post={p} />
@@ -109,7 +112,7 @@ export default async function JournalPostPage({ params }: { params: Promise<{ sl
           </h2>
           <div className="mt-10">
             <Link href="/quote" className="inline-flex items-center justify-center px-9 py-4 bg-cream text-bark text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-stone transition-colors">
-              Schedule a Consultation
+              Request a Property Consultation
             </Link>
           </div>
         </div>

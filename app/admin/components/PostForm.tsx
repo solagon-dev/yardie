@@ -205,7 +205,7 @@ export default function PostForm({ initial }: { initial?: Partial<PostData> }) {
           <Section title="Content">
             <Field
               label="Slug"
-              hint={data.slug ? `Public URL → yardiedesign.com/insights/${data.slug}` : 'Auto-generated from title'}
+              hint={data.slug ? `Public URL → yardiedesign.com/journal/${data.slug}` : 'Auto-generated from title'}
             >
               <input type="text" value={data.slug} onChange={(e) => set('slug', e.target.value)}
                 className={inputClass + ' font-mono text-[12px]'} placeholder="post-slug" />

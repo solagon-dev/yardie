@@ -174,7 +174,7 @@ export default function JournalPage() {
                       </div>
                     </div>
                     <div className={`lg:col-span-5 ${reverse ? "lg:order-1" : ""}`}>
-                      <p className="font-mono text-[10.5px] tabular-nums text-clay/70 tracking-[0.22em] uppercase mb-4">
+                      <p className="font-mono text-[10.5px] tabular-nums text-clay tracking-[0.22em] uppercase mb-4">
                         {String(i + 2).padStart(2, "0")} &middot; {post.category}
                       </p>
                       <h3 className="font-display text-[28px] sm:text-[36px] lg:text-[48px] text-bark leading-[1.08] tracking-tight font-light group-hover:text-moss transition-colors">
@@ -183,7 +183,7 @@ export default function JournalPage() {
                       <p className="mt-5 text-[15.5px] sm:text-[16px] text-earth leading-relaxed max-w-prose">
                         {post.excerpt}
                       </p>
-                      <p className="mt-6 text-[12.5px] text-clay/70 tracking-wide">
+                      <p className="mt-6 text-[12.5px] text-clay tracking-wide">
                         {post.date} &middot; {post.readTime} min read
                       </p>
                     </div>
@@ -237,7 +237,7 @@ export default function JournalPage() {
                           className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
                         />
                       </div>
-                      <p className="mt-5 font-mono text-[10.5px] tabular-nums text-clay/70 tracking-[0.22em] uppercase">
+                      <p className="mt-5 font-mono text-[10.5px] tabular-nums text-clay tracking-[0.22em] uppercase">
                         {String(i + 1).padStart(2, "0")} &middot; {post.readTime} min read
                       </p>
                       <h3 className="mt-2 font-display text-[22px] sm:text-[24px] text-bark leading-[1.18] tracking-tight font-light group-hover:text-moss transition-colors">
@@ -246,7 +246,7 @@ export default function JournalPage() {
                       <p className="mt-2.5 text-[13.5px] text-clay leading-relaxed line-clamp-2">
                         {post.excerpt}
                       </p>
-                      <p className="mt-3 text-[12px] text-clay/65 tracking-wide">
+                      <p className="mt-3 text-[12px] text-clay tracking-wide">
                         {post.date}
                       </p>
                     </Link>
@@ -278,7 +278,7 @@ export default function JournalPage() {
               {sorted.map((post, i) => (
                 <li key={post.slug}>
                   <Link href={`/journal/${post.slug}`} className="group grid grid-cols-12 gap-4 py-6 items-baseline">
-                    <span className="col-span-1 font-mono text-[11px] tabular-nums text-clay/65">
+                    <span className="col-span-1 font-mono text-[11px] tabular-nums text-clay">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="col-span-7 sm:col-span-6 font-display text-[20px] sm:text-[22px] text-bark leading-tight tracking-tight font-light group-hover:text-moss transition-colors">
@@ -287,7 +287,7 @@ export default function JournalPage() {
                     <span className="hidden sm:inline col-span-3 text-[11.5px] text-clay tracking-[0.18em] uppercase">
                       {post.category}
                     </span>
-                    <span className="col-span-4 sm:col-span-2 text-[11.5px] text-clay/70 tracking-wide text-right">
+                    <span className="col-span-4 sm:col-span-2 text-[11.5px] text-clay tracking-wide text-right">
                       {post.date}
                     </span>
                   </Link>
@@ -323,7 +323,7 @@ export default function JournalPage() {
               href="/quote"
               className="group inline-flex items-center justify-center gap-3 px-9 py-4 bg-cream text-bark text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-stone transition-colors"
             >
-              Request a Quote
+              Request a Property Consultation
               <svg className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
               </svg>

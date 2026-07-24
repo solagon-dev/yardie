@@ -177,7 +177,7 @@ export default function ConversionPopup() {
                 className="inline-block bg-cream text-bark text-[10px] tracking-[0.18em] uppercase font-[500] px-8 py-[14px] text-center transition-all duration-300 hover:bg-warm-stone mb-4"
                 style={{ borderRadius: '2px' }}
               >
-                Schedule a Consultation
+                Request a Property Consultation
               </Link>
 
               <button

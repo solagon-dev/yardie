@@ -65,7 +65,7 @@ export default function ConsultationContent() {
       if (!res.ok) throw new Error("Failed to send");
       setSubmitted(true);
     } catch {
-      setError("Something went wrong. Please try again or call us at (252) 756-7788.");
+      setError("Something went wrong. Please try again or call us at (252) 320-7660.");
     } finally {
       setSubmitting(false);
     }

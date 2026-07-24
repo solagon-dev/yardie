@@ -43,7 +43,7 @@ export default function InteractiveSpecialties({
                 className="group flex items-start gap-5 lg:gap-7 py-6 lg:py-7 outline-none focus-visible:bg-cream-alt/60 transition-colors"
               >
                 <span
-                  className={`font-mono text-[11px] tabular-nums shrink-0 mt-2 transition-colors ${isActive ? "text-moss" : "text-clay/55"}`}
+                  className={`font-mono text-[11px] tabular-nums shrink-0 mt-2 transition-colors ${isActive ? "text-moss" : "text-clay"}`}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>

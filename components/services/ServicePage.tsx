@@ -115,7 +115,7 @@ export default function ServicePage({ service }: { service: Service }) {
               href="/quote"
               className="group inline-flex w-full sm:w-auto items-center justify-center gap-3 px-6 py-3.5 bg-cream text-bark text-[11.5px] tracking-[0.22em] uppercase font-medium hover:bg-stone transition-colors"
             >
-              Request a Quote
+              Request a Property Consultation
               <Arrow />
             </Link>
             <a
@@ -171,7 +171,7 @@ export default function ServicePage({ service }: { service: Service }) {
                   href="/quote"
                   className="group inline-flex items-center justify-center gap-3 px-6 py-3 bg-cream text-bark text-[11.5px] tracking-[0.22em] uppercase font-medium hover:bg-stone transition-colors"
                 >
-                  Request a Quote
+                  Request a Property Consultation
                   <Arrow />
                 </Link>
                 <a
@@ -228,7 +228,7 @@ export default function ServicePage({ service }: { service: Service }) {
                 className="mt-9 group inline-flex items-center justify-center gap-3 text-[11.5px] tracking-[0.22em] uppercase font-medium text-bark hover:text-moss transition-colors"
               >
                 <span aria-hidden className="block h-px w-6 bg-bark group-hover:w-12 group-hover:bg-moss transition-all duration-500 ease-out" />
-                Begin a Project
+                Request a Property Consultation
                 <Arrow />
               </Link>
             </div>
@@ -491,7 +491,7 @@ export default function ServicePage({ service }: { service: Service }) {
               href="/quote"
               className="group inline-flex items-center justify-center gap-3 px-9 py-4 bg-cream text-bark text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-stone transition-colors"
             >
-              Request a Quote
+              Request a Property Consultation
               <Arrow />
             </Link>
             <Link

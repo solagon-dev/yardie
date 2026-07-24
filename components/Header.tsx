@@ -10,18 +10,25 @@ import { photosByService, photos as allPhotos } from "@/lib/media";
 // Twelve services Yardie leads with — grouped into three thematic
 // columns for the mega-menu, mirroring the Bluefin dropdown pattern
 // (Living Spaces / Foundations / Gardens & Systems).
+// The four service families from the implementation brief (§4.2). The detailed
+// per-service URLs stay intact for search; navigation groups them so visitors
+// never face twelve undifferentiated choices at once.
 const dropdownGroups: { title: string; slugs: string[] }[] = [
   {
-    title: "Living Spaces",
-    slugs: ["outdoor-kitchens", "fire-features", "pergolas-pavilions", "pool-decks"],
+    title: "Landscape Design & Planting",
+    slugs: ["landscapes"],
   },
   {
-    title: "Foundations",
-    slugs: ["patios-pavers", "walkways-driveways", "masonry", "retaining-walls"],
+    title: "Patios, Pools & Outdoor Structures",
+    slugs: ["patios-pavers", "pool-decks", "outdoor-kitchens", "pergolas-pavilions", "walkways-driveways"],
   },
   {
-    title: "Gardens & Systems",
-    slugs: ["landscapes", "lighting", "irrigation", "water-features"],
+    title: "Masonry, Walls & Fire",
+    slugs: ["masonry", "retaining-walls", "fire-features"],
+  },
+  {
+    title: "Lighting, Irrigation & Care",
+    slugs: ["lighting", "irrigation", "water-features"],
   },
 ];
 
@@ -252,7 +259,7 @@ export default function Header() {
             <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
               {dropdownGroups.map((group) => (
                 <div key={group.title} className="lg:col-span-3 border-t border-border pt-5">
-                  <p className="font-mono text-[10.5px] tabular-nums text-clay/65 tracking-[0.22em] uppercase mb-5">
+                  <p className="font-mono text-[10.5px] tabular-nums text-clay tracking-[0.22em] uppercase mb-5">
                     {group.title}
                   </p>
                   <ul className="space-y-1">
@@ -268,7 +275,7 @@ export default function Header() {
                             <p className="font-display text-[18px] text-bark group-hover:text-moss transition-colors leading-snug tracking-tight font-light">
                               {s.name}
                             </p>
-                            <p className="text-[12.5px] text-clay/65 leading-relaxed mt-0.5">
+                            <p className="text-[12.5px] text-clay leading-relaxed mt-0.5">
                               {serviceTeasers[s.slug] ?? s.tagline}
                             </p>
                           </Link>
@@ -280,7 +287,7 @@ export default function Header() {
 
               {/* Featured panel — small image + call to action */}
               <div className="lg:col-span-3 border-t border-border pt-5">
-                <p className="font-mono text-[10.5px] tabular-nums text-clay/65 tracking-[0.22em] uppercase mb-5">
+                <p className="font-mono text-[10.5px] tabular-nums text-clay tracking-[0.22em] uppercase mb-5">
                   Now Designing
                 </p>
                 <Link href="/services/outdoor-kitchens" className="group block">
@@ -411,7 +418,7 @@ function MobileNav({ onNavigate }: { onNavigate: () => void }) {
                 aria-expanded={open}
                 className="group w-full flex items-center gap-4 py-5"
               >
-                <span className="footer-label text-cream/45 w-8 text-left">{num}</span>
+                <span className="footer-label text-cream/70 w-8 text-left">{num}</span>
                 <span className="flex-1 text-left font-display text-[34px] text-cream leading-none tracking-tight">
                   Services
                 </span>
@@ -459,7 +466,7 @@ function MobileNav({ onNavigate }: { onNavigate: () => void }) {
         return (
           <li key={item.href}>
             <Link href={item.href} onClick={onNavigate} className="group flex items-center gap-4 py-5">
-              <span className="footer-label text-cream/45 w-8">{num}</span>
+              <span className="footer-label text-cream/70 w-8">{num}</span>
               <span className="font-display text-[34px] text-cream leading-none tracking-tight group-hover:text-stone transition-colors">
                 {item.label}
               </span>

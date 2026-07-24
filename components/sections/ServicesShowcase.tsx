@@ -47,7 +47,7 @@ export default function ServicesShowcase() {
                     className="group block py-7 lg:py-9 transition-colors"
                   >
                     <div className="flex items-start gap-6 lg:gap-10">
-                      <span className="font-display text-[18px] text-clay/60 mt-3 lg:mt-4 tabular-nums w-10 shrink-0">
+                      <span className="font-display text-[18px] text-clay mt-3 lg:mt-4 tabular-nums w-10 shrink-0">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <div className="flex-1">

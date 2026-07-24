@@ -37,7 +37,7 @@ function googleToItem(r: GoogleReview): ReviewItem {
 
 function Stars({ count = 5 }: { count?: number }) {
   return (
-    <div className="flex gap-0.5" aria-label={`${count} out of 5 stars`}>
+    <div className="flex gap-0.5" role="img" aria-label={`${count} out of 5 stars`}>
       {Array.from({ length: 5 }).map((_, i) => (
         <svg
           key={i}
@@ -121,7 +121,7 @@ export default function Reviews({
               <Stars count={5} />
               <p className="font-display text-[28px] lg:text-[34px] text-bark leading-none tracking-tight font-light tabular-nums">
                 {avg.toFixed(1)}
-                <span className="text-clay/70 text-[20px] lg:text-[24px]"> / 5</span>
+                <span className="text-clay text-[20px] lg:text-[24px]"> / 5</span>
               </p>
             </div>
             <p className="text-[12.5px] text-clay tracking-wide">
@@ -182,7 +182,7 @@ export default function Reviews({
                     {it.name}
                   </p>
                   {it.attribution && (
-                    <p className="mt-1.5 font-mono text-[10.5px] tabular-nums text-clay/75 tracking-[0.18em] uppercase">
+                    <p className="mt-1.5 font-mono text-[10.5px] tabular-nums text-clay tracking-[0.18em] uppercase">
                       {it.attribution}
                     </p>
                   )}

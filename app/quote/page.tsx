@@ -109,7 +109,7 @@ export default function QuotePage() {
                 each below. Keeps the mobile hero focused on the form. */}
             <div className="lg:col-span-5 lg:sticky lg:top-28">
               <p className="font-mono text-[11px] tabular-nums text-stone/85 tracking-[0.22em] mb-5 sm:mb-7 uppercase">
-                Request a Quote &middot; Step 01
+                Property Consultation &middot; Step 01
               </p>
               <h1 className="font-display text-[44px] sm:text-6xl lg:text-[80px] xl:text-[96px] text-cream leading-[0.98] lg:leading-[0.96] tracking-tight max-w-[14ch] font-light">
                 Begin{" "}
@@ -187,7 +187,7 @@ export default function QuotePage() {
           <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5">
             {timeline.map((t) => (
               <li key={t.step} className="bg-cream-alt border border-border p-7 lg:p-8 flex flex-col">
-                <p className="font-mono text-[10.5px] tabular-nums text-clay/65 tracking-[0.22em] uppercase">
+                <p className="font-mono text-[10.5px] tabular-nums text-clay tracking-[0.22em] uppercase">
                   {t.when}
                 </p>
                 <p className="mt-2 font-display text-[44px] lg:text-[56px] text-moss leading-none tracking-tight font-light">

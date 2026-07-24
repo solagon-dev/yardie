@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
 import { getImageDim } from "@/lib/image-dimensions";
+import { caseStudiesByRecency } from "@/lib/case-studies";
 import GalleryClient, { type GalleryPhoto } from "@/components/gallery/GalleryClient";
 
 export const metadata: Metadata = buildMetadata({
@@ -249,6 +251,11 @@ const galleryWithDims: GalleryPhoto[] = shuffledGallery.map((p) => {
 });
 
 export default function GalleryPage() {
+  // Approved case studies lead the hub (§6.3). Empty until Yardie supplies
+  // verified project facts — the section is omitted entirely while empty
+  // rather than rendered as a decorative placeholder.
+  const featuredStudies = caseStudiesByRecency();
+
   return (
     <>
       {/* ═══════════════════════════════════════════════════════
@@ -258,7 +265,7 @@ export default function GalleryPage() {
         <div className="mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-12 pt-32 lg:pt-44 pb-12 lg:pb-16">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-end">
             <div className="lg:col-span-8">
-              <p className="font-mono text-[11px] tabular-nums text-clay/70 tracking-[0.22em] mb-6 uppercase">
+              <p className="font-mono text-[11px] tabular-nums text-clay tracking-[0.22em] mb-6 uppercase">
                 Gallery &middot; Selected Work
               </p>
               <h1 className="font-display text-5xl sm:text-6xl lg:text-[80px] xl:text-[96px] text-bark leading-[0.98] tracking-tight max-w-[18ch] font-light">
@@ -270,13 +277,54 @@ export default function GalleryPage() {
               <p className="text-[15px] sm:text-[16px] text-earth leading-relaxed max-w-md">
                 Photographs from projects we&rsquo;ve drawn, built, and continue to look after &mdash; across Greenville and the broader Eastern North Carolina region.
               </p>
-              <p className="mt-5 font-mono text-[11px] tabular-nums text-clay/65 tracking-[0.22em] uppercase">
+              <p className="mt-5 font-mono text-[11px] tabular-nums text-clay tracking-[0.22em] uppercase">
                 {String(galleryWithDims.length).padStart(3, "0")} photographs &middot; click any to enlarge
               </p>
             </div>
           </div>
         </div>
       </section>
+
+      {/* ═══════════════════════════════════════════════════════
+          1b · SELECTED CASE STUDIES — leads the hub when approved
+               projects exist (§6.3); omitted entirely while empty.
+          ═══════════════════════════════════════════════════════ */}
+      {featuredStudies.length > 0 && (
+        <section className="bg-cream text-bark border-b border-border">
+          <div className="mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-12 py-14 lg:py-20">
+            <p className="font-mono text-[11px] tabular-nums text-clay tracking-[0.22em] mb-8 uppercase">
+              Selected Case Studies
+            </p>
+            <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+              {featuredStudies.map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/gallery/${c.slug}`}
+                  className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-moss focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
+                >
+                  <div className="relative w-full aspect-[4/3] overflow-hidden bg-stone">
+                    <Image
+                      src={c.heroImage.src}
+                      alt={c.heroImage.alt}
+                      fill
+                      loading="lazy"
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <p className="mt-4 font-mono text-[10.5px] tracking-[0.22em] uppercase text-clay">
+                    {c.city}, {c.region} &middot; {c.propertyType}
+                  </p>
+                  <h2 className="mt-2 font-display text-2xl font-light tracking-tight text-bark group-hover:text-moss transition-colors">
+                    {c.title}
+                  </h2>
+                  <p className="mt-2 text-[14.5px] text-earth leading-relaxed">{c.summary}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ═══════════════════════════════════════════════════════
           2 · PUZZLE MOSAIC + LIGHTBOX — natural aspect ratios are
@@ -309,7 +357,7 @@ export default function GalleryPage() {
               href="/quote"
               className="inline-flex items-center justify-center gap-3 px-9 py-4 bg-bark text-cream text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-earth transition-colors"
             >
-              Request a Quote
+              Request a Property Consultation
               <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
               </svg>

@@ -12,8 +12,8 @@ export const company = {
     "Exterior design studio in Greenville, NC. We design and build landscapes, hardscapes, masonry, lighting, and irrigation across Eastern North Carolina.",
 
   // Contact
-  phone: "(252) 756-7788",
-  phoneTel: "tel:+12527567788",
+  phone: "(252) 320-7660",
+  phoneTel: "tel:+12523207660",
   email: "hello@yardiedesign.com",
 
   // Location
@@ -39,7 +39,7 @@ export const navigation = {
     { label: "About",         href: "/about" },
     { label: "Journal",       href: "/journal" },
   ],
-  cta: { label: "Request a Quote", href: "/quote" },
+  cta: { label: "Request a Consultation", href: "/quote" },
 };
 
 // ─── Brand Story ────────────────────────────────────────────
@@ -1299,7 +1299,7 @@ export const journal: JournalPost[] = [
       "(12) Can we talk to three references? Specifically: the most recent project completed, a project from 3-5 years ago (so we can see how it's aged), and a project that had a problem during construction (so we can see how it was handled). The designer who can't supply all three is the designer whose work or process has gaps.",
       "Four red flags. (a) Pressure to sign quickly or pay a large deposit before seeing a design. Real design work takes weeks, and a 10 percent design retainer is standard; anything beyond 25-30 percent of total project budget paid upfront is unusual. (b) No physical address or established office. A designer with no place of business is a designer who can disappear. (c) Vague or evasive answers about insurance, licensing, or permitting. These are basic infrastructure for a legitimate operation. (d) Significantly lower bid than competitors with no clear explanation. The labor and materials cost in this region are roughly the same for every contractor; an outlier low bid usually reflects a missed scope item, an unrealistic schedule, or work that won't be done to standard.",
       "Credentials that matter. NC General Contractor's license (required for projects above certain value thresholds — most landscape designers carry it). Membership in regional or national professional organizations (NCNLA, North Carolina Nursery and Landscape Association, is the most relevant locally). Certified Plant Professional (CPP) or NC Certified Plant Professional credentials for plant expertise. State irrigation contractor's license (required for irrigation system installation in NC). Current insurance certificates available on request.",
-      "Yardie has been working in Greenville and Eastern NC since 2004. We hold all the relevant licenses and insurance, do all design work in-house with our principal designer involved on every project, run our own install crews, and are happy to provide references from any decade of our work. The first property visit is at no cost and includes site analysis, conversation about goals and budget, and an honest answer on whether we're the right fit for your project. Call (252) 756-7788 or email hello@yardiedesign.com to schedule.",
+      "Yardie has been working in Greenville and Eastern NC since 2004. We hold all the relevant licenses and insurance, do all design work in-house with our principal designer involved on every project, run our own install crews, and are happy to provide references from any decade of our work. The first property visit is at no cost and includes site analysis, conversation about goals and budget, and an honest answer on whether we're the right fit for your project. Call (252) 320-7660 or email hello@yardiedesign.com to schedule.",
     ],
     coverImage: "/journal/journal-cover-20.png",
   },
@@ -1313,7 +1313,7 @@ export const faqsByCategory: { category: string; items: FAQ[] }[] = [
       { q: "Do you offer free consultations?",
         a: "Yes. The first conversation is at no cost — we walk the property, listen, and let you know whether we're the right fit before any design fee." },
       { q: "How do I get started on a project?",
-        a: "Use the Schedule a Consultation button at the top of any page, or email hello@yardiedesign.com. We'll set up a property visit and an initial conversation within the week." },
+        a: "Use the Request a Consultation button at the top of any page, or email hello@yardiedesign.com. We'll set up a property visit and an initial conversation within the week." },
       { q: "What does design cost?",
         a: "Design fees vary with project scope. We share an itemized design proposal after the first property visit so you know exactly what you're committing to before signing." },
       { q: "Do you serve my area?",

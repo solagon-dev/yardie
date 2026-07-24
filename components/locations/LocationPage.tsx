@@ -25,7 +25,7 @@ export default function LocationPage({ location }: Props) {
     name: 'Yardie Design',
     image: `https://www.yardiedesign.com${location.heroImage}`,
     url: `https://www.yardiedesign.com/service-areas/${location.slug}`,
-    telephone: '+12527567788',
+    telephone: '+12523207660',
     email: 'hello@yardiedesign.com',
     priceRange: '$$$',
     address: {
@@ -516,12 +516,12 @@ export default function LocationPage({ location }: Props) {
             Initial consultations are complimentary — no cost, no obligation. We&apos;ll visit your {location.name} property, listen to your vision, and develop a plan tailored specifically to your space and goals.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button href="/quote" variant="primary" size="lg">Schedule a Consultation</Button>
+            <Button href="/quote" variant="primary" size="lg">Request a Property Consultation</Button>
             <Button href="/gallery" variant="ghost" size="lg">View Our Portfolio</Button>
           </div>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
-            <a href="tel:+12527567788" className="text-[rgba(248,244,238,0.45)] text-[13px] hover:text-cream transition-colors tracking-[0.04em]">
-              (252) 756-7788
+            <a href="tel:+12523207660" className="text-[rgba(248,244,238,0.45)] text-[13px] hover:text-cream transition-colors tracking-[0.04em]">
+              (252) 320-7660
             </a>
             <span className="hidden sm:block text-[rgba(248,244,238,0.2)]">·</span>
             <a href="mailto:hello@yardiedesign.com" className="text-[rgba(248,244,238,0.45)] text-[13px] hover:text-cream transition-colors">

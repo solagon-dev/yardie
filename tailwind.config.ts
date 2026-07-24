@@ -46,7 +46,6 @@ const config: Config = {
         display: ["var(--font-display)", "Georgia", "serif"],   // Cormorant Garamond
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],  // DM Sans
         mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
-        signature: ["var(--font-signature)", "cursive"],         // Mr Dafoe — handwritten
       },
 
       fontSize: {

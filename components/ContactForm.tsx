@@ -2,9 +2,10 @@
 
 import { useState, useRef } from "react";
 import { submitForm } from "@/lib/form-handler";
+import { analytics } from "@/lib/analytics";
 
 const inputBase =
-  "w-full border-0 border-b bg-transparent px-0 py-3.5 text-[15px] text-bark placeholder:text-clay/55 outline-none transition-colors focus:border-moss";
+  "w-full border-0 border-b bg-transparent px-0 py-3.5 text-[15px] text-bark placeholder:text-clay outline-none transition-colors focus:border-moss";
 const inputNormal = `${inputBase} border-clay/30`;
 const inputError = `${inputBase} border-terracotta focus:border-terracotta`;
 const labelCls = "block text-[11px] uppercase tracking-[0.22em] font-medium text-clay mb-2";
@@ -14,6 +15,7 @@ export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, boolean>>({});
+  const startedRef = useRef(false);
 
   function validate(form: HTMLFormElement): boolean {
     const data = new FormData(form);
@@ -23,7 +25,10 @@ export default function ContactForm() {
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email = true;
     if (!data.get("message")?.toString().trim()) errors.message = true;
     setFieldErrors(errors);
-    return Object.keys(errors).length === 0;
+    const invalid = Object.keys(errors);
+    // §15: field names only — never values.
+    if (invalid.length > 0) analytics.formInvalid("contact", invalid);
+    return invalid.length === 0;
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -38,14 +43,17 @@ export default function ContactForm() {
       const data = Object.fromEntries(new FormData(form));
       const result = await submitForm("contact", data as Record<string, string>);
       if (result.success) {
+        analytics.formSuccess("contact");
         setStatus("success");
         form.reset();
         setFieldErrors({});
       } else {
+        analytics.formFailed("contact", "delivery");
         setStatus("error");
         setErrorMsg(result.message);
       }
     } catch {
+      analytics.formFailed("contact", "exception");
       setStatus("error");
       setErrorMsg("Something went wrong. Please try again or call us directly.");
     }
@@ -53,7 +61,7 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="text-center py-14">
+      <div className="text-center py-14" role="status" aria-live="polite">
         <div className="h-14 w-14 border border-moss/40 flex items-center justify-center mx-auto mb-6">
           <svg className="h-6 w-6 text-moss" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
@@ -76,9 +84,17 @@ export default function ContactForm() {
   }
 
   return (
-    <form ref={formRef} className="space-y-5" onSubmit={handleSubmit} noValidate>
+    <form
+      ref={formRef}
+      className="space-y-5"
+      onSubmit={handleSubmit}
+      noValidate
+      onFocusCapture={() => {
+        if (!startedRef.current) { startedRef.current = true; analytics.formStart("contact"); }
+      }}
+    >
       {status === "error" && (
-        <div className="p-4 bg-terracotta/10 border border-terracotta/40">
+        <div role="alert" className="p-4 bg-terracotta/10 border border-terracotta/40">
           <p className="text-[13px] text-terracotta font-medium">{errorMsg}</p>
         </div>
       )}
@@ -154,7 +170,7 @@ export default function ContactForm() {
         <p className="text-[11.5px] text-clay tracking-wide">We respond within one business day.</p>
       </div>
 
-      <p className="pt-2 text-[10.5px] text-clay/65 leading-relaxed">
+      <p className="pt-2 text-[10.5px] text-clay leading-relaxed">
         By submitting this form you agree to our{" "}
         <a href="/legal/privacy-policy" className="underline underline-offset-2 hover:text-bark transition-colors">Privacy Policy</a>{" "}
         and{" "}

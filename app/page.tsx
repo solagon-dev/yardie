@@ -173,98 +173,73 @@ export default async function Home() {
   return (
     <>
       {/* ────────────────────────────────────────────────────
-          HERO — MOBILE: slider fades into bark text section
+          HERO — one responsive structure serving mobile and desktop.
+          Previously two blocks (lg:hidden + hidden lg:flex) that each
+          rendered the full slider, headline and CTAs, duplicating the
+          hero in the document and preloading the hero image twice
+          (§13.1). One block also means a single real <h1>, so the
+          role="heading" aria-level workaround is no longer needed.
          ──────────────────────────────────────────────────── */}
-      <section className="lg:hidden relative -mt-14 overflow-hidden bg-bark">
-        <div className="relative aspect-[4/3] sm:aspect-[5/3]">
+      <section className="relative -mt-14 lg:-mt-[68px] overflow-hidden bg-bark text-cream">
+        {/* Media — in flow above the copy on mobile; full-bleed behind it from lg up. */}
+        <div className="relative aspect-[4/3] sm:aspect-[5/3] lg:absolute lg:inset-0 lg:aspect-auto">
           <HeroSlider slides={heroSlides} />
           <div
             aria-hidden
-            className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-b from-transparent via-bark/65 to-bark pointer-events-none"
+            className="lg:hidden absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-b from-transparent via-bark/65 to-bark pointer-events-none"
+          />
+          <div
+            aria-hidden
+            className="hidden lg:block absolute inset-0 bg-gradient-to-t from-bark via-bark/55 to-bark/15 pointer-events-none"
+          />
+          <div
+            aria-hidden
+            className="hidden lg:block absolute inset-0 bg-gradient-to-r from-bark/55 via-bark/15 to-transparent pointer-events-none"
           />
         </div>
-      </section>
 
-      <section className="lg:hidden bg-bark text-cream">
-        <div className="px-5 sm:px-8 pt-10 sm:pt-12 pb-16 sm:pb-20 text-center">
-          <h1 className="font-display text-[36px] sm:text-[44px] text-cream leading-[1.08] tracking-tight font-light max-w-xl mx-auto">
-            Designed outdoor living for{" "}
-            <span className="italic text-stone">Eastern North Carolina homes.</span>
-          </h1>
-          <p className="mt-5 text-[15px] sm:text-[16px] text-cream/75 leading-relaxed max-w-md mx-auto">
-            Landscapes, hardscapes, masonry, lighting, and irrigation —
-            drawn first, built once, looked after for years.
-          </p>
-          <div className="mt-8 grid grid-cols-1 sm:flex sm:flex-row sm:justify-center gap-3 max-w-sm sm:max-w-none mx-auto">
-            <Button href="/quote" variant="ghost-light" arrow className="w-full sm:w-auto">
-              Schedule a Consultation
-            </Button>
-            <Button href="/gallery" variant="ghost-dark" className="w-full sm:w-auto">
-              View Our Work
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* ────────────────────────────────────────────────────
-          HERO — DESKTOP: overlay
-         ──────────────────────────────────────────────────── */}
-      <section className="hidden lg:flex relative -mt-[68px] min-h-[100svh] items-end overflow-hidden bg-bark">
-        <HeroSlider slides={heroSlides} />
-        <div className="absolute inset-0 bg-gradient-to-t from-bark via-bark/55 to-bark/15 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-r from-bark/55 via-bark/15 to-transparent pointer-events-none" />
-
-        <div className="relative w-full mx-auto max-w-[1400px] px-12 pt-28 pb-20">
-          <div className="max-w-2xl animate-fade-up">
-            {/* Visually a heading; rendered as <p> so the page has exactly
-                one <h1> (the mobile hero above). aria-level keeps assistive
-                tech informed. */}
-            <p
-              role="heading"
-              aria-level={1}
-              className="font-display text-[56px] xl:text-[80px] text-cream leading-[1.0] tracking-tight font-light"
-            >
-              Designed outdoor living for{" "}
-              <span className="italic text-stone">Eastern North Carolina homes.</span>
-            </p>
-            <p className="mt-7 text-base text-cream/75 leading-relaxed max-w-md">
-              Landscapes, hardscapes, masonry, lighting, and irrigation —
-              drawn first, built once, looked after for years.
-            </p>
-
-            <div className="mt-10 flex flex-row gap-3">
-              <Button href="/quote" variant="ghost-light" arrow>
-                Schedule a Consultation
-              </Button>
-              <Button href="/gallery" variant="ghost-dark">
-                View Our Work
-              </Button>
+        {/* Copy — stacked below the image on mobile, overlaid from lg up. */}
+        <div className="relative lg:min-h-[100svh] lg:flex lg:items-end">
+          <div className="w-full mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12 pt-10 sm:pt-12 pb-16 sm:pb-20 lg:pt-28 lg:pb-20">
+            <div className="max-w-xl lg:max-w-2xl mx-auto lg:mx-0 text-center lg:text-left lg:animate-fade-up">
+              <h1 className="font-display text-[36px] sm:text-[44px] lg:text-[56px] xl:text-[80px] text-cream leading-[1.08] lg:leading-[1.0] tracking-tight font-light">
+                Designed outdoor living for{" "}
+                <span className="italic text-stone">Eastern North Carolina homes.</span>
+              </h1>
+              <p className="mt-5 lg:mt-7 text-[15px] sm:text-[16px] text-cream/75 leading-relaxed max-w-md mx-auto lg:mx-0">
+                Landscapes, hardscapes, masonry, lighting, and irrigation —
+                drawn first, built once, looked after for years.
+              </p>
+              <div className="mt-8 lg:mt-10 grid grid-cols-1 sm:flex sm:flex-row sm:justify-center lg:justify-start gap-3 max-w-sm sm:max-w-none mx-auto lg:mx-0">
+                <Button href="/quote" variant="ghost-light" arrow className="w-full sm:w-auto">
+                  Request a Property Consultation
+                </Button>
+                <Button href="/gallery" variant="ghost-dark" className="w-full sm:w-auto">
+                  View Our Work
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ────────────────────────────────────────────────────
-          TRUST BAR — infinite marquee
+          PROOF BAR — static. §5.2 explicitly rules out an automatically
+          scrolling trust marquee, so these read as a plain list: no autoplay
+          (nothing to pause per §10.3/§14), no duplicated track, and one list
+          instead of an aria-hidden marquee plus an sr-only copy.
          ──────────────────────────────────────────────────── */}
       <section
         aria-label="What we offer"
-        className="bg-cream border-y border-border py-5 lg:py-6 relative overflow-hidden"
+        className="bg-cream border-y border-border py-5 lg:py-6"
       >
-        <div className="absolute inset-y-0 left-0 w-16 sm:w-24 bg-gradient-to-r from-cream to-transparent z-10 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-16 sm:w-24 bg-gradient-to-l from-cream to-transparent z-10 pointer-events-none" />
-
-        <ul className="flex animate-scroll-x w-max footer-label text-clay" aria-hidden>
-          {[...trustBadges, ...trustBadges].map((badge, i) => (
-            <li key={`${badge}-${i}`} className="flex items-center gap-8 lg:gap-12 px-4 lg:px-6 whitespace-nowrap">
+        <ul className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12 flex flex-wrap items-center justify-center gap-x-8 lg:gap-x-12 gap-y-3 footer-label text-clay text-center">
+          {trustBadges.map((badge) => (
+            <li key={badge} className="flex items-center gap-3">
               <span className="block h-1 w-1 rounded-full bg-clay/60" aria-hidden />
               {badge}
             </li>
           ))}
-        </ul>
-
-        <ul className="sr-only">
-          {trustBadges.map((badge) => (<li key={badge}>{badge}</li>))}
         </ul>
       </section>
 
@@ -477,7 +452,7 @@ export default async function Home() {
           </ul>
 
           {/* Swipe hint — mobile only */}
-          <div className="sm:hidden mt-5 px-5 flex items-center justify-center gap-2 text-[10.5px] tracking-[0.22em] uppercase text-cream/50">
+          <div className="sm:hidden mt-5 px-5 flex items-center justify-center gap-2 text-[10.5px] tracking-[0.22em] uppercase text-cream/70">
             <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
             </svg>
@@ -518,7 +493,7 @@ export default async function Home() {
               afterLabel="Built"
               className="aspect-[16/10] sm:aspect-[16/9]"
             />
-            <p className="mt-4 sm:mt-5 text-[11.5px] tracking-[0.22em] uppercase text-clay/70">
+            <p className="mt-4 sm:mt-5 text-[11.5px] tracking-[0.22em] uppercase text-clay">
               Minshew Residence &mdash; Greenville, NC &middot; Drag to compare
             </p>
           </div>
@@ -553,10 +528,10 @@ export default async function Home() {
               </p>
 
               <div className="mt-9 sm:mt-11 flex flex-col items-center lg:items-start">
-                <span className="font-signature text-[20px] sm:text-[24px] text-bark leading-[1.2] -rotate-[3deg] origin-left">
+                <span className="font-display italic text-[22px] sm:text-[26px] text-bark leading-[1.2] font-light">
                   Scott Baldwin
                 </span>
-                <span className="font-mono text-[10.5px] tabular-nums text-clay/70 tracking-[0.22em] uppercase mt-3">
+                <span className="font-mono text-[10.5px] tabular-nums text-clay tracking-[0.22em] uppercase mt-3">
                   Founder &middot; Yardie
                 </span>
               </div>
@@ -603,7 +578,7 @@ export default async function Home() {
 
         {/* Wikimedia attribution for the city photos on each postcard. */}
         <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12 mt-6">
-          <p className="text-[11px] text-clay/70 leading-relaxed text-center lg:text-left">
+          <p className="text-[11px] text-clay leading-relaxed text-center lg:text-left">
             City photos courtesy of{" "}
             <a
               href="https://commons.wikimedia.org/"
@@ -773,7 +748,7 @@ export default async function Home() {
           </p>
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button href="/quote" variant="ghost-light" arrow>
-              Schedule a Consultation
+              Request a Property Consultation
             </Button>
             <Button href="/gallery" variant="ghost-dark">
               View Our Work

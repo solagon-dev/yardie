@@ -26,7 +26,7 @@ export default function JournalCard({ post, featured = false }: { post: JournalP
         <p className={`mt-3 text-clay leading-relaxed ${featured ? "text-[15.5px] max-w-[60ch]" : "text-[14.5px]"}`}>
           {post.excerpt}
         </p>
-        <p className="mt-4 text-[12.5px] text-clay/70">{post.date}</p>
+        <p className="mt-4 text-[12.5px] text-clay">{post.date}</p>
       </div>
     </Link>
   );

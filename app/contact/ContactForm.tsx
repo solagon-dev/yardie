@@ -26,7 +26,7 @@ export default function ContactForm() {
       if (!res.ok) throw new Error("Failed to send");
       setSubmitted(true);
     } catch {
-      setError("Something went wrong. Please try again or call (252) 756-7788.");
+      setError("Something went wrong. Please try again or call (252) 320-7660.");
     } finally {
       setSubmitting(false);
     }
@@ -44,8 +44,8 @@ export default function ContactForm() {
         <p className="text-ink text-[16px] leading-[1.65]">
           We&rsquo;ll be in touch within one business day. If you&rsquo;re in a hurry,
           give us a call at{" "}
-          <a href="tel:+12527567788" className="text-ochre link-underline">
-            (252) 756-7788
+          <a href="tel:+12523207660" className="text-ochre link-underline">
+            (252) 320-7660
           </a>
           .
         </p>
