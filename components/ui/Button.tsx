@@ -16,12 +16,15 @@ const variants: Record<Variant, string> = {
 };
 
 const sizes: Record<Size, string> = {
-  md: "px-7 py-3.5 text-[12px]",
-  lg: "px-9 py-4 text-[13px]",
+  md: "px-7 py-3.5 text-[14px]",
+  lg: "px-8 py-4 text-[15px]",
 };
 
+// Sentence/title-case, normal letter-spacing. The old base forced
+// ` `, which is the single most recognisable
+// AI-template button treatment; the label text already carries its own casing.
 const base =
-  "group inline-flex items-center justify-center gap-2.5 font-medium tracking-[0.2em] uppercase transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moss focus-visible:ring-offset-2 focus-visible:ring-offset-cream";
+  "group inline-flex items-center justify-center gap-2.5 font-medium transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moss focus-visible:ring-offset-2 focus-visible:ring-offset-cream";
 
 function Arrow() {
   return (
@@ -73,35 +76,42 @@ export function Button({
   );
 }
 
+/**
+ * Quiet navigational link. The old treatment was "label + a right-arrow with a
+ * long shaft", which read as generic/templated. This is an editorial underline:
+ * a faint rule at rest that a moss line draws across on hover. No arrow.
+ */
 export function TextLink({
   href,
   children,
   tone = "dark",
-  arrow = true,
   className = "",
 }: {
   href: string;
   children: ReactNode;
   tone?: "dark" | "light";
-  arrow?: boolean;
   className?: string;
 }) {
   const toneCls =
     tone === "dark"
       ? "text-bark hover:text-moss"
-      : "text-cream hover:text-stone";
-  const ruleCls =
-    tone === "dark"
-      ? "bg-bark group-hover:bg-moss"
-      : "bg-cream/70 group-hover:bg-stone";
+      : "text-cream/90 hover:text-cream";
+  const drawCls = tone === "dark" ? "bg-moss" : "bg-cream";
   return (
     <Link
       href={href}
-      className={`group inline-flex items-center justify-center gap-3 text-[11px] tracking-[0.22em] uppercase font-medium transition-colors duration-300 ${toneCls} ${className}`}
+      className={`group inline-block text-[14px] font-medium transition-colors duration-300 ${toneCls} ${className}`}
     >
-      <span aria-hidden className={`block h-px w-6 transition-all duration-500 ease-out group-hover:w-10 ${ruleCls}`} />
-      {children}
-      {arrow && <Arrow />}
+      <span className="relative pb-1">
+        {children}
+        {/* rest state — a faint baseline the eye can pick up */}
+        <span aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-current opacity-20" />
+        {/* hover — a crisp line sweeps in from the left */}
+        <span
+          aria-hidden
+          className={`absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100 ${drawCls}`}
+        />
+      </span>
     </Link>
   );
 }

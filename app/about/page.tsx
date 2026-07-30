@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { company } from "@/lib/content";
-import { buildMetadata } from "@/lib/seo";
+import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = buildMetadata({
   title: `About ${company.name} — Exterior Design Studio in Greenville, NC`,
@@ -70,6 +71,13 @@ const story = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd
+        id="breadcrumb"
+        data={breadcrumbSchema([
+          { name: "Home", href: "/" },
+          { name: "About", href: "/about" },
+        ])}
+      />
       {/* ═══════════════════════════════════════════════════════
           1 · HERO — image-led, restrained
           ═══════════════════════════════════════════════════════ */}
@@ -86,9 +94,6 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-bark/55 via-transparent to-transparent" />
 
         <div className="relative w-full mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12 pt-32 pb-14 lg:pb-20">
-          <p className="font-mono text-[11px] tabular-nums text-stone/85 tracking-[0.22em] mb-6">
-            About &middot; The Yardie Studio
-          </p>
           <h1 className="font-display text-5xl sm:text-6xl lg:text-[80px] xl:text-[96px] text-cream leading-[0.98] tracking-tight max-w-[16ch] font-light">
             Rooted in Greenville.{" "}
             <span className="italic text-stone">Designed for life outside.</span>
@@ -112,7 +117,7 @@ export default function AboutPage() {
                 <p className="font-display text-[44px] sm:text-[64px] lg:text-[88px] text-bark leading-none tracking-tight font-light">
                   {s.figure}
                 </p>
-                <p className="mt-3 sm:mt-4 text-[11px] sm:text-[12px] text-clay tracking-[0.22em] uppercase">
+                <p className="mt-3 sm:mt-4 text-[11px] sm:text-[12px] text-clay">
                   {s.label}
                 </p>
               </li>
@@ -138,7 +143,7 @@ export default function AboutPage() {
                   className="object-cover"
                 />
                 <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 bg-gradient-to-t from-bark/80 via-bark/15 to-transparent">
-                  <p className="font-mono text-[10.5px] tabular-nums text-cream/85 tracking-[0.22em] uppercase">
+                  <p className="font-mono text-[10.5px] tabular-nums text-cream/85">
                     Scott Baldwin &middot; Founder
                   </p>
                 </div>
@@ -147,10 +152,6 @@ export default function AboutPage() {
 
             {/* Body */}
             <div className="lg:col-span-6 order-1 lg:order-2 lg:sticky lg:top-28">
-              <p className="font-display italic text-moss text-[18px] tracking-tight font-light mb-5 inline-flex items-baseline gap-3">
-                <span aria-hidden className="block h-px w-7 bg-moss/60 translate-y-[-3px]" />
-                Our story
-              </p>
               <h2 className="font-display text-[34px] sm:text-[44px] lg:text-[56px] text-bark leading-[1.04] tracking-tight font-light max-w-[18ch]">
                 Building something{" "}
                 <span className="italic text-moss">that lasts.</span>
@@ -175,10 +176,6 @@ export default function AboutPage() {
         <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-12 sm:mb-16 items-end">
             <div className="lg:col-span-7">
-              <p className="font-display italic text-moss text-[18px] tracking-tight font-light mb-5 inline-flex items-baseline gap-3">
-                <span aria-hidden className="block h-px w-7 bg-moss/60 translate-y-[-3px]" />
-                What we do
-              </p>
               <h2 className="font-display text-[34px] sm:text-[44px] lg:text-[56px] text-bark leading-[1.04] tracking-tight font-light max-w-[20ch]">
                 From concept to{" "}
                 <span className="italic text-moss">ongoing care.</span>
@@ -214,10 +211,6 @@ export default function AboutPage() {
         <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
           <div className="grid lg:grid-cols-12 gap-10 mb-12 sm:mb-16 items-end">
             <div className="lg:col-span-7">
-              <p className="font-display italic text-moss text-[18px] tracking-tight font-light mb-5 inline-flex items-baseline gap-3">
-                <span aria-hidden className="block h-px w-7 bg-moss/60 translate-y-[-3px]" />
-                Our people
-              </p>
               <h2 className="font-display text-[34px] sm:text-[44px] lg:text-[56px] text-bark leading-[1.04] tracking-tight font-light max-w-[20ch]">
                 The people{" "}
                 <span className="italic text-moss">behind the work.</span>
@@ -237,7 +230,7 @@ export default function AboutPage() {
               >
                 {/* Index number */}
                 <div className="col-span-2 sm:col-span-1">
-                  <span className="font-mono text-[11px] tabular-nums text-clay tracking-[0.22em]">
+                  <span className="font-mono text-[11px] tabular-nums text-clay">
                     0{i + 1}
                   </span>
                 </div>
@@ -259,7 +252,7 @@ export default function AboutPage() {
                   <p className="font-display text-[24px] sm:text-[28px] lg:text-[36px] text-bark leading-[1.05] tracking-tight">
                     {person.name}
                   </p>
-                  <p className="mt-2 font-mono text-[10.5px] tabular-nums text-clay tracking-[0.22em] uppercase">
+                  <p className="mt-2 font-mono text-[10.5px] tabular-nums text-clay">
                     {person.title}
                   </p>
                 </div>
@@ -313,9 +306,6 @@ export default function AboutPage() {
           ═══════════════════════════════════════════════════════ */}
       <section className="bg-cream py-16 sm:py-24 lg:py-32 border-b border-border">
         <div className="mx-auto max-w-[1100px] px-5 sm:px-8 lg:px-12 text-center">
-          <p className="font-display italic text-moss text-[18px] tracking-tight font-light mb-5">
-            Work with us
-          </p>
           <h2 className="font-display text-[34px] sm:text-[44px] lg:text-[60px] text-bark leading-[1.04] tracking-tight font-light max-w-[18ch] mx-auto">
             Let&rsquo;s build{" "}
             <span className="italic text-moss">something together.</span>
@@ -327,7 +317,7 @@ export default function AboutPage() {
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/quote"
-              className="inline-flex items-center justify-center gap-3 px-9 py-4 bg-bark text-cream text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-earth transition-colors"
+              className="inline-flex items-center justify-center gap-3 px-9 py-4 bg-bark text-cream text-[12px] font-medium hover:bg-earth transition-colors"
             >
               Request a Property Consultation
               <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor">
@@ -336,7 +326,7 @@ export default function AboutPage() {
             </Link>
             <Link
               href="/gallery"
-              className="inline-flex items-center justify-center px-9 py-4 border border-bark/30 text-bark text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-bark hover:text-cream hover:border-bark transition-colors"
+              className="inline-flex items-center justify-center px-9 py-4 border border-bark/30 text-bark text-[12px] font-medium hover:bg-bark hover:text-cream hover:border-bark transition-colors"
             >
               View Our Work
             </Link>

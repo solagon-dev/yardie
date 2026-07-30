@@ -1,13 +1,19 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
+import JsonLd from "@/components/JsonLd";
+import Analytics from "@/components/Analytics";
 import { localBusinessSchema, SITE_URL } from "@/lib/seo";
 import { company } from "@/lib/content";
+
+// Every project photo is rewritten to this origin (see next.config.js).
+const BLOB_ORIGIN =
+  process.env.BLOB_PUBLIC_URL ||
+  "https://dahwdk1paekenkyr.public.blob.vercel-storage.com";
 
 const display = Cormorant_Garamond({
   subsets: ["latin"],
@@ -63,13 +69,13 @@ export const metadata: Metadata = {
     siteName: company.name,
     title: `${company.name} — Exterior Design Studio in Greenville, NC`,
     description: company.description,
-    images: [{ url: "/brand/og.png", width: 1200, height: 630, alt: company.name }],
+    images: [{ url: "/yardieopengraph.png", width: 1200, height: 630, alt: company.name }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${company.name} — Exterior Design Studio in Greenville, NC`,
     description: company.description,
-    images: ["/brand/og.png"],
+    images: ["/yardieopengraph.png"],
   },
   icons: {
     icon: [
@@ -95,12 +101,10 @@ export default function RootLayout({
       className={`${display.variable} ${sans.variable} h-full antialiased`}
     >
       <head>
-        {/* Ahrefs Web Analytics */}
-        <script
-          src="https://analytics.ahrefs.com/analytics.js"
-          data-key="58FdYKXK/cR1Vn7ZzkBBmQ"
-          async
-        />
+        {/* Warm up the Blob origin that serves every project photo — the
+            connection is otherwise opened cold when the hero image loads. */}
+        <link rel="preconnect" href={BLOB_ORIGIN} crossOrigin="" />
+        <link rel="dns-prefetch" href={BLOB_ORIGIN} />
       </head>
       <body className="min-h-full flex flex-col bg-cream text-earth">
         <Header />
@@ -108,30 +112,10 @@ export default function RootLayout({
         <Footer />
         <CookieConsent />
 
-        <Script
-          id="ld-business"
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(localBusinessSchema()),
-          }}
-        />
+        <JsonLd id="ld-business" data={localBusinessSchema()} />
 
-        {/* Google tag (gtag.js) */}
-        <Script
-          id="gtag-js"
-          src="https://www.googletagmanager.com/gtag/js?id=G-YDYJW9TM6K"
-          strategy="afterInteractive"
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-YDYJW9TM6K');
-          `}
-        </Script>
+        {/* GA4 + Ahrefs — loaded only for visitors who haven't declined. */}
+        <Analytics />
       </body>
     </html>
   );

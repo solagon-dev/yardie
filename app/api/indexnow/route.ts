@@ -1,4 +1,20 @@
 import { NextResponse } from 'next/server'
+import { timingSafeEqual as nodeTimingSafeEqual } from 'node:crypto'
+import { clientIp, rateLimit } from '@/lib/rate-limit'
+
+/** Constant-time compare that tolerates differing lengths without leaking
+ *  them through an early return. */
+function timingSafeEqual(a: string, b: string): boolean {
+  const bufA = Buffer.from(a)
+  const bufB = Buffer.from(b)
+  // Hash to a fixed width so length inequality doesn't short-circuit.
+  if (bufA.length !== bufB.length) {
+    // Still burn a comparison of equal-length buffers to keep timing flat.
+    nodeTimingSafeEqual(Buffer.alloc(32), Buffer.alloc(32))
+    return false
+  }
+  return nodeTimingSafeEqual(bufA, bufB)
+}
 
 // Inlined to avoid the path-alias resolution issue Turbopack hit on
 // the first deploy of this route. Matches lib/seo.ts SITE_URL constant.
@@ -25,6 +41,36 @@ const INDEXNOW_ENDPOINTS = [
 ]
 
 export async function POST(request: Request) {
+  // This endpoint speaks to Bing/Yandex/Seznam on the domain's behalf. Left
+  // open, anyone could submit arbitrary site URLs repeatedly and burn the
+  // domain's IndexNow quota — or get it rate-limited for abuse. Require a
+  // shared secret, and refuse to run at all when one isn't configured rather
+  // than silently falling back to open access.
+  const expected = process.env.INDEXNOW_AUTH_TOKEN
+  if (!expected) {
+    return NextResponse.json(
+      { error: 'IndexNow submissions are not configured.' },
+      { status: 503 }
+    )
+  }
+
+  const presented =
+    request.headers.get('authorization')?.replace(/^Bearer\s+/i, '') ??
+    request.headers.get('x-indexnow-token') ??
+    ''
+
+  if (!timingSafeEqual(presented, expected)) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
+  const limit = rateLimit(`indexnow:${clientIp(request)}`, 20, 60 * 60 * 1000)
+  if (!limit.ok) {
+    return NextResponse.json(
+      { error: 'Rate limit exceeded' },
+      { status: 429, headers: { 'Retry-After': String(limit.retryAfter) } }
+    )
+  }
+
   let body: { urls?: string | string[] } = {}
   try {
     body = await request.json()

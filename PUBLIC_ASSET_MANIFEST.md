@@ -1,61 +1,40 @@
-# public/ Asset Inventory Manifest (brief §13.2)
+# public/ contents
 
-**Non-destructive scan — nothing was deleted or moved.** Recommendations only; act after approval.
-Full per-file data: `asset-manifest.json` (4293 entries).
+`public/` holds only files that must be served from the app's own origin at a
+fixed path. Everything else — all project photography, renderings, journal
+covers, city photos, brand assets — lives on Vercel Blob and is reached through
+the rewrites in `next.config.js`. See the "Images" section of the README.
 
-> **Which tree was scanned:** `/Users/stonebaldwin/dev/yardie-corrupted-backup/public/`. The image
-> directories under `public/` (`projects`, `renderings`, `photoshoot`, `journal`, `staff`, `cities`,
-> `brand`, `sketches`) are **gitignored**, so the fresh clone that became the canonical repo contains
-> only the 232 tracked `public/` files — the 8.5 GB of local imagery still lives in the preserved
-> backup directory. This does **not** affect the site: `next.config.js` rewrites those paths to Vercel
-> Blob, and image dimensions come from the tracked `lib/blob-image-dimensions.json`, so builds and both
-> local and production rendering work without the local copies. Restoring them is dev-convenience only.
-> Code-reference counts below were computed against the **current** canonical codebase.
+| File(s) | Why it must be here |
+| --- | --- |
+| `favicon.ico`, `favicon.svg`, `apple-touch-icon.png` | Browsers request these at fixed root paths |
+| `yardieopengraph.png` | Default `og:image`; social scrapers need a stable absolute URL |
+| `yardielogofullblack.svg` | `publisher.logo` in the Organization / Article JSON-LD |
+| `8dc320b7d7c776c5208ef128d2c8aacf.txt` | IndexNow key verification — Bing fetches it directly, nothing links to it |
+| `scott-baldwin.jpg`, `mario-taxho.jpg` | Staff photography referenced from `lib/media.ts` |
+| `Belhaven-*.jpg`, `DSC*.jpg`, `File_*.jpg`, `IMG_8148.jpg` | Curated Instagram fallback in `lib/instagram.ts`, shown when `BEHOLD_WIDGET_ID` is unset |
 
-## Totals
+## History
 
-| Category | Files | Size |
-|---|---:|---:|
-| **All of public/** | 4293 | 9.11 GB |
-| Editor backups (`*~`) | 2937 | 8.13 GB |
-| Exact duplicates (sha256) | 2843 | 6.29 GB |
-| No code reference found | 79 | 0.02 GB |
-| Oversized originals (>20 MB) | 0 | 0.00 GB |
-| Large (5–20 MB) | 11 | 0.13 GB |
+This directory previously held 231 files / 165 MB — the raw output of the
+migration off the old site, including duplicate exports, Midjourney artifacts,
+and the entire legacy blog image set. 206 of those files (160 MB) were
+referenced by nothing: not by any source file, and not by any of the 56 routes
+in the sitemap. They were removed on 2026-07-29, after a full-site crawl
+confirmed all 150 distinct assets on all 56 routes still return 200.
 
-**Reclaimable with zero visual change** (backups + exact duplicates): **8.64 GB**
+They remain in git history. To restore one:
 
-## Recommended actions
+```bash
+git checkout 8ccde15 -- public/<filename>
+```
 
-1. **Delete `*~` editor backups (2937 files, 8.13 GB).** Already gitignored; created by the image-compression script. Zero risk.
-2. **De-duplicate 2843 exact hash-identical files (6.29 GB).** Keep the canonical path listed below, repoint any references, then remove the copies.
-3. **Review 79 files with no code reference (0.02 GB).** Not proof they're unused — they may be referenced dynamically or reserved for upcoming content. **Do not bulk-delete**; confirm against Blob usage first.
-4. **Recompress 0 oversized originals (>20 MB).** Move masters outside the production tree (e.g. `_archive/`) and serve compressed derivatives via Blob.
+The per-file audit that informed the removal (`asset-manifest.json`, 4293
+entries) was also removed — it was a stale one-off scan of a backup tree that
+no longer matches this repo, and nothing read it. It is in git history at the
+same commit.
 
-> Reminder (§13.2): move masters out of `public/` rather than destroying them, update references, then re-verify every page.
+## Adding assets
 
-## Largest oversized originals (>20 MB)
-
-| Path | Size | Dimensions | Duplicate of |
-|---|---:|---|---|
-| _none_ | | | |
-
-## Largest exact duplicates
-
-| Path | Size | Dimensions | Duplicate of |
-|---|---:|---|---|
-| `/projects/728-remington/04-progress.jpg~` | 41.5 MB | — | `/projects/remington-extra-08.jpg~` |
-| `/projects/728-remington/08-extra.jpg~` | 41.5 MB | — | `/projects/remington-extra-08.jpg~` |
-| `/projects/landscapes/remington-extra-08.jpg~` | 41.5 MB | — | `/projects/remington-extra-08.jpg~` |
-| `/projects/process/remington-progress-04.jpg~` | 41.5 MB | — | `/projects/remington-extra-08.jpg~` |
-| `/projects/remington-progress-04.jpg~` | 41.5 MB | — | `/projects/remington-extra-08.jpg~` |
-| `/projects/728-remington/03-progress.jpg~` | 40.6 MB | — | `/projects/remington-extra-07.jpg~` |
-| `/projects/728-remington/07-extra.jpg~` | 40.6 MB | — | `/projects/remington-extra-07.jpg~` |
-| `/projects/masonry/remington-extra-07.jpg~` | 40.6 MB | — | `/projects/remington-extra-07.jpg~` |
-| `/projects/process/remington-progress-03.jpg~` | 40.6 MB | — | `/projects/remington-extra-07.jpg~` |
-| `/projects/remington-progress-03.jpg~` | 40.6 MB | — | `/projects/remington-extra-07.jpg~` |
-| `/projects/728-remington/02-progress.jpg~` | 38.9 MB | — | `/projects/remington-extra-06.jpg~` |
-| `/projects/728-remington/06-extra.jpg~` | 38.9 MB | — | `/projects/remington-extra-06.jpg~` |
-| `/projects/masonry/remington-extra-06.jpg~` | 38.9 MB | — | `/projects/remington-extra-06.jpg~` |
-| `/projects/process/remington-progress-02.jpg~` | 38.9 MB | — | `/projects/remington-extra-06.jpg~` |
-| `/projects/remington-progress-02.jpg~` | 38.9 MB | — | `/projects/remington-extra-06.jpg~` |
+Put new photography on Blob via `scripts/upload-to-blob.mjs`, not here. Only add
+a file to `public/` when a third party needs it at a fixed, predictable URL.

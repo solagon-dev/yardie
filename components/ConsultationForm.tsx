@@ -3,12 +3,13 @@
 import { useState, useRef, useEffect } from "react";
 import { submitForm } from "@/lib/form-handler";
 import { analytics } from "@/lib/analytics";
+import Honeypot from "@/components/ui/Honeypot";
 
 const inputBase =
   "w-full border-0 border-b bg-transparent px-0 py-3.5 text-[15px] text-bark placeholder:text-clay outline-none transition-colors focus:border-moss";
 const inputNormal = `${inputBase} border-clay/30`;
 const inputError = `${inputBase} border-terracotta focus:border-terracotta`;
-const labelCls = "block text-[11px] uppercase tracking-[0.22em] font-medium text-clay mb-2";
+const labelCls = "block text-[11px]   font-medium text-clay mb-2";
 
 const SERVICES = ["Landscapes", "Pavers & Hardscapes", "Outdoor Kitchens", "Masonry", "Lighting", "Irrigation", "Multiple / Not sure"];
 const BUDGETS = ["Under $25k", "$25k–$50k", "$50k–$100k", "$100k–$250k", "$250k+"];
@@ -194,12 +195,12 @@ export default function ConsultationForm() {
               <li key={s.id} className="flex flex-col items-center text-center">
                 <span
                   className={`relative z-10 inline-flex items-center justify-center h-8 w-8 rounded-full border text-[12px] font-medium transition-colors duration-300 ${
-                    done
-                      ? "bg-moss border-moss text-cream"
-                      : active
-                      ? "bg-cream border-bark text-bark"
-                      : "bg-cream border-clay/30 text-clay"
-                  }`}
+ done
+ ? "bg-moss border-moss text-cream"
+ : active
+ ? "bg-cream border-bark text-bark"
+ : "bg-cream border-clay/30 text-clay"
+ }`}
                 >
                   {done ? (
                     <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.25} stroke="currentColor">
@@ -210,9 +211,9 @@ export default function ConsultationForm() {
                   )}
                 </span>
                 <span
-                  className={`mt-3 text-[10.5px] tracking-[0.22em] uppercase whitespace-nowrap transition-colors duration-300 ${
-                    active ? "text-bark font-medium" : done ? "text-clay" : "text-clay"
-                  }`}
+                  className={`mt-3 text-[10.5px] whitespace-nowrap transition-colors duration-300 ${
+ active ? "text-bark font-medium" : done ? "text-clay" : "text-clay"
+ }`}
                 >
                   {s.label}
                 </span>
@@ -223,6 +224,8 @@ export default function ConsultationForm() {
       </div>
 
       <form ref={formRef} onSubmit={submit} noValidate>
+        <Honeypot />
+
         {status === "error" && (
           <div role="alert" className="mb-6 p-4 bg-terracotta/10 border border-terracotta/40">
             <p className="text-[13px] text-terracotta font-medium">{errorMsg}</p>
@@ -277,10 +280,10 @@ export default function ConsultationForm() {
                     type="button"
                     onClick={() => set("service", s)}
                     className={`px-4 py-2 text-[13px] tracking-wide border transition-colors ${
-                      data.service === s
-                        ? "bg-bark text-cream border-bark"
-                        : "bg-cream text-bark border-clay/30 hover:border-bark"
-                    }`}
+ data.service === s
+ ? "bg-bark text-cream border-bark"
+ : "bg-cream text-bark border-clay/30 hover:border-bark"
+ }`}
                   >
                     {s}
                   </button>
@@ -326,10 +329,10 @@ export default function ConsultationForm() {
                     type="button"
                     onClick={() => set("budget", b)}
                     className={`px-4 py-2 text-[13px] border transition-colors ${
-                      data.budget === b
-                        ? "bg-bark text-cream border-bark"
-                        : "bg-cream text-bark border-clay/30 hover:border-bark"
-                    }`}
+ data.budget === b
+ ? "bg-bark text-cream border-bark"
+ : "bg-cream text-bark border-clay/30 hover:border-bark"
+ }`}
                   >
                     {b}
                   </button>
@@ -346,10 +349,10 @@ export default function ConsultationForm() {
                     type="button"
                     onClick={() => set("startTimeframe", t)}
                     className={`px-4 py-2 text-[13px] border transition-colors ${
-                      data.startTimeframe === t
-                        ? "bg-bark text-cream border-bark"
-                        : "bg-cream text-bark border-clay/30 hover:border-bark"
-                    }`}
+ data.startTimeframe === t
+ ? "bg-bark text-cream border-bark"
+ : "bg-cream text-bark border-clay/30 hover:border-bark"
+ }`}
                   >
                     {t}
                   </button>
@@ -391,7 +394,7 @@ export default function ConsultationForm() {
             type="button"
             onClick={prev}
             disabled={step === 1}
-            className="text-[11px] tracking-[0.22em] uppercase font-medium text-clay disabled:opacity-30 disabled:cursor-not-allowed hover:text-bark transition-colors"
+            className="text-[11px] font-medium text-clay disabled:opacity-30 disabled:cursor-not-allowed hover:text-bark transition-colors"
           >
             ← Back
           </button>
@@ -400,7 +403,7 @@ export default function ConsultationForm() {
             <button
               type="button"
               onClick={next}
-              className="group inline-flex items-center justify-center gap-2.5 px-9 py-4 bg-bark text-cream text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-earth transition-colors"
+              className="group inline-flex items-center justify-center gap-2.5 px-9 py-4 bg-bark text-cream text-[12px] font-medium hover:bg-earth transition-colors"
             >
               Continue
               <svg className="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor">
@@ -411,7 +414,7 @@ export default function ConsultationForm() {
             <button
               type="submit"
               disabled={status === "submitting"}
-              className="group inline-flex items-center justify-center gap-2.5 px-9 py-4 bg-bark text-cream text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-earth disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+              className="group inline-flex items-center justify-center gap-2.5 px-9 py-4 bg-bark text-cream text-[12px] font-medium hover:bg-earth disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
             >
               {status === "submitting" ? "Submitting..." : "Submit"}
               {status !== "submitting" && (

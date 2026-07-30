@@ -11,15 +11,60 @@ const BLOB_BASE = process.env.BLOB_PUBLIC_URL ||
 const BLOB_DIRS = ['projects', 'renderings', 'photoshoot', 'journal', 'staff', 'cities', 'brand', 'sketches'];
 
 const nextConfig = {
+  // Don't advertise the framework and version to every visitor.
+  poweredByHeader: false,
+
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: '*.public.blob.vercel-storage.com' },
     ],
+    // AVIF first, WebP as the fallback. The default is WebP-only, which left
+    // ~25-30% on the table for the hero photograph that decides LCP on every
+    // page. Browsers that don't send `image/avif` in Accept still get WebP.
+    formats: ['image/avif', 'image/webp'],
+    // 75 is the default and stays the default. 65 is allow-listed for the
+    // full-bleed hero photographs only: they sit under a heavy dark gradient
+    // with text over them, so the extra detail is invisible while the bytes
+    // land squarely on LCP. Next 16 rejects any `q` not listed here.
+    qualities: [65, 75],
+    // Photography is the whole product here, so cache derivatives hard —
+    // the source files are content-addressed on Blob and never mutate.
+    minimumCacheTTL: 60 * 60 * 24 * 365,
   },
 
   experimental: {
     optimizePackageImports: ['resend'],
+  },
+
+  // Baseline security headers. Vercel supplies HSTS; everything below was
+  // absent, which meant no MIME-sniffing protection, a full referrer leaking
+  // to every outbound link, no clickjacking defence, and no restriction on
+  // powerful browser APIs.
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+          // Frame-ancestors is the modern equivalent of X-Frame-Options and is
+          // the only CSP directive set deliberately: a full policy would need
+          // nonces for the inline JSON-LD and analytics bootstrap, which is a
+          // larger change than this pass should make.
+          { key: 'Content-Security-Policy', value: "frame-ancestors 'self'" },
+        ],
+      },
+    ];
   },
 
   // Proxy local-style asset paths to the Blob origin. Each rule covers
@@ -53,6 +98,15 @@ const nextConfig = {
   // `/post/:slug*` would short-circuit any specific `/post/foo` below it.
   async redirects() {
     return [
+      // --- Retired routes --- //
+      // Both of these used to be page components calling `redirect()`, which
+      // emits 307 Temporary. Google reads a 307 as "the old URL is still the
+      // real one" and keeps it indexed instead of consolidating signals onto
+      // the destination. Neither move is temporary, so both are 308s handled
+      // here at the edge — no page render, no wasted prerender.
+      { source: '/process', destination: '/about', permanent: true },
+      { source: '/services/hardscapes', destination: '/services/patios-pavers', permanent: true },
+
       // --- Specific old slugs that no longer exist under /journal --- //
       // The wildcard `/post/:slug*` rule below cannot help here because the
       // new journal slug is a SHORTENED version of the old post slug.

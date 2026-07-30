@@ -36,7 +36,7 @@ export default function PreFooterCTA() {
           <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-4 lg:items-end">
             <Link
               href="/quote"
-              className="group inline-flex items-center justify-center gap-2.5 px-9 py-4 text-[12px] tracking-[0.22em] uppercase font-medium bg-cream text-bark hover:bg-stone transition-colors w-full sm:w-auto"
+              className="group inline-flex items-center justify-center gap-2.5 px-9 py-4 text-[12px] font-medium bg-cream text-bark hover:bg-stone transition-colors w-full sm:w-auto"
             >
               Request a Property Consultation
               <svg className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor">
@@ -45,7 +45,7 @@ export default function PreFooterCTA() {
             </Link>
             <Link
               href="/gallery"
-              className="inline-flex items-center justify-center px-9 py-4 text-[12px] tracking-[0.22em] uppercase border border-cream/35 text-cream hover:bg-cream/10 hover:border-cream/60 transition-colors w-full sm:w-auto"
+              className="inline-flex items-center justify-center px-9 py-4 text-[12px] border border-cream/35 text-cream hover:bg-cream/10 hover:border-cream/60 transition-colors w-full sm:w-auto"
             >
               View Our Work
             </Link>

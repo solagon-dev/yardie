@@ -2,13 +2,14 @@
 
 import { useState, useRef } from "react";
 import { submitForm } from "@/lib/form-handler";
+import Honeypot from "@/components/ui/Honeypot";
 import { analytics } from "@/lib/analytics";
 
 const inputBase =
   "w-full border-0 border-b bg-transparent px-0 py-3.5 text-[15px] text-bark placeholder:text-clay outline-none transition-colors focus:border-moss";
 const inputNormal = `${inputBase} border-clay/30`;
 const inputError = `${inputBase} border-terracotta focus:border-terracotta`;
-const labelCls = "block text-[11px] uppercase tracking-[0.22em] font-medium text-clay mb-2";
+const labelCls = "block text-[11px]   font-medium text-clay mb-2";
 
 export default function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -74,10 +75,12 @@ export default function ContactForm() {
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="group mt-7 inline-flex items-center justify-center gap-3 text-[11px] tracking-[0.22em] uppercase font-medium text-moss hover:text-bark transition-colors"
+          className="group mt-7 inline-flex items-center gap-2 text-[14px] font-medium text-moss hover:text-bark transition-colors"
         >
-          <span aria-hidden className="block h-px w-6 bg-moss group-hover:w-10 group-hover:bg-bark transition-all duration-500 ease-out" />
           Send another message
+          <svg className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor" aria-hidden>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
         </button>
       </div>
     );
@@ -93,6 +96,8 @@ export default function ContactForm() {
         if (!startedRef.current) { startedRef.current = true; analytics.formStart("contact"); }
       }}
     >
+      <Honeypot />
+
       {status === "error" && (
         <div role="alert" className="p-4 bg-terracotta/10 border border-terracotta/40">
           <p className="text-[13px] text-terracotta font-medium">{errorMsg}</p>
@@ -148,7 +153,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="group inline-flex items-center justify-center gap-2.5 px-9 py-4 bg-bark text-cream text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-earth disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+          className="group inline-flex items-center justify-center gap-2.5 px-9 py-4 bg-bark text-cream text-[12px] font-medium hover:bg-earth disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
         >
           {status === "submitting" ? (
             <>

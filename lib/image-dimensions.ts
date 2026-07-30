@@ -36,11 +36,11 @@ export function getImageDim(publicPath: string): Dim {
   if (process.env.NODE_ENV !== "production") {
     try {
       // require() so fs/path don't get bundled into client builds.
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
+       
       const fs = require("node:fs") as typeof import("node:fs");
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
+       
       const path = require("node:path") as typeof import("node:path");
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
+       
       const { imageSize } = require("image-size") as typeof import("image-size");
       const abs = path.join(process.cwd(), "public", publicPath.replace(/^\//, ""));
       const buf = fs.readFileSync(abs);

@@ -48,15 +48,15 @@ export const about = {
     headline: "Rooted in Greenville.",
     italicTail: "Built for life outside.",
     intro:
-      "Yardie is a small studio of designers, masons, and builders working from a single conviction — that an outdoor space, designed thoughtfully, can become the most loved part of a home.",
+      "Yardie is a small studio of designers, masons, and builders working from a single conviction: that an outdoor space, designed thoughtfully, can become the most loved part of a home.",
   },
   story: [
-    "Yardie began in Greenville, North Carolina as a single-person design practice with a simple idea: that a yard is not a surface to maintain but a space to live in. From the first project, the work has been about how a family will actually use a place — where they cook, where the children play, where they sit at the end of the day.",
+    "Yardie began in Greenville, North Carolina as a single-person design practice with a simple idea: that a yard is not a surface to maintain but a space to live in. From the first project, the work has been about how a family will actually use a place: where they cook, where the children play, where they sit at the end of the day.",
     "Twenty years on, the studio has grown to include thirty designers and craftspeople. We still take fewer projects than we could. Every design is drawn for the property it sits on. Every wall, walk, and planting is detailed by people who care how it will look in five years, not just on the day it's installed.",
     "We are based in Eastern North Carolina, which is to say we know which oaks hold up to coastal storms and which stone weathers well in our humidity. That local knowledge is, in our experience, the difference between a yard and a place.",
   ],
   philosophy:
-    "Design should be an experience, not just a product. Each project is a collaboration — a reading of how a family wants to live, translated into stone, plant, water, and light.",
+    "Design should be an experience, not just a product. Each project is a collaboration, a reading of how a family wants to live, translated into stone, plant, water, and light.",
   closing:
     "We believe in craftsmanship that creates spaces that endure, celebrate the outdoors, and invite joy.",
   stats: [
@@ -113,7 +113,7 @@ export const services: Service[] = [
     ],
     faqs: [
       { q: "What plants do you recommend for the Greenville, NC area?",
-        a: "Many of our gardens lean on a regionally proven palette — azaleas, camellias, crepe myrtles, hydrangeas, dogwoods, hollies, and a layer of drought-tolerant perennials such as catmint and salvia. We also incorporate ornamental grasses and native trees where they suit the property." },
+        a: "Many of our gardens lean on a regionally proven palette, azaleas, camellias, crepe myrtles, hydrangeas, dogwoods, hollies, and a layer of drought-tolerant perennials such as catmint and salvia. We also incorporate ornamental grasses and native trees where they suit the property." },
       { q: "Do you offer environmentally friendly landscaping options?",
         a: "Yes. We design with native and adaptive plants, group beds by water need, integrate efficient irrigation, and use permeable hardscapes where possible. We avoid invasive species and aim for landscapes that need less, not more, over time." },
       { q: "How long does a landscape project take?",
@@ -121,7 +121,7 @@ export const services: Service[] = [
       { q: "How do I maintain my landscape after installation?",
         a: "Most clients begin with our first-year care visits, which establish plantings and catch any settling-in issues. After that, we recommend an ongoing seasonal schedule we can manage for you or hand off to a partner." },
       { q: "Do you offer free consultations?",
-        a: "Yes. The first conversation is at no cost — we walk the property, listen, and let you know whether we're the right fit before any design fee." },
+        a: "Yes. The first conversation is at no cost, we walk the property, listen, and let you know whether we're the right fit before any design fee." },
     ],
     heroImage: "/projects/facades/holton-front-elevation-03.jpg",
     galleryImages: [
@@ -163,13 +163,13 @@ export const services: Service[] = [
     ],
     faqs: [
       { q: "What's the difference between hardscapes and landscapes?",
-        a: "Hardscape covers the built, structural elements of an outdoor space — patios, walks, walls, drives, fire features. Landscape covers the plant palette and soft surfaces. Most projects we design are some mix of the two." },
+        a: "Hardscape covers the built, structural elements of an outdoor space, patios, walks, walls, drives, fire features. Landscape covers the plant palette and soft surfaces. Most projects we design are some mix of the two." },
       { q: "How long does it take to install a hardscape feature?",
         a: "A simple paver patio can be installed in five to ten days. A full hardscape package with walls, kitchens, and fire features is typically six to twelve weeks of build time after design." },
       { q: "What materials do you use?",
         a: "We work primarily in natural stone, clay brick, and high-grade concrete pavers. We choose materials that match the home's architecture and the soil and weather of the site." },
       { q: "Are hardscapes durable enough for our weather?",
-        a: "Yes — when the base is built correctly. Our base prep, edge restraint, and drainage detailing are designed to handle Eastern NC's freeze-thaw cycles and storm events." },
+        a: "Yes, when the base is built correctly. Our base prep, edge restraint, and drainage detailing are designed to handle Eastern NC's freeze-thaw cycles and storm events." },
       { q: "Can hardscape increase the value of my home?",
         a: "Done well, hardscape is one of the highest-return outdoor investments because it expands the usable footprint of the house. Buyers respond to outdoor rooms, just as they respond to interior ones." },
     ],
@@ -181,9 +181,9 @@ export const services: Service[] = [
       "/projects/hardscapes/castlebrook-walk-02.jpg",
       "/projects/hardscapes/autumn-lakes-stone-walk-08.jpg",
     ],
-    seoTitle: "Pavers & Hardscape Design in Greenville, NC",
+    seoTitle: "Paver Patios & Hardscaping in Greenville, NC",
     seoDescription:
-      "Custom pavers and hardscapes — patios, walkways, walls, and fire features — designed and built by Yardie for Greenville, NC and Eastern NC.",
+      "Paver patio installation, stone walkways, and hardscaping in Greenville, NC. Brick, paver, and natural-stone patios designed and built by Yardie across Eastern NC.",
   },
 
   {
@@ -217,7 +217,7 @@ export const services: Service[] = [
       { q: "What appliances do you recommend?",
         a: "Lynx, Hestan, and Kalamazoo for grills and cooktops. Kamado Joe and Big Green Egg for ceramic. Outdoor-rated refrigeration from True or U-Line. We'll spec to your cooking and your budget." },
       { q: "Do I need gas, water, and power run to the kitchen?",
-        a: "For a full kitchen, yes — a dedicated gas line, a hot/cold water feed, and a 20-amp circuit. We coordinate licensed plumbers and electricians as part of the build." },
+        a: "For a full kitchen, yes, a dedicated gas line, a hot/cold water feed, and a 20-amp circuit. We coordinate licensed plumbers and electricians as part of the build." },
       { q: "Can it stay outside year-round in Eastern NC?",
         a: "Yes. We use marine-grade or 304 stainless cabinet boxes, weather-rated appliances, and detailing that handles humidity and the occasional freeze. Covers are recommended for grills and cooktops in the off-season." },
       { q: "How long does an outdoor kitchen build take?",
@@ -267,9 +267,9 @@ export const services: Service[] = [
       { q: "What materials do you use for masonry?",
         a: "Natural stone (limestone, fieldstone, flagstone, granite, river rock), traditional clay brick, cultured stone, and concrete blocks where appropriate." },
       { q: "Can you match the masonry to the existing style of my home?",
-        a: "Yes. We typically begin with the home — its brick, its stone, its color and pattern — and choose a masonry palette that reads as continuous architecture." },
+        a: "Yes. We typically begin with the home, its brick, its stone, its color and pattern, and choose a masonry palette that reads as continuous architecture." },
       { q: "How long does a masonry project take?",
-        a: "Smaller features (a low garden wall, a set of steps) are usually one to two weeks. Larger projects — a fireplace, a full stone patio with seating walls — can run six to ten weeks." },
+        a: "Smaller features (a low garden wall, a set of steps) are usually one to two weeks. Larger projects, a fireplace, a full stone patio with seating walls, can run six to ten weeks." },
       { q: "How do I know if masonry is the right choice?",
         a: "If you want something that lasts a generation, masonry is almost always the right call. We're happy to walk the property and recommend honestly when it isn't." },
     ],
@@ -281,9 +281,9 @@ export const services: Service[] = [
       "/projects/landscapes/castlebrook-front-01.jpg",
       "/projects/masonry/williamsburg-109-seating-wall-04.jpg",
     ],
-    seoTitle: "Masonry Contractor in Greenville, NC",
+    seoTitle: "Masonry, Brick & Stone Mason in Greenville, NC",
     seoDescription:
-      "Custom stone and brick masonry — patios, walls, fireplaces, steps, and seating walls — built by Yardie for Greenville, NC and Pitt County.",
+      "Brick and stone mason serving Greenville, NC. Hand-laid stone and brick masonry — walls, stone walkways, steps, fireplaces, and seating walls — built by Yardie across Pitt County.",
   },
 
   {
@@ -315,7 +315,7 @@ export const services: Service[] = [
       { q: "Is outdoor lighting energy efficient?",
         a: "Today's LED outdoor systems consume a fraction of the power older halogen systems used. A typical residential install will run on the equivalent of a single household appliance." },
       { q: "How long will my outdoor lighting last?",
-        a: "Quality LED fixtures we specify carry 50,000+ hour ratings — practically a decade or more of nightly operation. Wiring and transformers should last well beyond that with care." },
+        a: "Quality LED fixtures we specify carry 50,000+ hour ratings, practically a decade or more of nightly operation. Wiring and transformers should last well beyond that with care." },
       { q: "Do I need a professional to install outdoor lighting?",
         a: "For low-voltage path lighting, a homeowner can manage. For integrated, scene-controlled architectural lighting with proper wire runs and fixture aiming, professional design and install is the difference between great and forgettable." },
       { q: "Will outdoor lighting raise my power bill?",
@@ -367,9 +367,9 @@ export const services: Service[] = [
       { q: "How does a smart irrigation system work?",
         a: "It pulls local weather data and adjusts each zone's watering schedule based on rainfall, evapotranspiration, and the plant type assigned to that zone." },
       { q: "How often should the system be checked?",
-        a: "We recommend three visits a year — spring activation, summer audit, and fall winterization." },
+        a: "We recommend three visits a year, spring activation, summer audit, and fall winterization." },
       { q: "Will an irrigation system increase my water bill?",
-        a: "Initially, yes — though usually less than a homeowner expects. Most clients save on plant replacement costs that more than offset the additional water." },
+        a: "Initially, yes, though usually less than a homeowner expects. Most clients save on plant replacement costs that more than offset the additional water." },
       { q: "How long does an irrigation system last?",
         a: "Well-installed systems last fifteen to twenty years. Heads and valves are wear items that we replace as they fail; main lines and wiring should be untouched for the life of the system." },
     ],
@@ -380,9 +380,9 @@ export const services: Service[] = [
       "/projects/landscapes/autumn-lakes-planting-05.jpg",
       "/projects/landscapes/holton-extra-12.jpg",
     ],
-    seoTitle: "Irrigation Systems in Greenville, NC",
+    seoTitle: "Irrigation & Sprinkler Systems in Greenville, NC",
     seoDescription:
-      "Custom irrigation design, installation, and repair in Greenville, NC. Smart controllers, drip zones, and water-wise coverage.",
+      "Sprinkler system and irrigation installation, design, and repair in Greenville, NC. Smart controllers, drip zones, and water-wise coverage by Yardie across Eastern NC.",
   },
 
   // ─────── New, more specific services (added Apr 30 2026) ───────
@@ -416,11 +416,11 @@ export const services: Service[] = [
     ],
     faqs: [
       { q: "What's the difference between concrete pavers and natural stone?",
-        a: "Pavers are factory-made, dimensioned, and cost less; natural stone is quarried, irregular, and ages to a finish you can't fake. We specify both — the right answer depends on the home and budget." },
+        a: "Pavers are factory-made, dimensioned, and cost less; natural stone is quarried, irregular, and ages to a finish you can't fake. We specify both, the right answer depends on the home and budget." },
       { q: "How long does a paver driveway last?",
         a: "Properly installed paver drives carry a 25-year-plus service life. Concrete drives without proper subgrade fail in five to seven years in our climate; pavers do not, because individual units flex independently." },
       { q: "Can you replace an old concrete walk with brick?",
-        a: "Yes — we remove the old slab, rebuild the base to spec, and lay the new walk in your chosen material. Most front-walk replacements take three to five days." },
+        a: "Yes, we remove the old slab, rebuild the base to spec, and lay the new walk in your chosen material. Most front-walk replacements take three to five days." },
       { q: "Will weeds grow in the joints?",
         a: "Polymeric jointing sand sets like mortar and resists weed growth for years. We apply it as part of every install and recommend a top-up every five to seven years." },
     ],
@@ -465,11 +465,11 @@ export const services: Service[] = [
       { q: "Do I need a permit for a retaining wall?",
         a: "Walls four feet and taller (measured from the bottom of the footing) typically require a building permit and engineered drawings in Pitt County. We handle the permitting on every wall we build above that threshold." },
       { q: "Why do retaining walls fail?",
-        a: "The single most common failure mode is drainage — water builds up behind the wall, freezes, and pushes the wall outward. Every wall we install includes drain tile, washed gravel backfill, and a weep system." },
+        a: "The single most common failure mode is drainage, water builds up behind the wall, freezes, and pushes the wall outward. Every wall we install includes drain tile, washed gravel backfill, and a weep system." },
       { q: "How long does a retaining wall last?",
         a: "Properly engineered natural-stone and segmental walls carry a 50-year-plus service life. Walls without drainage or proper reinforcement can fail in under ten." },
       { q: "Can a retaining wall double as a seat?",
-        a: "Yes — eighteen-inch seat walls are one of the most popular features we draw. Capped with bluestone, they read as architecture and serve as bench seating around fire pits and patios." },
+        a: "Yes, eighteen-inch seat walls are one of the most popular features we draw. Capped with bluestone, they read as architecture and serve as bench seating around fire pits and patios." },
     ],
     heroImage: "/projects/masonry/stone-retaining-wall-bluestone-steps-01.jpg",
     galleryImages: [
@@ -509,11 +509,11 @@ export const services: Service[] = [
     ],
     faqs: [
       { q: "Wood-burning or gas?",
-        a: "Wood smells better and reads more romantic; gas is convenient and clean. Many of our clients install both — a gas burner for weeknight use, a wood chamber for weekends. We're happy to walk both options before you commit." },
+        a: "Wood smells better and reads more romantic; gas is convenient and clean. Many of our clients install both, a gas burner for weeknight use, a wood chamber for weekends. We're happy to walk both options before you commit." },
       { q: "Do I need a chimney inspection?",
         a: "Wood-burning fireplaces require an annual chimney sweep and inspection. We can refer the local sweep we trust." },
       { q: "Can a fire pit work near the house?",
-        a: "Yes — but with attention to clearance, smoke draft, and surface protection. We design every fire pit to local code and well clear of the home's eaves and overhangs." },
+        a: "Yes, but with attention to clearance, smoke draft, and surface protection. We design every fire pit to local code and well clear of the home's eaves and overhangs." },
       { q: "How long does a fire-feature build take?",
         a: "Four to six weeks of dedicated mason time, plus design and permitting upfront. Larger architectural fireplaces with chimneys can run eight to ten weeks." },
     ],
@@ -526,9 +526,9 @@ export const services: Service[] = [
       "/projects/masonry/brick-firepit-bench-rear-patio-01.jpg",
       "/projects/masonry/grass-paver-patio-firepit-adirondack-01.jpg",
     ],
-    seoTitle: "Outdoor Fireplaces & Fire Pits | Yardie Greenville NC",
+    seoTitle: "Outdoor Fireplaces & Fire Pits in Greenville, NC",
     seoDescription:
-      "Custom outdoor fireplaces, fire pits, fire tables, and pizza ovens — masonry-first construction by Yardie for homes across Eastern North Carolina.",
+      "Outdoor fireplace and fire pit installation in Greenville, NC. Masonry-first fireplaces, fire pits, fire tables, and pizza ovens by Yardie across Eastern North Carolina.",
   },
 
   {
@@ -561,7 +561,7 @@ export const services: Service[] = [
       { q: "Wood or aluminum?",
         a: "Wood is more beautiful and ages handsomely; aluminum is more durable and lower-maintenance. Most clients choose wood when they're willing to recoat every five to seven years; aluminum when they want to install once and forget." },
       { q: "Can you build over an existing patio?",
-        a: "Yes — but the patio must be evaluated for footing depth and load. Sometimes we set new footings through the patio; sometimes the existing slab carries the load. We assess on the first walk." },
+        a: "Yes, but the patio must be evaluated for footing depth and load. Sometimes we set new footings through the patio; sometimes the existing slab carries the load. We assess on the first walk." },
       { q: "How long does a pergola build take?",
         a: "Standard cedar or aluminum pergolas: two to three weeks. Full pavilions: six to eight weeks. Screened porches with electrical and finish carpentry: eight to twelve." },
     ],
@@ -609,9 +609,9 @@ export const services: Service[] = [
       { q: "What's the best pool deck material?",
         a: "Travertine for the high end (cool to the foot, beautiful patina); concrete pavers for value (tougher than poured concrete, infinitely repairable); bluestone for traditional architecture. We're happy to walk all three." },
       { q: "How do I keep planting alive next to chlorinated water?",
-        a: "Choose salt- and chlorine-tolerant species — agave, miscanthus, dwarf palm, oleander where the climate allows. We design every poolside palette around what will actually thrive there." },
+        a: "Choose salt- and chlorine-tolerant species, agave, miscanthus, dwarf palm, oleander where the climate allows. We design every poolside palette around what will actually thrive there." },
       { q: "Can you retrofit an existing pool surround?",
-        a: "Yes. Most of our pool projects are retrofits — replacing dated concrete with paver or travertine, rebuilding coping, and refreshing the surround landscape. Existing pool shells stay; everything around them is rebuilt." },
+        a: "Yes. Most of our pool projects are retrofits, replacing dated concrete with paver or travertine, rebuilding coping, and refreshing the surround landscape. Existing pool shells stay; everything around them is rebuilt." },
     ],
     heroImage: "/projects/pools/freeform-pool-stone-fireplace-paver-deck-01.jpg",
     galleryImages: [
@@ -657,7 +657,7 @@ export const services: Service[] = [
       { q: "Can a fountain run year-round in Eastern NC?",
         a: "We design every recirculating water feature with a winterization shut-off so the pump and lines can be drained for hard freezes. Most of our clients run their fountains April through November." },
       { q: "Do water features attract mosquitoes?",
-        a: "No — moving water is the opposite of standing water and discourages mosquito breeding. Stagnant features attract mosquitoes; we never design those." },
+        a: "No, moving water is the opposite of standing water and discourages mosquito breeding. Stagnant features attract mosquitoes; we never design those." },
       { q: "How long does a water-feature install take?",
         a: "Two to four weeks for pondless waterfalls and architectural fountains; six to ten for full naturalistic pond systems with planting and biology." },
     ],
@@ -773,19 +773,84 @@ export interface ServiceArea {
   county: string;
   description: string;
   notes: string;
+  /** Notable neighborhoods / landmarks — shown as a local-relevance line. */
+  neighborhoods?: string;
+  /** A unique 2–3 sentence paragraph about working in this city. Kept distinct
+   *  per city so each service-area page has genuinely non-duplicate content. */
+  localContext?: string;
 }
 
 export const serviceAreas: ServiceArea[] = [
-  { slug: "greenville",  name: "Greenville",  county: "Pitt",   description: "Yardie's home base. Most of our installed projects sit within a fifteen-minute drive of the studio.", notes: "Headquarters in Winterville, NC." },
-  { slug: "winterville", name: "Winterville", county: "Pitt",   description: "The studio is here, in Winterville. Many of our maintenance routes are walked from this office.", notes: "Studio: 5036 Winterville Parkway." },
-  { slug: "ayden",       name: "Ayden",       county: "Pitt",   description: "We've worked in Ayden for years — old neighborhoods with mature canopy and brick architecture suited to careful masonry.", notes: "" },
-  { slug: "farmville",   name: "Farmville",   county: "Pitt",   description: "Farmville has been a regular project market — see the May Boulevard project for a recent example.", notes: "" },
-  { slug: "washington",  name: "Washington",  county: "Beaufort", description: "Waterfront work in Washington and the surrounding areas. Salt-tolerant planting palettes and storm-resilient hardscape.", notes: "" },
-  { slug: "kinston",     name: "Kinston",     county: "Lenoir", description: "Larger residential lots and traditional architecture. We bring teams to Kinston on extended project timelines.", notes: "" },
-  { slug: "new-bern",    name: "New Bern",    county: "Craven", description: "Historic district work and waterfront projects in New Bern.", notes: "" },
-  { slug: "goldsboro",   name: "Goldsboro",   county: "Wayne",  description: "Residential landscape and hardscape projects across Wayne County.", notes: "" },
-  { slug: "wilson",      name: "Wilson",      county: "Wilson", description: "We've taken on full-property landscape redesigns in Wilson on multi-week schedules.", notes: "" },
-  { slug: "rocky-mount", name: "Rocky Mount", county: "Edgecombe", description: "Project work in Rocky Mount and surrounding Nash and Edgecombe county neighborhoods.", notes: "" },
+  {
+    slug: "greenville", name: "Greenville", county: "Pitt",
+    description: "Greenville is Yardie's home market. Most of the landscaping and landscape-design projects we install sit within a fifteen-minute drive of the studio, from Williamsburg-era brick homes to new construction.",
+    notes: "Studio in Winterville, minutes from Greenville.",
+    neighborhoods: "Forest Hills · Belhaven · Williamsburg · Brook Valley",
+    localContext: "Greenville's older neighborhoods carry mature oak canopy and traditional brick facades that reward careful masonry and restrained planting; its newer subdivisions want a plan drawn from scratch. We work across both, foundation plantings, paver patios, outdoor kitchens, and full outdoor-living builds.",
+  },
+  {
+    slug: "winterville", name: "Winterville", county: "Pitt",
+    description: "The Yardie studio is in Winterville, so much of our landscaping and landscape-design work happens minutes from the shop. New construction sits beside legacy homes here, and both ask for a plan drawn against the architecture.",
+    notes: "Studio: 5036 Winterville Parkway.",
+    neighborhoods: "Winterville Parkway corridor · Ange Farm · Ivywood",
+    localContext: "Because we are based here, Winterville projects get frequent design attention and easy return visits for seasonal care. It is where many of our maintenance routes begin.",
+  },
+  {
+    slug: "ayden", name: "Ayden", county: "Pitt",
+    description: "We have designed and built landscapes in Ayden for years, older neighborhoods with porched fronts and pecan canopy, where new masonry should look like it has always been there.",
+    notes: "",
+    neighborhoods: "Historic downtown Ayden · Ivy Hall",
+    localContext: "Ayden's traditional streetscapes suit brick and stone work that reads as period-correct. We favor planting palettes and hardscape details that settle into the existing character rather than fighting it.",
+  },
+  {
+    slug: "farmville", name: "Farmville", county: "Pitt",
+    description: "Farmville has been a regular market for our landscaping and hardscape work, mid-century homes on broad lots that take multi-level patios, fire features, and back yards drawn for a working family.",
+    notes: "",
+    neighborhoods: "May Boulevard · Wilson Street · Farmville historic district",
+    localContext: "The generous lots around Farmville give room for full outdoor rooms, with patio, fire, and planting composed together. See our May Boulevard project for a recent example of the work.",
+  },
+  {
+    slug: "washington", name: "Washington", county: "Beaufort",
+    description: "In Washington, our landscape design and installation work leans on salt-tolerant planting and storm-resilient stone for homes along the Pamlico River.",
+    notes: "",
+    neighborhoods: "Pamlico River corridor · Historic downtown Washington · Smallwood",
+    localContext: "Waterfront exposure changes the plant palette and the hardscape spec. We design for wind, salt, and storm surge, and compose rear yards to face the water.",
+  },
+  {
+    slug: "kinston", name: "Kinston", county: "Lenoir",
+    description: "Kinston's larger lots and traditional architecture warrant a multi-discipline landscape design from the first site walk, and we bring full crews here on extended schedules.",
+    notes: "",
+    neighborhoods: "Mitchelltown · Trent Woods edge · Lenoir County heritage homes",
+    localContext: "The scale of many Kinston properties supports design-build work that combines planting, hardscape, and masonry into one composition, staged over several weeks.",
+  },
+  {
+    slug: "new-bern", name: "New Bern", county: "Craven",
+    description: "In New Bern we design and build landscapes for historic-district facades and Trent River frontage, restrained, in dialogue with the architecture, with stone chosen to age well.",
+    notes: "",
+    neighborhoods: "Historic downtown New Bern · Trent River waterfront · Fairfield Harbour",
+    localContext: "New Bern's historic character rewards period-sensitive masonry and planting. On the water, we design for salt, wind, and the view.",
+  },
+  {
+    slug: "goldsboro", name: "Goldsboro", county: "Wayne",
+    description: "Goldsboro sits toward the edge of our radius, and we take on full landscape redesigns and considered hardscape additions for Wayne County homes here.",
+    notes: "",
+    neighborhoods: "Berkeley · Stoney Creek · Wayne County",
+    localContext: "Goldsboro projects tend to be full-property redesigns rather than one-off installs, a plan drawn for the whole lot, then built discipline by discipline.",
+  },
+  {
+    slug: "wilson", name: "Wilson", county: "Wilson",
+    description: "In Wilson we take on full-property landscape redesigns and landscape-design work on multi-week schedules, long-established neighborhoods with mature canopy that reward a patient, drawn plan.",
+    notes: "",
+    neighborhoods: "Historic West Wilson · Heritage corridor · Wedgewood",
+    localContext: "Wilson's mature neighborhoods come with established trees and settled grades. We design around what is already there rather than starting from bare ground.",
+  },
+  {
+    slug: "rocky-mount", name: "Rocky Mount", county: "Edgecombe",
+    description: "Our Rocky Mount landscaping and landscape-design work spans properties along the Tar River and through Belmont Lake, designed at the scale the architecture asks for.",
+    notes: "",
+    neighborhoods: "Tar River corridor · Belmont Lake · Nash & Edgecombe county",
+    localContext: "Rocky Mount straddles Nash and Edgecombe counties, and the properties range from riverfront to golf-community lots, each gets a plan sized to its setting.",
+  },
 ];
 
 // ─── Testimonials ───────────────────────────────────────────
@@ -842,6 +907,90 @@ export interface JournalPost {
 }
 
 export const journal: JournalPost[] = [
+  {
+    slug: "how-much-does-landscaping-cost",
+    title: "How Much Does Landscaping Cost in Eastern NC?",
+    date: "July 22, 2026",
+    category: "Landscapes",
+    readTime: 9,
+    excerpt:
+      "A practical 2026 range for Greenville and Eastern North Carolina, from a few thousand dollars for a planting refresh to $100,000+ for a full property design-build. Here is what actually drives the number.",
+    body: [
+      "How much does landscaping cost is the first question we field on almost every property visit, and the honest answer is a range, because landscaping covers everything from a weekend of fresh mulch and shrubs to a fully engineered outdoor property with hardscape, masonry, lighting, and irrigation. For the residential projects we design and build across Greenville and Eastern North Carolina in 2026, most fall somewhere between $8,000 and $100,000, and this guide explains where a given project lands and why.",
+      "Start with the design fee. Any project past a simple planting swap begins with a drawn plan. A landscape design fee in our market typically runs $1,500 to $6,000 depending on property size and scope, and it buys you a measured plan, a planting palette, material selections, and a build estimate you can actually hold a contractor to. On design-build projects the fee is often credited toward construction. Skipping the plan is the most common way homeowners overspend, because unplanned work gets rebuilt.",
+      "Tier 1 — Planting refresh ($8,000 to $20,000). New foundation beds, a few specimen trees, fresh mulch, edging, and a cleanup of overgrown material. This is the highest-return money most homeowners spend: it is what a buyer sees first and what makes a house feel cared for. Cost is driven mostly by plant size (a 7-gallon shrub costs several times a 3-gallon), bed square footage, and whether old material has to be removed and hauled.",
+      "Tier 2 — Landscape design and installation ($20,000 to $50,000). A drawn plan executed across the property: composed planting beds, a new lawn or sod, grading and simple drainage, a walkway or small patio, and often low-voltage lighting to finish it. This is the tier most of our full-yard clients occupy, and it is where design pays for itself, because the plants, hardscape, and lighting are composed to work together rather than added piecemeal over years.",
+      "Tier 3 — Full property design-build ($50,000 to $100,000+). A complete outdoor redesign that brings in hardscape and masonry: a paver or stone patio, seat walls or a retaining wall, an outdoor kitchen or fire feature, irrigation, and a full lighting layer, all drawn as one composition. Projects at this tier are staged over weeks and involve multiple crews. The ceiling is set by masonry and structures, not by planting.",
+      "What drives the cost most. In our experience the four biggest levers are (1) hardscape and masonry square footage, which costs many times what planting does per square foot; (2) grade and drainage, because a sloped or wet lot needs engineering that a flat lot does not; (3) plant size and quantity, since instant maturity is expensive; and (4) site access, because a back yard reachable only through a narrow gate means everything moves by wheelbarrow instead of machine.",
+      "Where to spend. Drainage and base preparation, every time. They are invisible and unglamorous, and they are the difference between a landscape that still looks composed in ten years and one that heaves, pools, and washes out. Spend on the plan, spend on the soil and drainage, and spend on a few large specimen plants that give the design instant structure.",
+      "Where to save. Buy smaller perennials and let them fill in over a season or two rather than paying for instant maturity across the whole bed. Phase the project — a good plan lets you install the bones now and add the lighting or the water feature next year without rework. And resist the urge to over-plant; a restrained palette installed well reads as more expensive than a crowded one.",
+      "A note on maintenance. Landscaping is not a one-time number. Budget for seasonal upkeep — mulch, pruning, bed refreshes, and irrigation tuning — to protect the investment. Many of our clients keep us on a seasonal schedule for exactly this reason: a designed landscape holds its value only if it is maintained the way it was drawn.",
+      "Yardie offers no-cost property visits across Greenville, Winterville, Ayden, Farmville, Washington, Kinston, New Bern, Goldsboro, Wilson, and Rocky Mount. We walk the site, listen to how you want to use the space, and follow up with a written design fee and an itemized build estimate. Most homeowners are surprised in both directions — by how much a focused planting refresh accomplishes, and by how quickly cost climbs once hardscape and masonry enter the plan.",
+    ],
+    coverImage: "/journal/journal-cover-10.png",
+  },
+  {
+    slug: "retaining-wall-cost",
+    title: "How Much Does a Retaining Wall Cost in Eastern NC?",
+    date: "July 15, 2026",
+    category: "Masonry",
+    readTime: 8,
+    excerpt:
+      "Segmental block, natural stone, or poured concrete — most retaining walls run $30 to $90+ per square foot of wall face. Here is what moves the price, and why drainage is the number that matters.",
+    body: [
+      "A retaining wall cost is best measured per square foot of wall face — height multiplied by length — because that is what actually determines the material and labor involved. For the walls we build across Greenville and Eastern North Carolina in 2026, the installed range runs roughly $30 to $90+ per square foot of face, and this guide walks through what puts a given wall at the low or high end.",
+      "Segmental retaining wall block ($30 to $55 per square foot of face). Engineered concrete units — brands like Belgard, Techo-Bloc, and Allan Block — are the workhorse of residential retaining walls. They install faster than natural stone, come with manufacturer engineering for height and load, and hold up for decades when built on a proper base with drainage. This is the best value for most functional walls under four feet.",
+      "Natural stone ($55 to $90+ per square foot of face). Hand-laid fieldstone, granite, or dry-stacked ledgestone reads as architecture in a way block cannot, and it is what we specify where a wall is a design feature rather than just grade retention. It costs more because every stone is placed by hand and the mason is composing as much as building. On a front facade or a seat wall around a patio, the difference is worth it.",
+      "Poured concrete and block-and-veneer ($45 to $85+ per square foot of face). A poured or CMU structural wall clad in stone or brick veneer combines engineered strength with a finished face. This is common on taller walls and where a specific brick or stone needs to match the home. Cost sits between segmental block and full natural stone.",
+      "The number that actually matters: drainage. The single most common reason a retaining wall fails is water building up behind it, freezing, and pushing the wall outward. Every wall we install includes drain tile, washed gravel backfill, and a weep system — and that hidden drainage work is a real line item, typically 15 to 25 percent of the wall cost. A cheap wall is almost always a wall built without proper drainage, and it is the one that leans within a few years.",
+      "Height and engineering. Walls over four feet (measured from the bottom of the base) generally require an engineered design and a permit in Pitt County and surrounding jurisdictions, which adds design and inspection cost but is not optional — a tall wall is a structural element holding back tons of saturated soil. Tiered walls, curves, and corners also raise the per-foot cost over a simple straight run.",
+      "Site access and grade. A wall a machine can reach costs far less to build than one where every block and every ton of gravel moves by wheelbarrow through a back gate. Steep sites, wet clay, and the need to excavate and haul spoil all push the number up.",
+      "Where to spend and where to save. Spend on the base and drainage — they are the whole ballgame for longevity. Save, if you must, on material: a well-built segmental block wall with proper drainage will outlast a natural-stone wall built badly, so if budget is tight, put the money into doing a block wall right rather than doing a stone wall cheaply. Seat walls and short garden walls are also a good place to add natural stone selectively, since the square footage is small.",
+      "Yardie designs and builds retaining walls across Eastern North Carolina, and every wall we install carries drain tile, gravel backfill, and a weep system as standard scope, not an upsell. We offer no-cost property visits — we walk the grade, assess drainage and access, and follow up with a written estimate that shows exactly what the wall includes.",
+    ],
+    coverImage: "/journal/journal-cover-13.png",
+  },
+  {
+    slug: "paver-patio-cost",
+    title: "How Much Does a Paver Patio Cost in Eastern NC?",
+    date: "July 8, 2026",
+    category: "Hardscapes",
+    readTime: 8,
+    excerpt:
+      "Most paver patios run $18 to $40+ per square foot installed, and a 20x20 lands around $9,000 to $18,000. Here is the full breakdown, and why the base you cannot see sets the price.",
+    body: [
+      "A paver patio cost in Greenville and Eastern North Carolina generally runs $18 to $40+ per square foot installed in 2026, which means a common 20x20 patio (400 square feet) lands somewhere around $9,000 to $18,000 depending on material, base work, and detail. This guide breaks down where a given patio falls and what to look for so you can compare estimates fairly.",
+      "Concrete pavers ($18 to $28 per square foot installed). Manufactured concrete pavers — Belgard, Techo-Bloc, and similar — are the value choice and cover the majority of the patios we build. They come in a wide range of colors, shapes, and textures, install efficiently, and carry manufacturer warranties. A clean concrete-paver patio on a proper base is a twenty-year surface.",
+      "Clay brick ($24 to $34 per square foot installed). True clay brick holds its color permanently (it is fired, not dyed) and reads as traditional architecture, which suits the Williamsburg-era and historic homes common across Pitt County and New Bern. It costs a little more than concrete paver and rewards a careful mason on the pattern work.",
+      "Natural stone, travertine, and bluestone ($30 to $45+ per square foot installed). Quarried stone is the premium tier — it is what we specify for pool surrounds and front facades where the patio is a design feature. Travertine stays cool underfoot and suits poolsides; bluestone reads formal and ages beautifully. Every piece is irregular and set by hand, which is why it sits at the top of the range.",
+      "The cost you cannot see: the base. A paver patio is only as good as what is under it. Proper installation means excavating six to ten inches, laying and compacting a graded aggregate base, a bedding layer, edge restraint, and polymeric sand — and that base work is typically 40 to 50 percent of the total cost. It is also exactly what a cut-rate estimate leaves out. A patio laid on too little base is the one that settles, heaves, and grows weeds through the joints within a couple of seasons. When two estimates are far apart, the base spec is usually why.",
+      "Size and shape. Cost per square foot drops a little on larger patios (fixed mobilization spread over more area) and rises with complexity — curves, multiple levels, borders, banding, and intricate patterns all add cutting and labor. A simple rectangle is the most economical shape; a free-form patio with a soldier-course border and an inlay costs more per foot.",
+      "Add-ons that change the number. Most patios we build are part of a larger outdoor room, and the surrounding elements often cost as much as the paving: a seat wall or retaining wall ($30 to $90 per square foot of face), a fire pit or fireplace, steps, a pergola overhead, and low-voltage lighting. Budgeting for the patio alone and then adding these later usually costs more than designing them together.",
+      "Where to spend and where to save. Spend on the base and the edge restraint — they determine whether the patio is flat and tight in ten years. Save by choosing a quality concrete paver over natural stone if budget is tight (the base and install matter more than the surface for longevity), and by keeping the shape simple. A well-built simple patio outperforms a poorly built fancy one every time.",
+      "Yardie designs and installs paver and natural-stone patios across Eastern North Carolina, and our estimates spell out the base preparation, edge restraint, and drainage so you can see exactly what you are paying for. We offer no-cost property visits with material samples — we walk the site, take measurements, and follow up with an itemized written estimate.",
+    ],
+    coverImage: "/journal/journal-cover-08.png",
+  },
+  {
+    slug: "pergola-cost",
+    title: "How Much Does a Pergola Cost in Eastern NC?",
+    date: "June 24, 2026",
+    category: "Hardscapes",
+    readTime: 7,
+    excerpt:
+      "From about $6,000 for a simple cedar pergola to $40,000+ for a stone-column pavilion. Here is what you are actually paying for, material by material.",
+    body: [
+      "A pergola cost covers a wide range because pergola means very different things — a simple shade frame over a patio is a different animal from a stone-column pavilion with a solid roof. For the structures we design and build across Greenville and Eastern North Carolina in 2026, the installed range runs from about $6,000 for a straightforward wood pergola to $40,000+ for a masonry-column pavilion. This guide breaks it down by material and configuration.",
+      "Pressure-treated wood ($6,000 to $12,000). The entry point is a pressure-treated southern pine pergola, stained to finish. It is the most affordable option and, built well on proper footings, a solid structure — but southern pine in our humidity needs re-staining every three to five years, so factor ongoing maintenance into the real cost.",
+      "Cedar or hardwood ($12,000 to $22,000). Western red cedar, and higher up, ipe or mahogany, are the choice where the structure is a design feature. They resist rot and insects naturally, hold a finish better than pine, and read as craftsmanship rather than lumber. Most of our freestanding garden pergolas land here.",
+      "Aluminum and louvered-roof systems ($15,000 to $35,000). Powder-coated aluminum pergolas — including adjustable louvered-roof systems like StruXure that open and close to control sun and rain — are effectively maintenance-free and increasingly popular for patios and poolsides. The louvered-roof systems sit at the top of this band because of the mechanism, motor, and integrated hardware.",
+      "Stone-column pavilions ($25,000 to $40,000+). When the posts become masonry columns and the open frame becomes a solid or timber roof, a pergola becomes a pavilion — an outdoor room. Stone or brick columns, a real roof structure, and often integrated lighting and a ceiling fan put these at the top of the range. This is the tier that pairs with an outdoor kitchen or a fireplace to make a year-round outdoor living space.",
+      "What drives the cost. Beyond material, the big levers are size (a structure sized to cover a dining set is far smaller than one over a full seating-and-kitchen zone), attached versus freestanding (attaching to the home saves two posts but adds flashing and structural connection work), roof type (open rafters are cheapest, louvered and solid roofs cost more), and footings — a permanent structure needs proper concrete footings below frost, which is real excavation and concrete work, not an optional line.",
+      "Add-ons. Integrated low-voltage or overhead lighting, a ceiling fan, privacy screens or drapery, a stereo speaker tap, and running power out to the structure all add to the base number — and they are far cheaper to install while the structure is being framed than to retrofit later.",
+      "Where to spend and where to save. Spend on footings and on material appropriate to your climate exposure — a cheap frame on shallow footings is the one that racks and leans. Save by choosing cedar over an aluminum louvered system if you do not need the adjustable roof, and by sizing the structure to what you will actually use rather than oversizing it. Yardie designs and builds pergolas and pavilions across Eastern North Carolina; we offer no-cost property visits and follow up with an itemized written estimate that shows the structure, footings, and any lighting or electrical as separate lines.",
+    ],
+    coverImage: "/journal/journal-cover-11.png",
+  },
   {
     slug: "masonry-vs-wood",
     title: "Masonry vs. Wood — A Long View",
@@ -1311,7 +1460,7 @@ export const faqsByCategory: { category: string; items: FAQ[] }[] = [
   { category: "Getting Started",
     items: [
       { q: "Do you offer free consultations?",
-        a: "Yes. The first conversation is at no cost — we walk the property, listen, and let you know whether we're the right fit before any design fee." },
+        a: "Yes. The first conversation is at no cost, we walk the property, listen, and let you know whether we're the right fit before any design fee." },
       { q: "How do I get started on a project?",
         a: "Use the Request a Consultation button at the top of any page, or email hello@yardiedesign.com. We'll set up a property visit and an initial conversation within the week." },
       { q: "What does design cost?",

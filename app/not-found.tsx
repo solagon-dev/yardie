@@ -21,10 +21,10 @@ export default function NotFound() {
           The page you&rsquo;re looking for isn&rsquo;t here — or has moved. Try one of the links below.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <Link href="/" className="inline-flex items-center justify-center px-9 py-4 bg-bark text-cream text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-earth transition-colors">
+          <Link href="/" className="inline-flex items-center justify-center px-9 py-4 bg-bark text-cream text-[12px] font-medium hover:bg-earth transition-colors">
             Return Home
           </Link>
-          <Link href="/gallery" className="inline-flex items-center justify-center px-9 py-4 border border-bark text-bark text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-bark hover:text-cream transition-colors">
+          <Link href="/gallery" className="inline-flex items-center justify-center px-9 py-4 border border-bark text-bark text-[12px] font-medium hover:bg-bark hover:text-cream transition-colors">
             View Our Work
           </Link>
         </div>
@@ -33,7 +33,7 @@ export default function NotFound() {
             users recover from 404s without leaving the site. Each
             link below is one of the top-trafficked surfaces. */}
         <div className="mt-12 border-t border-stone/30 pt-8 text-[13px]">
-          <p className="text-earth/70 mb-3 tracking-[0.1em] uppercase text-[11px]">
+          <p className="text-earth/70 mb-3 tracking-[0.1em] text-[11px]">
             Or browse popular pages
           </p>
           <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-bark">

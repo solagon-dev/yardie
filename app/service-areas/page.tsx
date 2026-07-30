@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { serviceAreas, company } from "@/lib/content";
-import { buildMetadata } from "@/lib/seo";
+import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 import { photos, projectPhotos } from "@/lib/media";
 import PageHero from "@/components/ui/PageHero";
 
@@ -37,19 +38,17 @@ export const metadata: Metadata = buildMetadata({
   ],
 });
 
-function ArrowRight({ className = "h-4 w-4" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-    </svg>
-  );
-}
-
 export default function ServiceAreasPage() {
   return (
     <>
+      <JsonLd
+        id="breadcrumb"
+        data={breadcrumbSchema([
+          { name: "Home", href: "/" },
+          { name: "Service Areas", href: "/service-areas" },
+        ])}
+      />
       <PageHero
-        label="Service Areas"
         headline="Exterior design and installation"
         italicTail="across Eastern North Carolina."
         intro="From Pitt County to the coast — Yardie builds for homeowners across the broader Eastern NC region."
@@ -83,10 +82,6 @@ export default function ServiceAreasPage() {
             </div>
 
             <div>
-              <p className="footer-label text-moss mb-3 inline-flex items-center justify-center gap-3">
-                <span className="block h-px w-7 bg-moss/60" aria-hidden />
-                Where We Work
-              </p>
               <h2 className="font-display text-3xl sm:text-4xl lg:text-[52px] text-bark leading-[1.06] tracking-tight font-light max-w-[18ch]">
                 Local expertise across{" "}
                 <span className="italic text-moss">the region.</span>
@@ -113,10 +108,6 @@ export default function ServiceAreasPage() {
       <section className="py-16 sm:py-24 lg:py-32 bg-cream-alt border-y border-border">
         <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
           <div className="mb-10 sm:mb-14 lg:mb-16 text-center lg:text-left">
-            <p className="footer-label text-moss mb-4 lg:inline-flex lg:items-center lg:gap-3">
-              <span className="hidden lg:block h-px w-7 bg-moss/60" aria-hidden />
-              Towns We Serve
-            </p>
             <h2 className="font-display text-[32px] sm:text-[40px] lg:text-[52px] text-bark leading-[1.06] tracking-tight font-light max-w-[20ch] mx-auto lg:mx-0">
               Postcards from the towns{" "}
               <span className="italic text-moss">where we work.</span>
@@ -149,10 +140,12 @@ export default function ServiceAreasPage() {
                       <p className="mt-4 text-[14px] text-earth leading-relaxed flex-1 line-clamp-3">
                         {area.description}
                       </p>
-                      <span className="mt-6 inline-flex items-center justify-center gap-3 text-[11px] tracking-[0.22em] uppercase font-medium text-bark group-hover:text-moss transition-colors">
-                        <span aria-hidden className="block h-px w-6 bg-bark group-hover:w-10 group-hover:bg-moss transition-all duration-500 ease-out" />
-                        Visit {area.name}
-                        <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
+                      <span className="mt-6 inline-block text-[12.5px] font-medium text-bark transition-colors group-hover:text-moss">
+                        <span className="relative pb-1">
+                          Visit {area.name}
+                          <span aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-current opacity-20" />
+                          <span aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-moss origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]" />
+                        </span>
                       </span>
                     </div>
                   </Link>

@@ -100,6 +100,12 @@ const config: Config = {
           from: { clipPath: "inset(0 0 100% 0)" },
           to:   { clipPath: "inset(0 0 0% 0)" },
         },
+        // Seamless horizontal loop: the track holds two identical copies, so
+        // translating by exactly half its width returns to the start invisibly.
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to:   { transform: "translateX(-50%)" },
+        },
       },
 
       animation: {
@@ -110,6 +116,7 @@ const config: Config = {
         "fade-in":   "fade-in 0.8s cubic-bezier(0.22,1,0.36,1) both",
         "hero-zoom": "hero-zoom 18s ease-in-out infinite alternate",
         "wipe-up":   "wipe-up 0.7s cubic-bezier(0.22,1,0.36,1) both",
+        marquee:     "marquee 60s linear infinite",
       },
 
       borderRadius: {

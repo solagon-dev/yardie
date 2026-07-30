@@ -3,7 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { company, serviceAreas } from "@/lib/content";
 import ContactForm from "@/components/ContactForm";
-import { buildMetadata } from "@/lib/seo";
+import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 import { photos } from "@/lib/media";
 import PageHero from "@/components/ui/PageHero";
 
@@ -44,8 +45,14 @@ const mapQuery = encodeURIComponent(`${company.street}, ${company.city}, ${compa
 export default function ContactPage() {
   return (
     <>
+      <JsonLd
+        id="breadcrumb"
+        data={breadcrumbSchema([
+          { name: "Home", href: "/" },
+          { name: "Contact", href: "/contact" },
+        ])}
+      />
       <PageHero
-        label="Contact"
         headline="Let's talk about"
         italicTail="your space."
         intro="Tell us what you're planning, where the property is, and how we can help. We answer every inquiry — most within the same business day."
@@ -109,7 +116,7 @@ export default function ContactPage() {
                       </svg>
                       <span className="font-display text-[16px] sm:text-[18px] text-bark group-hover:text-moss transition-colors truncate">@yardiedesign</span>
                     </span>
-                    <span className="text-[10.5px] tracking-[0.18em] uppercase text-clay group-hover:text-moss transition-colors shrink-0">Instagram</span>
+                    <span className="text-[10.5px] text-clay group-hover:text-moss transition-colors shrink-0">Instagram</span>
                   </a>
                   <a
                     href={company.facebook}
@@ -123,7 +130,7 @@ export default function ContactPage() {
                       </svg>
                       <span className="font-display text-[16px] sm:text-[18px] text-bark group-hover:text-moss transition-colors truncate">Yardie Design</span>
                     </span>
-                    <span className="text-[10.5px] tracking-[0.18em] uppercase text-clay group-hover:text-moss transition-colors shrink-0">Facebook</span>
+                    <span className="text-[10.5px] text-clay group-hover:text-moss transition-colors shrink-0">Facebook</span>
                   </a>
                 </div>
               </div>
@@ -133,7 +140,6 @@ export default function ContactPage() {
             <div className="lg:col-span-7">
               <div className="bg-cream-alt border border-border">
                 <div className="px-5 sm:px-10 pt-7 sm:pt-9 pb-6 sm:pb-7 border-b border-border text-center lg:text-left">
-                  <p className="footer-label text-moss mb-3">Send a message</p>
                   <h2 className="font-display text-[24px] sm:text-[28px] lg:text-[36px] text-bark leading-[1.15] tracking-tight font-light">
                     Tell us a little about{" "}
                     <span className="italic text-moss">what you have in mind.</span>
@@ -159,7 +165,6 @@ export default function ContactPage() {
       <section className="bg-cream-alt border-b border-border">
         <div className="grid lg:grid-cols-12">
           <div className="lg:col-span-5 p-7 sm:p-10 lg:p-14 flex flex-col justify-center text-center lg:text-left">
-            <p className="footer-label text-moss mb-4">Where we work</p>
             <h2 className="font-display text-[26px] sm:text-3xl lg:text-[44px] text-bark leading-[1.1] tracking-tight font-light">
               {company.city} studio,{" "}
               <span className="italic text-moss">Eastern NC projects.</span>

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { services } from "@/lib/content";
-import { buildMetadata } from "@/lib/seo";
+import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 import { photos, projectPhotos, photosByService } from "@/lib/media";
 import PageHero from "@/components/ui/PageHero";
 import { TextLink } from "@/components/ui/Button";
@@ -49,8 +50,14 @@ export default function ServicesPage() {
 
   return (
     <>
+      <JsonLd
+        id="breadcrumb"
+        data={breadcrumbSchema([
+          { name: "Home", href: "/" },
+          { name: "Services", href: "/services" },
+        ])}
+      />
       <PageHero
-        label="Services"
         headline="Exterior design for"
         italicTail="Eastern North Carolina homes."
         intro="Most projects we draw involve some mix of these disciplines. We keep them under one roof so the lighting plan and the masonry plan and the planting plan answer to each other."
@@ -65,7 +72,7 @@ export default function ServicesPage() {
               <li key={s.slug} className="flex-shrink-0">
                 <a
                   href={`#${s.slug}`}
-                  className="inline-flex items-center justify-center gap-2 px-3 py-1.5 text-[10.5px] tracking-[0.2em] uppercase text-clay hover:text-moss transition-colors whitespace-nowrap"
+                  className="inline-flex items-center justify-center gap-2 px-3 py-1.5 text-[10.5px] text-clay hover:text-moss transition-colors whitespace-nowrap"
                 >
                   <span className="text-stone">{String(i + 1).padStart(2, "0")}</span>
                   {s.shortName}

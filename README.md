@@ -1,183 +1,113 @@
-# Yardie - Exterior Design Website
+# Yardie — yardiedesign.com
 
-A modern, SEO-optimized Next.js website for Yardie Exterior Design company, featuring beautiful UI/UX and professional design.
+Marketing site for Yardie Design, an exterior design studio in Winterville, NC
+serving Greenville and Eastern North Carolina.
 
-## Features
+Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS · deployed on Vercel.
 
-- ✨ Modern, responsive design with beautiful animations
-- 🎨 Professional UI with earth-toned color palette
-- 🚀 Built with Next.js 14 and TypeScript
-- 💨 Tailwind CSS for styling
-- 📱 Fully responsive across all devices
-- 🔍 SEO optimized with metadata, sitemap, and robots.txt
-- ♿ Accessibility-focused
-- 🎭 Smooth animations and transitions
-- 📧 Contact form with validation
+## Running it
 
-## Sections
-
-1. **Hero Section** - Eye-catching introduction with call-to-actions
-2. **Services** - Six core service offerings with icons and descriptions
-3. **Portfolio** - Featured projects showcase with hover effects
-4. **About** - Company story and statistics
-5. **Contact** - Full contact form and information
-
-## Tech Stack
-
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Fonts**: Playfair Display (headings) + Inter (body)
-- **Animations**: CSS animations with stagger delays
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18.x or higher
-- npm or yarn
-
-### Installation
-
-1. Navigate to the project directory:
-```bash
-cd yardie-website
-```
-
-2. Install dependencies:
 ```bash
 npm install
-# or
-yarn install
 ```
 
-3. Run the development server:
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
+`npm run build` produces the production build; `npm start` serves it. There are
+no tests — `npx tsc --noEmit` and a clean `npm run build` are the gate.
 
-### Building for Production
+## How the site is put together
 
-```bash
-npm run build
-npm run start
-# or
-yarn build
-yarn start
-```
+Content is **files, not a CMS**. There is no database and no admin surface.
+Everything a marketer would want to change lives in `lib/`:
 
-## Project Structure
+| File | Holds |
+| --- | --- |
+| `lib/content.ts` | Company details, the 12 services, service areas, journal posts, FAQs, testimonials |
+| `lib/media.ts` | Named photo references (`photos`, `projectPhotos`, `photosByService`, `cityPhotos`) |
+| `lib/case-studies.ts` | Approved project case studies — ships empty; adding one publishes `/gallery/<slug>` |
+| `lib/seo.ts` | Metadata builder and every JSON-LD schema |
 
-```
-yardie-website/
-├── app/
-│   ├── layout.tsx          # Root layout with SEO metadata
-│   ├── page.tsx            # Home page with all sections
-│   ├── globals.css         # Global styles and animations
-│   ├── sitemap.ts          # Sitemap generation
-│   └── manifest.ts         # PWA manifest
-├── components/
-│   ├── Header.tsx          # Navigation header
-│   └── Footer.tsx          # Footer component
-├── public/
-│   └── robots.txt          # SEO robots file
-├── tailwind.config.ts      # Tailwind configuration
-├── tsconfig.json           # TypeScript configuration
-├── next.config.js          # Next.js configuration
-├── package.json            # Dependencies
-└── README.md              # This file
-```
+Adding a service to `lib/content.ts` automatically creates its page, its nav
+entry, its sitemap row, and its entry in the business's structured-data offer
+catalog. Nothing else needs touching.
 
-## SEO Features
+### Routes
 
-- Semantic HTML structure
-- Meta tags for social sharing (Open Graph, Twitter Cards)
-- Structured data ready
-- Optimized images
-- Fast loading times
-- Mobile-first responsive design
-- Sitemap.xml generation
-- Robots.txt configuration
+Almost everything is statically prerendered. `app/services/[slug]`,
+`app/service-areas/[slug]`, `app/journal/[slug]`, and `app/gallery/[slug]` all
+use `generateStaticParams` with `dynamicParams = false`, so an unknown slug is a
+real 404 rather than a 200 with empty content.
 
-## Customization
-
-### Colors
-
-The color palette uses earth and moss tones defined in `tailwind.config.ts`. Modify the colors there to change the theme:
-
-```typescript
-colors: {
-  earth: { ... },
-  moss: { ... },
-}
-```
-
-### Content
-
-Update the content in `app/page.tsx`:
-- Services array
-- Portfolio projects
-- Company information
-- Contact details
+Legacy URLs are handled in `next.config.js` `redirects()` — **not** with
+`redirect()` inside a page. A page-level `redirect()` emits 307 Temporary,
+which tells search engines to keep the old URL indexed; the config entries are
+308 Permanent and cost no render.
 
 ### Images
 
-Replace placeholder images with actual project photos. Update URLs in:
-- Hero section background
-- Portfolio items
-- About section image
+Bulk photography lives on Vercel Blob, not in git (the repo would be several GB
+otherwise). `next.config.js` rewrites `/projects/*`, `/renderings/*`,
+`/journal/*.jpg`, `/cities/*`, and friends to the Blob origin, so components
+use ordinary local-looking paths and `next/image` optimises them normally.
 
-## Performance Optimization
+Two rewrite rules are deliberately constrained and should stay that way:
 
-- Lazy loading for images
-- Optimized fonts with Google Fonts
-- Minimal JavaScript bundle
-- CSS-only animations where possible
-- Responsive image sizing
+- `/journal/:file(.+\.(png|jpe?g|...))` — unconstrained, it would swallow every
+  article URL and return "Blob not found".
+- `/cities/:slug([^.]+)` — the dot-free match keeps this legacy redirect from
+  stealing `/cities/<name>.<ext>` image requests.
 
-## Browser Support
+### Structured data
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers
+Use `<JsonLd>` (`components/JsonLd.tsx`), never `next/script`. With
+`strategy="afterInteractive"` the schema never reaches the server HTML — it
+sits in the RSC payload and only appears after hydration, where most non-Google
+consumers never see it.
 
-## Deployment
+### Analytics and consent
 
-This project can be deployed to:
-- Vercel (recommended for Next.js)
-- Netlify
-- AWS Amplify
-- Any Node.js hosting service
+`components/Analytics.tsx` loads GA4 and the Ahrefs tag. It is opt-out:
+visitors who accept or haven't answered get the tags; anyone who declines gets
+nothing, has GA switched off in-page via `ga-disable-*`, and has their existing
+`_ga` cookies deleted. Shared state is in `lib/consent.ts`; the choice can be
+revisited from `/legal/privacy-policy`.
 
-### Deploy to Vercel
+## Environment
 
-1. Push code to GitHub
-2. Import project in Vercel
-3. Deploy automatically
+Everything is optional — the site builds and runs without any of it, degrading
+to sensible fallbacks.
 
-## Future Enhancements
+| Variable | Effect when unset |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Falls back to `https://www.yardiedesign.com` |
+| `BLOB_PUBLIC_URL` | Falls back to the provisioned Blob store |
+| `RESEND_API_KEY` | Contact + consultation forms return "not configured" |
+| `RESEND_TO_EMAIL` / `RESEND_FROM_EMAIL` | Defaults in `lib/resend.ts` |
+| `RECAPTCHA_SECRET_KEY` / `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` | reCAPTCHA soft-passes; the honeypot and rate limiter still apply |
+| `GOOGLE_PLACES_API_KEY` + `GOOGLE_PLACE_ID` | Reviews fall back to curated testimonials, and no `aggregateRating` is emitted |
+| `BEHOLD_WIDGET_ID` | Instagram section uses curated photos |
+| `INDEXNOW_AUTH_TOKEN` | `POST /api/indexnow` returns 503 |
 
-- Blog section for landscaping tips
-- Project gallery with filtering
-- Client testimonials carousel
-- Before/after image comparisons
-- Service request calculator
-- Integration with scheduling system
+## Form endpoints
 
-## License
+`POST /api/contact` takes `{ formType, data, recaptchaToken }` and emails via
+Resend. Defences, in order: per-IP rate limit (5 per 10 minutes), a honeypot
+field (`company`), then reCAPTCHA v3. The honeypot matters because reCAPTCHA
+soft-passes whenever its secret isn't configured.
 
-Private - All rights reserved
+`POST /api/consultation` is a legacy alias that calls the contact handler
+in-process.
 
-## Contact
+`POST /api/indexnow` pings Bing/Yandex/Seznam. Requires
+`Authorization: Bearer $INDEXNOW_AUTH_TOKEN`.
 
-For questions or support, contact: info@yardiedesign.com
+## Conventions worth keeping
 
----
-
-Built with ❤️ for Yardie Design
+- Never invent project facts, client names, or testimonials — see the rules at
+  the top of `lib/case-studies.ts`.
+- `aggregateRating` is emitted only from live Google Places data, and only on
+  the page that displays those reviews.
+- The sitemap lists canonical 200 URLs only. No URL that relies on a redirect.

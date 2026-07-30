@@ -79,20 +79,23 @@ export default function QuotePromptModal() {
       style={{ transitionDuration: `${FADE_MS}ms` }}
     >
       <div className="pointer-events-auto bg-cream text-bark border border-border shadow-[0_28px_60px_-24px_rgba(26,24,20,0.45)] grid grid-cols-12 overflow-hidden">
-        {/* Image — narrow editorial column */}
-        <div className="hidden sm:block sm:col-span-4 relative bg-stone">
+        {/* Image — editorial column. Given ~42% of the card so a landscape
+            photo isn't cropped down to a thin vertical sliver. */}
+        <div className="hidden sm:block sm:col-span-5 relative bg-stone">
           <Image
             src={photos.heroFlagstone.src}
             alt={photos.heroFlagstone.alt}
             fill
-            sizes="240px"
+            sizes="280px"
             className="object-cover"
           />
           <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-bark/35 via-transparent to-transparent" />
         </div>
 
-        {/* Copy column */}
-        <div className="col-span-12 sm:col-span-8 p-7 sm:p-8 lg:p-9 relative">
+        {/* Copy column. min-w-0 is load-bearing: without it the grid track
+            grows to fit the CTA's intrinsic width, squeezing the image column
+            to nothing and pushing the button off-screen. */}
+        <div className="col-span-12 sm:col-span-7 min-w-0 p-7 sm:p-8 lg:p-9 relative">
           <button
             type="button"
             onClick={dismiss}
@@ -103,8 +106,6 @@ export default function QuotePromptModal() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
           </button>
-
-          <span aria-hidden className="block h-px w-8 bg-moss/60 mb-5" />
 
           <h2 className="font-display text-[26px] sm:text-[28px] lg:text-[32px] text-bark leading-[1.08] tracking-tight pr-8">
             Like what you&rsquo;re seeing?{" "}
@@ -118,10 +119,10 @@ export default function QuotePromptModal() {
           <Link
             href="/quote"
             onClick={dismiss}
-            className="mt-6 inline-flex w-full sm:w-auto items-center justify-center gap-3 px-7 py-3.5 bg-bark text-cream text-[11.5px] tracking-[0.22em] uppercase font-medium hover:bg-earth transition-colors whitespace-nowrap"
+            className="mt-6 inline-flex w-full items-center justify-center gap-2.5 px-6 py-3.5 bg-bark text-cream text-[14px] font-medium hover:bg-earth transition-colors"
           >
-            Request a Property Consultation
-            <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor" aria-hidden>
+            Request a consultation
+            <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor" aria-hidden>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
             </svg>
           </Link>

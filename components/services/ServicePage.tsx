@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import Script from "next/script";
 import { Fragment } from "react";
 import { Service, services, company } from "@/lib/content";
 import { faqSchema, serviceSchema, breadcrumbSchema } from "@/lib/seo";
 import { photos, photosByService } from "@/lib/media";
 import FAQAccordion from "@/components/ui/FAQAccordion";
+import JsonLd from "@/components/JsonLd";
 import InteractiveSpecialties from "./InteractiveSpecialties";
 
 function Arrow({ className = "h-3.5 w-3.5" }: { className?: string }) {
@@ -16,22 +16,15 @@ function Arrow({ className = "h-3.5 w-3.5" }: { className?: string }) {
   );
 }
 
-function HairlineHeader({ kicker, headline, italicTail }: { kicker: string; headline: string; italicTail?: string }) {
+function HairlineHeader({ headline, italicTail }: { headline: string; italicTail?: string }) {
   return (
-    <div>
-      <p className="font-display italic text-moss text-[18px] tracking-tight font-light mb-5 inline-flex items-baseline gap-3">
-        <span aria-hidden className="block h-px w-7 bg-moss/60 translate-y-[-3px]" />
-        {kicker}
-      </p>
-      <h2 className="font-display text-[34px] sm:text-[44px] lg:text-[60px] text-bark leading-[1.04] tracking-tight font-light max-w-[20ch]">
-        {headline}{italicTail && <> <span className="italic text-moss">{italicTail}</span></>}
-      </h2>
-    </div>
+    <h2 className="font-display text-[34px] sm:text-[44px] lg:text-[60px] text-bark leading-[1.04] tracking-tight font-light max-w-[20ch]">
+      {headline}{italicTail && <> <span className="italic text-moss">{italicTail}</span></>}
+    </h2>
   );
 }
 
 export default function ServicePage({ service }: { service: Service }) {
-  const idx = services.findIndex((s) => s.slug === service.slug);
   const complementaryServices = services.filter((s) => s.slug !== service.slug).slice(0, 3);
 
   const gallery = photosByService[service.slug] ?? [photos.heroAman];
@@ -45,36 +38,23 @@ export default function ServicePage({ service }: { service: Service }) {
 
   return (
     <>
-      <Script
+      <JsonLd
         id={`service-schema-${service.slug}`}
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(serviceSchema({
-            name: service.name,
-            description: service.intro,
-            slug: service.slug,
-          })),
-        }}
+        data={serviceSchema({
+          name: service.name,
+          description: service.intro,
+          slug: service.slug,
+        })}
       />
-      <Script
+      <JsonLd
         id={`service-breadcrumb-${service.slug}`}
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema([
-            { name: "Home", href: "/" },
-            { name: "Services", href: "/services" },
-            { name: service.name, href: `/services/${service.slug}` },
-          ])),
-        }}
+        data={breadcrumbSchema([
+          { name: "Home", href: "/" },
+          { name: "Services", href: "/services" },
+          { name: service.name, href: `/services/${service.slug}` },
+        ])}
       />
-      <Script
-        id={`service-faq-${service.slug}`}
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(service.faqs)) }}
-      />
+      <JsonLd id={`service-faq-${service.slug}`} data={faqSchema(service.faqs)} />
 
       {/* ═══════════════════════════════════════════════════════
           1 · HERO — MOBILE: stacked photo over dark text panel.
@@ -98,9 +78,6 @@ export default function ServicePage({ service }: { service: Service }) {
 
       <section className="lg:hidden bg-bark text-cream">
         <div className="px-5 sm:px-8 pt-10 sm:pt-14 pb-12 sm:pb-16">
-          <p className="font-mono text-[11px] tabular-nums text-stone/85 tracking-[0.22em] mb-6 uppercase">
-            Discipline &middot; {String(idx + 1).padStart(2, "0")} of {String(services.length).padStart(2, "0")}
-          </p>
           <h1 className="font-display text-[44px] sm:text-[60px] text-cream leading-[0.98] tracking-tight font-light max-w-[14ch]">
             {service.name}
           </h1>
@@ -113,14 +90,14 @@ export default function ServicePage({ service }: { service: Service }) {
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
             <Link
               href="/quote"
-              className="group inline-flex w-full sm:w-auto items-center justify-center gap-3 px-6 py-3.5 bg-cream text-bark text-[11.5px] tracking-[0.22em] uppercase font-medium hover:bg-stone transition-colors"
+              className="group inline-flex w-full sm:w-auto items-center justify-center gap-3 px-6 py-3.5 bg-cream text-bark text-[11.5px] font-medium hover:bg-stone transition-colors"
             >
               Request a Property Consultation
               <Arrow />
             </Link>
             <a
               href="#offer"
-              className="text-[12px] text-cream/70 hover:text-cream tracking-[0.18em] uppercase transition-colors text-center sm:text-left"
+              className="text-[12px] text-cream/70 hover:text-cream transition-colors text-center sm:text-left"
             >
               Read the work →
             </a>
@@ -146,9 +123,6 @@ export default function ServicePage({ service }: { service: Service }) {
         <div className="relative w-full mx-auto max-w-[1400px] px-12 pt-32 pb-20">
           <div className="grid grid-cols-12 gap-16 items-end">
             <div className="col-span-8">
-              <p className="font-mono text-[11px] tabular-nums text-stone/85 tracking-[0.22em] mb-7">
-                Discipline · {String(idx + 1).padStart(2, "0")} of {String(services.length).padStart(2, "0")}
-              </p>
               {/* Visually a heading; rendered as <p role="heading" aria-level={1}>
                   so the page has exactly one <h1> (the mobile hero above). */}
               <p
@@ -169,14 +143,14 @@ export default function ServicePage({ service }: { service: Service }) {
               <div className="mt-7 flex items-center gap-5 flex-wrap">
                 <Link
                   href="/quote"
-                  className="group inline-flex items-center justify-center gap-3 px-6 py-3 bg-cream text-bark text-[11.5px] tracking-[0.22em] uppercase font-medium hover:bg-stone transition-colors"
+                  className="group inline-flex items-center justify-center gap-3 px-6 py-3 bg-cream text-bark text-[11.5px] font-medium hover:bg-stone transition-colors"
                 >
                   Request a Property Consultation
                   <Arrow />
                 </Link>
                 <a
                   href="#offer"
-                  className="text-[12px] text-cream/70 hover:text-cream tracking-[0.18em] uppercase transition-colors"
+                  className="text-[12px] text-cream/70 hover:text-cream transition-colors"
                 >
                   Read the work →
                 </a>
@@ -202,7 +176,7 @@ export default function ServicePage({ service }: { service: Service }) {
                 <p className="font-display text-[22px] lg:text-[28px] text-cream font-light tracking-tight leading-none">
                   {s.figure}
                 </p>
-                <p className="mt-2 text-[11.5px] text-cream/55 tracking-[0.12em] uppercase leading-snug">
+                <p className="mt-2 text-[11.5px] text-cream/55 leading-snug">
                   {s.label}
                 </p>
               </li>
@@ -219,17 +193,18 @@ export default function ServicePage({ service }: { service: Service }) {
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
             <div className="lg:col-span-5 lg:sticky lg:top-28">
               <HairlineHeader
-                kicker="Approach"
                 headline="How we draw"
                 italicTail={`and build ${service.shortName.toLowerCase()}.`}
               />
               <Link
                 href="/quote"
-                className="mt-9 group inline-flex items-center justify-center gap-3 text-[11.5px] tracking-[0.22em] uppercase font-medium text-bark hover:text-moss transition-colors"
+                className="mt-9 group inline-block text-[13px] font-medium text-bark transition-colors hover:text-moss"
               >
-                <span aria-hidden className="block h-px w-6 bg-bark group-hover:w-12 group-hover:bg-moss transition-all duration-500 ease-out" />
-                Request a Property Consultation
-                <Arrow />
+                <span className="relative pb-1">
+                  Request a Property Consultation
+                  <span aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-current opacity-20" />
+                  <span aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-moss origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]" />
+                </span>
               </Link>
             </div>
             <div className="lg:col-span-7">
@@ -271,7 +246,7 @@ export default function ServicePage({ service }: { service: Service }) {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-bark/30 via-transparent to-transparent pointer-events-none" />
           <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10 lg:p-14">
-            <p className="font-mono text-[10.5px] tabular-nums text-cream/80 tracking-[0.22em] uppercase">
+            <p className="font-mono text-[10.5px] tabular-nums text-cream/80">
               Field photograph &middot; {service.shortName}
             </p>
           </div>
@@ -285,7 +260,6 @@ export default function ServicePage({ service }: { service: Service }) {
         <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
           <div className="max-w-2xl mb-12 sm:mb-16 lg:mb-20">
             <HairlineHeader
-              kicker="What we offer"
               headline="The work, in"
               italicTail={`its parts.`}
             />
@@ -307,17 +281,18 @@ export default function ServicePage({ service }: { service: Service }) {
         <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 sm:mb-14 lg:mb-16">
             <HairlineHeader
-              kicker="In the field"
               headline="Photographs from"
               italicTail="recent work."
             />
             <Link
               href="/gallery"
-              className="group inline-flex items-center justify-center gap-3 text-[11.5px] tracking-[0.22em] uppercase font-medium text-bark hover:text-moss transition-colors"
+              className="group inline-block text-[13px] font-medium text-bark transition-colors hover:text-moss"
             >
-              <span aria-hidden className="block h-px w-6 bg-bark group-hover:w-10 group-hover:bg-moss transition-all duration-500 ease-out" />
-              Full Gallery
-              <Arrow />
+              <span className="relative pb-1">
+                Full Gallery
+                <span aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-current opacity-20" />
+                <span aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-moss origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]" />
+              </span>
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 lg:gap-4">
@@ -351,7 +326,6 @@ export default function ServicePage({ service }: { service: Service }) {
           <div className="grid lg:grid-cols-12 gap-10 mb-12 sm:mb-16 items-end">
             <div className="lg:col-span-7">
               <HairlineHeader
-                kicker="Why Yardie"
                 headline="Three reasons"
                 italicTail={`for ${service.name.toLowerCase()}.`}
               />
@@ -398,7 +372,6 @@ export default function ServicePage({ service }: { service: Service }) {
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-20 items-start">
             <div className="lg:col-span-5 lg:sticky lg:top-28">
               <HairlineHeader
-                kicker="FAQ"
                 headline="Common"
                 italicTail="questions."
               />
@@ -421,17 +394,18 @@ export default function ServicePage({ service }: { service: Service }) {
         <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 sm:mb-14 lg:mb-16">
             <HairlineHeader
-              kicker="Goes well with"
               headline="Disciplines we often"
               italicTail="draw together."
             />
             <Link
               href="/services"
-              className="group inline-flex items-center justify-center gap-3 text-[11.5px] tracking-[0.22em] uppercase font-medium text-bark hover:text-moss transition-colors"
+              className="group inline-block text-[13px] font-medium text-bark transition-colors hover:text-moss"
             >
-              <span aria-hidden className="block h-px w-6 bg-bark group-hover:w-10 group-hover:bg-moss transition-all duration-500 ease-out" />
-              All Disciplines
-              <Arrow />
+              <span className="relative pb-1">
+                All Disciplines
+                <span aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-current opacity-20" />
+                <span aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-moss origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]" />
+              </span>
             </Link>
           </div>
           <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
@@ -489,14 +463,14 @@ export default function ServicePage({ service }: { service: Service }) {
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/quote"
-              className="group inline-flex items-center justify-center gap-3 px-9 py-4 bg-cream text-bark text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-stone transition-colors"
+              className="group inline-flex items-center justify-center gap-3 px-9 py-4 bg-cream text-bark text-[12px] font-medium hover:bg-stone transition-colors"
             >
               Request a Property Consultation
               <Arrow />
             </Link>
             <Link
               href="/gallery"
-              className="inline-flex items-center justify-center px-9 py-4 border border-cream/35 text-cream text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-cream/10 hover:border-cream/60 transition-colors"
+              className="inline-flex items-center justify-center px-9 py-4 border border-cream/35 text-cream text-[12px] font-medium hover:bg-cream/10 hover:border-cream/60 transition-colors"
             >
               View Our Work
             </Link>

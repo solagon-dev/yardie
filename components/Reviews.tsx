@@ -107,10 +107,6 @@ export default function Reviews({
         {/* ── Header — headline left, rating block right ── */}
         <div className="grid lg:grid-cols-12 gap-10 mb-14 lg:mb-20 items-end">
           <div className="lg:col-span-7">
-            <p className="font-display italic text-moss text-[18px] tracking-tight font-light mb-5 inline-flex items-baseline gap-3">
-              <span aria-hidden className="block h-px w-7 bg-moss/60 translate-y-[-3px]" />
-              Client stories
-            </p>
             <h2 className="font-display text-[36px] sm:text-[44px] lg:text-[64px] text-bark leading-[1.04] tracking-tight font-light max-w-[20ch]">
               What clients say{" "}
               <span className="italic text-moss">about the work.</span>
@@ -150,7 +146,7 @@ export default function Reviews({
                   {featured.name}
                 </p>
                 {featured.attribution && (
-                  <span className="font-mono text-[10.5px] tabular-nums text-cream/60 tracking-[0.22em] uppercase">
+                  <span className="font-mono text-[10.5px] tabular-nums text-cream/60">
                     {featured.attribution}
                   </span>
                 )}
@@ -182,7 +178,7 @@ export default function Reviews({
                     {it.name}
                   </p>
                   {it.attribution && (
-                    <p className="mt-1.5 font-mono text-[10.5px] tabular-nums text-clay tracking-[0.18em] uppercase">
+                    <p className="mt-1.5 font-mono text-[10.5px] tabular-nums text-clay">
                       {it.attribution}
                     </p>
                   )}
@@ -198,13 +194,13 @@ export default function Reviews({
             href={googleSearchUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center justify-center gap-3 text-[11.5px] tracking-[0.22em] uppercase font-medium text-bark hover:text-moss transition-colors"
+            className="group inline-block text-[13px] font-medium text-bark transition-colors hover:text-moss"
           >
-            <span aria-hidden className="block h-px w-6 bg-bark group-hover:w-10 group-hover:bg-moss transition-all duration-500 ease-out" />
-            Read more on Google
-            <svg className="h-3 w-3 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-            </svg>
+            <span className="relative pb-1">
+              Read more on Google
+              <span aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-current opacity-20" />
+              <span aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-moss origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]" />
+            </span>
           </a>
         </div>
       </div>

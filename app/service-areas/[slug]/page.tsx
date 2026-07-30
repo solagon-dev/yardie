@@ -5,9 +5,12 @@ import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import { TextLink } from "@/components/ui/Button";
+import JsonLd from "@/components/JsonLd";
 import { serviceAreas, services, workGallery, company } from "@/lib/content";
 import { photos, cityPhotos } from "@/lib/media";
-import { buildMetadata } from "@/lib/seo";
+import { areaServedSchema, breadcrumbSchema, buildMetadata } from "@/lib/seo";
+
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return serviceAreas.map((a) => ({ slug: a.slug }));
@@ -21,14 +24,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   // Uses brand + city + 3 disciplines + county for keyword density without
   // overstuffing.
   return buildMetadata({
-    title: `Exterior Design in ${area.name}, NC — Yardie`,
-    description: `Yardie designs landscapes, hardscapes, masonry, lighting, and irrigation for homes in ${area.name}, NC and the surrounding ${area.county} County area.`,
+    title: `Landscaping & Landscape Design in ${area.name}, NC | Yardie`,
+    description: `Landscaping and landscape design in ${area.name}, NC. Yardie designs and builds landscapes, patios, masonry, lighting, and irrigation for homes across ${area.name} and ${area.county} County.`,
     path: `/service-areas/${area.slug}`,
     keywords: [
+      `landscaping ${area.name} NC`,
       `landscape design ${area.name} NC`,
-      `hardscape ${area.name} NC`,
-      `outdoor lighting ${area.name} NC`,
-      `masonry ${area.name} NC`,
+      `landscapers ${area.name} NC`,
+      `hardscaping ${area.name} NC`,
     ],
   });
 }
@@ -58,10 +61,19 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
 
   return (
     <>
+      <JsonLd id={`area-${area.slug}`} data={areaServedSchema(area)} />
+      <JsonLd
+        id={`area-breadcrumb-${area.slug}`}
+        data={breadcrumbSchema([
+          { name: "Home", href: "/" },
+          { name: "Service Areas", href: "/service-areas" },
+          { name: area.name, href: `/service-areas/${area.slug}` },
+        ])}
+      />
+
       <PageHero
-        label={`${area.county} County, NC`}
-        headline={area.name}
-        italicTail="— exterior design that suits the place."
+        headline="Landscaping & landscape design in"
+        italicTail={`${area.name}.`}
         intro={area.description}
         image={heroImage}
       />
@@ -72,20 +84,23 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-20">
             <div className="lg:col-span-5">
               <h2 className="font-display text-[30px] sm:text-4xl lg:text-[52px] leading-[1.06] tracking-tight font-light max-w-[16ch]">
-                What it&rsquo;s like to{" "}
-                <span className="italic text-moss">work in {area.name}.</span>
+                Landscaping in{" "}
+                <span className="italic text-moss">{area.name}.</span>
               </h2>
             </div>
             <div className="lg:col-span-7 space-y-5 text-[15.5px] sm:text-[16.5px] leading-relaxed text-earth">
+              {area.localContext && <p>{area.localContext}</p>}
               <p>
-                {area.description}
+                Whatever the project — a planting refresh, a paver patio, a masonry-led front facade, or a full outdoor-living build — we draw the plan specific to {area.name} and build it with our own crews.
               </p>
-              {area.notes && <p>{area.notes}</p>}
+              {area.neighborhoods && (
+                <p className="text-[14px] text-clay">
+                  <span className="text-earth font-medium">Areas we work in {area.name}:</span> {area.neighborhoods}
+                </p>
+              )}
+              {area.notes && <p className="text-[14px] text-clay">{area.notes}</p>}
               <p>
-                Whether the project is a planting refresh, a complete rear-garden redesign, a masonry-led front facade, or a multi-phase outdoor build, we draw plans specific to {area.name} — its soil, its trees, its character.
-              </p>
-              <p>
-                The conversation starts with a property visit. The first one is always at no cost.
+                The conversation starts with a property visit, and the first one is always at no cost.
               </p>
             </div>
           </div>
@@ -167,7 +182,7 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
             Schedule a property visit. {company.phone}.
           </p>
           <div className="mt-8 sm:mt-10">
-            <Link href="/quote" className="inline-flex w-full sm:w-auto items-center justify-center px-9 py-4 bg-cream text-bark text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-stone transition-colors">
+            <Link href="/quote" className="inline-flex w-full sm:w-auto items-center justify-center px-9 py-4 bg-cream text-bark text-[12px] font-medium hover:bg-stone transition-colors">
               Request a Property Consultation
             </Link>
           </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { company } from "@/lib/content";
 import { buildMetadata } from "@/lib/seo";
+import CookiePreferences from "@/components/CookiePreferences";
 
 export const metadata: Metadata = buildMetadata({
   title: "Privacy Policy — Yardie",
@@ -35,7 +36,7 @@ export default function PrivacyPolicyPage() {
             We collect information you give us directly — for example, when you submit a contact or consultation form. This may include your name, email address, phone number, mailing address, and any details you share about your project.
           </p>
           <p>
-            We also collect a small amount of information automatically as you use the site: pages visited, referring URL, approximate location based on IP, and browser/device type. We use a privacy-respecting analytics tool (Ahrefs Web Analytics) that does not set cookies or track individuals across sites.
+            We also collect a small amount of information automatically as you use the site: pages visited, referring URL, approximate location based on IP, and browser/device type. This comes from two analytics tools — Ahrefs Web Analytics, which is cookieless, and Google Analytics 4, which sets a first-party cookie so returning visits can be recognised. Neither is used for advertising.
           </p>
 
           <h2>How we use your information</h2>
@@ -57,7 +58,14 @@ export default function PrivacyPolicyPage() {
 
           <h2>Cookies & analytics</h2>
           <p>
-            We do not use advertising cookies. Our analytics provider (Ahrefs Web Analytics) is configured to operate without cookies and without collecting personally identifying information.
+            We use no advertising cookies and no cross-site tracking, and we do not sell or share data with advertising networks. Google Analytics 4 runs with advertising features and ad personalisation switched off, and sets a first-party cookie (<code>_ga</code>) to tell a returning visit from a new one. Ahrefs Web Analytics sets no cookies at all.
+          </p>
+          <p>
+            Declining on the cookie banner stops both tools loading, switches Google Analytics off for the current page, and deletes any analytics cookie already set. Nothing else about the site changes. You can revisit that choice at any time:
+          </p>
+          <CookiePreferences />
+          <p>
+            Your browser&rsquo;s own controls for blocking or clearing cookies work independently of this setting and are always available to you.
           </p>
 
           <h2>Data retention</h2>

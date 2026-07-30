@@ -2,28 +2,27 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-
-const STORAGE_KEY = "yardie-cookie-consent";
+import { readConsent, writeConsent } from "@/lib/consent";
 
 export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    try {
-      if (!localStorage.getItem(STORAGE_KEY)) {
-        // Delay so it doesn't compete with the hero on first paint
-        const t = setTimeout(() => setVisible(true), 1200);
-        return () => clearTimeout(t);
-      }
-    } catch { /* private mode / SSR safety */ }
+    if (readConsent() === "unset") {
+      // Delay so it doesn't compete with the hero on first paint
+      const t = setTimeout(() => setVisible(true), 1200);
+      return () => clearTimeout(t);
+    }
   }, []);
 
+  // `writeConsent` notifies <Analytics>, which loads or drops the tags
+  // immediately — no reload needed for the choice to take effect.
   const accept = () => {
-    try { localStorage.setItem(STORAGE_KEY, "accepted"); } catch {}
+    writeConsent("accepted");
     setVisible(false);
   };
   const decline = () => {
-    try { localStorage.setItem(STORAGE_KEY, "declined"); } catch {}
+    writeConsent("declined");
     setVisible(false);
   };
 
@@ -37,20 +36,20 @@ export default function CookieConsent() {
     >
       <div className="p-5 sm:p-6">
         <p className="text-[13.5px] leading-relaxed text-earth">
-          We use a small number of cookies to understand how visitors find this site and to improve it over time. You can decline without affecting site function.
+          We use a small number of cookies to understand how visitors find this site and to improve it over time. Decline and we won&rsquo;t load them at all — nothing else about the site changes.
         </p>
         <div className="mt-4 flex flex-wrap items-center gap-3">
           <button
             type="button"
             onClick={accept}
-            className="inline-flex items-center justify-center px-5 py-2.5 text-[11px] tracking-[0.2em] uppercase font-medium bg-bark text-cream hover:bg-earth transition-colors"
+            className="inline-flex items-center justify-center px-5 py-2.5 text-[11px] font-medium bg-bark text-cream hover:bg-earth transition-colors"
           >
             Accept
           </button>
           <button
             type="button"
             onClick={decline}
-            className="inline-flex items-center justify-center px-5 py-2.5 text-[11px] tracking-[0.2em] uppercase font-medium border border-bark/30 text-bark hover:bg-stone transition-colors"
+            className="inline-flex items-center justify-center px-5 py-2.5 text-[11px] font-medium border border-bark/30 text-bark hover:bg-stone transition-colors"
           >
             Decline
           </button>

@@ -98,7 +98,7 @@ export default function BeforeAfterSlider({
         {position > 15 && (
           <div className="absolute bottom-6 left-6">
             <span
-              className="bg-bark/90 text-cream text-[9px] tracking-[0.2em] uppercase font-[500] px-4 py-2"
+              className="bg-bark/90 text-cream text-[9px] font-[500] px-4 py-2"
               style={{ borderRadius: '2px', backdropFilter: 'blur(4px)' }}
             >
               {beforeLabel}
@@ -111,7 +111,7 @@ export default function BeforeAfterSlider({
       {position < 85 && (
         <div className="absolute bottom-6 right-6">
           <span
-            className="bg-bark/90 text-cream text-[9px] tracking-[0.2em] uppercase font-[500] px-4 py-2"
+            className="bg-bark/90 text-cream text-[9px] font-[500] px-4 py-2"
             style={{ borderRadius: '2px', backdropFilter: 'blur(4px)' }}
           >
             {afterLabel}
@@ -163,7 +163,7 @@ export default function BeforeAfterSlider({
           style={{ marginTop: '48px' }}
         >
           <p
-            className="text-cream text-[10px] tracking-[0.18em] uppercase font-[500] text-center"
+            className="text-cream text-[10px] font-[500] text-center"
             style={{
               textShadow: '0 1px 4px rgba(0,0,0,0.6)',
               opacity: 0.75,

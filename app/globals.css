@@ -72,14 +72,14 @@ body {
   font-style: italic;
 }
 
-/* Section labels — small, tracked, uppercase */
+/* Small meta labels — sentence case, gently spaced. (Formerly uppercase
+   with 0.22em tracking; that treatment read as generic AI-template styling.) */
 .label,
 .footer-label {
   font-family: var(--font-sans), system-ui, sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
 }
 
 /* Decorative section number — large, faint Cormorant numerals */

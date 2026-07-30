@@ -1,8 +1,25 @@
 import { NextResponse } from "next/server";
 import { getResend, FROM, NOTIFY_TO as TO } from "@/lib/resend";
+import { clientIp, rateLimit } from "@/lib/rate-limit";
 
 const RECAPTCHA_SECRET = process.env.RECAPTCHA_SECRET_KEY;
 const RECAPTCHA_MIN_SCORE = Number(process.env.RECAPTCHA_MIN_SCORE ?? "0.5");
+
+// Five submissions per IP per ten minutes. A real enquiry needs one; the
+// ceiling only exists so a stuck client or a spam script can't drain the
+// Resend quota and bury genuine leads in the team's inbox.
+const RATE_LIMIT = 5;
+const RATE_WINDOW_MS = 10 * 60 * 1000;
+
+// Longest values we'll accept per field. Anything past this is a bot pasting
+// a payload, not a homeowner describing a patio — and the notification email
+// stays readable.
+const MAX_FIELD_LENGTH = 5_000;
+
+/** Bot trap. The form renders a visually hidden input no human ever fills;
+ *  anything arriving with content here is discarded. Returns 200 so the bot
+ *  can't distinguish a rejection from a delivery and retune. */
+const HONEYPOT_FIELD = "company";
 
 /** Verify a reCAPTCHA v3 token. Returns true when verification passes
  *  OR when no secret is configured (so local dev still works without it). */
@@ -77,6 +94,14 @@ export async function POST(req: Request) {
     );
   }
 
+  const limit = rateLimit(`contact:${clientIp(req)}`, RATE_LIMIT, RATE_WINDOW_MS);
+  if (!limit.ok) {
+    return NextResponse.json(
+      { success: false, message: "Too many submissions. Please wait a few minutes, or call us." },
+      { status: 429, headers: { "Retry-After": String(limit.retryAfter) } }
+    );
+  }
+
   let body: { formType?: FormType; data?: Payload; recaptchaToken?: string };
   try {
     body = await req.json();
@@ -89,6 +114,13 @@ export async function POST(req: Request) {
 
   if (formType !== "contact" && formType !== "consultation") {
     return NextResponse.json({ success: false, message: "Invalid form type." }, { status: 400 });
+  }
+
+  // Honeypot — silently accept and drop. reCAPTCHA soft-passes whenever
+  // RECAPTCHA_SECRET_KEY is unset, so without this the endpoint has no bot
+  // defence at all in that configuration.
+  if ((data[HONEYPOT_FIELD] ?? "").toString().trim().length > 0) {
+    return NextResponse.json({ success: true, message: "Sent." });
   }
 
   // reCAPTCHA — invisible bot defence; soft-passes when not configured.
@@ -123,16 +155,25 @@ export async function POST(req: Request) {
     },
   };
 
+  // Only the fields we have labels for are ever read, so an attacker can't
+  // inject extra rows into the notification email by adding keys.
   const fieldLabels = labels[formType];
   const rows = Object.entries(fieldLabels)
-    .map(([key, label]) => ({ label, value: (data[key] ?? "").toString().trim() }))
+    .map(([key, label]) => ({
+      label,
+      value: (data[key] ?? "").toString().trim().slice(0, MAX_FIELD_LENGTH),
+    }))
     .filter((r) => r.value.length > 0);
 
   if (rows.length === 0) {
     return NextResponse.json({ success: false, message: "Form submission was empty." }, { status: 400 });
   }
 
-  const replyEmail = (data.email ?? "").toString().trim();
+  // Only set Reply-To when the address is plausibly real — Resend rejects the
+  // whole send on a malformed one, which would turn a typo'd email field into
+  // a lost lead rather than a lead we simply can't reply to in one click.
+  const submittedEmail = (data.email ?? "").toString().trim();
+  const replyEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(submittedEmail) ? submittedEmail : "";
 
   const subject =
     formType === "consultation"

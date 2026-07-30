@@ -5,7 +5,6 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { navigation, company, services } from "@/lib/content";
-import { photosByService, photos as allPhotos } from "@/lib/media";
 
 // Twelve services Yardie leads with — grouped into three thematic
 // columns for the mega-menu, mirroring the Bluefin dropdown pattern
@@ -32,33 +31,27 @@ const dropdownGroups: { title: string; slugs: string[] }[] = [
   },
 ];
 
-// Short, single-clause teaser per service. Sits under each name in
-// the dropdown — keeps the mega-menu scannable.
-const serviceTeasers: Record<string, string> = {
-  "outdoor-kitchens":  "Built-in grills, bars + masonry kitchens.",
-  "fire-features":     "Fireplaces, fire pits + pizza ovens.",
-  "pergolas-pavilions": "Cedar, aluminum + screened-porch builds.",
-  "pool-decks":        "Paver, travertine + bluestone surrounds.",
-  "patios-pavers":     "Stone, brick + paver outdoor rooms.",
-  "walkways-driveways": "Front walks, garden paths + paver drives.",
-  "masonry":           "Hand-laid stone, brick + veneer.",
-  "retaining-walls":   "Engineered grade-change in stone + block.",
-  "landscapes":        "Master plans, planting + seasonal upkeep.",
-  "lighting":          "Layered low-voltage, warmer light.",
-  "irrigation":        "Smart-controller systems, drip + zone design.",
-  "water-features":    "Spillways, fountains + pondless waterfalls.",
-};
-
 // Routes whose hero is light — would need a different header treatment.
 // Yardie's pages all open on dark editorial heroes, so this stays empty.
 const SOLID_HEADER_ROUTES = new Set<string>([]);
 
 export default function Header() {
   const pathname = usePathname();
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Both menus store the route they were opened on rather than a boolean, so
+  // "open" is derived: navigating changes `pathname`, which closes them for
+  // free. This replaces a `useEffect(() => setMobileOpen(false), [pathname])`
+  // that fired a second render pass on every navigation.
+  const [mobileOpenAt, setMobileOpenAt] = useState<string | null>(null);
+  const [servicesOpenAt, setServicesOpenAt] = useState<string | null>(null);
+  const mobileOpen = mobileOpenAt === pathname;
+  const servicesOpen = servicesOpenAt === pathname;
+
+  const closeMobile = () => setMobileOpenAt(null);
+  const toggleMobile = () =>
+    setMobileOpenAt((openAt) => (openAt === pathname ? null : pathname));
 
   // Trigger the scrolled-state nav once the user is past the hero.
   useEffect(() => {
@@ -98,22 +91,16 @@ export default function Header() {
     };
   }, [mobileOpen]);
 
-  // Close mobile menu on route change.
-  useEffect(() => {
-    setMobileOpen(false);
-    setServicesOpen(false);
-  }, [pathname]);
-
   const hasDarkHero = !SOLID_HEADER_ROUTES.has(pathname);
   const transparent = hasDarkHero && !scrolled;
 
   const openServices = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    setServicesOpen(true);
+    setServicesOpenAt(pathname);
   };
   const queueCloseServices = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setServicesOpen(false), 350);
+    closeTimer.current = setTimeout(() => setServicesOpenAt(null), 350);
   };
 
   return (
@@ -183,7 +170,7 @@ export default function Header() {
                         onBlur={queueCloseServices}
                         aria-haspopup="true"
                         aria-expanded={servicesOpen}
-                        className="flex items-center gap-1.5 text-[11px] tracking-[0.22em] uppercase text-cream/75 hover:text-cream transition-colors duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                        className="flex items-center gap-1.5 text-[14px] text-cream/80 hover:text-cream transition-colors duration-500"
                       >
                         {item.label}
                         <svg
@@ -206,8 +193,8 @@ export default function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`text-[11px] tracking-[0.22em] uppercase transition-colors duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                      active ? "text-cream" : "text-cream/75 hover:text-cream"
+                    className={`text-[14px] transition-colors duration-500 ${
+                      active ? "text-cream" : "text-cream/80 hover:text-cream"
                     }`}
                   >
                     {item.label}
@@ -220,7 +207,7 @@ export default function Header() {
             <div className="hidden lg:flex items-center">
               <Link
                 href={navigation.cta.href}
-                className="inline-flex items-center justify-center px-4 py-2 text-[10.5px] tracking-[0.22em] uppercase font-medium border border-cream/80 text-cream hover:bg-cream hover:text-bark transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                className="inline-flex items-center justify-center px-5 py-2.5 text-[13px] font-medium border border-cream/70 text-cream hover:bg-cream hover:text-bark transition-colors duration-300"
               >
                 {navigation.cta.label}
               </Link>
@@ -230,7 +217,7 @@ export default function Header() {
             <button
               type="button"
               className={`lg:hidden p-2 -mr-2 transition-colors ${mobileOpen ? "text-bark" : "text-cream"}`}
-              onClick={() => setMobileOpen((v) => !v)}
+              onClick={toggleMobile}
               aria-expanded={mobileOpen}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-controls="mobile-menu"
@@ -244,25 +231,28 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Services mega-menu — three thematic columns + featured panel */}
+        {/* Services mega-menu — four compact typographic columns. The old
+            version paired the four service columns with a tall aspect-[4/5]
+            image panel that wrapped onto a second row, so the menu filled the
+            viewport. This is one calm row of names on a warm ground. */}
         <div
           onMouseEnter={openServices}
           onMouseLeave={queueCloseServices}
           aria-hidden={!servicesOpen}
-          className={`hidden lg:block absolute inset-x-0 top-full bg-white backdrop-blur-2xl border-b border-border origin-top transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          className={`hidden lg:block absolute inset-x-0 top-full bg-cream border-b border-border shadow-[0_28px_56px_-30px_rgba(26,24,20,0.4)] origin-top transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
             servicesOpen
               ? "opacity-100 translate-y-0 pointer-events-auto"
               : "opacity-0 -translate-y-2 pointer-events-none"
           }`}
         >
-          <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12 py-10 lg:py-12">
-            <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+          <div className="mx-auto max-w-[1400px] px-8 lg:px-12 py-10">
+            <div className="grid grid-cols-4 gap-x-10">
               {dropdownGroups.map((group) => (
-                <div key={group.title} className="lg:col-span-3 border-t border-border pt-5">
-                  <p className="font-mono text-[10.5px] tabular-nums text-clay tracking-[0.22em] uppercase mb-5">
+                <div key={group.title}>
+                  <p className="text-[12.5px] text-clay mb-5 leading-snug">
                     {group.title}
                   </p>
-                  <ul className="space-y-1">
+                  <ul className="space-y-3">
                     {group.slugs
                       .map((slug) => services.find((s) => s.slug === slug))
                       .filter((s): s is NonNullable<typeof s> => Boolean(s))
@@ -270,56 +260,32 @@ export default function Header() {
                         <li key={s.slug}>
                           <Link
                             href={`/services/${s.slug}`}
-                            className="group block py-2.5"
+                            className="group inline-flex items-center gap-2"
                           >
-                            <p className="font-display text-[18px] text-bark group-hover:text-moss transition-colors leading-snug tracking-tight font-light">
+                            <span className="font-display text-[19px] text-bark group-hover:text-moss transition-colors leading-snug tracking-tight font-light">
                               {s.name}
-                            </p>
-                            <p className="text-[12.5px] text-clay leading-relaxed mt-0.5">
-                              {serviceTeasers[s.slug] ?? s.tagline}
-                            </p>
+                            </span>
                           </Link>
                         </li>
                       ))}
                   </ul>
                 </div>
               ))}
+            </div>
 
-              {/* Featured panel — small image + call to action */}
-              <div className="lg:col-span-3 border-t border-border pt-5">
-                <p className="font-mono text-[10.5px] tabular-nums text-clay tracking-[0.22em] uppercase mb-5">
-                  Now Designing
-                </p>
-                <Link href="/services/outdoor-kitchens" className="group block">
-                  <div className="relative aspect-[4/5] overflow-hidden bg-stone">
-                    <Image
-                      src="/projects/outdoor-kitchens/outdoor-kitchen-grill-stone-base-01.jpg"
-                      alt="Built-in stainless grill, wine fridge, and stone-clad cabinetry under a covered patio."
-                      fill
-                      sizes="280px"
-                      className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
-                    />
-                    <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-bark/90 via-bark/30 to-transparent">
-                      <p className="font-display italic text-stone/90 text-[13px] tracking-tight font-light leading-tight">
-                        Recent work
-                      </p>
-                      <p className="mt-1 font-display text-[18px] text-cream leading-tight tracking-tight">
-                        Outdoor kitchens, built-in.
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-                <Link
-                  href="/services"
-                  className="group mt-5 inline-flex items-center gap-3 text-[11px] tracking-[0.22em] uppercase font-medium text-bark hover:text-moss transition-colors"
-                >
-                  <span aria-hidden className="block h-px w-6 bg-bark group-hover:w-10 group-hover:bg-moss transition-all duration-500 ease-out" />
-                  All Services
-                  <svg className="h-3 w-3 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                  </svg>
-                </Link>
-              </div>
+            <div className="mt-9 pt-6 border-t border-border flex items-center justify-between gap-6">
+              <p className="text-[13.5px] text-clay">
+                Most projects bring several of these together.
+              </p>
+              <Link
+                href="/services"
+                className="group inline-flex items-center gap-2 text-[14px] font-medium text-bark hover:text-moss transition-colors"
+              >
+                View all services
+                <svg className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+              </Link>
             </div>
           </div>
         </div>
@@ -335,12 +301,12 @@ export default function Header() {
       >
         <div className="h-full flex flex-col overflow-y-auto">
           <div className="flex items-center justify-between px-5 sm:px-8 h-14 border-b border-cream/10 shrink-0">
-            <Link href="/" onClick={() => setMobileOpen(false)} className="relative h-5" aria-label={company.name}>
+            <Link href="/" onClick={closeMobile} className="relative h-5" aria-label={company.name}>
               <Image src="/brand/logo-full-white.svg" alt={company.name} width={400} height={75} className="h-full w-auto object-contain" />
             </Link>
             <button
               type="button"
-              onClick={() => setMobileOpen(false)}
+              onClick={closeMobile}
               aria-label="Close menu"
               className="inline-flex items-center justify-center h-10 w-10 -mr-2 text-cream"
             >
@@ -351,14 +317,14 @@ export default function Header() {
           </div>
 
           <nav className="flex-1 flex flex-col px-5 sm:px-8 pt-7">
-            <MobileNav onNavigate={() => setMobileOpen(false)} />
+            <MobileNav onNavigate={closeMobile} />
           </nav>
 
           <div className="border-t border-cream/10 px-5 sm:px-8 py-7 pb-[calc(env(safe-area-inset-bottom)+1.75rem)] space-y-6">
             <Link
               href={navigation.cta.href}
-              onClick={() => setMobileOpen(false)}
-              className="group flex items-center justify-center gap-2.5 py-4 text-[12px] tracking-[0.22em] uppercase font-medium bg-cream text-bark hover:bg-stone transition-colors"
+              onClick={closeMobile}
+              className="group flex items-center justify-center gap-2.5 py-4 text-[14px] font-medium bg-cream text-bark hover:bg-stone transition-colors"
             >
               {navigation.cta.label}
               <svg className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor">
@@ -450,9 +416,9 @@ function MobileNav({ onNavigate }: { onNavigate: () => void }) {
                     <Link
                       href="/services"
                       onClick={onNavigate}
-                      className="inline-flex items-center justify-center gap-2 text-[11px] tracking-[0.22em] uppercase text-stone hover:text-cream transition-colors"
+                      className="inline-flex items-center gap-2 text-[14px] text-stone hover:text-cream transition-colors"
                     >
-                      Explore All Services
+                      Explore all services
                       <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                       </svg>

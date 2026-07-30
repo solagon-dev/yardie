@@ -43,7 +43,7 @@ export async function generateMetadata({
 /** Small caps label used to open each section. */
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="font-mono text-[11px] tabular-nums text-clay tracking-[0.22em] uppercase mb-5">
+    <p className="font-mono text-[11px] tabular-nums text-clay mb-5">
       {children}
     </p>
   );
@@ -145,7 +145,7 @@ export default async function CaseStudyPage({
       {/* 1 · HERO + CONCISE FACTS */}
       <section className="relative -mt-14 lg:-mt-[68px] bg-bark text-cream pt-32 lg:pt-44 pb-14 lg:pb-20">
         <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
-          <p className="font-mono text-[11px] tracking-[0.22em] uppercase text-cream/60 mb-6">
+          <p className="font-mono text-[11px] text-cream/60 mb-6">
             {study.safeClientLabel} &middot; {study.city}, {study.region}
           </p>
           <h1 className="font-display text-4xl sm:text-5xl lg:text-[72px] leading-[1.04] tracking-tight font-light max-w-[20ch]">
@@ -158,7 +158,7 @@ export default async function CaseStudyPage({
           <dl className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-6 border-t border-cream/15 pt-8 max-w-4xl">
             {facts.map((f) => (
               <div key={f.label}>
-                <dt className="font-mono text-[10.5px] tracking-[0.22em] uppercase text-cream/70">
+                <dt className="font-mono text-[10.5px] text-cream/70">
                   {f.label}
                 </dt>
                 <dd className="mt-2 text-[15px] text-cream">{f.value}</dd>

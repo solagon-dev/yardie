@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 import PageHero from "@/components/ui/PageHero";
 import FAQAccordion from "@/components/ui/FAQAccordion";
+import JsonLd from "@/components/JsonLd";
 import { faqsByCategory, company } from "@/lib/content";
 import { photos } from "@/lib/media";
-import { buildMetadata, faqSchema } from "@/lib/seo";
+import { buildMetadata, faqSchema, breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Landscape & Hardscape FAQ | Yardie — Greenville, NC",
@@ -26,15 +26,16 @@ export default function FAQPage() {
 
   return (
     <>
-      <Script
-        id="faq-schema"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(allFaqs)) }}
+      <JsonLd id="faq-schema" data={faqSchema(allFaqs)} />
+      <JsonLd
+        id="faq-breadcrumb"
+        data={breadcrumbSchema([
+          { name: "Home", href: "/" },
+          { name: "FAQ", href: "/faq" },
+        ])}
       />
 
       <PageHero
-        label="Frequently Asked"
         headline="The questions we&rsquo;re asked"
         italicTail="most often."
         intro={`Plain answers to the questions that come up before, during, and after a project. If yours isn't here, write to us at ${company.email}.`}
@@ -63,10 +64,10 @@ export default function FAQPage() {
             <span className="italic text-moss"> not answered here?</span>
           </h2>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <Link href="/contact" className="inline-flex items-center justify-center px-9 py-4 bg-bark text-cream text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-earth transition-colors">
+            <Link href="/contact" className="inline-flex items-center justify-center px-9 py-4 bg-bark text-cream text-[12px] font-medium hover:bg-earth transition-colors">
               Send us a Message
             </Link>
-            <a href={company.phoneTel} className="inline-flex items-center justify-center px-9 py-4 border border-bark text-bark text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-bark hover:text-cream transition-colors">
+            <a href={company.phoneTel} className="inline-flex items-center justify-center px-9 py-4 border border-bark text-bark text-[12px] font-medium hover:bg-bark hover:text-cream transition-colors">
               Call {company.phone}
             </a>
           </div>

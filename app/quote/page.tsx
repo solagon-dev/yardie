@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { company } from "@/lib/content";
-import { buildMetadata } from "@/lib/seo";
+import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 import { photos } from "@/lib/media";
 import ConsultationForm from "@/components/ConsultationForm";
 import FAQAccordion from "@/components/ui/FAQAccordion";
@@ -25,7 +26,7 @@ const timeline = [
     step: "01",
     when: "Today",
     title: "You send the brief.",
-    body: "Four short steps — about you, the project, timeline, vision. Two minutes, tops.",
+    body: "Four short steps: about you, the project, timeline, and vision. Two minutes, tops.",
   },
   {
     step: "02",
@@ -37,13 +38,13 @@ const timeline = [
     step: "03",
     when: "Within 1–2 weeks",
     title: "We walk the property.",
-    body: "Scott or one of our designers visits the site at no cost — to read the property, ask questions, and discuss what's possible.",
+    body: "Scott or one of our designers visits the site at no cost, to read the property, ask questions, and discuss what's possible.",
   },
   {
     step: "04",
     when: "Within 2–3 weeks",
     title: "You receive a written quote.",
-    body: "An itemized design fee and build estimate in writing — with scope, materials direction, and an honest schedule. No pressure to commit.",
+    body: "An itemized design fee and build estimate in writing, with scope, materials direction, and an honest schedule. No pressure to commit.",
   },
 ];
 
@@ -76,7 +77,7 @@ const quoteFAQ = [
   },
   {
     q: "Do I have to commit to anything to fill this out?",
-    a: "No. Submitting a brief just starts a conversation. You can step out at any point — many of our clients take weeks or months to decide. We'd rather you pick the right studio than rush a decision.",
+    a: "No. Submitting a brief just starts a conversation. You can step out at any point, and many of our clients take weeks or months to decide. We'd rather you pick the right studio than rush a decision.",
   },
   {
     q: "What information do you need from me right now?",
@@ -87,6 +88,13 @@ const quoteFAQ = [
 export default function QuotePage() {
   return (
     <>
+      <JsonLd
+        id="breadcrumb"
+        data={breadcrumbSchema([
+          { name: "Home", href: "/" },
+          { name: "Request a Consultation", href: "/quote" },
+        ])}
+      />
       {/* ═══════════════════════════════════════════════════════
           1 · HERO + FORM — split layout, form visible above fold
           ═══════════════════════════════════════════════════════ */}
@@ -108,9 +116,6 @@ export default function QuotePage() {
                 on mobile; the page already has dedicated sections for
                 each below. Keeps the mobile hero focused on the form. */}
             <div className="lg:col-span-5 lg:sticky lg:top-28">
-              <p className="font-mono text-[11px] tabular-nums text-stone/85 tracking-[0.22em] mb-5 sm:mb-7 uppercase">
-                Property Consultation &middot; Step 01
-              </p>
               <h1 className="font-display text-[44px] sm:text-6xl lg:text-[80px] xl:text-[96px] text-cream leading-[0.98] lg:leading-[0.96] tracking-tight max-w-[14ch] font-light">
                 Begin{" "}
                 <span className="italic text-stone">your project.</span>
@@ -170,10 +175,6 @@ export default function QuotePage() {
         <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
           <div className="grid lg:grid-cols-12 gap-10 mb-12 sm:mb-16 lg:mb-20 items-end">
             <div className="lg:col-span-7">
-              <p className="font-display italic text-moss text-[18px] tracking-tight font-light mb-5 inline-flex items-baseline gap-3">
-                <span aria-hidden className="block h-px w-7 bg-moss/60 translate-y-[-3px]" />
-                What happens next
-              </p>
               <h2 className="font-display text-[34px] sm:text-[44px] lg:text-[60px] text-bark leading-[1.04] tracking-tight font-light max-w-[20ch]">
                 From brief to{" "}
                 <span className="italic text-moss">written estimate.</span>
@@ -187,7 +188,7 @@ export default function QuotePage() {
           <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5">
             {timeline.map((t) => (
               <li key={t.step} className="bg-cream-alt border border-border p-7 lg:p-8 flex flex-col">
-                <p className="font-mono text-[10.5px] tabular-nums text-clay tracking-[0.22em] uppercase">
+                <p className="font-mono text-[10.5px] tabular-nums text-clay">
                   {t.when}
                 </p>
                 <p className="mt-2 font-display text-[44px] lg:text-[56px] text-moss leading-none tracking-tight font-light">
@@ -212,10 +213,6 @@ export default function QuotePage() {
         <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
           <div className="grid lg:grid-cols-12 gap-10 mb-12 sm:mb-16 items-end">
             <div className="lg:col-span-7">
-              <p className="font-display italic text-moss text-[18px] tracking-tight font-light mb-5 inline-flex items-baseline gap-3">
-                <span aria-hidden className="block h-px w-7 bg-moss/60 translate-y-[-3px]" />
-                The promise
-              </p>
               <h2 className="font-display text-[34px] sm:text-[44px] lg:text-[56px] text-bark leading-[1.04] tracking-tight font-light max-w-[20ch]">
                 Start a project{" "}
                 <span className="italic text-moss">on your terms.</span>
@@ -229,7 +226,7 @@ export default function QuotePage() {
                 <p className="font-display text-[44px] sm:text-[52px] lg:text-[64px] text-bark leading-none tracking-tight font-light">
                   {r.figure}
                 </p>
-                <p className="mt-4 text-[10.5px] tracking-[0.22em] uppercase text-clay">
+                <p className="mt-4 text-[10.5px] text-clay">
                   {r.label}
                 </p>
                 <p className="mt-5 pt-5 border-t border-border text-[14.5px] text-earth leading-relaxed flex-1">
@@ -271,10 +268,6 @@ export default function QuotePage() {
         <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-20 items-start">
             <div className="lg:col-span-5 lg:sticky lg:top-28">
-              <p className="font-display italic text-moss text-[18px] tracking-tight font-light mb-5 inline-flex items-baseline gap-3">
-                <span aria-hidden className="block h-px w-7 bg-moss/60 translate-y-[-3px]" />
-                Before you submit
-              </p>
               <h2 className="font-display text-[34px] sm:text-[44px] lg:text-[56px] text-bark leading-[1.04] tracking-tight font-light max-w-[18ch]">
                 Common{" "}
                 <span className="italic text-moss">questions.</span>
@@ -308,7 +301,7 @@ export default function QuotePage() {
             <div className="lg:col-span-5 flex flex-col items-center lg:items-end gap-3">
               <a
                 href={company.phoneTel}
-                className="inline-flex items-center justify-center px-9 py-4 bg-bark text-cream text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-earth transition-colors"
+                className="inline-flex items-center justify-center px-9 py-4 bg-bark text-cream text-[12px] font-medium hover:bg-earth transition-colors"
               >
                 Call {company.phone}
               </a>

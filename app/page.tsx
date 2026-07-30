@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import Script from "next/script";
 
 import { company, services, journal, serviceAreas } from "@/lib/content";
 import { photos, projectPhotos, photosByService, staffPhotos } from "@/lib/media";
-import { buildMetadata, breadcrumbSchema } from "@/lib/seo";
+import { aggregateRatingSchema, buildMetadata, faqSchema } from "@/lib/seo";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
@@ -14,6 +13,7 @@ import GalleryMosaic from "@/components/GalleryMosaic";
 import HeroSlider from "@/components/HeroSlider";
 import InstagramFeed from "@/components/InstagramFeed";
 import JournalCard from "@/components/JournalCard";
+import JsonLd from "@/components/JsonLd";
 import PartnerLogos from "@/components/sections/PartnerLogos";
 import QuotePromptModal from "@/components/QuotePromptModal";
 import Reviews from "@/components/Reviews";
@@ -46,14 +46,6 @@ const heroSlides = [
   photos.heroLawn,
 ].map((p) => ({ src: p.src, alt: p.alt }));
 
-const trustBadges = [
-  "Designed Outdoor Living",
-  "Eastern NC Craftsmanship",
-  `Founded in ${company.founded}`,
-  "Drawn Site Plans · 2D & Hand-Sketch",
-  "In-House Designers, Masons & Gardeners",
-];
-
 // Six-service grid on the homepage — one feature per Yardie service group.
 // Picked to span living spaces, foundations, and gardens-and-systems so
 // the rail reads as the full breadth of the studio.
@@ -70,28 +62,28 @@ const serviceBlurbs: Record<string, string> = {
   landscapes:
     "Master plans, planting design, and seasonal upkeep tuned to Pitt County soil and the way you live.",
   "patios-pavers":
-    "Brick, paver, and natural-stone patios composed as outdoor rooms — engineered to last twenty years.",
+    "Brick, paver, and natural-stone patios, composed as outdoor rooms and built to last twenty years.",
   "outdoor-kitchens":
-    "Built-in grills, pizza ovens, masonry cabinetry, and counters — the room that pulls you outside.",
+    "Built-in grills, pizza ovens, masonry cabinetry, and counters. The room that pulls everyone outside.",
   "fire-features":
-    "Masonry fireplaces, fire pits, and hearths designed into the patio — the reason to stay outside.",
+    "Masonry fireplaces, fire pits, and hearths designed into the patio, so there's a reason to stay out after dark.",
   "pool-decks":
     "Paver, travertine, and bluestone decks, coping, and pool-surround landscape, drained and detailed for the long run.",
   lighting:
-    "Layered low-voltage path, accent, and architectural lighting — fewer fixtures, better aim, warmer light.",
+    "Layered low-voltage path, accent, and architectural lighting. Fewer fixtures, better aim, warmer light.",
   // Remaining services keep their blurbs available for the dropdown / footer.
   masonry:
-    "Hand-laid stone, brick, and veneer — set by Yardie masons, never subcontracted out.",
+    "Hand-laid stone, brick, and veneer, set by Yardie masons and never subcontracted out.",
   "walkways-driveways":
-    "Brick walks, stepping stones, and paver drives — the architecture of the approach.",
+    "Brick walks, stepping stones, and paver drives that shape the way you approach the house.",
   "retaining-walls":
-    "Engineered stone and segmental walls — drainage, batter, and reinforcement designed in.",
+    "Engineered stone and segmental walls, with drainage, batter, and reinforcement designed in.",
   "pergolas-pavilions":
     "Cedar, ipe, and stone-column pergolas plus full pavilions and screened porches.",
   "water-features":
-    "Spillways, fountains, pondless waterfalls — sound, movement, and reflection in the garden.",
+    "Spillways, fountains, and pondless waterfalls that bring sound, movement, and reflection to the garden.",
   irrigation:
-    "Smart-controller systems sized to plant type and soil — designed to use less water and keep gardens healthier.",
+    "Smart-controller systems sized to plant type and soil, designed to use less water and keep gardens healthier.",
 };
 
 // Process — six steps, each photographed at the corresponding moment
@@ -99,11 +91,11 @@ const serviceBlurbs: Record<string, string> = {
 // step says it shows (no drafting photo on a build step, no winter
 // dormant garden on a "looking after it" step, etc.).
 const processSteps = [
-  { num: "01", title: "The conversation",  body: "It starts on the property. We walk it together, look at the architecture, and listen to how you want the space to live. No drawings yet — just the brief.",      photo: projectPhotos.allenDonald.progress1 /* designer + client on the lot */ },
+  { num: "01", title: "The conversation",  body: "It starts on the property. We walk it together, look at the architecture, and listen to how you want the space to live. No drawings yet. Just the brief.",      photo: projectPhotos.allenDonald.progress1 /* designer + client on the lot */ },
   { num: "02", title: "Reading the site",  body: "Drainage, sun, sightlines, soil, the way the wind moves through. Before we put a line on paper, we understand what the property is asking for.",                  photo: { src: "/projects/process/crew-staking-out-shrubs-01.jpg", alt: "Crew staking out shrub locations during site analysis." } },
   { num: "03", title: "Drawing",           body: "Hand sketches first, then dimensioned plans, then material samples laid against the existing facade. Revision is built into the schedule.",                       photo: staffPhotos.scottDrafting /* Scott actually drafting */ },
-  { num: "04", title: "Specifying",        body: "Stone supplier, brick coursework, plant palette, fixture aim, controller schedule. Every detail is specified to the property — never pulled from a stock list.",  photo: projectPhotos.holton.stoneDetail /* finished material detail */ },
-  { num: "05", title: "Building",          body: "Yardie masons, gardeners, and irrigation crews execute the drawing. Same designer on site at every milestone — no handoff to a sub you've never met.",            photo: { src: "/projects/process/crew-laying-pavers-patio-01.jpg", alt: "Yardie crew laying pavers on a patio." } },
+  { num: "04", title: "Specifying",        body: "Stone supplier, brick coursework, plant palette, fixture aim, controller schedule. Every detail is specified to the property, never pulled from a stock list.",  photo: projectPhotos.holton.stoneDetail /* finished material detail */ },
+  { num: "05", title: "Building",          body: "Yardie masons, gardeners, and irrigation crews execute the drawing. The same designer is on site at every milestone, with no handoff to a sub you've never met.",            photo: { src: "/projects/process/crew-laying-pavers-patio-01.jpg", alt: "Yardie crew laying pavers on a patio." } },
   { num: "06", title: "Looking after it",  body: "First-year care visits establish plantings, catch any settling, and tune the irrigation through one full growing season. Most clients keep us on year-round.",    photo: projectPhotos.holton.extra13 /* mature established garden corner */ },
 ];
 
@@ -136,7 +128,7 @@ const homeFAQ = [
   },
   {
     q: "What does a Yardie project cost?",
-    a: "Every project is scoped individually after the first property visit. Cost depends on scope, materials, site conditions, and how many disciplines are involved. Once we've walked the property and agreed on the brief, you'll receive a written design fee and an itemized build estimate in writing — with nothing to commit to until you decide to move forward.",
+    a: "Every project is scoped individually after the first property visit. Cost depends on scope, materials, site conditions, and how many disciplines are involved. Once we've walked the property and agreed on the brief, you'll receive a written design fee and an itemized build estimate in writing, with nothing to commit to until you decide to move forward.",
   },
   {
     q: "Do you design and build, or just one or the other?",
@@ -144,11 +136,11 @@ const homeFAQ = [
   },
   {
     q: "How long do projects take?",
-    a: "Design takes two to six weeks depending on scope. Construction varies — a focused install might take ten days, a full property redesign with hardscape and masonry runs eight to twelve weeks. We share an honest schedule before we start.",
+    a: "Design takes two to six weeks depending on scope. Construction varies. A focused install might take ten days; a full property redesign with hardscape and masonry runs eight to twelve weeks. We share an honest schedule before we start.",
   },
   {
     q: "Where do you work?",
-    a: "Our home market is Greenville and the surrounding Pitt County towns — Winterville, Ayden, Farmville. We routinely take projects in Washington, Kinston, New Bern, Goldsboro, Wilson, and Rocky Mount when the property and the brief warrant the travel.",
+    a: "Our home market is Greenville and the surrounding Pitt County towns: Winterville, Ayden, and Farmville. We routinely take projects in Washington, Kinston, New Bern, Goldsboro, Wilson, and Rocky Mount when the property and the brief warrant the travel.",
   },
 ];
 
@@ -166,6 +158,8 @@ export default async function Home() {
 
   const { reviews: googleReviews, rating: googleRating, totalReviews: googleTotal } =
     await getGoogleReviews();
+
+  const ratingSchema = aggregateRatingSchema(googleRating, googleTotal);
 
   const serviceImageFor = (slug: string) =>
     photosByService[slug]?.[0] ?? photos.heroAman;
@@ -207,8 +201,8 @@ export default async function Home() {
                 <span className="italic text-stone">Eastern North Carolina homes.</span>
               </h1>
               <p className="mt-5 lg:mt-7 text-[15px] sm:text-[16px] text-cream/75 leading-relaxed max-w-md mx-auto lg:mx-0">
-                Landscapes, hardscapes, masonry, lighting, and irrigation —
-                drawn first, built once, looked after for years.
+                Landscapes, hardscapes, masonry, lighting, and irrigation,
+                designed and built by one local studio and cared for season after season.
               </p>
               <div className="mt-8 lg:mt-10 grid grid-cols-1 sm:flex sm:flex-row sm:justify-center lg:justify-start gap-3 max-w-sm sm:max-w-none mx-auto lg:mx-0">
                 <Button href="/quote" variant="ghost-light" arrow className="w-full sm:w-auto">
@@ -221,26 +215,6 @@ export default async function Home() {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* ────────────────────────────────────────────────────
-          PROOF BAR — static. §5.2 explicitly rules out an automatically
-          scrolling trust marquee, so these read as a plain list: no autoplay
-          (nothing to pause per §10.3/§14), no duplicated track, and one list
-          instead of an aria-hidden marquee plus an sr-only copy.
-         ──────────────────────────────────────────────────── */}
-      <section
-        aria-label="What we offer"
-        className="bg-cream border-y border-border py-5 lg:py-6"
-      >
-        <ul className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12 flex flex-wrap items-center justify-center gap-x-8 lg:gap-x-12 gap-y-3 footer-label text-clay text-center">
-          {trustBadges.map((badge) => (
-            <li key={badge} className="flex items-center gap-3">
-              <span className="block h-1 w-1 rounded-full bg-clay/60" aria-hidden />
-              {badge}
-            </li>
-          ))}
-        </ul>
       </section>
 
       {/* ────────────────────────────────────────────────────
@@ -262,15 +236,7 @@ export default async function Home() {
           </div>
 
           <ul
-            className="
-              flex md:grid md:grid-cols-2 lg:grid-cols-3
-              gap-4 sm:gap-5 lg:gap-6
-              overflow-x-auto md:overflow-visible
-              snap-x snap-mandatory md:snap-none
-              scrollbar-hide
-              px-5 sm:px-8 lg:px-12
-              pb-2 md:pb-0
-            "
+            className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none scrollbar-hide px-5 sm:px-8 lg:px-12 pb-2 md:pb-0"
           >
             {featuredServices.map((service) => {
               const photo = serviceImageFor(service.slug);
@@ -299,12 +265,12 @@ export default async function Home() {
                       <p className="mt-3 sm:mt-4 text-[14px] sm:text-[14.5px] text-clay leading-relaxed flex-1">
                         {serviceBlurbs[service.slug] ?? service.tagline}
                       </p>
-                      <span className="mt-6 sm:mt-7 inline-flex items-center justify-center gap-3 text-[11px] tracking-[0.22em] uppercase font-medium text-bark group-hover:text-moss transition-colors duration-300">
-                        <span aria-hidden className="block h-px w-6 bg-bark group-hover:w-10 group-hover:bg-moss transition-all duration-500 ease-out" />
-                        Explore
-                        <svg className="h-3 w-3 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                        </svg>
+                      <span className="mt-6 sm:mt-7 inline-block text-[12.5px] font-medium text-bark transition-colors duration-300 group-hover:text-moss">
+                        <span className="relative pb-1">
+                          Explore
+                          <span aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-current opacity-20" />
+                          <span aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-moss origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]" />
+                        </span>
                       </span>
                     </div>
                   </Link>
@@ -326,7 +292,7 @@ export default async function Home() {
           <div className="px-5 sm:px-8 lg:px-12">
             <div className="mt-12 sm:mt-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-border pt-8 sm:pt-10">
               <p className="text-[13.5px] sm:text-[14px] text-clay max-w-md">
-                Every yard we draw involves some mix of these five — composed against the architecture and the way you want to live.
+                Every yard we draw involves some mix of these disciplines, composed against the architecture and the way you want to live.
               </p>
               <TextLink href="/services">Explore All Services</TextLink>
             </div>
@@ -417,31 +383,17 @@ export default async function Home() {
           </div>
 
           <ul
-            className="
-              flex sm:grid sm:grid-cols-2 lg:grid-cols-3
-              gap-4 sm:gap-x-10 sm:gap-y-12 lg:gap-y-16
-              overflow-x-auto sm:overflow-visible
-              snap-x snap-mandatory sm:snap-none
-              scrollbar-hide
-              px-5 sm:px-8 lg:px-12
-              pb-2 sm:pb-0
-            "
+            className="flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-x-10 sm:gap-y-12 lg:gap-y-16 overflow-x-auto sm:overflow-visible snap-x snap-mandatory sm:snap-none scrollbar-hide px-5 sm:px-8 lg:px-12 pb-2 sm:pb-0"
           >
             {processSteps.map((step) => (
               <li
                 key={step.num}
-                className="
-                  snap-start shrink-0 w-[78vw] sm:w-auto
-                  bg-dark-surface/70 sm:bg-transparent
-                  border border-cream/10 sm:border-0
-                  sm:border-t sm:border-cream/15
-                  p-6 sm:p-0 sm:pt-7
-                "
+                className="snap-start shrink-0 w-[78vw] sm:w-auto bg-dark-surface/70 sm:bg-transparent border border-cream/10 sm:border-0 sm:border-t sm:border-cream/15 p-6 sm:p-0 sm:pt-7"
               >
                 <p className="font-display text-[44px] sm:text-5xl text-stone/85 leading-none tracking-tight">
                   {step.num}
                 </p>
-                <h3 className="mt-4 sm:mt-6 text-[12.5px] sm:text-[14px] font-medium uppercase tracking-[0.18em] text-cream">
+                <h3 className="mt-4 sm:mt-6 text-[12.5px] sm:text-[14px] font-medium text-cream">
                   {step.title}
                 </h3>
                 <p className="mt-3 text-[14px] sm:text-[14.5px] text-cream/65 leading-relaxed">
@@ -452,7 +404,7 @@ export default async function Home() {
           </ul>
 
           {/* Swipe hint — mobile only */}
-          <div className="sm:hidden mt-5 px-5 flex items-center justify-center gap-2 text-[10.5px] tracking-[0.22em] uppercase text-cream/70">
+          <div className="sm:hidden mt-5 px-5 flex items-center justify-center gap-2 text-[10.5px] text-cream/70">
             <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
             </svg>
@@ -479,7 +431,7 @@ export default async function Home() {
             <div className="lg:col-span-5">
               <p className="text-[15px] sm:text-[16px] text-clay leading-relaxed max-w-md">
                 Every Yardie project starts as a drawing. Drag the slider to see the
-                3D plan beside the finished build &mdash; the design intent is the
+                3D plan beside the finished build. The design intent is the
                 installed result.
               </p>
             </div>
@@ -493,8 +445,8 @@ export default async function Home() {
               afterLabel="Built"
               className="aspect-[16/10] sm:aspect-[16/9]"
             />
-            <p className="mt-4 sm:mt-5 text-[11.5px] tracking-[0.22em] uppercase text-clay">
-              Minshew Residence &mdash; Greenville, NC &middot; Drag to compare
+            <p className="mt-4 sm:mt-5 text-[11.5px] text-clay">
+              Minshew Residence, Greenville, NC &middot; Drag to compare
             </p>
           </div>
         </div>
@@ -516,8 +468,8 @@ export default async function Home() {
             <div className="lg:col-span-6 lg:col-start-7">
               <p className="font-display text-[26px] sm:text-[30px] lg:text-[36px] text-bark leading-[1.22] tracking-tight max-w-[28ch] mx-auto lg:mx-0 text-center lg:text-left">
                 I started Yardie because most yards are an{" "}
-                <span className="italic text-moss">afterthought</span> &mdash;
-                handed off, subbed out, finished but not quite right.
+                <span className="italic text-moss">afterthought.</span>{" "}
+                Handed off, subbed out, finished but not quite right.
               </p>
 
               <p className="mt-5 sm:mt-6 text-[15px] sm:text-[16px] text-earth leading-relaxed max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
@@ -531,7 +483,7 @@ export default async function Home() {
                 <span className="font-display italic text-[22px] sm:text-[26px] text-bark leading-[1.2] font-light">
                   Scott Baldwin
                 </span>
-                <span className="font-mono text-[10.5px] tabular-nums text-clay tracking-[0.22em] uppercase mt-3">
+                <span className="font-mono text-[10.5px] tabular-nums text-clay mt-3">
                   Founder &middot; Yardie
                 </span>
               </div>
@@ -557,20 +509,17 @@ export default async function Home() {
       {/* ────────────────────────────────────────────────────
           SERVICE AREAS — postcard rail
          ──────────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-24 lg:py-32 bg-cream border-t border-border">
+      <section className="py-16 sm:py-24 lg:py-32 bg-bark text-cream">
         <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-8 mb-10 sm:mb-12 lg:mb-14 text-center lg:text-left">
             <div className="max-w-xl mx-auto lg:mx-0">
-              <h2 className="font-display text-[32px] sm:text-[40px] lg:text-[56px] text-bark leading-[1.06] tracking-tight font-light">
+              <h2 className="font-display text-[32px] sm:text-[40px] lg:text-[56px] text-cream leading-[1.06] tracking-tight font-light">
                 Designed across Greenville{" "}
-                <span className="italic text-moss">and Eastern North Carolina.</span>
+                <span className="italic text-stone">and Eastern North Carolina.</span>
               </h2>
-              <p className="mt-5 text-[14.5px] sm:text-[15px] text-clay leading-relaxed max-w-md mx-auto lg:mx-0">
-                Postcards from the towns and counties where we work — from Pitt County to the coast.
-              </p>
             </div>
             <div className="flex justify-center lg:justify-end">
-              <TextLink href="/service-areas">See All Service Areas</TextLink>
+              <TextLink href="/service-areas" tone="light">See all service areas</TextLink>
             </div>
           </div>
         </div>
@@ -578,13 +527,13 @@ export default async function Home() {
 
         {/* Wikimedia attribution for the city photos on each postcard. */}
         <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12 mt-6">
-          <p className="text-[11px] text-clay leading-relaxed text-center lg:text-left">
+          <p className="text-[11px] text-cream/45 leading-relaxed text-center lg:text-left">
             City photos courtesy of{" "}
             <a
               href="https://commons.wikimedia.org/"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-2 hover:text-bark transition-colors"
+              className="underline underline-offset-2 hover:text-cream transition-colors"
             >
               Wikimedia Commons
             </a>
@@ -593,7 +542,7 @@ export default async function Home() {
               href="https://creativecommons.org/licenses/by-sa/4.0/"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-2 hover:text-bark transition-colors"
+              className="underline underline-offset-2 hover:text-cream transition-colors"
             >
               CC BY-SA 4.0
             </a>
@@ -611,17 +560,17 @@ export default async function Home() {
           ARTICLES
          ──────────────────────────────────────────────────── */}
       {articles.length > 0 && (
-        <section className="py-16 sm:py-24 lg:py-32 bg-cream-alt border-y border-border">
+        <section className="py-16 sm:py-24 lg:py-32 bg-bark text-cream">
           <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 sm:mb-12 lg:mb-14 text-center lg:text-left">
               <div className="max-w-xl mx-auto lg:mx-0">
-                <h2 className="font-display text-[32px] sm:text-[40px] lg:text-[56px] text-bark leading-[1.06] tracking-tight font-light">
+                <h2 className="font-display text-[32px] sm:text-[40px] lg:text-[56px] text-cream leading-[1.06] tracking-tight font-light">
                   Planning your{" "}
-                  <span className="italic text-moss">outdoor space?</span>
+                  <span className="italic text-stone">outdoor space?</span>
                 </h2>
               </div>
               <div className="flex justify-center lg:justify-end">
-                <TextLink href="/journal">All Articles</TextLink>
+                <TextLink href="/journal" tone="light">All articles</TextLink>
               </div>
             </div>
 
@@ -639,10 +588,10 @@ export default async function Home() {
                     />
                   </div>
                   <div className="pt-5">
-                    <h3 className="mt-2.5 font-display text-[24px] text-bark leading-[1.2] group-hover:text-moss transition-colors font-light tracking-tight">
+                    <h3 className="mt-2.5 font-display text-[24px] text-cream leading-[1.2] group-hover:text-moss-light transition-colors font-light tracking-tight">
                       {articles[0].title}
                     </h3>
-                    <p className="mt-2.5 text-[14px] text-clay leading-relaxed line-clamp-2">
+                    <p className="mt-2.5 text-[14px] text-cream/65 leading-relaxed line-clamp-2">
                       {articles[0].excerpt}
                     </p>
                   </div>
@@ -650,9 +599,9 @@ export default async function Home() {
               )}
 
               {articles.slice(1).length > 0 && (
-                <ul className="border-t border-border">
+                <ul className="border-t border-cream/12">
                   {articles.slice(1).map((post) => (
-                    <li key={post.slug} className="border-b border-border">
+                    <li key={post.slug} className="border-b border-cream/12">
                       <Link
                         href={`/journal/${post.slug}`}
                         className="group flex items-start gap-4 py-5"
@@ -667,12 +616,12 @@ export default async function Home() {
                           />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <h3 className="font-display text-[18px] text-bark leading-[1.25] group-hover:text-moss transition-colors line-clamp-2 font-light tracking-tight">
+                          <h3 className="font-display text-[18px] text-cream leading-[1.25] group-hover:text-moss-light transition-colors line-clamp-2 font-light tracking-tight">
                             {post.title}
                           </h3>
                         </div>
                         <svg
-                          className="shrink-0 h-3 w-3 mt-2 text-clay group-hover:text-moss group-hover:translate-x-1 transition-all"
+                          className="shrink-0 h-3 w-3 mt-2 text-cream/50 group-hover:text-moss-light group-hover:translate-x-1 transition-all"
                           fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"
                         >
                           <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
@@ -687,7 +636,7 @@ export default async function Home() {
             {/* Tablet+ — 3-up grid */}
             <div className="hidden md:grid md:grid-cols-3 gap-6 lg:gap-8">
               {articles.map((post) => (
-                <JournalCard key={post.slug} post={post} />
+                <JournalCard key={post.slug} post={post} tone="dark" />
               ))}
             </div>
           </div>
@@ -706,7 +655,7 @@ export default async function Home() {
                 <span className="italic text-moss">questions.</span>
               </h2>
               <p className="mt-6 text-[15px] sm:text-[16px] text-clay leading-relaxed max-w-md">
-                The questions we&rsquo;re asked most often before the first site visit. If yours isn&rsquo;t here, send us a note &mdash; we answer every email ourselves.
+                The questions we&rsquo;re asked most often before the first site visit. If yours isn&rsquo;t here, send us a note. We answer every email ourselves.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
                 <TextLink href="/faq">All Questions</TextLink>
@@ -744,7 +693,7 @@ export default async function Home() {
             <span className="italic text-stone">the best part of your home?</span>
           </h2>
           <p className="mt-7 text-[17px] text-cream/75 leading-relaxed max-w-xl mx-auto">
-            Tell us about your property. The first conversation is at no cost — we walk the site, listen, and let you know whether we&rsquo;re the right studio for the project.
+            Tell us about your property. The first conversation is at no cost. We walk the site, listen, and tell you whether we&rsquo;re the right studio for the project.
           </p>
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button href="/quote" variant="ghost-light" arrow>
@@ -760,14 +709,16 @@ export default async function Home() {
         </div>
       </section>
 
-      <Script
-        id="ld-home-breadcrumb"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema([{ name: "Home", href: "/" }])),
-        }}
-      />
+      {/* The five questions above are also the highest-intent ones we get,
+          so they're offered for FAQ rich results. A single-item breadcrumb
+          ("Home") used to sit here instead — Google ignores a one-crumb
+          trail, so it bought nothing. */}
+      <JsonLd id="ld-home-faq" data={faqSchema(homeFAQ)} />
+
+      {/* Star rating for the business node, emitted only here because this is
+          the one page that actually displays the Google reviews it summarises.
+          Null unless the live Places API returned a real rating. */}
+      {ratingSchema && <JsonLd id="ld-home-rating" data={ratingSchema} />}
 
       <QuotePromptModal />
     </>

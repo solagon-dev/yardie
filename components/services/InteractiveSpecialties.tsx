@@ -84,7 +84,7 @@ export default function InteractiveSpecialties({
             );
           })}
           <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-bark/80 via-bark/20 to-transparent">
-            <p className="font-mono text-[10.5px] tabular-nums text-cream/80 tracking-[0.22em] uppercase">
+            <p className="font-mono text-[10.5px] tabular-nums text-cream/80">
               {String(active + 1).padStart(2, "0")} / {String(features.length).padStart(2, "0")}
             </p>
             <p className="mt-1 font-display text-cream text-[22px] sm:text-[24px] leading-tight tracking-tight">

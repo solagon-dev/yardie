@@ -68,6 +68,10 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
               alt={slide.alt}
               fill
               priority={i === 0}
+              // The first slide is the LCP element on the homepage. It renders
+              // full-bleed under a dark gradient, so q=65 is visually
+              // indistinguishable from the default 75 and meaningfully cheaper.
+              quality={65}
               sizes="100vw"
               className="object-cover animate-hero-zoom transform-gpu"
             />

@@ -1,22 +1,34 @@
-import { NextResponse } from "next/server";
+import { POST as handleContact } from "../contact/route";
 
 /**
- * The consultation form submits to /api/contact with formType="consultation".
- * This endpoint exists only to forward any legacy clients still posting here.
+ * Legacy endpoint. The consultation form posts to /api/contact with
+ * formType="consultation"; this exists only for anything still pointing here.
+ *
+ * It used to `fetch()` its own /api/contact over HTTP, which cost a full
+ * round-trip per submission and rebuilt the request without the original
+ * headers — so the reCAPTCHA token was dropped (a guaranteed 403 whenever the
+ * secret is configured) and rate limiting saw the server's own address rather
+ * than the client's. Calling the handler in-process fixes all three.
  */
 export async function POST(req: Request) {
   let body: unknown = {};
-  try { body = await req.json(); } catch { /* ignore */ }
-  const url = new URL("/api/contact", req.url);
-  const forwarded = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ formType: "consultation", data: (body as { data?: unknown }).data ?? body }),
-  });
-  const text = await forwarded.text();
   try {
-    return NextResponse.json(JSON.parse(text), { status: forwarded.status });
+    body = await req.json();
   } catch {
-    return new NextResponse(text, { status: forwarded.status });
+    /* fall through with an empty body — the contact handler rejects it */
   }
+
+  const source = (body ?? {}) as { data?: unknown; recaptchaToken?: string };
+
+  const forwarded = new Request(new URL("/api/contact", req.url), {
+    method: "POST",
+    headers: req.headers,
+    body: JSON.stringify({
+      formType: "consultation",
+      data: source.data ?? body,
+      recaptchaToken: source.recaptchaToken,
+    }),
+  });
+
+  return handleContact(forwarded);
 }

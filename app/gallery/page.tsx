@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { buildMetadata } from "@/lib/seo";
+import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 import { getImageDim } from "@/lib/image-dimensions";
 import { caseStudiesByRecency } from "@/lib/case-studies";
 import GalleryClient, { type GalleryPhoto } from "@/components/gallery/GalleryClient";
@@ -258,6 +259,13 @@ export default function GalleryPage() {
 
   return (
     <>
+      <JsonLd
+        id="breadcrumb"
+        data={breadcrumbSchema([
+          { name: "Home", href: "/" },
+          { name: "Gallery", href: "/gallery" },
+        ])}
+      />
       {/* ═══════════════════════════════════════════════════════
           1 · HERO — clean editorial header, no full-bleed photo
           ═══════════════════════════════════════════════════════ */}
@@ -265,9 +273,6 @@ export default function GalleryPage() {
         <div className="mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-12 pt-32 lg:pt-44 pb-12 lg:pb-16">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-end">
             <div className="lg:col-span-8">
-              <p className="font-mono text-[11px] tabular-nums text-clay tracking-[0.22em] mb-6 uppercase">
-                Gallery &middot; Selected Work
-              </p>
               <h1 className="font-display text-5xl sm:text-6xl lg:text-[80px] xl:text-[96px] text-bark leading-[0.98] tracking-tight max-w-[18ch] font-light">
                 A gallery of{" "}
                 <span className="italic text-moss">finished work.</span>
@@ -277,7 +282,7 @@ export default function GalleryPage() {
               <p className="text-[15px] sm:text-[16px] text-earth leading-relaxed max-w-md">
                 Photographs from projects we&rsquo;ve drawn, built, and continue to look after &mdash; across Greenville and the broader Eastern North Carolina region.
               </p>
-              <p className="mt-5 font-mono text-[11px] tabular-nums text-clay tracking-[0.22em] uppercase">
+              <p className="mt-5 font-mono text-[11px] tabular-nums text-clay">
                 {String(galleryWithDims.length).padStart(3, "0")} photographs &middot; click any to enlarge
               </p>
             </div>
@@ -292,9 +297,6 @@ export default function GalleryPage() {
       {featuredStudies.length > 0 && (
         <section className="bg-cream text-bark border-b border-border">
           <div className="mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-12 py-14 lg:py-20">
-            <p className="font-mono text-[11px] tabular-nums text-clay tracking-[0.22em] mb-8 uppercase">
-              Selected Case Studies
-            </p>
             <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
               {featuredStudies.map((c) => (
                 <Link
@@ -312,7 +314,7 @@ export default function GalleryPage() {
                       className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
                     />
                   </div>
-                  <p className="mt-4 font-mono text-[10.5px] tracking-[0.22em] uppercase text-clay">
+                  <p className="mt-4 font-mono text-[10.5px] text-clay">
                     {c.city}, {c.region} &middot; {c.propertyType}
                   </p>
                   <h2 className="mt-2 font-display text-2xl font-light tracking-tight text-bark group-hover:text-moss transition-colors">
@@ -342,9 +344,6 @@ export default function GalleryPage() {
           ═══════════════════════════════════════════════════════ */}
       <section className="bg-cream-alt text-bark border-y border-border py-16 sm:py-24 lg:py-32">
         <div className="mx-auto max-w-[1100px] px-5 sm:px-8 lg:px-12 text-center">
-          <p className="font-display italic text-moss text-[18px] tracking-tight font-light mb-5">
-            See something you like?
-          </p>
           <h2 className="font-display text-[34px] sm:text-[44px] lg:text-[60px] text-bark leading-[1.04] tracking-tight font-light max-w-[20ch] mx-auto">
             Let&rsquo;s draw something{" "}
             <span className="italic text-moss">like it for you.</span>
@@ -355,7 +354,7 @@ export default function GalleryPage() {
           <div className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/quote"
-              className="inline-flex items-center justify-center gap-3 px-9 py-4 bg-bark text-cream text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-earth transition-colors"
+              className="inline-flex items-center justify-center gap-3 px-9 py-4 bg-bark text-cream text-[12px] font-medium hover:bg-earth transition-colors"
             >
               Request a Property Consultation
               <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor">
@@ -364,7 +363,7 @@ export default function GalleryPage() {
             </Link>
             <Link
               href="/services"
-              className="inline-flex items-center justify-center px-9 py-4 border border-bark/30 text-bark text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-bark hover:text-cream hover:border-bark transition-colors"
+              className="inline-flex items-center justify-center px-9 py-4 border border-bark/30 text-bark text-[12px] font-medium hover:bg-bark hover:text-cream hover:border-bark transition-colors"
             >
               Explore Services
             </Link>

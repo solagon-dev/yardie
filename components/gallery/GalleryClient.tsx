@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { analytics } from "@/lib/analytics";
 
@@ -85,14 +86,22 @@ export default function GalleryClient({ photos }: { photos: GalleryPhoto[] }) {
             style={{ aspectRatio: `${m.width} / ${m.height}` }}
             onClick={(e) => open(i, e.currentTarget)}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            {/* These were plain <img> tags pointing straight at the Blob
+                originals, so a phone downloaded the same multi-hundred-KB
+                JPEG a desktop did — ~290KB–660KB each, thirty of them. Going
+                through next/image adds AVIF/WebP and a real srcset: the same
+                three photos measured 290→57KB, 661→76KB, 247→47KB at 640w.
+                Only the first tile is `priority` (the hero here is text-only,
+                so tile one is the LCP candidate); tiles 2-4 load eagerly but
+                without a preload so they don't compete with it. */}
+            <Image
               src={m.src}
               alt={m.alt}
               width={m.width}
               height={m.height}
-              loading={i < 6 ? "eager" : "lazy"}
-              decoding="async"
+              priority={i === 0}
+              loading={i > 0 && i < 4 ? "eager" : undefined}
+              sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
               className="block w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
             />
           </button>
@@ -105,7 +114,7 @@ export default function GalleryClient({ photos }: { photos: GalleryPhoto[] }) {
           <button
             type="button"
             onClick={showMore}
-            className="inline-flex items-center justify-center px-8 py-3.5 border border-bark/30 text-bark text-[12px] tracking-[0.22em] uppercase font-medium hover:bg-bark hover:text-cream hover:border-bark transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-moss focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
+            className="inline-flex items-center justify-center px-8 py-3.5 border border-bark/30 text-bark text-[12px] font-medium hover:bg-bark hover:text-cream hover:border-bark transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-moss focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
           >
             Load more &middot; {visible} / {photos.length}
           </button>
@@ -208,7 +217,7 @@ function Lightbox({
       </button>
 
       {/* Counter */}
-      <div className="absolute top-6 left-5 sm:top-8 sm:left-8 z-10 font-mono text-[11px] tabular-nums text-cream/65 tracking-[0.22em] uppercase pointer-events-none">
+      <div className="absolute top-6 left-5 sm:top-8 sm:left-8 z-10 font-mono text-[11px] tabular-nums text-cream/65 pointer-events-none">
         {String(index + 1).padStart(3, "0")} <span className="text-cream/70 mx-1">/</span> {String(total).padStart(3, "0")}
       </div>
 
@@ -241,13 +250,18 @@ function Lightbox({
         className="relative w-full h-full flex items-center justify-center px-12 sm:px-20 lg:px-28 py-16 sm:py-20"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        {/* Also optimised — the lightbox showed the untouched original, so
+            opening one photo could pull several megabytes. `sizes="100vw"`
+            because it fills the viewport; `priority` because the visitor is
+            looking straight at it and lazy-loading would show a blank frame. */}
+        <Image
           key={photo.src}
           src={photo.src}
           alt={photo.alt}
           width={photo.width}
           height={photo.height}
+          priority
+          sizes="100vw"
           className="max-h-full max-w-full object-contain animate-fade-in select-none"
           draggable={false}
         />
