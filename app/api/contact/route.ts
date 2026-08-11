@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getResend, FROM, NOTIFY_TO as TO } from "@/lib/resend";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
+import { sendOpsAlert } from "@/lib/alert";
 
 const RECAPTCHA_SECRET = process.env.RECAPTCHA_SECRET_KEY;
 const RECAPTCHA_MIN_SCORE = Number(process.env.RECAPTCHA_MIN_SCORE ?? "0.5");
@@ -201,6 +202,7 @@ export async function POST(req: Request) {
 
     if (result.error) {
       console.error("[resend] send error:", result.error);
+      await notifyLostLead(formType, rows, String(result.error?.message ?? result.error));
       return NextResponse.json(
         { success: false, message: "We couldn't deliver your message. Please try again or call us." },
         { status: 502 }
@@ -210,9 +212,30 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true, message: "Sent." });
   } catch (err) {
     console.error("[resend] exception:", err);
+    await notifyLostLead(formType, rows, String(err));
     return NextResponse.json(
       { success: false, message: "Something went wrong. Please try again or call us." },
       { status: 500 }
     );
   }
+}
+
+/**
+ * When a submission can't be emailed, make sure the lead is never silently
+ * lost: (1) log the full details at error level so they're recoverable from
+ * runtime logs, and (2) fire a real-time ops alert over an independent channel
+ * (a webhook, not email — see lib/alert.ts) with the person's contact info, so
+ * the team can follow up by hand within minutes. No-op alert when unconfigured.
+ */
+async function notifyLostLead(
+  formType: FormType,
+  rows: { label: string; value: string }[],
+  reason: string
+) {
+  console.error("[LEAD-DELIVERY-FAILED]", JSON.stringify({ formType, reason, rows }));
+  await sendOpsAlert({
+    title: "⚠️ Yardie lead could NOT be emailed — call them directly",
+    text: `A ${formType} submission failed to send (${reason}). Their details:`,
+    fields: Object.fromEntries(rows.map((r) => [r.label, r.value])),
+  });
 }
