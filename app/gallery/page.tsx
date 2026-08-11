@@ -6,6 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import { getImageDim } from "@/lib/image-dimensions";
 import { caseStudiesByRecency } from "@/lib/case-studies";
 import GalleryClient, { type GalleryPhoto } from "@/components/gallery/GalleryClient";
+import StoryVideo from "@/components/StoryVideo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Project Gallery & Portfolio | Yardie — Greenville, NC",
@@ -35,6 +36,20 @@ interface Photo {
 // rather than the projectPhotos namespace (which still includes some
 // progress and process shots that don't belong in a gallery).
 const curated: Photo[] = [
+  // ─── 2026 project photography (waterfront build, natural-stone masonry, pools) ───
+  { src: "/media/waterfront-paver-patio-brick-steps.jpg",   alt: "Waterfront paver patio with brick-faced steps overlooking the water." },
+  { src: "/media/curved-paver-walkway-retaining-wall.jpg",  alt: "Curving paver walkway leading to a raised patio and retaining wall." },
+  { src: "/media/blue-house-raised-paver-patio-pool.jpg",   alt: "Raised paver patio with segmental retaining wall and a pool at a waterfront home." },
+  { src: "/media/natural-stone-seat-wall.jpg",              alt: "Hand-laid natural-stone seat wall with a concrete cap." },
+  { src: "/media/bluestone-walkway-path-lighting.jpg",      alt: "Paver walkway with path lighting and planting beds." },
+  { src: "/media/paver-patio-seating-turf.jpg",             alt: "Paver patio seating area bordered by artificial turf." },
+  { src: "/media/paver-patio-seating-brick-home.jpg",       alt: "Paver patio with seating beside a brick home." },
+  { src: "/media/freeform-pool-paver-coping.jpg",           alt: "Freeform pool with gray paver coping and a concrete deck." },
+  { src: "/media/freeform-pool-gazebo-deck.jpg",            alt: "Freeform pool with a gazebo and river-rock border." },
+  { src: "/media/fiberglass-pool-paver-coping.jpg",         alt: "Fiberglass pool with paver coping and a privacy fence." },
+  { src: "/media/pool-with-slide-paver-deck.jpg",           alt: "Backyard pool with a slide and a paver-edged deck." },
+  { src: "/media/house-brick-steps-pool-construction.jpg",  alt: "New pool and brick patio steps at a waterfront home." },
+
   // ─── Outdoor Kitchens ───────────────────────────────────────
   { src: "/projects/outdoor-kitchens/outdoor-kitchen-grill-stone-base-01.jpg",   alt: "Built-in stainless grill, wine fridge, and stone-clad cabinetry under a covered patio." },
   { src: "/projects/outdoor-kitchens/outdoor-kitchen-stone-veneer-01.jpg",       alt: "Outdoor kitchen with stone-veneer base, built-in grill, and stainless cabinet doors." },
@@ -280,7 +295,7 @@ export default function GalleryPage() {
             </div>
             <div className="lg:col-span-4">
               <p className="text-[15px] sm:text-[16px] text-earth leading-relaxed max-w-md">
-                Photographs from projects we&rsquo;ve drawn, built, and continue to look after &mdash; across Greenville and the broader Eastern North Carolina region.
+                Photographs from projects we&rsquo;ve drawn, built, and continue to look after, across Greenville and the broader Eastern North Carolina region.
               </p>
               <p className="mt-5 font-mono text-[11px] tabular-nums text-clay">
                 {String(galleryWithDims.length).padStart(3, "0")} photographs &middot; click any to enlarge
@@ -333,6 +348,27 @@ export default function GalleryPage() {
               reserved on the server (no first-paint stutter), and
               clicking any tile opens the lightbox.
           ═══════════════════════════════════════════════════════ */}
+      {/* ── In motion — project films ── */}
+      <section className="bg-cream text-bark border-b border-border">
+        <div className="mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-12 py-14 lg:py-20">
+          <h2 className="font-display text-[28px] sm:text-[34px] lg:text-[40px] text-bark leading-[1.1] tracking-tight font-light mb-8 sm:mb-10">
+            In motion
+          </h2>
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-[720px]">
+            <StoryVideo
+              src="/media/covered-pavilion-outdoor-kitchen.mp4"
+              poster="/media/covered-pavilion-outdoor-kitchen.jpg"
+              alt="Covered pavilion with a cedar ceiling, built-in outdoor kitchen, and masonry fireplace."
+            />
+            <StoryVideo
+              src="/media/pool-deck-patio.mp4"
+              poster="/media/pool-deck-patio.jpg"
+              alt="Finished pool deck and paver patio with turf, fencing, and seating."
+            />
+          </div>
+        </div>
+      </section>
+
       <section className="bg-cream text-bark">
         <div className="mx-auto max-w-[1500px] px-3 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
           <GalleryClient photos={galleryWithDims} />

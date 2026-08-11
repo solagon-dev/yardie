@@ -583,6 +583,10 @@ export const photosByService: Record<string, Photo[]> = {
   // First photo (grass-paver patio with Adirondack chairs) reads as a
   // composed outdoor room at a glance.
   "patios-pavers": [
+    { src: "/media/waterfront-paver-patio-brick-steps.jpg",   alt: "Waterfront paver patio with brick-faced steps overlooking the water." },
+    { src: "/media/blue-house-raised-paver-patio-pool.jpg",   alt: "Raised paver patio with a segmental retaining wall and pool at a waterfront home." },
+    { src: "/media/paver-patio-seating-turf.jpg",             alt: "Paver patio seating area bordered by artificial turf." },
+    { src: "/media/paver-patio-seating-brick-home.jpg",       alt: "Paver patio with seating beside a brick home." },
     { src: "/projects/masonry/grass-paver-patio-firepit-adirondack-01.jpg",   alt: "Grass-paver patio with Adirondack chairs and a stone firepit centerpiece." },
     { src: "/projects/hardscapes/may-blvd-stepped-terrace-02.jpg",            alt: "Stepped stone terrace with low seating wall." },
     { src: "/projects/hardscapes/brick-ranch-rear-patio-planting-bed-01.jpg", alt: "Brick ranch rear patio with planting bed border." },
@@ -592,6 +596,8 @@ export const photosByService: Record<string, Photo[]> = {
 
   // Walkways & Driveways — entry walks, garden paths, paver drives
   "walkways-driveways": [
+    { src: "/media/curved-paver-walkway-retaining-wall.jpg",  alt: "Curving paver walkway leading to a raised patio and retaining wall." },
+    { src: "/media/bluestone-walkway-path-lighting.jpg",      alt: "Paver walkway with path lighting and planting beds." },
     { src: "/projects/hardscapes/williamsburg-106-walkway-02.jpg",            alt: "Hand-laid brick walkway leading to a Southern home entry." },
     { src: "/projects/hardscapes/herringbone-paver-walkway-pillars-01.jpg",   alt: "Herringbone paver walkway threaded between brick pillars." },
     { src: "/projects/hardscapes/colonial-paver-driveway-front-01.jpg",       alt: "Colonial home with a brick paver driveway." },
@@ -601,6 +607,7 @@ export const photosByService: Record<string, Photo[]> = {
 
   // Stone & Brick Masonry — columns, walls, veneer (NOT firepits — those are fire-features)
   masonry: [
+    { src: "/media/natural-stone-seat-wall.jpg",   alt: "Hand-laid natural-stone seat wall with a concrete cap." },
     { src: "/projects/masonry/williamsburg-106-columns-03.jpg",   alt: "Lighted brick columns at the entry of a residential property." },
     { src: "/projects/masonry/holton-stone-detail-05.jpg",        alt: "Stone-cap detail along a finished walk." },
     { src: "/projects/masonry/may-blvd-stone-detail-07.jpg",      alt: "Hand-laid stone detail with tight jointing." },
@@ -610,6 +617,9 @@ export const photosByService: Record<string, Photo[]> = {
 
   // Retaining Walls — engineered grade-change + seat walls
   "retaining-walls": [
+    { src: "/media/natural-stone-seat-wall.jpg",              alt: "Hand-laid natural-stone seat wall with a concrete cap." },
+    { src: "/media/blue-house-raised-paver-patio-pool.jpg",   alt: "Raised paver patio with a segmental retaining wall at a waterfront home." },
+    { src: "/media/curved-paver-walkway-retaining-wall.jpg",  alt: "Paver walkway beside a raised patio and retaining wall." },
     { src: "/projects/masonry/stone-retaining-wall-bluestone-steps-01.jpg",  alt: "Stone retaining wall with bluestone steps." },
     { src: "/projects/masonry/williamsburg-109-seating-wall-04.jpg",         alt: "Detail of a stone seating wall framing a finished terrace." },
     { src: "/projects/landscapes/may-blvd-seat-wall-06.jpg",                 alt: "Seat-wall integrated with a planting bed and patio." },
@@ -622,6 +632,7 @@ export const photosByService: Record<string, Photo[]> = {
   // front-yard shot — kept on disk but excluded from this list.)
   "outdoor-kitchens": [
     { src: "/projects/outdoor-kitchens/outdoor-kitchen-grill-stone-base-01.jpg", alt: "Built-in stainless grill, wine fridge, and stone-clad cabinetry under a covered patio." },
+    { src: "/media/covered-pavilion-outdoor-kitchen.jpg",     alt: "Built-in outdoor kitchen with a concrete counter and stainless doors under a cedar-ceiling pavilion." },
     { src: "/projects/outdoor-kitchens/outdoor-kitchen-stone-veneer-01.jpg",      alt: "Outdoor kitchen with stone-veneer base, built-in grill and side burner with stainless cabinet doors." },
     { src: "/projects/outdoor-kitchens/covered-outdoor-kitchen-grill-bar-01.jpg", alt: "Covered outdoor kitchen with built-in grill, bar seating, and travertine floor." },
     { src: "/projects/outdoor-kitchens/covered-outdoor-kitchen-wood-columns-01.jpg", alt: "Covered outdoor kitchen with wood columns and integrated counter run." },
@@ -641,6 +652,7 @@ export const photosByService: Record<string, Photo[]> = {
 
   // Pergolas & Pavilions — pergolas, covered patios, screened porches
   "pergolas-pavilions": [
+    { src: "/media/covered-pavilion-outdoor-kitchen.jpg",     alt: "Cedar-ceiling pavilion with an outdoor kitchen, fireplace, and lounge seating." },
     { src: "/projects/masonry/white-brick-rear-firepit-pergola-01.jpg",     alt: "White-brick rear yard with firepit and pergola." },
     { src: "/projects/masonry/white-brick-rear-firepit-pergola-02.jpg",     alt: "White-brick rear yard with pergola — second angle." },
     { src: "/projects/outdoor-kitchens/covered-patio-wicker-seating-01.jpg", alt: "Covered patio with wicker seating." },
@@ -652,6 +664,10 @@ export const photosByService: Record<string, Photo[]> = {
   // Pool Decks & Surrounds — pool decks, coping, pool-side landscape
   "pool-decks": [
     { src: "/projects/pools/freeform-pool-stone-fireplace-paver-deck-01.jpg", alt: "Freeform pool with stone fireplace and paver deck." },
+    { src: "/media/freeform-pool-paver-coping.jpg",           alt: "Freeform pool with gray paver coping and a concrete deck." },
+    { src: "/media/fiberglass-pool-paver-coping.jpg",         alt: "Fiberglass pool with paver coping and a privacy fence." },
+    { src: "/media/freeform-pool-gazebo-deck.jpg",            alt: "Freeform pool with a gazebo and river-rock border." },
+    { src: "/media/pool-with-slide-paver-deck.jpg",           alt: "Backyard pool with a slide and a paver-edged deck." },
     { src: "/projects/pools/rectangular-pool-travertine-deck-01.jpg",         alt: "Rectangular pool with travertine deck." },
     { src: "/projects/pools/freeform-pool-paver-coping-01.jpg",               alt: "Freeform pool with paver coping detail." },
     { src: "/projects/pools/autumn-lakes-pool-deck-02.jpg",                   alt: "Stone pool deck with shaded lounge area." },
@@ -664,6 +680,7 @@ export const photosByService: Record<string, Photo[]> = {
   // under fire-features) — actually a strong lighting card image.
   lighting: [
     { src: "/projects/masonry/may-blvd-fireplace-03.jpg",            alt: "Stone column with a coach-style lantern lighting a front-yard mulch bed." },
+    { src: "/media/bluestone-walkway-path-lighting.jpg",      alt: "Paver walkway with low-voltage path lighting and planting beds." },
     { src: "/projects/lighting/may-blvd-evening-light-10.jpg",       alt: "Architectural lighting on a stone column with a coach lantern." },
     { src: "/projects/pools/brick-fireplace-pool-twilight-01.jpg",   alt: "Brick fireplace by pool at twilight." },
     { src: "/projects/hardscapes/brick-walkway-shed-lantern-01.jpg", alt: "Brick walkway with shed lantern at the property edge." },

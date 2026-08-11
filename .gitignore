@@ -77,3 +77,12 @@ Yardie_Traffic_Playbook.docx
 
 # One-off asset audit output — regenerate rather than commit.
 asset-manifest.json
+
+# Raw source media — originals kept locally; optimized web versions live in public/media/
+public/*.HEIC
+public/*.heic
+public/*.MOV
+public/*.mov
+public/*_fullres.JPG
+public/3162D6D0-FEF0-4571-8664-5338910F2F3C.JPG
+public/35100700-72A7-42E1-B7FA-63645C06291A.JPG

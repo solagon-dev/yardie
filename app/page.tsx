@@ -460,8 +460,9 @@ export default async function Home() {
           <div className="grid lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-20 items-center">
             <div className="lg:col-span-5 w-[68vw] max-w-[300px] sm:w-full sm:max-w-[360px] lg:max-w-none mx-auto">
               <StoryVideo
-                poster={staffPhotos.scottDrafting.src}
-                alt="Yardie founder Scott Baldwin drafting a site plan."
+                src="/media/covered-pavilion-outdoor-kitchen.mp4"
+                poster="/media/covered-pavilion-outdoor-kitchen.jpg"
+                alt="Covered pavilion with a cedar ceiling, built-in outdoor kitchen, and masonry fireplace, built by Yardie."
               />
             </div>
 
