@@ -3,8 +3,6 @@
 import Script from "next/script";
 import { GA_ID, useConsent } from "@/lib/consent";
 
-const AHREFS_KEY = "58FdYKXK/cR1Vn7ZzkBBmQ";
-
 /**
  * Analytics loader, gated on the cookie banner.
  *
@@ -48,12 +46,6 @@ gtag('config','${GA_ID}');`}
         strategy="afterInteractive"
       />
 
-      <Script
-        id="ahrefs-analytics"
-        src="https://analytics.ahrefs.com/analytics.js"
-        data-key={AHREFS_KEY}
-        strategy="afterInteractive"
-      />
     </>
   );
 }

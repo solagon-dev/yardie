@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
 import JsonLd from "@/components/JsonLd";
 import Analytics from "@/components/Analytics";
+import CloudflareWebAnalytics from "@/components/CloudflareWebAnalytics";
 import { localBusinessSchema, SITE_URL } from "@/lib/seo";
 import { company } from "@/lib/content";
 
@@ -114,8 +115,9 @@ export default function RootLayout({
 
         <JsonLd id="ld-business" data={localBusinessSchema()} />
 
-        {/* GA4 + Ahrefs — loaded only for visitors who haven't declined. */}
+        {/* GA4 remains consent-gated; cookie-free Cloudflare visits are independent. */}
         <Analytics />
+        <CloudflareWebAnalytics />
       </body>
     </html>
   );
